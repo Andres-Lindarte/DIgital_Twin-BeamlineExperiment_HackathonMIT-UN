@@ -1,0 +1,7 @@
+; quadout.gem: generates quadout.pa# - exit/detector region
+
+pa_define(39,39,100, planar,xy, electrostatic,, 0.2, surface=fractional)  ; mm/gu
+
+locate(0,0,-75.4) {
+  include(quad_include.gem)
+}

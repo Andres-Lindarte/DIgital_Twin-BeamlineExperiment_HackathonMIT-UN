@@ -1,0 +1,19 @@
+; gate source 1
+e(1) {
+  rotate_fill() { within { box(95,25,99.8,50)  }}
+}
+; gate source 2
+e(2) {
+  rotate_fill() { within { box(100.2,25,105,50)  }}
+}
+
+; entrance lens
+e(3) {
+  rotate_fill() { within { box(0,25,75,50) }}
+}
+
+; exit lens
+e(4) {
+  rotate_fill() { within { box(125,25,130,50) }}
+  rotate_fill() { within { box(200,0,200,50) }}
+}

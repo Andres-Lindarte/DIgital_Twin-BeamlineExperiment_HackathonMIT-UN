@@ -1,0 +1,173 @@
+<html>
+<head>
+<title>SIMION Particle Teleportation Across Processes Example</title>
+
+<style type="text/css">
+  body { font-family: verdana, arial, sans-serif; font-size: 90%; }
+  .copyright {font-size:80%; border-top:1px solid black}
+  .title1 {background-color:#80ff80}
+  .links1 {background-color:#c0ffc0}
+  .content {max-width:30em; margin-left:5px; margin-right:5px }
+  h1 {margin-top: 0; margin-bottom: 0; background-color:#e0ffe0; font-size:130%}
+  h2 {font-size:120%}
+  h3 {font-size:110%}
+  h4, h5, h6 {font-size:100%}
+</style>
+</head>
+
+<body  marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+<div class="title1">
+<a href="../_redirect.html?id=index">SIMION&#153; 8.1</a>
+</div>
+<h1>SIMION Particle Teleporation Across Processes Example</h1>
+<div class="content">
+
+
+
+<h2>Purpose</h2>
+
+<p>
+This examples illustrates how to teleport particles between PAs
+running on different SIMION processes (instances of simion.exe in
+memory) that communicate.
+</p>
+
+<p>
+This provides one method of simulating huge systems
+that don't fit onto a single SIMION process or computer.
+We can somewhat overcome this limit by running multiple SIMION processes
+on different computers connected over a network.
+</p>
+
+<p>NOTE: This is an advanced example in Lua coding.</p>
+
+<h2>Description</h2>
+
+<p>
+This particular example is adapted from the quadrupole ("quad")
+example on SIMION.  Here, the quadrupole simulation is split into
+three arrays, as before, but these three arrays are divided among two
+ion optics workbenches (IOBs).  Two arrays (entrance and exit) are in
+quad-1.iob, which is loaded on the first SIMION process (process 1).
+A third array (center rods) is in quad-2.iob, which is loaded on the
+second SIMION process (process 2).  The workbench Lua code
+teleports[1] ions from one process to another when ions move between
+potential array instances.</p>
+
+<p>Some additional empty PA instances (blank2d.pa) are placed at the
+entraces and exits of the main PAs solely to detect when a particle
+should change between PA instances--i.e. a particle enters a location
+in which there is a PA instance in another SIMION process.  These PAs
+are small and consume a trivial amount of memory.  They are also
+placed at the lowest priority level in the PA instance list on the PAs
+tab in View.
+</p>
+
+<p>The two IOB files, quad-1.iob and quad-2.iob, each have
+corresponding particle definitions, quad-1.fly2 and quad-2.fly2, and
+corresponding workbench user programs, quad-1.lua and quad-2.lua.  The
+FLY2 files are identical (quad-2.fly2 actually imports from
+quad-1.fly2, so changing quad-1.fly2 automatically changes quad-2.fly2
+if the latter is reloaded).  The quad-1.lua and quad-2.lua programs
+are also near identical (differing only in SIMION process number), and
+quad-2.lua imports almost all its code from quad-1.lua.  quad-1.lua in
+turn imports teleportutil.lua, which implements the bulk of the
+particle teleportation code.  teleportutil.lua can be reused in your
+own simulations.  teleportutil.lua in turn imports from a third-party
+LuaSocket[3] library (under the "lib" subdirectory), which provides
+general support for communicating via TCP/IP sockets, so that the
+SIMION processes can communicate and transfer particle data.</p>
+
+<p>
+The SIMION processes can run on the same computer or on different
+computers on the network.  By default, they are configured to run on
+the same computer (the "localhost" IP address "127.0.0.1" refers to
+the current computer).  You can modify the IP addresses and TCP ports
+so that the SIMION processes will run on different computers.  IP
+address numbers are specific to your particular computers.
+</p>
+
+<p>Firewall Warning: If running the SIMION processes on different
+computers, beware of firewalls (e.g. Windows XP/Vista Personal
+Firewall) since these can inferfere with the communication unless the
+required ports are opened on the firewall.  A personal firewall may
+even interfere with SIMION processes running on the same computer.
+</p>
+
+<p>For more details of this example, refer to the extensive comments
+in the source code: quad-1.iob and teleportutil.lua.</p>
+
+<h2>Files in this Demo:</h2>
+
+<ul>
+<li>README.html - Description of example
+<li>quad-1.iob - SIMION workbench for first SIMION process.
+<li>quad-2.iob - SIMION workbench for second SIMION process.
+<li>quad-1.lua/quad-2.lua - SIMION workbench Lua programs for
+     first and second IOB's respectively.
+<li>quad-1.fly2/quad-2.fly2 - Particle definitions for
+     first and second IOB's respectively (functionally identical).
+<li>quadin.pa* - entrance PA
+<li>quadout.pa* - exit PA
+<li>quad.pa* - center rods PA
+<li>blank2d.pa - small empty PA for particle teleportation
+<li>lib - LuaSocket (TCP/IP sockets) library for Lua</li>
+</ul>
+
+<h2>Usage</h2>
+
+<p>How to run quad demo:</p>
+
+<ul>
+
+<li>1.  <b>Load quad-1.iob and quad-2.iob in two instances of
+SIMION.</b> <i>(Start up one instance of SIMION, click View on main
+screen and select the quad-1.iob file.  Start up a second instance of
+SIMION on the same computer, click View on main screen and select the
+quad-2.iob file.)</i>
+
+<li>2.  If this is your first time using the example, you will be
+<b>asked to refine</b> <i>(confirm that and press Refine)</i>.
+
+<li>3.  <b>Start flying quad-1.iob first and quad-2.iob second</b>
+<i>(In quad-1.iob, click Fly'm.  Then in quad-2.iob, click Fly'm.)</i>
+It is important that the two processes are started in this order;
+otherwise, communication will fail.  Note how the particles start at
+the entrace optics in the first SIMION process, then fly through the
+middle rods in the second SIMION process, and finally fly through the
+exit optics in the first SIMION process.  Note how the Log window
+shows when particle are teleported and the states the particles move
+through.  Compare also trajectories to the original SIMION "quad"
+example that runs in a single process (note the nodal points in the
+trajectories and how they are affected by the TQual number).</i>
+</ul>
+
+<h2>See Also</h2>
+
+<ul>
+<li>[1] <a href="http://en.wikipedia.org/wiki/Teleportation">Wikipedia:
+Teleportation</a> - original definition of the word
+<li>[2]
+ <a href="../quad/README.html">Example: Quadrupole</a>
+  -- quadrupole mass filter example upon which this example is based.
+<li>[3] <a href="http://luasocket.luaforge.net/">LuaSocket</a> - TCP/IP
+sockets library for Lua (used internally by teleportutil.lua)
+</ul>
+
+<h2>Screenshots</h2>
+
+<img src="resources/screencast.gif" />
+
+<h2>Source</h2>
+
+<p>
+2008-03, D.Manura, PA files apapted from the QUAD example by Dahl.
+</p>
+ 
+</div>
+    
+<div class="copyright">SIMION&#153; 8.1 (c) 2003-2012 Scientific
+Instrument Services, Inc. All Rights Reserved.
+</div>
+    </body>
+</html>

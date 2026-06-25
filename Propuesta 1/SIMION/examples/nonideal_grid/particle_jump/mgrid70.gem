@@ -1,0 +1,54 @@
+; Geometry file for 70 lpi grid
+; by Steven Colby
+; Scientific Instrument Services, Inc.
+;
+; Grid dimensions:
+; Wire is                0.00073 inch = 0.018542 mm (square)
+; space between wires is 0.01355 inch = 0.34417  mm
+; total is               0.01428 inch = 0.362712 mm
+;
+; volume of simulation:
+;   x = 1.5 x 0.362712 = 0.544068 mm
+;   y = 1.5 x 0.362712 = 0.544068
+;   z = 3   x 0.362712 = 1.088136
+; symmetry on x and y axes
+;
+; instance will be about 5,000,000 points
+; at 250 gu/mm dimensions will be  (gu = grid units)
+;   136 gu for x and y
+;   272 gu for z
+; total points = 5,030,912
+; wire thickness is 4.6 (call it 5) gu
+; space is 86 gu
+;
+
+pa_define(136,136,272, planar,xy,electrostatic)
+
+electrode(0)  ;zero volts for grid
+{
+  fill
+  {
+    within{box3d(44,0,134 , 48,135,138)}   ; vertical inside wire
+    within{box3d(0,44,134,  135,48,138)}   ; horizontal inside wire
+    within{box3d(134,0,134, 135,135,138)}  ; vertical edge
+    within{box3d(0,134,134, 135,135,138)}  ; horizontal edge
+    
+  }
+}
+
+electrode(1)  ; 1 volt for 1st end cap
+{
+  fill
+  {
+    within{box3d(0,0,0, 135,135,0)}
+  }
+}
+
+electrode(2)  ; 2 volts for 2nd end cap
+{
+  fill
+  {
+    within{box3d(0,0,271, 135,135,271)}
+  }
+}
+

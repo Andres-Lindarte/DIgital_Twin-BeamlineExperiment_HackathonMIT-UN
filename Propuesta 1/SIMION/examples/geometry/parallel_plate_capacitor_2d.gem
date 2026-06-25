@@ -1,0 +1,57 @@
+;;;;;;;;;;;;;;;;;;;; parallel_plate_capacitor_2d.gem ;;;;;;;;;;;;;;;;;;;;;;;;
+; GEM file for 2-D example of idealized parallel plate capacitor.
+;
+; This is an idealized parallel plate capacitor [1] consisting of
+; two infinite parallel plates at separate potentials.  Furthermore,
+; the plates are zero width and treated as ideal 100% tranmission grids,
+; so this example can also be thought of as an idealized parallel
+; plate energy analyzer (PPA) [2].
+;
+; This system can be modeled with a 2D planar array, which you draw in the
+; XY plane and SIMION extrudes infinitely in the +-Z directions.  The array
+; size used here is 100 x 50 grid units (101 x 51 grid points).  The bottom
+; plate is modeled with a line from (x,y)=(0,0) to (100,0) and the top plate
+; with a line from (x,y)=(0,50) to (100,50).  In calculating the potentials,
+; SIMION assumes that these shapes gets projected infinitely in the +-Z
+; directions and that the array edges are approximately (or exactly in 8.1)
+; Neumann boundary conditions--i.e. mirror planes--thereby treating the lines
+; as extending infinitely in the +-X directions as well.
+;
+; In effect, the above models two plates of 0 gu thickness, all
+; parallel to the XZ plane, at locations y=0 and y=50 grid units (gu).
+; The calculated potentials between the plates assume the plates extend
+; infinitely in the +-X and +-Z directions, though in practice these
+; plates have finite length.
+;
+; When this array is placed in the workbench, however, ions only see the
+; array's fields within its bounds: 0 to 100 grid units in the X direction,
+; 0 to 50 grid units in the Y direction, and -nz_use to +nz_use grid units
+; in the Z direction, where "nz_use" and the mm/gu scaling factor can both
+; be adjusted on-the-fly from the Positioning panel on the PAs tab on the
+; View screen (and are stored separately in the workbench .iob file).
+;
+; The plates are modeled with one row of grid points (i.e. zero grid units
+; width), which SIMION treats as a 100% transmission ideal grid.
+; (For details on grids, see [3].)
+;
+; Since the parallel plates are aligned to grid units and generate a
+; uniform field (perfectly interpolated from the grid), this system has
+; high accuracy, even if we only use a small number of grid points.
+;
+; -- D.Manura, 2011-07
+;
+; [1] http://hyperphysics.phy-astr.gsu.edu/hbase/electric/pplate.html
+; [2] http://www.umich.edu/~peplweb/diagnostics/parallel-plate.html
+; [3] http://simion.com/info/grid.html
+
+
+pa_define(101, 51, 1, planar, none, electrostatic)
+
+; bottom plate
+e(1) { fill { within { box2d(0,0,   100,0) } } }
+
+; top plate
+e(2) { fill { within { box2d(0,50, 100,50) } } }
+
+
+;;;;;;;;;;;;;;;;;;;;; end ;;;;;;;;;;;;;;;;;;;

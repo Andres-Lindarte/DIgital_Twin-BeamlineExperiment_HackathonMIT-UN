@@ -1,0 +1,6 @@
+pa_define(3,20)             ;3x by 20y 2D cylindrical electrostatic array
+ 
+e(0)                        ; electrode of zero volts
+    {                       ; make all points zero volt electrode points
+    fill{within{box(0,0,1000,1000)}}
+    }

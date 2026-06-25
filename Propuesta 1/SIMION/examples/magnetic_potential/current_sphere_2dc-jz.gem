@@ -1,0 +1,3 @@
+; Define current density (azimithal component theta) array.
+
+pa_define(100,100,1, cylindrical,xy,magnetic_,, 1,1,1)  ; mm/gu

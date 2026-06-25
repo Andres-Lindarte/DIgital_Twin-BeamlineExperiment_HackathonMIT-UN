@@ -1,0 +1,10 @@
+pa_define(402,2000,1,p,n)
+
+e(1)
+{
+fill{within{box(0,0,1,2000)}}
+}
+e(0)
+{
+fill{within{box(400,0,401,2000)}}
+}

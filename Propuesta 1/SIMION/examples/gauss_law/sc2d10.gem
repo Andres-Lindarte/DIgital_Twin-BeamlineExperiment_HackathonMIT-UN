@@ -1,0 +1,7 @@
+; hda2d.gem
+pa_define(1300,1300,1,cylindrical,xy)
+; outer electrode, R2
+e(-333.3333) { fill { notin  { circle(0,0,1199) } } }
+; inner electrode, R1
+e( 500.0000) { fill { within { circle(0,0,800) } } }
+

@@ -1,0 +1,3 @@
+; GEM file for z component of magnetic vector potential.
+
+pa_define(101,101,1, planar,xy,magnetic_,1, 2,2,2)  ; mm/gu

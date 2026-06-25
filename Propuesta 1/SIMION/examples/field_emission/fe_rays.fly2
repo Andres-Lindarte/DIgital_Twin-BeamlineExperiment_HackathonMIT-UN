@@ -1,0 +1,100 @@
+--[[
+ fe_rays.fly2 - Particle definitions for field emission cathode.
+ WARNINGS:
+   If you make any changes to this file, you must reload
+     it, such as via the "Load" button on the Define Particles screen
+     or automatically on Fly'm by a user program.
+   Don't save over this file when saving the IOB.  You may want to
+     rename this file to something else (e.g. "particles.lua") and then
+     do a "simion.import('particles.lua')" to prevent accidental overwrites.
+ DM2012-03-06.
+--]]
+
+-- Optional variables passed from workbench program.
+local var = _G.var or {}
+
+-- Work function of cathode, eV
+local phi = var.phi or 3
+
+-- Length of emission region in cathode, in mm.
+local cathode_length = var.cathode_length or 2E-3
+
+-- Number of rays to emit over cathode_length.
+local nsegments = var.nsegments or 20
+
+-- Distance away from cathode to start ray tracing, in grid units.
+-- Make this just large enough to avoid field distortions from surface jags.
+local space = var.space or 1.5
+
+-- PA instance number for cathode emission.
+local INSTANCE_NUM = 1
+-- (Note: if using fine and coarse PAs, this should be the fine PA.)
+if simion.wb.instances[2] and simion.wb.instances[2].pa.nx > 11 then
+  INSTANCE_NUM = 2  -- fine PA in fe_geom.iob
+end
+
+-- x position of cathode tip,
+-- in grid units relative to PA instance working origin.
+local xcathode = 0
+
+print('cathode_length=', cathode_length)
+print('nsegments=', nsegments)
+print('space=', space)
+
+local CAT = simion.import 'cathodelib.lua'
+
+-- Begin particle definition table.
+local t = {coordinates = INSTANCE_NUM} -- note coordinates chosen
+local total_current = 0 -- A
+local total_area = 0 -- mm^2
+print('particle', 'x(gu)', 'y(gu)', 'V', 'E(V/nm)', 'J(A/mm^2)', 'I(A)')
+
+--[[
+ Adds particle to particle definition table.
+ (x,y,z) is particle starting point, in PA grid units relative to
+         PA instance working origin.
+ (ux,uy,uz) is normalized unit vector for particle KE direction.
+ area is cathode segment area (mm^2).
+ V is potential at (x,y,z) in Volts.
+ E is the magnitude of the electric field at (x,y,z) in V/mm.
+--]]
+local function addpoint(xc,yc,zc, ux,uy,uz, area, V,E)
+  -- Compute current at this point.
+  local J = CAT.fn_current_density(E, phi)  -- current density, A/mm^2
+  local I = J*area  -- current, A
+  print('particle', ('%0.2f\t%0.2f\t%0.2f\t%0.2f\t%0.2e\t%0.2e'):format(
+                     xc,yc, V, E*1E-6, J, I))  -- debug
+
+  -- Add particle definition.
+  t[#t+1] = standard_beam {
+    tob = 0,
+    mass = 0.00054857990946,
+    charge = -1,
+    x = xc,
+    y = yc,
+    z = zc,
+    ke = V + 0.1,
+    direction = vector(ux,uy,uz),
+    cwf = I,
+    color = 3,
+  }
+  total_current = total_current + I
+  total_area = total_area + area
+end
+
+-- Define particles across cathode surface.
+CAT.walk_cathode(simion.wb.instances[INSTANCE_NUM], xcathode+space,0,0,
+                 cathode_length, nsegments, addpoint)
+
+print('total_current (A)=', total_current)
+print('total_area (mm^2)=', total_area)
+
+-- Store total current in variable table, for use in workbench user program
+-- to set repulsion amount.
+if var then
+  var.total_current = total_current
+end
+
+
+particles(t)
+

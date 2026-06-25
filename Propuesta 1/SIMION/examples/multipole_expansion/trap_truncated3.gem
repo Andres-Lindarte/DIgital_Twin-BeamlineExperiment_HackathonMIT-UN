@@ -1,0 +1,18 @@
+; makes hyperbolic trap.
+pa_define(2401,1201,1,cylindrical,y)
+
+locate(1200)
+  {
+  e(1000)  ; y hyperbola - ring
+    {
+    fill{within{hyperbola(0,0,282.8,400)}}
+    }
+
+  e(0)   ; side hyperbola - caps
+    {
+    fill
+      {
+      within{locate(,,,,,90){hyperbola(0,0,400,282.8)}}
+      }
+    }
+  }

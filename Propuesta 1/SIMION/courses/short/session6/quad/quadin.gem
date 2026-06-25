@@ -1,0 +1,20 @@
+pa_define(39,39,80,p,xy)	  ; 39x, 39y, 80z 3D Planar xy mirrored
+
+; scaled for 0.2 mm/grid unit
+; r0 = 20  r = 23  based on r = 1.1487 r0
+
+e(2)						; electrode number 2
+	{						; fill top rod
+	fill{within{circle(0,43,23) box3d(0,0,0,40,40,50)}}
+	}
+
+e(1)						; electrode number 1
+	{						; fill right rod
+	fill{within{circle(43,0,23) box3d(0,0,0,40,40,50)}}
+	}
+
+e(3)						; electrode number 3
+	{						; fill ion entry plate
+	fill{within{box3d(0,0,70,40,40,74)}
+		 notin{circle(0,0,5)}}	 ; except for center hole
+	}

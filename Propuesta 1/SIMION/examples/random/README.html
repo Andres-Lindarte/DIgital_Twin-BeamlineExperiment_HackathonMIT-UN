@@ -1,0 +1,117 @@
+<html>
+<head>
+<title>SIMION Particle Randomization Example</title>
+
+<style type="text/css">
+  body { font-family: verdana, arial, sans-serif; font-size: 90%; }
+  .copyright {font-size:80%; border-top:1px solid black}
+  .title1 {background-color:#80ff80}
+  .links1 {background-color:#c0ffc0}
+  .content {max-width:30em; margin-left:5px; margin-right:5px }
+  h1 {margin-top: 0; margin-bottom: 0; background-color:#e0ffe0; font-size:130%}
+  h2 {font-size:120%}
+  h3 {font-size:110%}
+  h4, h5, h6 {font-size:100%}
+</style>
+</head>
+
+<body  marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+<div class="title1">
+<a href="../_redirect.html?id=index">SIMION&#153; 8.1</a>
+</div>
+<h1>SIMION Particle Randomization Example</h1>
+<div class="content">
+
+
+
+<h2>Purpose</h2>
+
+<p>
+The files in this directory provide an example of having user programs
+create random ions.  A simple initialize program segment is used to
+randomize the energy and directions of all ions flown.
+</p>
+
+<h2>Description</h2>
+
+<p>
+The program has two adjustable variables:
+</p>
+
+<ul>
+<li><b>percent_energy_variation</b> sets the the range of energies to
+use in terms of the percentage of the ion's initially defined energy.
+E.g. 50 means +- 50% of defined energy.  For a 0.1 eV ion the range
+of energies would be 0.05 to 0.15 eV.
+<li><b>cone_half_angle</b> sets the range of azimuth and
+elevation angle changes in degrees.  E.g. 90 means +- 90 degrees.
+For an ion with az = el = 0 degrees, the az and el angles would
+be +- 90 degrees (half sphere).
+</ul>
+
+<p>
+The program sets initial ion direction down x-axis.  It rotates
+elevation -90 to make y-axis the initial beam axis.  This provides
+azimuth angle symmetry around beam axis (better symmetry for direction
+randomization).  Transform is reversed before returing velocity
+components.
+</p>
+
+<p>This should serve as a simple example of how random ion generation
+problems might be approached.</p>
+
+<p><b>Note:</b> Rather than use a program as done in this example, a
+similar effect can often be achieved more easilly with <b>FLY2</b>
+files (new SIMION 8 feature--see FLY2 appendix in printed SIMION
+manual) via the cone distribution.  This example originated from
+SIMION 7, which did not have FLY2 files, but the approach given
+can still be useful at times.</p>
+
+<h2>Usage</h2>
+ 
+<p>How to run demo:</p>
+
+<ul>
+<li>1.  <b>View random.iob.</b>
+        <i>(Click View on main screen and select the random.iob file.)</i>
+<li>2.  If this is your first time using the example,
+        you will be <b>asked to refine</b> <i>(confirm that
+        and press Refine)</i>.
+<li>3.  <b>Set trajectory quality to 0.</b>
+        <i>(In Particles tab, set TQual to 0.)</i>
+<li>4.  <b>Fly ions Grouped (lines or Dots).</b>
+        <i>(In Particles tab, enable Grouped and optionally enable Dots.
+        Click Fly'm button.)</i>
+<li>5.  <b>Use PE view</b> to get a better understanding
+        of how random ions fly.  <i>(Press PE button.)</i>
+<li>6.  <b>Enable Rerun and changes variables to see effect.</b>
+        <i>(In Particles tab, enable Rerun.  In Variables tab, change
+        one of the variables as desired and press Enter.)</i>
+</ul>
+
+<h2>History/Changes</h2>
+
+<ul>
+<li>2012-08-14: Rename cone_angle_off_vel_axis to cone_half_angle.
+<li>2006-08-D.Manura-Converted to SIMION8/Lua from SL version.
+<li>2003-11: ported to SL (D.Manura)
+<li>Author: David Dahl. RANDOM.PRG example in SIMION 7.0.
+</ul>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="../random_fly2/README.html">Example: random_fly2</a>
+  - reloads a FLY2 file from a workbench user program and passes adjustable
+  variables to it.
+</ul>
+
+
+</div>
+    
+<div class="copyright">SIMION&#153; 8.1 (c) 2003-2012 Scientific
+Instrument Services, Inc. All Rights Reserved.
+</div>
+    </body>
+</html>
+

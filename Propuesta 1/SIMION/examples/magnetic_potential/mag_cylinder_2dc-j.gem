@@ -1,0 +1,21 @@
+; GEM file creating PA in which to store -div M,
+; where M = (M0,0,0) is the magnetization vector.
+
+pa_define(400,200,1, cylindrical,none,magnetic_,, 0.25,0.25,0.25)  ; mm/gu
+
+; magnetization (M) in units A/mm.
+# local M = 1
+
+; First fill everyhere with zero.
+n(0) {
+  fill { within { box3d(-1E+6,-1E+6,-1E+6, 1E+6,1E+6,1E+6) } }
+}
+
+; Define surfaces of non-zero -div M.
+; Note: -div M in units A/mm^2
+; Note: -div M = (M0 / 0.5 mm), assuming linear gradient over 2 grid units
+# local term = M / 0.5
+locate(-0.125,-0.125,-0.125) { ; shift down by 1/2 grid unit (see README)
+  n($(term)) { fill { within_inside { box(59.75,0, 60.25,20) } } }   ; note: 2 gu
+  n(-$(term)){ fill { within_inside { box(39.75,0, 40.25,20) } } }
+}

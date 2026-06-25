@@ -1,0 +1,27 @@
+; Defines space-charge density PA.
+;
+; Space-charge should be represented by non-electrode point type (n)
+; with a value equal to C/mm^3.
+;
+; In the space-chage PA, point (0,0,0) indicates
+; not the space-charge density stored in point (0,0,0) but rather
+; the average space-charge density in the cell bounded by points
+; (0,0,0) to (1,1,1) and centered at (1/2,1/2,1/2) grid units.
+; Therefore, the number of points in each dimension is one less
+; than in the electric field PA (in each dimension with more
+; than one grid point).  Moreover, for highest accuracy, we should shift
+; the coordinate system down by 1/2 a grid unit so that measurements 
+; are take in the centers of the cells.  Also, for highest accuracy,
+; we use a "within_inside" (rather than "within") since "within" applies
+; a 1/2 grid unit surface expansion that we don't want here.
+; It's a good idea to check that the total charge in this PA is
+; what you expect (see the `total_charge` function in palib.lua).
+
+
+pa_define(105,105,1,cylindrical,xy,, 0.1,0.1,0.1)
+
+locate(-0.05,-0.05,-0.05) { ; shift down by 1/2 grid unit
+  n(1E-10) {  ; space-charge, C/mm^3
+    fill { within_inside { circle(0,0, 5) } }
+  }
+}

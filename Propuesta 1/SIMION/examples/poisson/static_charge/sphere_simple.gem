@@ -1,0 +1,9 @@
+; defines outside spherical electrode.
+; Note: x/y/z grid unit sizes in mm must be passed to
+; pa_define command when doing Poisson solving.
+
+pa_define(106,106,1,cylindrical,xy,, 0.1,0.1,0.1)
+
+e(1) {
+  fill { notin_inside { circle(0,0, 10) } }
+}

@@ -1,0 +1,20 @@
+;Cylindrical ESA Geometry File
+ 
+pa_define(31,101,1,c,y,e) ; create a 31x by 101y 2D cylindrical, y mirrored
+                            ; electrostatic array
+                             
+e(0)                        ; electrode of zero volts
+    {
+    fill                    ; simple fill
+        {                   ; create ESA inner ring
+        within{box(0,0,30,75)}
+        }
+    }
+     
+e(1)                        ; electrode of one volt
+    {
+    fill                    ; simple fill
+        {                   ; create ESA outer ring
+        within{box(0,94,30,100)}
+        }
+    }

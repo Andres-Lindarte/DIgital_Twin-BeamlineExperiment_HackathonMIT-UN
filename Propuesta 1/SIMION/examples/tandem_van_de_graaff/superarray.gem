@@ -1,0 +1,11 @@
+;;;;;;;;;;;;;;;;;;;;;;;; superarray.gem ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; GEM file to create an empty 2D planar array enclosing the entire system.
+; This is not normally needed unless you want initialize and terminate
+; user programming segment to run, as discussed in
+; http://simion.com/info/faq.html#segments-ignored .
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+pa_define(20, 14, 1, planar, none, electrostatic)
+
+; This does nothing except avoids the "no fill definitions" error in SIMION <= 8.0.6.
+n(0) { fill { within {box2d(0,0,0,0)} } }

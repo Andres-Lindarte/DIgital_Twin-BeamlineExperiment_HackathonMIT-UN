@@ -1,0 +1,15 @@
+; THIS FILE IS CURRENTLY UNUSED.
+
+; GEM file for z component of magnetic potential
+; Note: B_x = @A_z/@y - @Ay/@z,
+; so positive @A_z/@y contributes to positive B_x.
+
+pa_define(101,101,101, planar,xyz,magnetic_,, 1,1,1)  ; mm/gu
+
+e(0) {
+  fill { within { box3d(0,0,0, 100,0,100) } }
+}
+
+e(100) {
+  fill { within { box3d(0,100,0, 100,100,100) } }
+}

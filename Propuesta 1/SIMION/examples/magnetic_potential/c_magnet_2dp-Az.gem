@@ -1,0 +1,13 @@
+; z-component of magnetic vector potential, for C magnet.
+
+pa_define(251,201,1, planar,y,magnetic_,1, 1,1,1) ; /mm/gu
+
+; Dirichlet conditions on outer boundary (i.e. no flux) since
+; most flux stays within magnetic circuit.
+e(0) {
+  fill {
+    within { box(0,0, 0,200) }
+    within { box(0,200, 250,200) }
+    within { box(250,200, 250,0) }
+  }
+}

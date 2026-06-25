@@ -1,0 +1,168 @@
+==============================================================
+  SIMION(R) END USER LICENSE AGREEMENT, FOR VERSION 8.0 or 8.1
+==============================================================
+
+This End-User License Agreement ("EULA") is a legal agreement between
+you (the licensed "USER") and Scientific Instrument Services,
+Inc. ("SIS").  It specifies the terms and conditions under which you
+may access, install and/or use ("USE") the SIMION(R) software, related
+explanatory materials, and updates provided to you (the "SOFTWARE").
+Your use of the Software constitutes your acceptance of the terms of
+this EULA.  If you do not agree to these terms, promptly return the
+Software with proof of payment to your place of purchase for a full
+refund.  This EULA constitutes the entire agreement between You and
+SIS concerning the subject matter hereof, and it may only be modified
+by a written amendment signed by an authorized executive of SIS.
+
+The Software is copyright (c) 2003-2012 Scientific Instrument
+Services, Inc. (SIS), all rights reserved, and is protected by
+copyright laws and international copyright treaties, as well as other
+intellectual property laws and treaties.  The Software is licensed,
+not sold.
+
+1. LICENSE GRANT AND EXCLUSIONS
+
+(a) USE
+
+  The software may be installed and used either
+
+    (1) on a single computer operated by at most one user at a time OR
+    (2) on multiple computers operated by a single user.
+
+  Note: Option 2 is provided to allow a single licensed user to run
+  SIMION on additional computers, such as a personal home computer or
+  laptop, or for spreading a difficult calculation across multiple
+  CPUs.
+
+(b) SPECIAL LICENSES
+
+  Special licenses, if purchased or acquired, carry additional terms, including:
+
+  * ACADEMIC OR US GOVERNMENT LICENSES are permitted only for academic
+    or US government use.
+
+  * SIMION LAB KIT LICENSES may be installed and used on up to 30
+    computers by a single department at a single institution or in a
+    single computer lab.
+
+  * DEMO VERSIONS expire no more than one year after their release
+    date and may not be used after that time.
+    DEMO VERSIONS are intended for evaluation purposes only
+    and many not otherwise be used for commercial purposes.
+
+  * LEASES expire at the end of their defined term and may not be
+     used after that time.
+
+  * Any other exceptions or special terms can be provided only by
+    formal written notice.
+
+(c) UPDATES
+
+  You may download some free upgrades to the Software (if and when
+  available) from simion.com by providing your SIMION license key.
+  If you purchased some SIMION version x.y, you are entitled
+  to x.y.z minor version version updates released within a year of your
+  purchase or (at the discretion of SIS) longer.  Future major versions
+  such as x.{y+1} or {x+1} typically will require purchasing an upgrade.
+  Your license key is for you use only, and by downloading updates, you
+  assert that you are the legal owner of the license key.
+
+(d) BACKUPS
+
+  Additional copies of the Software may be made solely for backup
+  purposes.
+
+(e) MODIFICATIONS
+
+  Your may not alter, modify or remove any copyright or other
+  proprietary notices; disassemble, reverse engineer, or modify the
+  binaries.
+
+(f) TRANSFER
+
+  Except as permitted below, you may not rent, lease, license,
+  transfer, distribute or disseminate the Software, derivative works
+  thereof, or license keys, including by posting it on a public
+  network.
+
+  You may permanently transfer all of your rights under this EULA only
+  as part of a sale or transfer, provided you retain no copies, you
+  transfer all of the Software unmodified (including all component
+  parts, the media and printed materials, any upgrades, the current
+  version and each of the prior versions included herewith, this EULA,
+  the license keys, and, if applicable, all other Software products
+  provided together with the Software), and the recipient agrees to
+  the terms of this EULA. If the Software is an upgrade, any transfer
+  must include all prior versions of the Software from which you are
+  upgrading.  Lab kits must be transfered as a whole. You may retain
+  no copies of the Software. You may not sell or transfer any Trial,
+  Beta, or Not For Resale Version of the Software.  Transfers may
+  disable free updates.
+
+(g) SOURCE AND LIBRARIES
+
+  Derivative works based on the source examples or source libraries
+  from SIMION x.y may be distributed in source or binary form only to other
+  licensees of SIMION >= x.y--i.e. for use with another SIMION license.
+  Copyright and credits must be retained in all derivatives.  Special
+  exceptions to these terms may be permitted in writing.
+
+(h) TERMINATION
+
+  In the event that you fail to comply with this EULA, SIS may
+  terminate the license and you must destroy all copies of the
+  Software (with all other rights of both parties and all other
+  provisions of this EULA surviving any such termination).
+
+2. DISCLAIMER OF WARRANTY
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
+KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE, AND NON-INFRINGEMENT.  IN NO EVENT SHALL THE
+AUTHORS, COPYRIGHT HOLDERS OR ANYONE DISTRIBUTING THE
+SOFTWARE BE LIABLE FOR ANY DAMAGES OR OTHER LIABILITY,
+WHETHER IN CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF
+OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.  SIS DOES NOT WARRANT THAT THE
+FUNCTIONS CONTAINED IN THE SOFTWARE WILL MEET YOUR
+REQUIREMENTS NOR DOES IT MAKE ANY REPRESENTATIONS REGARDING
+THE USE OR THE RESULTS OF THE SOFTWARE IN TERMS OF ITS
+CORRECTNESS, ACCURACY, RELIABILITY OR OTHERWISE.  SOME
+JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF IMPLIED
+WARRANTIES, SO THE ABOVE EXCLUSION MAY NOT APPLY TO YOU.
+
+3. US GOVERNMENT Rights to SIMION 7.0
+
+The United States Government is granted for itself and others acting
+on its behalf, a paid-up nonexclusive, irrevocable worldwide license
+in this SOFTWARE to reproduce, prepare derivative works and perform
+publicly and display publicly.
+
+NEITHER THE U.S. NOR THE U.S. NOR THE U.S. DEPARTMENT
+OF ENERGY, NOR ANY OF THEIR EMPLOYEES, MAKES ANY WARRANTY,
+EXPRESS OR IMPLIED, OR ASSUMES ANY LEGAL LIABILITY OR
+RESPONSIBILITY FOR THE ACCURACY, COMPLETENESS, OR
+USEFULNESS OF ANY INFORMATION, APPARATUS, PRODUCT OR
+PROCESS DISCLOSED; OR REPRESENTS THAT ITS USE WOULD NOT
+INFRINGE PRIVATELY OWNED RIGHTS.
+
+SIMION 7.0 resulted from work developed under Government Contract
+No. DE-AC07-99ID13727 at the Idaho National Laboratory (INL) and is
+subject to a Limited Government License.  This work was supported by
+the U.S. Department of Energy INL (INEEL) internal research funds and
+by the Division of Chemical Sciences, Basic Energy Sciences, Office of
+Science, Department of Energy under contract 3ED102.
+
+SIMION 7.0 (c) 2000-2005, 2010 Battelle Energy Alliance,
+LLC (BEA) on behalf of Idaho National Laboratory (INL).
+
+4. Contained Licensed Software
+
+This Software includes or is derived from other works in binary form
+that are copyrighted and licensed by their respective authors.
+Licenses for these items can be found in the SIMION distribution
+(docs/license_more.txt file or "license" page
+in the supplemental electronic documentation).
+
+==================== END ====================

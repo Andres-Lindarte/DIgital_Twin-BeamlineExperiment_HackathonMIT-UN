@@ -1,0 +1,7 @@
+; quadin.gem: generates quadin.pa# - entrance region
+
+pa_define(39,39,80, planar,xy, electrostatic,, 0.2, surface=fractional)  ; mm/gu
+
+locate(0,0,15.8,, 180,,) {
+  include(quad_include.gem)
+}

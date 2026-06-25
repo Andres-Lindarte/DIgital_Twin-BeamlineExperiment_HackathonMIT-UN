@@ -1,0 +1,2846 @@
+{
+  "version": 2,
+  "status": "converged",
+  "method": "latin_hypercube_plus_adaptive_pattern_search",
+  "detection_plane": {
+    "axis": "X",
+    "value_mm": 857.0
+  },
+  "phase": "converged",
+  "started_at_utc": "2026-06-24T07:31:46.725243+00:00",
+  "updated_at_utc": "2026-06-24T08:20:41.206995+00:00",
+  "message": "Parada: 4 rondas sin mejora y pasos mínimos",
+  "config": {
+    "electrodes": [
+      {
+        "name": "V2",
+        "initial": 5,
+        "min": -2000,
+        "max": 2000,
+        "step": 500,
+        "min_step": 6.25,
+        "max_step": 1000
+      },
+      {
+        "name": "V3",
+        "initial": 45,
+        "min": -2000,
+        "max": 2000,
+        "step": 500,
+        "min_step": 6.25,
+        "max_step": 1000
+      },
+      {
+        "name": "V8",
+        "initial": -1800,
+        "min": -6000,
+        "max": 6000,
+        "step": 1500,
+        "min_step": 25,
+        "max_step": 2500
+      },
+      {
+        "name": "V14",
+        "initial": 1500,
+        "min": -6000,
+        "max": 6000,
+        "step": 1500,
+        "min_step": 25,
+        "max_step": 2500
+      }
+    ],
+    "global_search": {
+      "batch_size": 16,
+      "repeats_per_candidate": 1,
+      "minimum_batches": 4,
+      "patience_batches": 4,
+      "minimum_improvement": 0.01,
+      "elite_count": 6,
+      "elite_total_repeats": 5,
+      "seed": 20260624
+    },
+    "repeats_per_candidate": 5,
+    "final_repeats": 10,
+    "minimum_improvement": 0.02,
+    "patience_rounds": 4,
+    "step_growth": 1.5
+  },
+  "current_voltages": {
+    "V2": -122.53126393285993,
+    "V3": -1517.3135090164405,
+    "V8": 225.03175346463468,
+    "V14": 5159.372958275657
+  },
+  "steps": {
+    "V2": 6.25,
+    "V3": 6.25,
+    "V8": 25.0,
+    "V14": 25.0
+  },
+  "round": 7,
+  "rounds_without_improvement": 7,
+  "global_batches": 6,
+  "global_batches_without_improvement": 4,
+  "baseline_voltages": {
+    "V2": -122.53126393285993,
+    "V3": -1517.3135090164405,
+    "V8": 225.03175346463468,
+    "V14": 5159.372958275657
+  },
+  "candidates_evaluated": 152,
+  "simion_runs_completed": 400,
+  "best_search": {
+    "voltages": {
+      "V2": -122.53126393285993,
+      "V3": -1517.3135090164405,
+      "V8": -1274.9682465353653,
+      "V14": 5159.372958275657
+    },
+    "transmissions": [
+      0.07,
+      0.06,
+      0.07,
+      0.03,
+      0.06
+    ],
+    "mean_transmission": 0.05800000000000001,
+    "mean_transmission_percent": 5.800000000000001,
+    "stdev": 0.016431676725154987,
+    "standard_error": 0.007348469228349535,
+    "elapsed_seconds": 36.520847799994954
+  },
+  "candidates": [
+    {
+      "voltages": {
+        "V2": -669.7354732505428,
+        "V3": 711.647666749373,
+        "V8": 290.81484377300785,
+        "V14": 3263.4696811884805
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.36181310000029
+    },
+    {
+      "voltages": {
+        "V2": -1688.1079841109404,
+        "V3": -1098.808868468093,
+        "V8": -675.9338170261399,
+        "V14": -3470.575709956417
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.149975500000437
+    },
+    {
+      "voltages": {
+        "V2": 1136.515503518447,
+        "V3": 1425.6461843193342,
+        "V8": 5295.000725158954,
+        "V14": -2094.1453558144053
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.115954799999599
+    },
+    {
+      "voltages": {
+        "V2": 1548.6524483370686,
+        "V3": -1458.5567086502538,
+        "V8": 821.9875638868452,
+        "V14": 4981.649588654163
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.024958600002719
+    },
+    {
+      "voltages": {
+        "V2": 93.05577813103582,
+        "V3": -403.2609834662351,
+        "V8": 2686.9363859038967,
+        "V14": 2163.1220091542364
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.983617000001686
+    },
+    {
+      "voltages": {
+        "V2": -1894.9306574464301,
+        "V3": -1965.7569038094928,
+        "V8": -3255.3068962704538,
+        "V14": 4079.611146135132
+      },
+      "transmissions": [
+        0.01,
+        0.0,
+        0.02,
+        0.0,
+        0.02
+      ],
+      "mean_transmission": 0.01,
+      "mean_transmission_percent": 1.0,
+      "stdev": 0.01,
+      "standard_error": 0.004472135954999579,
+      "elapsed_seconds": 35.034045700002025
+    },
+    {
+      "voltages": {
+        "V2": 727.7731206894432,
+        "V3": -1518.147505745338,
+        "V8": -5286.394874059066,
+        "V14": -5970.428914280348
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.982949899997038
+    },
+    {
+      "voltages": {
+        "V2": 481.9726688431542,
+        "V3": 339.0917889032239,
+        "V8": -942.3678257570864,
+        "V14": -3860.9343245232885
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.977334100000007
+    },
+    {
+      "voltages": {
+        "V2": -1273.2165481653954,
+        "V3": 810.1584849891874,
+        "V8": 4010.368973012386,
+        "V14": 1450.3031057039589
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.0180121999983385
+    },
+    {
+      "voltages": {
+        "V2": 1842.968408846763,
+        "V3": 1683.279545424185,
+        "V8": 4594.187591404536,
+        "V14": -574.1258972525029
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.952923100001499
+    },
+    {
+      "voltages": {
+        "V2": 879.6841829468817,
+        "V3": 1036.8470344324405,
+        "V8": -4114.624210750302,
+        "V14": 543.2377232766385
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.168971700000839
+    },
+    {
+      "voltages": {
+        "V2": -302.8978705534132,
+        "V3": -508.24688643966465,
+        "V8": -2712.4048766568785,
+        "V14": 2975.229427343509
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.900451299999986
+    },
+    {
+      "voltages": {
+        "V2": 1451.8193447810954,
+        "V3": -975.4949732421396,
+        "V8": 3214.615327798814,
+        "V14": 5609.239049423908
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.061325700000452
+    },
+    {
+      "voltages": {
+        "V2": -1085.4527395162354,
+        "V3": -83.1719560470533,
+        "V8": -1821.5620479247427,
+        "V14": -4725.610603158614
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.081046100000094
+    },
+    {
+      "voltages": {
+        "V2": -913.9468079318538,
+        "V3": 1932.8628269775818,
+        "V8": 1900.2172831721255,
+        "V14": -1352.5238084933644
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.994188799999392
+    },
+    {
+      "voltages": {
+        "V2": -60.12572397115673,
+        "V3": 100.9269551626785,
+        "V8": -4543.367819758156,
+        "V14": -2957.4876361987385
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.007541399998445
+    },
+    {
+      "voltages": {
+        "V2": 451.55098474947636,
+        "V3": -1146.1347632593565,
+        "V8": -5608.168152486674,
+        "V14": 2473.328900967781
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.995153600000776
+    },
+    {
+      "voltages": {
+        "V2": 1926.3061153532494,
+        "V3": 1887.5116212687321,
+        "V8": -3817.784162981739,
+        "V14": 4329.7306845110925
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.021723699999711
+    },
+    {
+      "voltages": {
+        "V2": 184.44160743623252,
+        "V3": -1780.8322991625776,
+        "V8": 5571.735034083818,
+        "V14": 128.4200779862731
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.985197999998491
+    },
+    {
+      "voltages": {
+        "V2": -995.0322044155639,
+        "V3": -335.4112214055806,
+        "V8": 5232.023683945812,
+        "V14": -5335.591961074741
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.05776749999859
+    },
+    {
+      "voltages": {
+        "V2": -521.1209380443795,
+        "V3": 1069.382861921339,
+        "V8": 3817.7063023455157,
+        "V14": -2367.0830174721805
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.859937799999898
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.03,
+        0.04,
+        0.04,
+        0.06,
+        0.05
+      ],
+      "mean_transmission": 0.044,
+      "mean_transmission_percent": 4.3999999999999995,
+      "stdev": 0.011401754250991379,
+      "standard_error": 0.005099019513592784,
+      "elapsed_seconds": 35.49128810000184
+    },
+    {
+      "voltages": {
+        "V2": 1472.35564564891,
+        "V3": 1511.2840609513296,
+        "V8": -606.4887351266807,
+        "V14": -2011.948048236918
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.904120600000169
+    },
+    {
+      "voltages": {
+        "V2": 1130.2098848589658,
+        "V3": -942.8497033190808,
+        "V8": 2234.613642668046,
+        "V14": 2163.6074277479875
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.945670599998266
+    },
+    {
+      "voltages": {
+        "V2": -1253.8364190183224,
+        "V3": 1429.1879438912647,
+        "V8": 2739.5039166695024,
+        "V14": 5544.638538576897
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.133487499999319
+    },
+    {
+      "voltages": {
+        "V2": 799.3454060854469,
+        "V3": 320.05231590286576,
+        "V8": -2883.859848358643,
+        "V14": -1127.6431234835954
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.902373699998861
+    },
+    {
+      "voltages": {
+        "V2": -414.3737702644246,
+        "V3": -1403.959768245254,
+        "V8": 3121.8875294939717,
+        "V14": -4744.175282295082
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.909970199998497
+    },
+    {
+      "voltages": {
+        "V2": -1524.2752183759337,
+        "V3": 892.6349754570065,
+        "V8": -1232.668030227681,
+        "V14": -3957.678131212979
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.970395799999096
+    },
+    {
+      "voltages": {
+        "V2": 573.0361072915098,
+        "V3": -680.7210624166023,
+        "V8": -2154.6362339899597,
+        "V14": -3723.2464176109893
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.183031599997776
+    },
+    {
+      "voltages": {
+        "V2": 1591.720803544365,
+        "V3": 36.22987361327864,
+        "V8": 762.48244775276,
+        "V14": -502.87963451240466
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.055264200000238
+    },
+    {
+      "voltages": {
+        "V2": -1897.817185003142,
+        "V3": 652.8796020499435,
+        "V8": -3722.215548231884,
+        "V14": 852.5444853910203
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.896832200000063
+    },
+    {
+      "voltages": {
+        "V2": -1033.5478446215786,
+        "V3": -11.950918630669094,
+        "V8": -5165.278818871426,
+        "V14": 3723.6154484098006
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.867855600001349
+    },
+    {
+      "voltages": {
+        "V2": -662.7550791071853,
+        "V3": 233.34842044327524,
+        "V8": -2334.418542414,
+        "V14": -4390.435531138569
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.849702600000455
+    },
+    {
+      "voltages": {
+        "V2": 1345.323471222815,
+        "V3": -1707.7487504854198,
+        "V8": 2368.3474876384516,
+        "V14": -1108.720501423757
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.063888299999235
+    },
+    {
+      "voltages": {
+        "V2": 319.65982458249937,
+        "V3": 1813.2706756369957,
+        "V8": -635.4288078311056,
+        "V14": 3240.4167750639826
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 8.222054199999548
+    },
+    {
+      "voltages": {
+        "V2": 1713.5940150041465,
+        "V3": -0.5098008926722741,
+        "V8": 1178.4056351296622,
+        "V14": -3004.292863286232
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 8.962676700000884
+    },
+    {
+      "voltages": {
+        "V2": -1424.4526944504344,
+        "V3": -270.0946229371664,
+        "V8": -1535.0544477417834,
+        "V14": -76.58494864275872
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 9.107093300000997
+    },
+    {
+      "voltages": {
+        "V2": 1.8034171781794157,
+        "V3": 1536.841988703045,
+        "V8": -3271.658009791513,
+        "V14": -4667.689169504723
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 8.175115999998525
+    },
+    {
+      "voltages": {
+        "V2": -832.7952245030501,
+        "V3": -592.4137611259619,
+        "V8": 5635.502231250724,
+        "V14": 5337.321534618703
+      },
+      "transmissions": [
+        0.01,
+        0.04,
+        0.04,
+        0.02,
+        0.0
+      ],
+      "mean_transmission": 0.022,
+      "mean_transmission_percent": 2.1999999999999997,
+      "stdev": 0.01788854381999832,
+      "standard_error": 0.008,
+      "elapsed_seconds": 37.28643029999512
+    },
+    {
+      "voltages": {
+        "V2": 502.1447239818076,
+        "V3": -1317.8864337175635,
+        "V8": 4292.307051388369,
+        "V14": -2051.867673165476
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 8.897865099999763
+    },
+    {
+      "voltages": {
+        "V2": 1205.2080328057582,
+        "V3": 1192.0198206526425,
+        "V8": 2086.633891329877,
+        "V14": 2316.604447043239
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 8.387252600001375
+    },
+    {
+      "voltages": {
+        "V2": -269.8734213605726,
+        "V3": 582.0751076958636,
+        "V8": 4800.144113583314,
+        "V14": 562.1838849446549
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.717047099999036
+    },
+    {
+      "voltages": {
+        "V2": -81.61094852327551,
+        "V3": 1494.8196372537172,
+        "V8": -796.9476736843017,
+        "V14": -2730.499640189018
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.551892899999075
+    },
+    {
+      "voltages": {
+        "V2": -1081.9913416228533,
+        "V3": -835.3389362605685,
+        "V8": 3625.314079442145,
+        "V14": -5421.88156856575
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.67482580000069
+    },
+    {
+      "voltages": {
+        "V2": 905.3282681569876,
+        "V3": 871.8204936260581,
+        "V8": -5112.381049282815,
+        "V14": 3897.4287836407693
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.705505000001722
+    },
+    {
+      "voltages": {
+        "V2": -1550.8694832848394,
+        "V3": -1220.8444559347704,
+        "V8": 461.816439571553,
+        "V14": 2020.9436066569542
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 8.466672499998822
+    },
+    {
+      "voltages": {
+        "V2": -1759.4538073412002,
+        "V3": -1808.4317318264473,
+        "V8": -5990.664906503078,
+        "V14": 875.8637493823162
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 8.573405800001638
+    },
+    {
+      "voltages": {
+        "V2": 1845.2477889046531,
+        "V3": 456.56567955216997,
+        "V8": -4074.801806828732,
+        "V14": 5132.2521868942495
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.512453899998945
+    },
+    {
+      "voltages": {
+        "V2": 684.4766032344578,
+        "V3": -1587.888480599757,
+        "V8": 702.8516119662663,
+        "V14": 5463.614149927058
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.005831800001033
+    },
+    {
+      "voltages": {
+        "V2": 803.0615239528643,
+        "V3": -1472.854258804467,
+        "V8": 1074.2078646925656,
+        "V14": 5167.54041659957
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.965001500000653
+    },
+    {
+      "voltages": {
+        "V2": 447.1164247253969,
+        "V3": 1165.839223093522,
+        "V8": -2841.7970934511964,
+        "V14": -654.6661324811039
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.91129920000094
+    },
+    {
+      "voltages": {
+        "V2": 1327.380687384104,
+        "V3": 598.3643090874675,
+        "V8": 3810.1612246576387,
+        "V14": 654.3551446641968
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.074770300001546
+    },
+    {
+      "voltages": {
+        "V2": 1803.2873535292783,
+        "V3": 464.30287979465265,
+        "V8": 2497.6626115849667,
+        "V14": -3173.367915341019
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.953736899999058
+    },
+    {
+      "voltages": {
+        "V2": 1167.931089845129,
+        "V3": -382.1659620205098,
+        "V8": 4936.44861543468,
+        "V14": 2219.3996402598696
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.075151099998038
+    },
+    {
+      "voltages": {
+        "V2": -1194.2466936947578,
+        "V3": -1213.8373248543057,
+        "V8": -1959.0882060207177,
+        "V14": 1255.8886868435438
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.962609199999861
+    },
+    {
+      "voltages": {
+        "V2": -757.9315144234624,
+        "V3": -1975.8008119190667,
+        "V8": -5043.618931759299,
+        "V14": 3671.434602540232
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.981333899999299
+    },
+    {
+      "voltages": {
+        "V2": -1364.3341626650113,
+        "V3": 775.2289542649746,
+        "V8": -4109.107555978573,
+        "V14": -4423.938167669441
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.96288690000074
+    },
+    {
+      "voltages": {
+        "V2": -411.6777888247225,
+        "V3": -919.8798284459185,
+        "V8": -3233.2890685295965,
+        "V14": -1285.1180352513247
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.072420899999997
+    },
+    {
+      "voltages": {
+        "V2": 190.50803999812615,
+        "V3": -207.4824897712865,
+        "V8": 1763.86205108583,
+        "V14": -1712.1525492928968
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.091716099999758
+    },
+    {
+      "voltages": {
+        "V2": -1659.242952079308,
+        "V3": 1815.6806323694263,
+        "V8": -556.6515792620621,
+        "V14": 2366.8138493450333
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.096291599998949
+    },
+    {
+      "voltages": {
+        "V2": -88.03712327799758,
+        "V3": 1640.181849482582,
+        "V8": -5387.96045622665,
+        "V14": -5052.927756158556
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.911482199997408
+    },
+    {
+      "voltages": {
+        "V2": -550.6895393077928,
+        "V3": 1405.4179433011755,
+        "V8": 5989.341964858915,
+        "V14": 4146.389904964797
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.925478100001783
+    },
+    {
+      "voltages": {
+        "V2": -1762.5484447827307,
+        "V3": 14.552854690093454,
+        "V8": 3321.7736391838116,
+        "V14": -2480.5856536774295
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.0353028000026825
+    },
+    {
+      "voltages": {
+        "V2": 1501.7486115894308,
+        "V3": -657.3201457485295,
+        "V8": -756.7752612954782,
+        "V14": -5511.590654701222
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.9428162000003795
+    },
+    {
+      "voltages": {
+        "V2": 1382.3240514758327,
+        "V3": -1229.8702589385339,
+        "V8": -1903.3308092533143,
+        "V14": 1320.1151027880423
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.936011000001599
+    },
+    {
+      "voltages": {
+        "V2": -1400.0004779755527,
+        "V3": 408.8413279351453,
+        "V8": -4442.894219704127,
+        "V14": -1283.4892925989761
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.84320839999782
+    },
+    {
+      "voltages": {
+        "V2": -739.9391842004784,
+        "V3": 996.799580487706,
+        "V8": -5429.150676219928,
+        "V14": -2463.7758974577596
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.037030300001788
+    },
+    {
+      "voltages": {
+        "V2": -861.6886754864663,
+        "V3": 1454.6789897892909,
+        "V8": 3851.812530449348,
+        "V14": -617.2138569483559
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.917963700001565
+    },
+    {
+      "voltages": {
+        "V2": -296.24985309863064,
+        "V3": -1459.4698762601688,
+        "V8": 5393.079991770908,
+        "V14": -5484.63126318326
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.945840000000317
+    },
+    {
+      "voltages": {
+        "V2": 760.7353614898093,
+        "V3": -1777.4606105041025,
+        "V8": -3676.608187672263,
+        "V14": 4030.5276723122734
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.976032399998076
+    },
+    {
+      "voltages": {
+        "V2": 1862.9186110264582,
+        "V3": -337.00137700819096,
+        "V8": -1352.9395899399588,
+        "V14": 2404.8605816409236
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.982518499997241
+    },
+    {
+      "voltages": {
+        "V2": 1702.733102846948,
+        "V3": -1740.4332508911107,
+        "V8": -5232.979644655262,
+        "V14": -5172.3967038100955
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.975590900001407
+    },
+    {
+      "voltages": {
+        "V2": -1578.4131085729073,
+        "V3": 601.6872591063589,
+        "V8": 2254.484756020551,
+        "V14": 3532.4755414780084
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.035453199998301
+    },
+    {
+      "voltages": {
+        "V2": -108.83909994442706,
+        "V3": -990.0836142987379,
+        "V8": -391.61847956861766,
+        "V14": 5741.665185360489
+      },
+      "transmissions": [
+        0.03,
+        0.03,
+        0.05,
+        0.01,
+        0.02
+      ],
+      "mean_transmission": 0.028000000000000004,
+      "mean_transmission_percent": 2.8000000000000003,
+      "stdev": 0.014832396974191326,
+      "standard_error": 0.0066332495807108,
+      "elapsed_seconds": 36.29485769999883
+    },
+    {
+      "voltages": {
+        "V2": 57.249810421346865,
+        "V3": 9.038433495111576,
+        "V8": 3457.591312255734,
+        "V14": -3425.017987813185
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.155338699998538
+    },
+    {
+      "voltages": {
+        "V2": 601.8425819902964,
+        "V3": 1720.8849726163335,
+        "V8": 1641.7894287471754,
+        "V14": -4385.680197021925
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.2246814999998605
+    },
+    {
+      "voltages": {
+        "V2": -1919.4014925492238,
+        "V3": 1127.7056534874455,
+        "V8": 4513.5331098222705,
+        "V14": 545.9445164762128
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.2778677999995125
+    },
+    {
+      "voltages": {
+        "V2": 1133.9088132143056,
+        "V3": -595.6469886795817,
+        "V8": -2565.9844880967453,
+        "V14": 4748.135571358802
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.137861500003055
+    },
+    {
+      "voltages": {
+        "V2": -1160.6742053986486,
+        "V3": -198.1999637293277,
+        "V8": 1065.7515121005817,
+        "V14": 2224.814932666617
+      },
+      "transmissions": [
+        0.01,
+        0.02,
+        0.02,
+        0.0,
+        0.0
+      ],
+      "mean_transmission": 0.01,
+      "mean_transmission_percent": 1.0,
+      "stdev": 0.01,
+      "standard_error": 0.004472135954999579,
+      "elapsed_seconds": 34.88209179999467
+    },
+    {
+      "voltages": {
+        "V2": 410.2270367928577,
+        "V3": 1778.8066108181583,
+        "V8": 195.91416112406023,
+        "V14": -1663.8435498720228
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.930542300000525
+    },
+    {
+      "voltages": {
+        "V2": -1184.8896853598155,
+        "V3": -1589.0602135670802,
+        "V8": 5143.923243273606,
+        "V14": -5351.723997219349
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.962420600000769
+    },
+    {
+      "voltages": {
+        "V2": 1997.5678740526755,
+        "V3": 752.560858638939,
+        "V8": -4276.883857581263,
+        "V14": -3889.63496897332
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.92604829999982
+    },
+    {
+      "voltages": {
+        "V2": 463.0691466582912,
+        "V3": -1285.0531527759854,
+        "V8": 3270.074453890211,
+        "V14": 166.20516360559668
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.9937342000011995
+    },
+    {
+      "voltages": {
+        "V2": 244.98317011959261,
+        "V3": 223.2314641153198,
+        "V8": 3851.9459731219686,
+        "V14": -1338.892292952235
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.4388822999972035
+    },
+    {
+      "voltages": {
+        "V2": -515.3411794879469,
+        "V3": -292.9156422878543,
+        "V8": 1698.5470193473948,
+        "V14": 1329.7989081057267
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.613358099999459
+    },
+    {
+      "voltages": {
+        "V2": 1661.0251176230095,
+        "V3": 540.3026221827754,
+        "V8": -2130.4552734451845,
+        "V14": -4877.342856155062
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.0846276999982365
+    },
+    {
+      "voltages": {
+        "V2": 737.2623707541566,
+        "V3": 1189.3948275622106,
+        "V8": -979.5746987854336,
+        "V14": 2260.9337878105107
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.840190200000507
+    },
+    {
+      "voltages": {
+        "V2": -1347.933581632136,
+        "V3": -956.5635572428373,
+        "V8": -3543.010988894321,
+        "V14": 5335.971825622668
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 6.990894500002469
+    },
+    {
+      "voltages": {
+        "V2": -1636.5442422287235,
+        "V3": 1714.1526918849272,
+        "V8": -2812.426350533464,
+        "V14": -3350.321847416756
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.165667699999176
+    },
+    {
+      "voltages": {
+        "V2": -996.0973851370532,
+        "V3": 250.05465984920647,
+        "V8": 2776.67721880056,
+        "V14": 1722.5212818608243
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.151137600001675
+    },
+    {
+      "voltages": {
+        "V2": -1876.7382042693546,
+        "V3": 1434.0306926721314,
+        "V8": 895.7468665594415,
+        "V14": 4087.0108621145228
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.01269990000219
+    },
+    {
+      "voltages": {
+        "V2": 1226.0814444467328,
+        "V3": 1779.0897283737477,
+        "V8": 510.4273821353345,
+        "V14": -1902.6364191758585
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.178405099999509
+    },
+    {
+      "voltages": {
+        "V2": -311.3548885455393,
+        "V3": -209.38037204292755,
+        "V8": 5296.016026446619,
+        "V14": 3543.815590930022
+      },
+      "transmissions": [
+        0.01,
+        0.01,
+        0.01,
+        0.0,
+        0.01
+      ],
+      "mean_transmission": 0.008,
+      "mean_transmission_percent": 0.8,
+      "stdev": 0.00447213595499958,
+      "standard_error": 0.002,
+      "elapsed_seconds": 37.36261629999717
+    },
+    {
+      "voltages": {
+        "V2": 1339.4698487546239,
+        "V3": -687.1895543741596,
+        "V8": -5203.96278588931,
+        "V14": 5230.408979890517
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 9.681914500000858
+    },
+    {
+      "voltages": {
+        "V2": -232.11546672745067,
+        "V3": -1182.304826851312,
+        "V8": -5849.621733689593,
+        "V14": -2828.8673892077663
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.315121399999043
+    },
+    {
+      "voltages": {
+        "V2": 804.8711739724954,
+        "V3": -1989.5718837792365,
+        "V8": -401.3103910096561,
+        "V14": -633.447002149428
+      },
+      "transmissions": [
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 7.157319500001904
+    },
+    {
+      "voltages": {
+        "V2": -622.5312639328599,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mean_transmission": 0.0,
+      "mean_transmission_percent": 0.0,
+      "stdev": 0.0,
+      "standard_error": 0.0,
+      "elapsed_seconds": 41.52961860000141
+    },
+    {
+      "voltages": {
+        "V2": 377.46873606714007,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.0,
+        0.0,
+        0.0,
+        0.01,
+        0.0
+      ],
+      "mean_transmission": 0.002,
+      "mean_transmission_percent": 0.2,
+      "stdev": 0.00447213595499958,
+      "standard_error": 0.002,
+      "elapsed_seconds": 35.58520220000355
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -2000.0,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.01,
+        0.01,
+        0.02,
+        0.01,
+        0.0
+      ],
+      "mean_transmission": 0.01,
+      "mean_transmission_percent": 1.0,
+      "stdev": 0.007071067811865475,
+      "standard_error": 0.0031622776601683794,
+      "elapsed_seconds": 36.19098770000346
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1017.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.02,
+        0.01,
+        0.0,
+        0.01,
+        0.02
+      ],
+      "mean_transmission": 0.012,
+      "mean_transmission_percent": 1.2,
+      "stdev": 0.008366600265340756,
+      "standard_error": 0.0037416573867739417,
+      "elapsed_seconds": 36.13594380000359
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": -1274.9682465353653,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.07,
+        0.06,
+        0.07,
+        0.03,
+        0.06
+      ],
+      "mean_transmission": 0.05800000000000001,
+      "mean_transmission_percent": 5.800000000000001,
+      "stdev": 0.016431676725154987,
+      "standard_error": 0.007348469228349535,
+      "elapsed_seconds": 36.520847799994954
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 1725.0317534646347,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.02,
+        0.02,
+        0.03,
+        0.02,
+        0.01
+      ],
+      "mean_transmission": 0.02,
+      "mean_transmission_percent": 2.0,
+      "stdev": 0.0070710678118654745,
+      "standard_error": 0.003162277660168379,
+      "elapsed_seconds": 36.197482300001866
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 3659.372958275657
+      },
+      "transmissions": [
+        0.01,
+        0.01,
+        0.0,
+        0.01,
+        0.01
+      ],
+      "mean_transmission": 0.008,
+      "mean_transmission_percent": 0.8,
+      "stdev": 0.00447213595499958,
+      "standard_error": 0.002,
+      "elapsed_seconds": 36.51340009999694
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 6000.0
+      },
+      "transmissions": [
+        0.05,
+        0.01,
+        0.03,
+        0.02,
+        0.04
+      ],
+      "mean_transmission": 0.03,
+      "mean_transmission_percent": 3.0,
+      "stdev": 0.0158113883008419,
+      "standard_error": 0.007071067811865476,
+      "elapsed_seconds": 36.22066009999617
+    },
+    {
+      "voltages": {
+        "V2": -372.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.0,
+        0.0,
+        0.0,
+        0.01,
+        0.02
+      ],
+      "mean_transmission": 0.006,
+      "mean_transmission_percent": 0.6,
+      "stdev": 0.00894427190999916,
+      "standard_error": 0.004,
+      "elapsed_seconds": 36.763009299997066
+    },
+    {
+      "voltages": {
+        "V2": 127.46873606714007,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.0,
+        0.0,
+        0.0,
+        0.01,
+        0.0
+      ],
+      "mean_transmission": 0.002,
+      "mean_transmission_percent": 0.2,
+      "stdev": 0.00447213595499958,
+      "standard_error": 0.002,
+      "elapsed_seconds": 36.25506199999654
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1767.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.01,
+        0.01,
+        0.02,
+        0.01,
+        0.01
+      ],
+      "mean_transmission": 0.012,
+      "mean_transmission_percent": 1.2,
+      "stdev": 0.00447213595499958,
+      "standard_error": 0.002,
+      "elapsed_seconds": 35.482668799999374
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1267.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.02,
+        0.02,
+        0.03,
+        0.01,
+        0.02
+      ],
+      "mean_transmission": 0.02,
+      "mean_transmission_percent": 2.0,
+      "stdev": 0.0070710678118654745,
+      "standard_error": 0.003162277660168379,
+      "elapsed_seconds": 34.41649299999699
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": -524.9682465353653,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.01,
+        0.04,
+        0.02,
+        0.02,
+        0.01
+      ],
+      "mean_transmission": 0.02,
+      "mean_transmission_percent": 2.0,
+      "stdev": 0.012247448713915891,
+      "standard_error": 0.005477225575051661,
+      "elapsed_seconds": 34.67507939999996
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 975.0317534646347,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.0,
+        0.05,
+        0.05,
+        0.08,
+        0.01
+      ],
+      "mean_transmission": 0.038,
+      "mean_transmission_percent": 3.8,
+      "stdev": 0.032710854467592254,
+      "standard_error": 0.014628738838327793,
+      "elapsed_seconds": 34.77983470000254
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 4409.372958275657
+      },
+      "transmissions": [
+        0.01,
+        0.0,
+        0.03,
+        0.03,
+        0.03
+      ],
+      "mean_transmission": 0.019999999999999997,
+      "mean_transmission_percent": 1.9999999999999998,
+      "stdev": 0.01414213562373095,
+      "standard_error": 0.006324555320336759,
+      "elapsed_seconds": 34.900162199995975
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5909.372958275657
+      },
+      "transmissions": [
+        0.03,
+        0.03,
+        0.05,
+        0.04,
+        0.01
+      ],
+      "mean_transmission": 0.032,
+      "mean_transmission_percent": 3.2,
+      "stdev": 0.014832396974191326,
+      "standard_error": 0.0066332495807108,
+      "elapsed_seconds": 35.420242100000905
+    },
+    {
+      "voltages": {
+        "V2": -247.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.04,
+        0.02,
+        0.01,
+        0.01,
+        0.02
+      ],
+      "mean_transmission": 0.02,
+      "mean_transmission_percent": 2.0,
+      "stdev": 0.012247448713915891,
+      "standard_error": 0.005477225575051661,
+      "elapsed_seconds": 39.031297900000936
+    },
+    {
+      "voltages": {
+        "V2": 2.468736067140071,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.02,
+        0.05,
+        0.03,
+        0.01,
+        0.02
+      ],
+      "mean_transmission": 0.026000000000000002,
+      "mean_transmission_percent": 2.6,
+      "stdev": 0.015165750888103102,
+      "standard_error": 0.006782329983125268,
+      "elapsed_seconds": 37.6759458000015
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1642.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.04,
+        0.02,
+        0.02,
+        0.0,
+        0.0
+      ],
+      "mean_transmission": 0.016,
+      "mean_transmission_percent": 1.6,
+      "stdev": 0.016733200530681513,
+      "standard_error": 0.007483314773547883,
+      "elapsed_seconds": 35.48307239999849
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1392.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.04,
+        0.04,
+        0.02,
+        0.01,
+        0.04
+      ],
+      "mean_transmission": 0.03,
+      "mean_transmission_percent": 3.0,
+      "stdev": 0.01414213562373095,
+      "standard_error": 0.006324555320336759,
+      "elapsed_seconds": 35.832880499994644
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": -149.96824653536532,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.03,
+        0.05,
+        0.01,
+        0.03,
+        0.04
+      ],
+      "mean_transmission": 0.032,
+      "mean_transmission_percent": 3.2,
+      "stdev": 0.014832396974191326,
+      "standard_error": 0.0066332495807108,
+      "elapsed_seconds": 36.66555020000669
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 600.0317534646347,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.03,
+        0.02,
+        0.01,
+        0.03,
+        0.0
+      ],
+      "mean_transmission": 0.018,
+      "mean_transmission_percent": 1.7999999999999998,
+      "stdev": 0.013038404810405297,
+      "standard_error": 0.0058309518948452994,
+      "elapsed_seconds": 36.29103300000497
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 4784.372958275657
+      },
+      "transmissions": [
+        0.0,
+        0.03,
+        0.03,
+        0.06,
+        0.06
+      ],
+      "mean_transmission": 0.036,
+      "mean_transmission_percent": 3.5999999999999996,
+      "stdev": 0.025099800796022264,
+      "standard_error": 0.011224972160321823,
+      "elapsed_seconds": 36.09701590000259
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5534.372958275657
+      },
+      "transmissions": [
+        0.04,
+        0.01,
+        0.03,
+        0.04,
+        0.03
+      ],
+      "mean_transmission": 0.03,
+      "mean_transmission_percent": 3.0,
+      "stdev": 0.012247448713915891,
+      "standard_error": 0.005477225575051661,
+      "elapsed_seconds": 36.310323300000164
+    },
+    {
+      "voltages": {
+        "V2": -185.03126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.02,
+        0.02,
+        0.01,
+        0.02,
+        0.0
+      ],
+      "mean_transmission": 0.014000000000000002,
+      "mean_transmission_percent": 1.4000000000000001,
+      "stdev": 0.00894427190999916,
+      "standard_error": 0.004,
+      "elapsed_seconds": 36.60062749999997
+    },
+    {
+      "voltages": {
+        "V2": -60.03126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.02,
+        0.01,
+        0.01,
+        0.0,
+        0.01
+      ],
+      "mean_transmission": 0.01,
+      "mean_transmission_percent": 1.0,
+      "stdev": 0.007071067811865475,
+      "standard_error": 0.0031622776601683794,
+      "elapsed_seconds": 36.59208889999718
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1579.8135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.01,
+        0.08,
+        0.04,
+        0.01,
+        0.04
+      ],
+      "mean_transmission": 0.036,
+      "mean_transmission_percent": 3.5999999999999996,
+      "stdev": 0.028809720581775868,
+      "standard_error": 0.012884098726725125,
+      "elapsed_seconds": 36.28000730000349
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1454.8135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.03,
+        0.04,
+        0.01,
+        0.04,
+        0.01
+      ],
+      "mean_transmission": 0.026000000000000002,
+      "mean_transmission_percent": 2.6,
+      "stdev": 0.015165750888103102,
+      "standard_error": 0.006782329983125268,
+      "elapsed_seconds": 36.1109859000062
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 37.531753464634676,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.02,
+        0.04,
+        0.04,
+        0.04,
+        0.04
+      ],
+      "mean_transmission": 0.036,
+      "mean_transmission_percent": 3.5999999999999996,
+      "stdev": 0.00894427190999916,
+      "standard_error": 0.004,
+      "elapsed_seconds": 36.261264100001426
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 412.5317534646347,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.03,
+        0.03,
+        0.06,
+        0.04,
+        0.01
+      ],
+      "mean_transmission": 0.033999999999999996,
+      "mean_transmission_percent": 3.3999999999999995,
+      "stdev": 0.018165902124584948,
+      "standard_error": 0.008124038404635959,
+      "elapsed_seconds": 36.250898700003745
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 4971.872958275657
+      },
+      "transmissions": [
+        0.03,
+        0.05,
+        0.04,
+        0.04,
+        0.06
+      ],
+      "mean_transmission": 0.044,
+      "mean_transmission_percent": 4.3999999999999995,
+      "stdev": 0.011401754250991379,
+      "standard_error": 0.005099019513592784,
+      "elapsed_seconds": 36.76370079999833
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5346.872958275657
+      },
+      "transmissions": [
+        0.01,
+        0.02,
+        0.02,
+        0.02,
+        0.01
+      ],
+      "mean_transmission": 0.016,
+      "mean_transmission_percent": 1.6,
+      "stdev": 0.005477225575051661,
+      "standard_error": 0.002449489742783178,
+      "elapsed_seconds": 36.30527099999745
+    },
+    {
+      "voltages": {
+        "V2": -153.78126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.02,
+        0.01,
+        0.01,
+        0.02,
+        0.0
+      ],
+      "mean_transmission": 0.012,
+      "mean_transmission_percent": 1.2,
+      "stdev": 0.008366600265340756,
+      "standard_error": 0.0037416573867739417,
+      "elapsed_seconds": 36.72847249999904
+    },
+    {
+      "voltages": {
+        "V2": -91.28126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.02,
+        0.02,
+        0.02,
+        0.04,
+        0.03
+      ],
+      "mean_transmission": 0.026000000000000002,
+      "mean_transmission_percent": 2.6,
+      "stdev": 0.00894427190999916,
+      "standard_error": 0.004,
+      "elapsed_seconds": 36.91880499999388
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1548.5635090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.06,
+        0.02,
+        0.01,
+        0.05,
+        0.01
+      ],
+      "mean_transmission": 0.03,
+      "mean_transmission_percent": 3.0,
+      "stdev": 0.02345207879911715,
+      "standard_error": 0.010488088481701515,
+      "elapsed_seconds": 36.84732879999865
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1486.0635090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.04,
+        0.03,
+        0.03,
+        0.03,
+        0.06
+      ],
+      "mean_transmission": 0.038,
+      "mean_transmission_percent": 3.8,
+      "stdev": 0.013038404810405297,
+      "standard_error": 0.0058309518948452994,
+      "elapsed_seconds": 36.76743610000267
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 131.28175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.01,
+        0.04,
+        0.04,
+        0.04,
+        0.01
+      ],
+      "mean_transmission": 0.028000000000000004,
+      "mean_transmission_percent": 2.8000000000000003,
+      "stdev": 0.016431676725154984,
+      "standard_error": 0.007348469228349534,
+      "elapsed_seconds": 36.37709940000423
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 318.7817534646347,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.02,
+        0.01,
+        0.04,
+        0.0,
+        0.02
+      ],
+      "mean_transmission": 0.018,
+      "mean_transmission_percent": 1.7999999999999998,
+      "stdev": 0.014832396974191326,
+      "standard_error": 0.0066332495807108,
+      "elapsed_seconds": 36.86542909999844
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5065.622958275657
+      },
+      "transmissions": [
+        0.03,
+        0.03,
+        0.03,
+        0.0,
+        0.02
+      ],
+      "mean_transmission": 0.022,
+      "mean_transmission_percent": 2.1999999999999997,
+      "stdev": 0.013038404810405297,
+      "standard_error": 0.0058309518948452994,
+      "elapsed_seconds": 36.49030599999969
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5253.122958275657
+      },
+      "transmissions": [
+        0.03,
+        0.02,
+        0.02,
+        0.02,
+        0.02
+      ],
+      "mean_transmission": 0.022,
+      "mean_transmission_percent": 2.1999999999999997,
+      "stdev": 0.004472135954999579,
+      "standard_error": 0.0019999999999999996,
+      "elapsed_seconds": 38.756629800001974
+    },
+    {
+      "voltages": {
+        "V2": -138.15626393285993,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.02,
+        0.01,
+        0.02,
+        0.01,
+        0.02
+      ],
+      "mean_transmission": 0.016,
+      "mean_transmission_percent": 1.6,
+      "stdev": 0.005477225575051661,
+      "standard_error": 0.002449489742783178,
+      "elapsed_seconds": 37.20967169999858
+    },
+    {
+      "voltages": {
+        "V2": -106.90626393285993,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.03,
+        0.03,
+        0.03,
+        0.03,
+        0.01
+      ],
+      "mean_transmission": 0.026000000000000002,
+      "mean_transmission_percent": 2.6,
+      "stdev": 0.008944271909999158,
+      "standard_error": 0.003999999999999999,
+      "elapsed_seconds": 39.860251999994944
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1532.9385090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.04,
+        0.05,
+        0.05,
+        0.03,
+        0.05
+      ],
+      "mean_transmission": 0.044,
+      "mean_transmission_percent": 4.3999999999999995,
+      "stdev": 0.008944271909999161,
+      "standard_error": 0.004000000000000001,
+      "elapsed_seconds": 37.82241300000169
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1501.6885090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.03,
+        0.02,
+        0.01,
+        0.02,
+        0.07
+      ],
+      "mean_transmission": 0.03,
+      "mean_transmission_percent": 3.0,
+      "stdev": 0.023452078799117152,
+      "standard_error": 0.010488088481701517,
+      "elapsed_seconds": 38.4899850000038
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 178.15675346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.05,
+        0.01,
+        0.0,
+        0.04,
+        0.01
+      ],
+      "mean_transmission": 0.022,
+      "mean_transmission_percent": 2.1999999999999997,
+      "stdev": 0.0216794833886788,
+      "standard_error": 0.009695359714832657,
+      "elapsed_seconds": 37.45769510000173
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 271.9067534646347,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.06,
+        0.03,
+        0.05,
+        0.0,
+        0.03
+      ],
+      "mean_transmission": 0.033999999999999996,
+      "mean_transmission_percent": 3.3999999999999995,
+      "stdev": 0.023021728866442676,
+      "standard_error": 0.010295630140987,
+      "elapsed_seconds": 38.065966600006504
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5112.497958275657
+      },
+      "transmissions": [
+        0.02,
+        0.03,
+        0.02,
+        0.01,
+        0.02
+      ],
+      "mean_transmission": 0.02,
+      "mean_transmission_percent": 2.0,
+      "stdev": 0.0070710678118654745,
+      "standard_error": 0.003162277660168379,
+      "elapsed_seconds": 39.11463640000147
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5206.247958275657
+      },
+      "transmissions": [
+        0.02,
+        0.05,
+        0.02,
+        0.03,
+        0.02
+      ],
+      "mean_transmission": 0.028000000000000004,
+      "mean_transmission_percent": 2.8000000000000003,
+      "stdev": 0.013038404810405298,
+      "standard_error": 0.0058309518948453,
+      "elapsed_seconds": 39.29428840000401
+    },
+    {
+      "voltages": {
+        "V2": -130.34376393285993,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.03,
+        0.02,
+        0.01,
+        0.02,
+        0.02
+      ],
+      "mean_transmission": 0.02,
+      "mean_transmission_percent": 2.0,
+      "stdev": 0.0070710678118654745,
+      "standard_error": 0.003162277660168379,
+      "elapsed_seconds": 37.2487140000012
+    },
+    {
+      "voltages": {
+        "V2": -114.71876393285993,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.02,
+        0.01,
+        0.04,
+        0.01,
+        0.04
+      ],
+      "mean_transmission": 0.024,
+      "mean_transmission_percent": 2.4,
+      "stdev": 0.015165750888103102,
+      "standard_error": 0.006782329983125268,
+      "elapsed_seconds": 36.206713200001104
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1525.1260090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.06,
+        0.02,
+        0.02,
+        0.01,
+        0.06
+      ],
+      "mean_transmission": 0.033999999999999996,
+      "mean_transmission_percent": 3.3999999999999995,
+      "stdev": 0.02408318915758459,
+      "standard_error": 0.010770329614269008,
+      "elapsed_seconds": 36.64432220000526
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1509.5010090164405,
+        "V8": 225.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.03,
+        0.02,
+        0.03,
+        0.05,
+        0.02
+      ],
+      "mean_transmission": 0.03,
+      "mean_transmission_percent": 3.0,
+      "stdev": 0.012247448713915891,
+      "standard_error": 0.005477225575051661,
+      "elapsed_seconds": 37.35090070000297
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 200.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.01,
+        0.07,
+        0.03,
+        0.01,
+        0.04
+      ],
+      "mean_transmission": 0.032,
+      "mean_transmission_percent": 3.2,
+      "stdev": 0.024899799195977467,
+      "standard_error": 0.011135528725660045,
+      "elapsed_seconds": 36.35864149999543
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 250.03175346463468,
+        "V14": 5159.372958275657
+      },
+      "transmissions": [
+        0.04,
+        0.03,
+        0.02,
+        0.02,
+        0.03
+      ],
+      "mean_transmission": 0.028000000000000004,
+      "mean_transmission_percent": 2.8000000000000003,
+      "stdev": 0.008366600265340755,
+      "standard_error": 0.003741657386773941,
+      "elapsed_seconds": 37.1859031999993
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5134.372958275657
+      },
+      "transmissions": [
+        0.0,
+        0.01,
+        0.04,
+        0.01,
+        0.03
+      ],
+      "mean_transmission": 0.018,
+      "mean_transmission_percent": 1.7999999999999998,
+      "stdev": 0.016431676725154984,
+      "standard_error": 0.007348469228349534,
+      "elapsed_seconds": 38.178009599996585
+    },
+    {
+      "voltages": {
+        "V2": -122.53126393285993,
+        "V3": -1517.3135090164405,
+        "V8": 225.03175346463468,
+        "V14": 5184.372958275657
+      },
+      "transmissions": [
+        0.02,
+        0.01,
+        0.01,
+        0.07,
+        0.05
+      ],
+      "mean_transmission": 0.032,
+      "mean_transmission_percent": 3.2,
+      "stdev": 0.02683281572999748,
+      "standard_error": 0.012,
+      "elapsed_seconds": 39.01629319999847
+    }
+  ],
+  "raw_reports_discarded": true,
+  "global_seed_validation": {
+    "voltages": {
+      "V2": -122.53126393285993,
+      "V3": -1517.3135090164405,
+      "V8": 225.03175346463468,
+      "V14": 5159.372958275657
+    },
+    "transmissions": [
+      0.0,
+      0.06,
+      0.07,
+      0.03,
+      0.03,
+      0.02,
+      0.02,
+      0.04,
+      0.03,
+      0.02
+    ],
+    "mean_transmission": 0.032,
+    "mean_transmission_percent": 3.2,
+    "stdev": 0.02043961295567452,
+    "standard_error": 0.0064635731432217715,
+    "elapsed_seconds": 73.09552640000402
+  },
+  "best_validation": {
+    "voltages": {
+      "V2": -122.53126393285993,
+      "V3": -1517.3135090164405,
+      "V8": -1274.9682465353653,
+      "V14": 5159.372958275657
+    },
+    "transmissions": [
+      0.04,
+      0.04,
+      0.07,
+      0.03,
+      0.01,
+      0.03,
+      0.03,
+      0.03,
+      0.03,
+      0.06
+    ],
+    "mean_transmission": 0.037,
+    "mean_transmission_percent": 3.6999999999999997,
+    "stdev": 0.0170293863659264,
+    "standard_error": 0.005385164807134504,
+    "elapsed_seconds": 73.09106399999655
+  },
+  "gain_percentage_points": 0.4999999999999998
+}

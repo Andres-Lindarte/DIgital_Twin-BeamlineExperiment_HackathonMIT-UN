@@ -1,0 +1,396 @@
+<html>
+<head>
+<title>SIMION Ion Funnel Example</title>
+
+<style type="text/css">
+  body { font-family: verdana, arial, sans-serif; font-size: 90%; }
+  .copyright {font-size:80%; border-top:1px solid black}
+  .title1 {background-color:#80ff80}
+  .links1 {background-color:#c0ffc0}
+  .content {max-width:30em; margin-left:5px; margin-right:5px }
+  h1 {margin-top: 0; margin-bottom: 0; background-color:#e0ffe0; font-size:130%}
+  h2 {font-size:120%}
+  h3 {font-size:110%}
+  h4, h5, h6 {font-size:100%}
+</style>
+</head>
+
+<body  marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+<div class="title1">
+<a href="../_redirect.html?id=index">SIMION&#153; 8.1</a>
+</div>
+<h1>SIMION Ion Funnel Example</h1>
+<div class="content">
+
+
+
+<h2>Purpose</h2>
+
+<p>This example models an "ion funnel," which is a device consisting
+of a series of ring electrodes stacked in a funnel shape with RF and
+DC voltages applied to focus ions in the presence of a background gas
+(see papers below for background).  The model here is a good example
+of the techniques of applying a collision model to an RF system.  It
+also demonstrates efficiently modeling an RF system with a large
+number of electrodes by using a much lower number of "fast scalable"
+electrodes when voltages on many of those electrodes are constrained
+by linear relationships over all time. (Mathematically, we determine a
+small number of Laplace solutions and apply the principle of
+superposition to quickly obtain the Laplace solution at any time t.)</p>
+
+<h2>Files in this demo:</h2>
+
+<ul>
+<li>README.html - Description of example
+<li>funnel.iob - SIMION workbench
+<li>funnel.fly2 - SIMION particle definitions associated with funnel.iob
+<li>funnel.gem - Geometry definition that may be used to generate funnel.pa#
+<li>funnel.pa# - SIMION definition potential array of funnel
+</ul>
+
+<ul>
+<li>funnel2.* - Equivalent SIMION example showing more efficient use
+    of fast scalable electrodes (two electrode solution arrays)
+<li>funnel2.pa+ - Defines fast scalable electrodes for funnel2.pa#.
+</ul>
+
+<ul>
+<li>funnel3.* - Similar to funnel2.iob but uses additional electrode
+solution arrays to allow adjustable variables to be adjusted
+during the Fly'm (without editing the .pa+ file and re-refining
+the array).
+</ul>
+
+<h2>Description</h2>
+
+<h3>Modeling</h3>
+
+<p>
+Ions are generated randomly in energy, cone angle, radial offset, and
+phase using a FLY2 file (funnel.fly2), which is viewable and editable
+from "Particles|Define..." on the SIMION View screen.
+</p>
+
+<p>
+There are 16 electrodes in the funnel, plus a DC electrode at the end.
+The electrodes are 0.5 mm thick and separated 0.5 mm, similar to in
+[1+2].
+</p>
+
+<p>
+The voltages on the first 16 funnel rings at time t is
+</p>
+
+<blockquote>
+  V<sub>k</sub> = (_DC_offset_1 + dcgradient * (k-1)) + _RF_amplitude * (-1)<sup>k-1</sup> sin(t * &omega; + &theta;)
+</blockquote>
+
+<p>for k=1..16 and certain constants _DC_offset_1, dcgradient,
+&omega;, &theta;, and _RF_amplitude.  RF and DC voltages are applied
+to the funnel electrodes with a user workbench program, funnel.lua (or
+funnel2.lua/funnel3.lua).  <b>More detailed discussion of the model and its
+parameters is contained in the comments in the funnel.lua file.</b>
+</p>
+
+<p>
+The program incorporates an ion-neutral collision model (SIMION <a
+href="../collision_hs1/README.html">HS1-collision model</a> -
+collision_hs1.lua), which is duplicated in this folder.  (The collision
+cross section used is m/z dependent.)
+</p>
+
+<h3>Notes on the Voltages in the Second Example (funnel2.iob)</h3>
+
+<p>There is a second example (funnel2.iob) included that behaves
+identically to the first example (funnel.iob) but more efficiently
+uses electrodes to achieve higher speed and memory efficiency.
+funnel2.iob models the system using only two "fast scalable"
+electrodes (adj_elect01 and adj_elect02).  Multiple fast scalable
+electrodes are newly supported in SIMION version 8.0.3 (for
+background, see <a
+href="../_redirect.html?id=fast_scale_extension">"Additional Fast Scalable
+Electrodes in SIMION 8.0.3"</a>).  These electrodes are defined in the
+funnel2.pa+ ASCII text file.</p>
+
+<p>The first scalable electrode (adj_elect01) represents the system
+that consists of all voltages V<sub>k</sub> such that sin(t * &omega;
++ &theta;) = 1:</p>
+
+<blockquote>A<sub>k</sub> = (_DC_offset_1 + dcgradient * (k-1)) + _RF_amplitude * (-1)<sup>(k-1)</sup></blockquote>
+
+<p>The second scalable electrode (adj_elect02) represents the system
+that consists of all voltages V<sub>k</sub> such that sin(t * &omega;
++ &theta;) = -1.  In other words, it is 180 degrees out of phase from
+the first voltages:</p>
+
+<blockquote>B<sub>k</sub> = (_DC_offset_1 + dcgradient * (k-1)) - _RF_amplitude * (-1)<sup>(k-1)</sup></blockquote>
+
+<p>The value of adj_elect01 is defined as the maximum of
+A<sub>k</sub>, which is A<sub>1</sub> here.  The value of adj_elect02
+is defined as the maximum of B<sub>k</sub>, which is B<sub>2</sub>
+here.  Note that B<sub>2</sub> is lower (by dcgradient) than
+A<sub>1</sub>.</p>
+
+<p>We will show now that the voltages V<sub>k</sub> on the 16 rings
+can be obtained by taking a linear combination of these two solutions.</p>
+
+<p>The voltages are controlled by the following statements in the user program:</p>
+
+<blockquote>
+  sf = 0.5 * (1 + sin(ion_time_of_flight * omega + theta))<br>
+  adj_elect01 = sf * max1<br>
+  adj_elect02 = (1 - sf) * max2
+</blockquote>
+
+<p>where the constant sf oscillates between 0 and 1 over time.</p>
+
+<p>That causes the voltage on each ring k to be the linear combination
+of the two solutions:</p>
+
+<blockquote>
+  sf * A<sub>k</sub> + (1 - sf) * B<sub>k</sub><br>
+  = sf * [(_DC_offset_1 + dcgradient * (k-1)) + _RF_amplitude * (-1)<sup>(k-1)</sup>] +<br>
+  &nbsp; (1 - sf) * [(_DC_offset_1 + dcgradient * (k-1)) - _RF_amplitude * (-1)<sup>(k-1)</sup>]<br>
+  = (_DC_offset_1 + dcgradient * (k-1)) + _RF_amplitude * (-1)<sup>(k-1)</sup> * (2 * sf - 1)<br>
+  = (_DC_offset_1 + dcgradient * (k-1)) + _RF_amplitude * (-1)<sup>k-1</sup> * sin(t * &omega; + &theta;)<br>
+  = V<sub>k</sub>
+</blockquote>
+
+<p>which is shown to be identical to the V<sub>k</sub> voltage used the
+first system, funnel.iob.</p>
+
+<p>That's the full derivation, but intuitively this is all fairly
+simple (though maybe more-so if you have taken a course in linear
+algebra).  The voltages on the electrodes at any time t can be
+expressed as linear combinations of two different sets of voltages on
+those electrodes.
+</p>
+
+<p>It's convenient that there are times (sf=0 and sf=1) at which
+adj_elect01 or adj_elect02 is zero.  In this case, the voltages on the
+rings are due only to adj_elect01 or adj_elect02 and are at their
+extrema.  At sf=1, we have adj_elect01 = max1 and adj_elect02 = 0.  At
+sf=0, we have adj_elect01 = 0 and adj_elect02 = max2.  max1 and max2
+refer to the maximum voltages on rings 1 and 2 respectively, which are
+directly measurable quantities.</p>
+
+<p>WARNING: if you change DC and RF voltages in funnel2.iob, you will
+need to both change the adjustable variables in funnel2.lua and
+change the corresponding variables in funnel2.pa+ (and then
+re-refine funnel2.pa#).  To avoid this inconvenience, see funnel3.iob.
+As an exception, the above equations do actually allow the RF magnitude to be
+adjustment if we merely rescale the factor (2 * sf - 1).
+"funnel2.lua" takes that into account.
+</p>
+
+<h3>Notes on the Voltages in the Third Example (funnel3.iob)</h3>
+
+<p> funnel3.iob (with corresponding funnel3.pa+ and funnel3.lua) is
+similar to funnel2.iob but uses additional electrode solution arrays
+to allow adjustable variables (_RF_amplitude, _DC_offset_1,
+_DC_offset_16, and _DC_offset_17) to be adjusted during the Fly'm
+(without editing the .pa+ file and re-refining the array).</p>
+
+<h2>Usage</h2>
+
+<p>How to run funnel demo:</p>
+
+<ul>
+<li>1.  <b>View funnel.iob.</b>
+        <i>(Click View on main screen and select the funnel.iob file.)</i>
+<li>2.  If this is your first time using the example,
+        you will be <b>asked to refine</b> <i>(confirm that
+        and press Refine)</i>.
+<li>3.  <b>Select trajectory quality = 0.</b>
+        <i>(In Particles tab, set TQual to 0.)</i>
+<li>4.  <b>Fly ions.</b>
+        <i>(Click Fly'm.)</i>
+        Note how ions are focused toward the vertex of the funnel.
+<li>5. <b>Experiment</b> on the effects of tuning parameters and ion initial
+        conditions. (Variables tab and Particles|Define...)
+</ul>
+
+<p>How to run the funnel2 and funnel3 demos:</p>
+
+<ul>
+<li>The funnel2.iob and funnel3.iob examples can be operating simularly.
+
+<li>You can even verify that both systems are identical by turning off
+all sources of randomization in each: (1) convert the .FLY2 file to an
+.ION file <i>(In the Particles tab, click Define... and select
+"Individually")</i> and set the _pressure_pa variable to zero to
+disable randomized background gas collision <i>(In the Variables tab,
+set _pressure_pa to 0)</i>.  Compare trajectories.
+
+</ul>
+
+<h2>See Also</h2>
+
+<ul>
+<li>Related SIMION documentation:
+  <ul>
+  <li><a href="../_redirect.html?id=fast_scale_extension">"Additional Fast Scalable Electrodes in SIMION 8.0.3"</a>
+  </ul>
+<li>Related SIMION examples:
+  <ul>
+
+  <li>RF voltage control: <a href="../quad/README.html">Example: Quadrupole</a>
+  -- quadrupole mass filter example; <a
+  href="../rfdemo/README.html">Example: RF Demo</a> -- demonstrates multiple
+  approches in generating a simple RF field between parallel plates
+  via user programming.
+
+  <li>Collision models: <a
+  href="../collision_hs1/README.html">Example: Collision HS1</a> -- HS1
+  hard-sphere ion-neutral collision model; <a
+  href="../drag/README.html">Example: Drag</a> - Stokes' Law drag model; <a
+  href="../collision_sds/README.html">Example: SDS</a> - high (atmospheric
+  pressure) collision model; <a href="../ims/README.html">Example: IMS</a> -
+  application of both HS1 and Drag models to ion mobility example.
+  </ul>
+<li>Related papers:
+  <ul>
+
+  <li><a href="http://dx.doi.org/10.1016/j.jasms.2005.06.012">[*]</a>
+  R.R. Julian, S.R. Mabbett, M.F. Jarrold.  "Ion Funnels for the
+  Masses: Experiments and Simulations with a Simplified Ion Funnel"
+  JASMS, Volume 16, Issue 10, pp. 1708-1712.
+  http://dx.doi.org/10.1016/j.jasms.2005.06.012 - uses SIMION
+
+  <li><a href="http://dx.doi.org/10.1063/1.1619721">[*]</a> T. Li and
+  H. A. Schuessler.  "Manipulating Short-Lived Isotopes with
+  Inhomogeneous RF-Fields" AIP Conference Proceedings. August 26,
+  2003. Volume 680, pp. 300-304.  <a
+  href="http://dx.doi.org/10.1063/1.1619721">http://dx.doi.org/10.1063/1.1619721</a>
+  (see also <a
+  href="http://sibor.physics.tamu.edu/publications/papers/129.pdf">http://sibor.physics.tamu.edu/publications/papers/129.pdf</a>)
+  - uses SIMION
+
+  <li><a href="http://dx.doi.org/10.1021/ac051060w">[*]</a>
+  S.L. Koeniger, S.I. Merenbloom, S.J. Valentine, M.F. Jarrold,
+  H.R. Udseth, R.D. Smith, and D.E. Clemmer. "An IMS-IMS Analogue of
+  MS-MS".  Anal. Chem.; 2006; 78(12) pp 4161 - 4174; <a
+  href="http://dx.doi.org/10.1021/ac051060w">http://dx.doi.org/10.1021/ac051060w</a>
+  (see also <a
+  href="http://www.indiana.edu/~clemmer/Publications/pub%20112.pdf">http://www.indiana.edu/~clemmer/Publications/pub%20112.pdf</a>)
+  - uses SIMION (note: used an approach similar to funnel2.iob with
+  the two fast scalable electrodes)
+
+  <li><a
+  href="http://dx.doi.org/10.1002/1097-0231(20001130)14:22<2129::AID-RCM144>3.0.CO;2-M">[*]</a>
+  Eric C. Lynn, Ming-Chun Chung, Chau-Chung Han, "Characterizing the
+  transmission properties of an ion funnel", Rapid Communications in
+  Mass Spectrometry, Volume 14, Issue 22 , Pages 2129 - 2134 (2000) <a
+  href="http://dx.doi.org/10.1002/1097-0231(20001130)14:22<2129::AID-RCM144>3.0.CO;2-M">http://dx.doi.org/10.1002/1097-0231(20001130)14:22<2129::AID-RCM144>3.0.CO;2-M</a>
+  - uses SIMION
+
+  <li><a
+  href="http://dx.doi.org/10.1016/S0168-9002(02)01761-8">[*]</a>
+  V. L. Varentsov and D. Habs, '"Fair-wind gas cell"--a new concept of
+  a buffer gas cell design', Nuclear Instruments and Methods in
+  Physics Research Section A: Accelerators, Spectrometers, Detectors
+  and Associated Equipment Volume 496, Issues 2-3, 11 January 2003,
+  Pages 286-292.  <a
+  href="http://dx.doi.org/10.1016/S0168-9002(02)01761-8">http://dx.doi.org/10.1016/S0168-9002(02)01761-8</a>
+
+  <li><a href="http://dx.doi.org/10.1016/j.nima.2004.05.132">[*]</a>
+  S. Heinz, J. Äystö, D. Habs, S. Hegewisch, J. Huikari, A. Nieminen,
+  S. Rinta-Antila, M. Schumann and J. Szerypo, "A radio frequency ring
+  electrode cooler for low-energy ion beams", Nuclear Instruments and
+  Methods in Physics Research Section A: Accelerators, Spectrometers,
+  Detectors and Associated Equipment Volume 533, Issue 3 , 11 November
+  2004, Pages 239-247 <a
+  href="http://dx.doi.org/10.1016/j.nima.2004.05.132">http://dx.doi.org/10.1016/j.nima.2004.05.132</a>
+
+  <li><a
+  href="http://dx.doi.org/10.1016/S0168-9002(02)01066-5">[*]</a>
+  V. L. Varentsov and D. Habs, A cooler for intense low-energy ion
+  beams, Nuclear Instruments and Methods in Physics Research Section
+  A: Accelerators, Spectrometers, Detectors and Associated Equipment
+  Volume 490, Issues 1-2 , 1 September 2002, Pages 16-29 <a
+  href="http://dx.doi.org/10.1016/S0168-9002(02)01066-5">http://dx.doi.org/10.1016/S0168-9002(02)01066-5</a>
+
+  <li><a href="http://dx.doi.org/10.1016/j.nimb.2005.10.017">[*]</a>
+  J.B. Neumayr et al., The ion-catcher device for SHIPTRAP, Nuclear
+  Instruments and Methods in Physics Research Section B: Beam
+  Interactions with Materials and Atoms Volume 244, Issue 2 , March
+  2006, Pages 489-500 <a
+  href="http://dx.doi.org/10.1016/j.nimb.2005.10.017">http://dx.doi.org/10.1016/j.nimb.2005.10.017</a>
+
+  <li><a href="http://dx.doi.org/10.1016/j.nima.2004.06.078">[*]</a>
+  V. L. Varentsov and D. Habs, Computer experiments on ion beam
+  cooling and guiding in fair-wind gas cell and extraction RF-funnel
+  system, Nuclear Instruments and Methods in Physics Research Section
+  A: Accelerators, Spectrometers, Detectors and Associated Equipment
+  Volume 532, Issues 1-2 , 11 October 2004, Pages 210-215 <a
+  href="http://dx.doi.org/10.1016/j.nima.2004.06.078">http://dx.doi.org/10.1016/j.nima.2004.06.078</a>
+
+  <li><a
+  href="http://dx.doi.org/10.1016/S0168-583X(02)02151-1">[*]</a> M
+  Wada et al., Slow RI-beams from projectile fragment separators,
+  Nuclear Instruments and Methods in Physics Research Section B: Beam
+  Interactions with Materials and Atoms Volume 204 , May 2003, Pages
+  570-581 <a
+  href="http://dx.doi.org/10.1016/S0168-583X(02)02151-1">http://dx.doi.org/10.1016/S0168-583X(02)02151-1</a>
+
+  <li><a
+  href="http://dx.doi.org/10.1016/S1387-3806(00)00265-7">[*]</a> A V
+  Tolmachev et al., Simulation-based optimization of the
+  electrodynamic ion funnel for high sensitivity electrospray
+  ionization mass spectrometry, International Journal of Mass
+  Spectrometry Volume 203, Issues 1-3 , 26 December 2000, Pages 31-47.
+  <a
+  href="http://dx.doi.org/10.1016/S1387-3806(00)00265-7">http://dx.doi.org/10.1016/S1387-3806(00)00265-7</a>
+
+  <li><a
+  href="http://dx.doi.org/10.1002/(SICI)1097-0231(19971030)11:16<1813::AID-RCM87>3.0.CO;2-D">[*]</a>
+  Scott A. Shaffer et al., A novel ion funnel for focusing ions at
+  elevated pressure using electrospray ionization mass spectrometry,
+  Rapid Communications in Mass Spectrometry, Volume 11, Issue 16 ,
+  Pages 1813 - 1817 (1998) <a
+  href="http://dx.doi.org/10.1002/(SICI)1097-0231(19971030)11:16<1813::AID-RCM87>3.0.CO;2-D">http://dx.doi.org/10.1002/(SICI)1097-0231(19971030)11:16<1813::AID-RCM87>3.0.CO;2-D</a> - uses SIMION
+
+  <li><a
+  href="http://dx.doi.org/10.1016/j.jasms.2005.06.012">[*]</a>
+  Ryan R. Julian, Sarah R. Mabbett, and Martin F. Jarrold.  "Ion
+  Funnels for the Masses: Experiments and Simulations with a
+  Simplified Ion Funnel".  Department of Chemistry, Indiana
+  University, Bloomington, Indiana, USA
+  <a href="http://dx.doi.org/10.1016/j.jasms.2005.06.012">http://dx.doi.org/10.1016/j.jasms.2005.06.012</a>. also here: <a
+  href="http://nano.chem.indiana.edu/Publications/2005/Ion_Funnels_for_the_Masses_Experiments_and_Simulations_with_a_Simplified_Ion_Funnel.pdf">[*]</a>
+  -- uses SIMION
+
+  <li>Web links:
+    <ul>
+    <li><a href="http://idl.emsl.pnl.gov/projects/ionfunnel.html">RF Ion Funnel Development</a> at Instrument Development Laboratory (IDL) - picture and summary of the ion funnel operation.
+    </ul>
+  </ul>
+
+</ul>
+
+<h2>Changes</h2>
+
+<ul>
+<li>2012-01-25 - Allow RF voltage adjustment in funnel2.iob, plus additional comments on voltage adjustments.
+        Add funnel.gem.
+<li>2009-08-28 - added funnel3.iob example.
+<li>2009-01-15 - fixed comment on adjustable _sigma_m2 to read in
+units of m^2 not cm^2.  </ul>
+
+<h2>Source</h2>
+
+<p>
+Original model and code by Yehia Ibrahim, PNNL 2007, adapted from
+SIMION 8 quadrupole example.  D.Manura-2007-03, refactored code, added
+README documentation, adapt to use SIMION 8.0.3 fast scalable electrodes
+(funnel2.iob example).  Thanks to Omer Sise for many of the ion funnel
+reference papers.
+</p>
+ 
+</div>
+    
+<div class="copyright">SIMION&#153; 8.1 (c) 2003-2012 Scientific
+Instrument Services, Inc. All Rights Reserved.
+</div>
+    </body>
+</html>

@@ -1,0 +1,163 @@
+<html>
+<head>
+<title>SIMION Multipole Expansion Example</title>
+
+<style type="text/css">
+  body { font-family: verdana, arial, sans-serif; font-size: 90%; }
+  .copyright {font-size:80%; border-top:1px solid black}
+  .title1 {background-color:#80ff80}
+  .links1 {background-color:#c0ffc0}
+  .content {max-width:30em; margin-left:5px; margin-right:5px }
+  h1 {margin-top: 0; margin-bottom: 0; background-color:#e0ffe0; font-size:130%}
+  h2 {font-size:120%}
+  h3 {font-size:110%}
+  h4, h5, h6 {font-size:100%}
+</style>
+</head>
+
+<body  marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+<div class="title1">
+<a href="../_redirect.html?id=index">SIMION&#153; 8.1</a>
+</div>
+<h1>SIMION Multipole Expansion Example</h1>
+<div class="content">
+
+
+
+<h2>Purpose</h2>
+
+<p>
+This examples demonstrates how to take electrostatic potentials
+(defined analytically or defined in a PA refined by SIMION) and
+calculate the multipole components from it.
+</p>
+
+<h2>Compatibility Notes</h2>
+
+<p>This example uses SIMION 8.1 features.</p>
+
+<h2>Files in this folder</h2>
+
+<ul>
+<li>calculate.lua - Lua batch mode program to perform multipole
+  expansion on each PA.  If the PAs don't exist, it creates them
+  from corresponding GEM files and refines them.  This is the program you run.
+<li>multipole_expansion.lua - Lua module to determine multipole expansion
+  from potentials using matrix methods to solve a system of
+  linear equations.  Used by calculate.lua.
+<li>multipole_expansion_paper.lua
+  - Lua module to determine multipole expansion
+  from potentials via Bessel functions as discussed in paper.
+  WARNING: This currently doesn't work since the formula in the
+  paper appears incorrect.  Use multipole_expansion.lua instead.
+<li>matrix.lua - Lua module for matrix computation.  This is based on version 0.2.4 from http://lua-users.org/wiki/SimpleMatrix (minus support for complex
+numbers).
+<li>trap_truncated3.gem - hyperbolic electrodes truncated at 3 times ring radius
+<li>trap_truncated3_mirror.gem - same as trap-truncated3 but with mirroring enabled
+<li>trap_stretched.gem - same as trap-truncated3 but cap position stretched 10.8%
+<li>trap_ringslot.gem - same as trap-truncated but with ring slots
+<li>trap_endholes.gem - same as trap-truncated but with end cap holes
+<li>mathcad/* - these are mathcad files that generally duplicate the
+results in multipole_expansion.lua (matrix.mcd) and
+multipole_expansion_paper.lua (bessel.mcd).  These files are from an
+old version of Mathcad, so you probably can't use them, but you can
+view the corresponding PDFs instead.
+</ul>
+
+<h2>Usage</h2>
+
+<p>Run the "run.lua" batch mode program (click "Run Lua program"
+on the main sceren and select that file).  The multipole coefficents
+for each PA will display in the Log window.</p>
+
+<h2>Results</h2>
+
+<p>
+Results are copied below.  These are evaluated using 30 test points
+around a circle of radius 100 gu centered at the origin.  (PAs were
+refined to 10^-7 rather than 10^-5 as in compute.lua.)
+</p>
+
+<pre>
+trap_truncated3
+
+  i,C_i
+  0,4.996931e-001
+  1,-1.589408e-007
+  2,-1.001125e+000
+  3,1.145922e-007
+  4,1.053258e-003
+  5,-1.553885e-007
+  6,1.235882e-003
+
+trap_truncated3_mirrored
+
+  i,C_i
+  0,4.996930e-001
+  1,5.671886e-009
+  2,-1.001125e+000
+  3,1.605281e-008
+  4,1.054187e-003
+  5,-2.679855e-007
+  6,1.233305e-003
+
+trap_stretched
+
+  i,C_i
+  0,5.567271e-001
+  1,-1.014591e-007
+  2,-8.949469e-001
+  3,-8.571598e-009
+  4,-1.520720e-002
+  5,-1.664740e-006
+  6,-6.945666e-003
+
+trap_ringslot
+
+  i,C_i
+  0,4.821073e-001
+  1,-1.547287e-007
+  2,-9.576294e-001
+  3,-2.846328e-007
+  4,-2.880991e-002
+  5,-1.507863e-005
+  6,3.766760e-002
+
+trap_endholes
+
+  i,C_i
+  0,5.015064e-001
+  1,-1.404983e-007
+  2,-9.901213e-001
+  3,2.416858e-006
+  4,3.214814e-002
+  5,9.941863e-005
+  6,8.122451e-002
+</pre>
+
+<p>Compare these results to the paper:</p>
+
+<blockquote>
+  S.E. Barlow, A.E. Taylor, K. Swanson.
+  Determination of analytic potentials from finite element computations
+  International Journal of Mass Spectrometry 207 (2001) 19–29
+  http://dx.doi.org/10.1016/S1387-3806(00)00452-8
+</blockquote>
+
+<p>The higher order multipole components are somewhat sensitive to error.</p>
+
+<h2>See Also</h2>
+
+<ul>
+<li>Lua <a href="../_redirect.html?id=lua_simion.pas">simion.pas</a> library - This examples uses this to extract the potentials/fields from SIMION potential arrays.
+<li><a href="../gauss_law/README.html">Example: gauss_law</a> is another SIMION example that analyzes fields.
+</ul>
+
+<p>D.Manura, 2007-07</p>
+
+</div>
+    
+<div class="copyright">SIMION&#153; 8.1 (c) 2003-2012 Scientific
+Instrument Services, Inc. All Rights Reserved.
+</div>
+    </body></html>

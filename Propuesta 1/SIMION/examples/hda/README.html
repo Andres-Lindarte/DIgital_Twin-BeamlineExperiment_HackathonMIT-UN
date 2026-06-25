@@ -1,0 +1,286 @@
+<html><head>
+<title>SIMION Hemispherical Deflection Analyzer (HDA) Example</title>
+
+<style type="text/css">
+  body { font-family: verdana, arial, sans-serif; font-size: 90%; }
+  .copyright {font-size:80%; border-top:1px solid black}
+  .title1 {background-color:#80ff80}
+  .links1 {background-color:#c0ffc0}
+  .content {max-width:30em; margin-left:5px; margin-right:5px }
+  h1 {margin-top: 0; margin-bottom: 0; background-color:#e0ffe0; font-size:130%}
+  h2 {font-size:120%}
+  h3 {font-size:110%}
+  h4, h5, h6 {font-size:100%}
+</style>
+</head>
+<body  marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+<div class="title1">
+<a href="../_redirect.html?id=index">SIMION&#153; 8.1</a>
+</div>
+<h1>SIMION Hemispherical Deflection Analyzer (HDA) Example</h1>
+<div class="content">
+
+
+
+<h2>Purpose</h2>
+
+<p>
+This demonstrates a practical hemispherical deflectional analyzer
+(<a href="../_redirect.html?id=hda">HDA</a>).
+It includes routines for automating many runs under various
+combinations of two adjustable voltages in order to determine the
+optimal values of those voltages.
+Results are plotted in graphically (via plotlib in
+<a href="../plot/README.html">Example(plot)</a>) and
+optimization is done by a (two variable) simplex optimization routine.
+</p>
+
+<div>
+<img src="resources/3d.png"><br>
+<b>Figure:</b> 3D view of HDA with entrance lens optics.
+</div>
+
+<div>
+<img src="resources/plot_beamsize.png"><br>
+<b>Figure:</b> Heat map surface plot of beam size (mm) v.s. voltages
+VL3 and VL4, in r0_82f1_1000.iob.
+</div>
+
+
+<h2> Files in this folder </h2>
+
+<ul>
+<li> README.txt - this file
+<li> lens.gem - GEM file included by R0_82.gem to model the entrance lens.
+<li> R0_82.gem - GEM file used to create R0_82.PA#
+<li> R0_82.pa# - HDA potential array used by workbench IOB files.
+<li> r0_82f1_1000.iob - workbench 1 (decel factor of 1)
+<li> r0_82f4_1000.iob - workbench 2 (decel factor of 4) 
+<li> r0_82f1_1000.fly, r0_82f4_1000.fly - particle definitions for
+    each iob file respectively
+<li> r0_82f1_1000.lua - Lua workbench user program for plotting and
+    optimizing metric for many combinations of adjustable voltages
+<li> r0_82f4_1000.lua - same but for second IOB file.
+</ul>
+
+<h2> About the Model </h2>
+
+<p>
+The model is of a full HDA (r0_82.gem) with 5 element lens (lens.gem)
+with paracentric entry at R0=82.
+R1 and R2 are near the real ones.
+Note to actually simulate the standard HDA of IJMS, we would need
+to define R1 and R2 according to that paper.
+The original model is older (from 1998) when I didn't know as much as I
+do today -- they would have to be updated in a future version of this example.
+T. Zouros 27/4/2007
+</p>
+
+<p>Electrode numbering is as follows:</p>
+
+<pre>
+HDA:
+  e1 is Vp  (exit side of lens - this is the one where the deceleration or acceleration voltage goes)
+  e2 is VL2 (is presently set at the same voltage at VL1 so lens is 4-element)
+  e3 is VL3 (lens voltage, varied in this example)
+  e4 is VL4 (lens voltage, varied in this example)
+  e5 is VL5 (particle entry side of lens normally at same potential as source)
+  e5 is V1  (inner HDA hemisphere)
+  e6 is V2  (outer HDA hemisphere)
+</pre>
+
+<p>
+F1 decel factor 1, i.e. no decel this means that Vp=0 for KE=1000 eV
+so that W=w=1000eV (tuning energies) F4 decel factor 4, i.e. for
+KE=W=1000eV, w=W/4=250 so Vp=-750V=w-W=W/F-W=W(1-F)/F
+</p>
+
+<p>
+Lens voltages are different for different decel factors.  Equations
+follow notation of Zouros JESRP2002 paper and also IJMS 2007 paper.
+</p>
+
+<p>
+Fly has 11 electrons flying from a point source at a well defined
+starting point with KE=1000eV and directed into the lens entry
+aperture (VL5). Lens and HDA for F=1 or F=4 IOB are set at the optimal
+voltages so that pencil beam is focused and passes through HDA finally
+plating on PSD.
+</p>
+
+<p>
+The goal of the simplex implementation would be to find the lens
+voltages VL3 and VL4 for fixed VL5=0 and VL1=VL2=Vp for user defined F
+for particles of energy KE=W. Hopefully for F=1 and F=4 simplex would
+come near existing voltages.
+</p>
+
+<p>
+Note: W (big W) is the undecelerated tuning energy (central ray energy).
+     w (small w) is the decelerated tuning energy W/F and would be the
+     central ray tuning energy inside the HDA.
+</p>
+
+<p>
+Improved accuracy may be obtained by increasing the grid density
+and/or by splitting the system into two PAs with more symmetry
+(e.g. the lens and HDA regions) if we properly handle the boundary
+conditions at the hole that separates the two regions.
+</p>
+
+<h2>About the User Program</h2>
+
+<p>
+The user program r0_82f1_1000.lua causes trajectories to be rerun for
+a large number of combinations of lens voltages VL3 and VL4 in order
+to determine the optimal combination of these voltages.
+</p>
+
+<p>
+The example can be operated in either of two modes: "plot" or
+"optimize".
+</p>
+
+<p>
+In <b>"plot" mode</b>, the program generates in graphical surface plot
+of beam size as a function of the two adjustable lens voltages
+voltages, VL3 and VL4.
+This gives a global picture of where the local
+and absolute minima of beam size are.
+A plot of transmission (hit count on the detector) is also generated separately.
+</p>
+
+<p>
+In <b>"optimize" mode</b>, the program searches for a local minimum
+(of beam size) starting at the currently adjusted values of voltages
+of VL3 and VL4.  It uses a simplex optimization routine.  If your
+system has multiple local minima (as is the case here as determined by
+running "plot"), it's important to start VL3 and VL4 somewhat near
+where you're searching so that the optimizer moves toward the correct
+local minimum.
+Because of the roughness of the function being optimized in the current
+version of this example, the simplex optimization might not work that well.
+
+<p>See the comments in the Lua program for further details.</p>
+
+<h2>Optimization Criteria</h2>
+
+<p>
+The optimization routine adjusts the input variables (VL3 and VL4
+here) in order to minimize some user-defined metric.  In the current
+program, the metric is defined simply as the beam size, particularly
+the difference between the maximum and minimum values of x where the
+particles splat.
+This metric is further set to a high value if there is not 100% transmission.
+As shown in the plot, there are many local minimums,
+and the optimization routine can move toward any one of those values.
+A future version of this example may alter the metric to constrain the
+optimization further.
+</p>
+
+<h2>Usage</h2>
+
+<p>Using plot mode.</p>
+
+<ul>
+<li>1. <b>View r0_82f1_1000.iob.</b>
+    <i>(Click View on main screen and select the drag.iob file.)</i>
+<li>2. If this is your first time using the example,
+    you will be <b>asked to build/refine</b> <i>(confirm that
+    and press Refine)</i>.
+<li>3. <b>Set trajectory quality to zero.</b>
+    <i>(Optionally set TQual in Particles tab to 0.)</i>
+     This improves speed.
+<li>4. <b>Fly ions with Grouped disabled.</b>
+    <i>(Ensure Grouped is unchecked in Particles tab and then
+    click Fly'm.)</i>
+    A plot will display (in your graphical plotting program, such as Excel)
+    of the metric (beam size) v.s. various
+    values of the two adjusted lens voltages.
+    A econd graph is also created containing hit counts
+    on the detector v.s. these two lens voltages
+    (if Excel is used, this will be in the "Chart2" worksheet).
+</ul>
+
+<p>Using optimize mode.</p>
+
+<ul>
+<li>5. <b>Switch to "optimize" mode by entering<br>
+      <u>mode = "optimize"</u>
+    in the command bar</b> at the bottom of the SIMION window
+    (the default was mode was "plot").
+<li>6. <b>Open the Log display in a separate window.</b>
+    <i>(In the Log tab, click "W".)</i>
+<li>7. <b>Set the voltages you want to start searching at.</b>
+    <i>(In the Variables tab, set the <code>_opt_VL3_start</code>
+    and <code>_opt_VL4_start</code> variables.
+    (You may use the default values for now.))</i>
+<li>8. <b>Optionally change the initial simplex optimizer
+    step sizes <code>_opt_VL3_step</code> and
+    <code>_opt_VL4_step</code></b> in the Variables tab.
+    This controls how agressive the optimizer initially moves
+    (change in volts on first iteration) in each input variable
+    (VL3 and VL4).
+<li>9. <b>Click Fly'm.</b>
+    SIMION will do many runs under various combinations of the two voltages.
+    For each iteration, the input voltages and the resultant metric will
+    display in the  log for each run.
+    Notice that voltages converge to some value
+    that generally minimizes the metric.
+    You may stop the simulation (unpress Fly'm) when you are satisfied
+    with the convergence if it does not stop itself.
+<li>10. Optionally, repeat steps 7-9 using different initial voltages
+    or step sizes.
+</ul>
+
+<p>Using r0_82f4_1000.iob.</p>
+
+<ul>
+<li>11. An alternate IOB file r0_82f4_1000.iob (with decel factor 4
+    rather than 1) can also be run.
+</ul>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a
+href="../_redirect.html?id=hda">Doc: HDA</a>
+- notes on HDA's (includes links to papers)
+<li>
+  <a href="../surface_enhancement/README.html">Example: Surface Enhancement</a>
+  contains an example of a spherical capacitor (used as an HDA)
+  refined with the SIMION 8.1.1 surface enhancement
+  feature, which greatly improves Refine accuracy.
+  This feature helps when electrode surfaces don't perfectly align to grid points, as is usually
+  the case with curved surfaces like HDA's.
+<li><a href="../tune/README.html">Example: Tune</a>
+<li><a href="../plot/README.html">Example: plot</a> - details on the plotting library
+  used in this example.
+</ul>
+
+<h2>History/Changes</h2>
+
+<ul>
+<li>2012-08-17:
+  Use flym (and load) segment to simplify code, and remove empty.pa.
+  Extract surface plotting into external excellib library.
+  Support gnuplot (in additional to excel) via plotlib.
+  Support plotting 1D (not just 2D) scans.
+  Fix sometimes reversal of surface plot labels depending on voltage scan ranges.
+  Scan in a more incremental way, showing rough before detailed picture.
+  Add tranmission plot (in additional to beam size plot).
+  Allow disabling plotting (_use_plot variable).
+  Change adjustable variable names.
+  Enable surface enhancement in GEM file.
+<li>
+The GEM file and HDA main model is (c) 1998-2007 Theo Zouros and
+distributed by permission under the terms of SIMION 8.  Lua program
+and additional docs by D.Manura--200704.
+</ul>
+
+</div>
+    
+<div class="copyright">SIMION&#153; 8.1 (c) 2003-2012 Scientific
+Instrument Services, Inc. All Rights Reserved.
+</div>
+    </body></html>

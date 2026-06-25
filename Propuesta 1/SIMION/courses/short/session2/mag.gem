@@ -1,0 +1,20 @@
+;Magnetic Pole Geometry File
+ 
+pa_define(31,101,1,c,y,m,24) ; create a 31x by 101y  2D cylindrical,
+                            ; y mirrored magnet array ng = 24
+                             
+p(0)                        ; pole of zero mags
+    {
+    fill                    ; simple fill
+        {                   ; create bottom pole
+        within{box(27,0,30,100)}
+        }
+    }
+     
+p(1)                        ; pole of one mags
+    {
+    fill                    ; simple fill
+        {                   ; create top pole
+        within{box(0,0,3,100)}
+        }
+    }

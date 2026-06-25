@@ -1,0 +1,46 @@
+; disc_segmented.gem
+; Segmented disc geometry (like slices in a pie), with axis in X.
+; Y and/or Z mirror symmetries may be used depending on geometry & voltage.
+; This has similarities to sector.gem and hexapole.gem.
+; 20120815DM
+
+pa_define(51,51,51, planar,yz, electrostatic)
+
+; first sector
+e(1) {
+  fill {
+    locate(10,0,0,, -90) {   ; rotate +Z cylinder axis to +X axis and then shift along X
+      within       { cylinder(0,0,0, 50,, 10)        ; cylinder with base in XY plane
+                     polyline(0,0, 0,100, 80,100) }  ;   intersected with XY plane polygon
+      notin_inside { circle(0,0, 20) }               ; cut out center hole in XY plane
+    }
+  }
+}
+
+; second sector
+e(2) {
+  fill {
+    locate(10,0,0,, -90) {   ; rotate +Z cylinder axis to +X axis and then shift along X
+      within       { cylinder(0,0,0, 50,, 10)        ; cylinder with base in XY plane
+                     polyline(0,0, 100,0, 100,80) }  ;   intersected with XY plane polygon
+      notin_inside { circle(0,0, 20) }               ; cut out center hole in XY plane
+    }
+  }
+}
+
+
+; The following would generate a similar result using a different approach of
+; rotating a 2D cross section in the XY plane around the X axis.
+; It is simpler to define but less general.
+e(1) {
+  rotate_fill(40) {  ; rotate fill degrees around X axis
+    within { box2d(30,20, 40,50) }  ; box in XY plane
+  }
+}
+e(2) {
+  locate(0,0,0,, 0,0,50) { ; rotate around X axis
+    rotate_fill(40.001) {  ; rotate fill degrees around X axis (with 0.001 fudge factor)
+	  within { box2d(30,20, 40,50) } ; box in XY plane
+    }
+  }
+}

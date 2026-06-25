@@ -1,0 +1,133 @@
+<html>
+<head>
+<title>SIMION Particle Jumping (Non-ideal Grid) Example</title>
+
+<style type="text/css">
+  body { font-family: verdana, arial, sans-serif; font-size: 90%; }
+  .copyright {font-size:80%; border-top:1px solid black}
+  .title1 {background-color:#80ff80}
+  .links1 {background-color:#c0ffc0}
+  .content {max-width:30em; margin-left:5px; margin-right:5px }
+  h1 {margin-top: 0; margin-bottom: 0; background-color:#e0ffe0; font-size:130%}
+  h2 {font-size:120%}
+  h3 {font-size:110%}
+  h4, h5, h6 {font-size:100%}
+</style>
+</head>
+
+<body  marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+<div class="title1">
+<a href="../../_redirect.html?id=index">SIMION&#153; 8.1</a>
+</div>
+<h1>SIMION Particle Jumping (Non-ideal Grid) Example</h1>
+<div class="content">
+
+
+
+<h2>Purpose / Description</h2>
+
+<p>
+This example demonstrates the simulation of particle scattering by non-ideal
+<a href="../../_redirect.html?id=grid">grids</a> using a "particle jumping" ("ion jumping") trick.  The method allows
+accurate simulation of a non-ideal grid inside a larger system.  This
+particular example uses non-ideal grids inside a TOF instrument.  See the
+included SIS application notes (<a href="app-47.htm">#47</a>, <a
+href="app-52.htm">#52</a>) for background on this example.
+</p>
+
+<p>A non-ideal grid generally consists of a mesh of fine wires (see figure
+below-left).  Most particles go through the grid with little trajectory
+distortion.  This is the ideal case, of an ideal grid.  However, some
+particles splat against the grid wires.  Others the travel quite close to the
+grid wires might have trajectories that bend significantly.  (See figure
+below-right.)</p>
+
+<p>
+<img src="resources/grid3d.png">
+<img src="resources/grid3dion.png">
+</p>
+<div><b>Figure:</b> example of effect of non-ideal grids on particle
+trajectories (model from ASMS course referenced below).</div>
+
+<p>
+This is an advanced SIMION simulation.  You should be familiar with the
+use of user programs before attempting this simulation.  Please examine 
+comments included within the program file (ref70.lua).
+</p>
+
+<p>An alternative approach is <a href="../pa_jump/README.html">Example: nonideal_grid\PA instance jumping</a>.</p>
+
+<h2>Files in this example</h2>
+
+<ul>
+<li>README.html - description of this example
+<li>ref70.iob - workbench
+<li>*.pa* - potential arrays
+<li>source.gem - GEM file used to generate source.pa
+<li>gridhop.gem - GEM files used to generate gridhop.pa
+<li>mgrid70.gem - GEM file used to generate mgrid70.pa#
+<li>ref70.rec - data recording file
+<li>ref70.fly - ion definitions
+<li>ref70.lua - workbench user program (performs particle jumping trick)
+<li>app-47.htm, app-52.htm - SIS application notes that
+    describe this example further
+<li>plot.gp - gnuplot script for plotting TOF histogram (optional)
+</ul>
+
+<h2>Usage</h2>
+
+<ul>
+
+<li>1. <b>Load the .IOB file.</b> <i>(Click View/Load
+Workbench, select ref70.iob.)</i>.Select Yes if asked to build/refine the PAs.</li>
+
+<li>Note: the GEM file gives a model of a 70 lpi grid.  If you use a different
+mm/gu scaling factor (default 0.004) or a different grid size (default 136 x
+136 x 272), you will need to adjust the GEM file, the grid_inst_x [y,z] and
+scaling variables in the user programs, and the mm/gu scaling factor on the PA
+instance in the workbench view.</li>
+
+<li>2. <b>Fly particles.</b> <i>(Click Fly'm.)</i> You may wish to set the
+display to ZY view and set the display quality (Qual) to 8.  Note that when
+the ions hit any of the grids (the two grids on the upper right acceleration
+region or the two grids on the reflectron on the upper-left), they temporarily
+jump to the fine grid on the lower-right.  Zoom in to the fine grid to see the
+ions traveling in the fine grid, where the non-ideal grid traversal is
+accurately modeled.  To hide the trajectory lines when the ions jump, go to
+the Variables tab, set the "hide_jumps" variable, and refly the ions.</li>
+
+</ul>
+
+<h2>Source</h2>
+
+<ul>
+<li>2012-03 - remove ref70_prepare.lua (since IOB loading now autogenerates PAs).
+<li>2008-10 - D.Manura, minor updates/cleanup for SIMION 7/8 compatibility;
+            added gnuplot script (plot.gp) for TOF histogram;
+            seed random number generator only once (speed);
+            converted to SIMION 8.0 Lua.
+<li>1996 - Steve Colby, SIS (original author)
+</ul>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="../../_redirect.html?id=grid">Doc: grid</a> - general notes on simulating grids in SIMION.
+<li>The "Non-ideal Grids" sections of the <a href="../../../courses/README.html">Advanced ASMS Course</a> uses particle jumping tricks in a non-ideal grid.  See particularly the grid2d*.gem and grid3d*.gem files. (<a href="../../../courses/advanced/examples/g_nonideal_grids/">files</a>)
+<li><a href="../README.html">Example: nonideal_grid</a> - other nonideal grid examples
+<li><a href="../../bradbury_nielsen_grid/README.html">Example: bradbury_nielsen_grid</a>
+  -- non-ideal grid with RF applied to wires.
+<li><a href="../../multiprocess/README.html">Example: Multiprocess</a> - demonstrates particle jumping across instances of SIMION running on possibly different computers
+<li><a href="http://www.simion.com/info/Grid">SIMION Info: Grid</a> - notes on simulating grids in SIMION
+<li><a href="../../tof/README.html">Example: TOF</a>
+<li><a href="http://www.sisweb.com/referenc/applnote/app-59.htm">SIS Application Note 59</a> - Computer Modeling of a TOF Reflectron With Gridless Reflector Using SIMION 3D (used particle jumping technique)
+</ul>
+
+</div>
+    
+<div class="copyright">SIMION&#153; 8.1 (c) 2003-2012 Scientific
+Instrument Services, Inc. All Rights Reserved.
+</div>
+    </body>
+</html>
+

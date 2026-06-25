@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>SIMION Redirect</title>
+<style type="text/css">
+li { margin: 0.5em }
+</style>
+</head>
+<body>
+
+<script type="text/javascript">
+var hash = window.location.hash;
+var id = window.location.search.match(/\?id=([a-zA-Z0-9_\.]+)/);
+var id = id && id[1];
+if (!id) {
+  window.location.replace('README.html');
+}
+var loc = window.location.pathname.replace(/examples._redirect.html$/, '').replace(/^\/([a-zA-z]:)/, '$1');
+var ourl = 'http://simion.com/info/' + id + '.html';
+var lurl = 'ms-its:' + loc + 'docs/simion.chm::/' + id + '.html' + hash;
+document.writeln('<p>The topic "' + id + '" in the supplementary documentation can be found in either of these locations:</p>');
+document.writeln('<ul>');
+if (window.showHelp) {
+  document.writeln('<li><a href="'+lurl+'">"'+ id +'"</a> - on local Windows Help file, simion.chm.');
+  //unused:javascript:window.showHelp(...)
+}
+else {
+  document.writeln('<li>'+id+' - on local Windows Help file, simion.chm');
+}
+document.writeln('<li><a href="' + ourl + '">"' + id + '"</a> - on remote page, ' + ourl + ' (abridged version).');
+document.writeln('</ul>');
+if (window.showHelp) {
+  window.location.replace(lurl);
+}
+</script>
+
+<p>
+Note: The link above might not work if you are viewing this page from a
+web browser rather than Windows Help.
+If so, select the "Help | Supplemental Documentation" menu item
+in the SIMION program and navigate to the topic from there.
+</p>
+
+</body></html>

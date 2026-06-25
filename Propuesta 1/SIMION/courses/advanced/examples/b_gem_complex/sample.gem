@@ -1,0 +1,15 @@
+
+; sample probe assemb
+
+  pa_define(100,181,181,p,yz)
+
+; scaling is 0.010"/grid unit  or 0.254 mm/grid unit
+
+  locate(0,0,0,100,0,0,-45)
+
+{
+e(9)
+	{
+	include(z_include_sample.gem)
+	}
+}

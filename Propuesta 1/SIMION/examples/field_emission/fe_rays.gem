@@ -1,0 +1,27 @@
+; fe_rays.gem - basic field emitter - hemisphere on nanotube post.
+; 2D cylindrical symmetry.  DM2012-03.
+
+pa_define(10001,2501,1, cylindrical,,electric,, 0.0001) ; mm/gu
+
+locate(0,0,0, 0.001) { ; make units below in micrometers (um) not mm.
+locate(200,0,0) { ; shift x
+
+; field emission cathode (normally GND)
+e(1) {
+  fill {
+    within { polyline(-1.0,0, -1.0,1.0, -200,1.0, -200,0) } ; post
+    within { circle(-1.0,0, 1.0) }  ; tip
+  }
+}
+
+; supressor (normally GND or negative potential)
+e(2) {
+  fill { within { box2d(-100,10, -120,1E+6) } }
+}
+
+; extractor (normally positive potential)
+e(3) {
+  fill { within { box2d(500,50, 520, 1E+6) } }
+}
+
+}}

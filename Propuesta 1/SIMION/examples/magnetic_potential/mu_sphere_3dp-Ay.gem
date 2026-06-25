@@ -1,0 +1,16 @@
+; THIS FILE IS CURRENTLY UNUSED.
+
+; GEM file for electric field PA.
+; Defines bottom and top electrode plates.
+; Note: B_x = @A_z/@y - @Ay/@z,
+; so negative @A_y/@z contributes to positive B_x.
+
+pa_define(101,101,101, planar,xyz,magnetic_,, 1,1,1)  ; mm/gu
+
+e(0) {
+  fill { within { box3d(0,0,0, 100,100,0) } }
+}
+
+e(0) {
+  fill { within { box3d(0,0,100, 100,100,100) } }
+}

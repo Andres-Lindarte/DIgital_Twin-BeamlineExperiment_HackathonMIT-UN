@@ -1,0 +1,24 @@
+; mesh_size.gem
+; SIMION GEM file with parameterization.
+
+# local var = _G.var or {}
+# local dx_mm = var.dx_mm or 1
+# local dy_mm = var.dy_mm or dx_mm
+# local nx = math.floor(100/dx_mm + 1)
+# local ny = math.floor( 40/dy_mm + 1)
+# print('dx_mm=', dx_mm, 'dy_mm=', dy_mm)
+# local e1 = var.e1 or 1000
+# local e2 = var.e2 or 900
+# local e3 = var.e3 or 0
+# local surface = var.enhanced and 'fractional' or 'none'  -- surface enhancement?
+
+pa_define($(nx),$(ny),1, cylindrical,, electrostatic,, $(dx_mm),$(dy_mm), surface=$(surface))
+
+electrode($(e1)) { fill { within_inside_or_on { corner_box(0,0,    5,40) }}}
+electrode($(e2)) { fill { within              { corner_box(40,20, 20,40) }}}
+electrode($(e3)) { fill { within              { corner_box(95,0,   5,40) }}}
+
+
+
+; note: within_inside_or_on here avoids particle starting points
+; falling inside electrode if source electrode doesn't align to grid units.

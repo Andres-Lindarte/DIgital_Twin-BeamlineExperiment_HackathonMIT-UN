@@ -1,0 +1,98 @@
+; hexpole.gem - GEM file geometry for creating hexapole PA.
+;
+; note: this GEM file uses Lua macros
+; ( http://www.simion.com/issue/296 ), which requires
+; SIMION 8.0.4 or above.
+
+# local r0 = 3    -- half min distance between opposite rods in mm
+# local rrod = r0*0.5375  -- rod radius in mm
+# -- note: rrod/r0 = 0.5375 according to [Rao 2000]
+# --       for optimal hexapole fields given circular rods
+# local gu_mm = 100  -- grid units per mm
+
+# local nh = math.floor((r0 + 2.5 * rrod) * gu_mm)
+# local nx = nh*2+1
+# local ny = nh + 1
+
+pa_define($(nx),$(ny),1, planar, y)
+
+locate($(nh),0,0, $(gu_mm)) {
+# for n=1,6 do
+#   local angle = (n - 1) * 60
+      e($(n % 2 + 1)) {
+        locate(0,0,0, 1, 0, $(angle)) {
+          fill { within { circle($(r0+rrod),0, $(rrod)) } }
+        }
+      }
+# end
+}
+
+
+; NOTES:
+;
+; == Possible improvement in memory efficiency: Antisymmetry
+;
+; A possible improvement that could cut the array size
+; in half is to define an X mirror plane but with opposite polarity
+; voltages on either side.  This could be achieved as follows:
+;
+;   - Cut the array in half by changing nx from "2*nh+1" to "nh+1".
+;
+;   - Remove the x shift of nh in the locate statement.
+;
+;   - Define an ideal grid of electrode points at x=0:
+;
+;       e(0) { fill { within { box(0,-1e6, 0,1e6) } } }
+;
+;     This imposes the condition that potential is zero on the x=0 plane.
+;     Warning: this condition is only true if electrodes 1 and 2 are of
+;     equal magnitude and opposite polarity.  If this condition does not
+;     hold, change your ground reference potential so that it does (i.e. add
+;     some value X to the potentials of electrodes 1 and 2).
+;
+;   - In a segment.efield_adjust in a Lua user program, Invert the x component
+;     of the field in the x < 0 region of volume.  For example,
+;
+;     simion.workbench()
+;     -- Invert potentials in X < 0 region.
+;     -- phi(-x,y,z) = -phi(x,y,z) implies grad (-x,y,z) = -grad phi(x,y,z).
+;     -- This simulates X anti-mirror potential symmetry in SIMION.
+;     function segment.efield_adjust()
+;       if ion_px_gu < 0 then
+;         ion_volts = -ion_volts   -- only affects Data Recording
+;         ion_dvoltsx_gu = - ion_dvoltsx_gu
+;         ion_dvoltsy_gu = - ion_dvoltsy_gu
+;         ion_dvoltsz_gu = - ion_dvoltsz_gu
+;         --mark()
+;       end
+;     end
+;
+; == Possible improvement in memory efficiency: Potential offset.
+;
+; Yet another possible improvement, which would eliminate one electrode solution
+; array, is to add some potential to all electrodes in your system so that
+; the potential on one electrode is a constant (preferrably zero) over time.
+; For example, let the potentials on the two rods be
+;
+;   V1 = A*sin(w*t) + B
+;   V2 = C*sin(w*t) + D
+;
+; Now add the term T = -(C*sin(w*t) + D) to all electrodes in the array:
+;
+;   V1 = (A-C)*sin(w*t) + (B-D)
+;   V2 = 0
+;
+; The potentials in the new system differ, but the fields in this new system
+; are identical to the former (since grad T = 0), and according to the
+; Lorentz force law particle trajectories are only affected by fields, not
+; potentials.
+;
+; This approach may be combined with the previous one.  Set the potential on
+; one electrode to 0, the other electrode to -1, and the x=0 plane to the average
+; (-0.5).  These PA# file potentials that are not positive integers are understood
+; by SIMION to be fast (proportional) scalable electrodes, which consume only
+; a single solution array when refined.  After refining the .PA# file, you will
+; get a base array (.pa0 file) and one solution array (.pa_) for the fast scalable
+; electrodes.
+
+

@@ -1,0 +1,8 @@
+; has extra space in the y direction
+; (merely to ensure image charges are inside PA instance so that the
+; other_actions segment gets called)
+
+pa_define(201,201,1,cylindrical,y,,,1,1,1)
+electrode(0) {
+  fill { within { box2d(0,50, 200,50) } }
+}

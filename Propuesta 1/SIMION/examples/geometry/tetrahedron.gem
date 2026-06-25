@@ -1,0 +1,42 @@
+; tetrahedron.gem
+;
+; SIMION GEM file to create a tetrahedron.
+; Note that the dihedral angle (angle between adjacent
+; faces) in a tetrahedron is ~70.53 degrees
+; (http://mathworld.wolfram.com/Tetrahedron.html).
+;
+; See. p. J-14 of the SIMION 7.0 manual for a picture of
+; the coordinate system.
+;
+; The pyramid is formed as the intersection of four half-volumes,
+; which are approximated as very large rectangles (size 1000000).
+; The half-volumes are originally orthogonal to the x-axis, but
+; we incline three of these by the dihedral angle and then
+; rotate them by 0, 120, or 240 degrees.  The pyramid is then
+; translated (30,25,25) into place, where (30,25,25) represents
+; the location of one vertex.
+;
+; D.Manura-2006-08-29
+
+pa_define(51,51,51,planar,none,electrostatic)
+
+e(1) {
+  fill { within {
+    locate(30,25,25, 1, 0,0,0) { locate(,,, , 70.53,0,0) {
+      box3d(-1000000,-1000000,-1000000,
+             0,1000000,1000000)
+    }}
+    locate(30,25,25, 1, 0,0,120) { locate(,,, , 70.53,0,0) {
+      box3d(-1000000,-1000000,-1000000,
+             0,1000000,1000000)
+    }}
+    locate(30,25,25, 1, 0,0,240) { locate(,,, , 70.53,0,0) {
+      box3d(-1000000,-1000000,-1000000,
+             0,1000000,1000000)
+    }}
+    locate(30,25,25, 1, 0,0,0) { locate(-20,,, , -180,0,0) {
+      box3d(-1000000,-1000000,-1000000,
+             0,1000000,1000000)
+    }}
+  }}
+}

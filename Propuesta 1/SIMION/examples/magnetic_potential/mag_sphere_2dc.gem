@@ -1,0 +1,12 @@
+; GEM file for magnetic scalar potential PA.
+; This stores boundary conditions for Omega_H, where -grad Omega_H = H.
+; Omega_H is calculated in this PA.
+
+pa_define(201,201,1, cylindrical, xy,magnetic_,, 0.25,0.25,0.25)  ; mm/gu
+
+; Omega_H = 0 on outer boundaries (no flex across surfaces).
+; Omega_H = 0 on X=0 (anti-mirror plane) as well.
+e(0) {
+  edge_fill { within { box2d(0,-50, 50,50) } }
+}
+

@@ -1,0 +1,25 @@
+particles {
+  coordinates = 0,
+  standard_beam {
+    tob = 0,
+    mass = 100,
+    charge = 1,
+    ke = arithmetic_sequence {
+      first = 1746.17,
+      step = -800,
+      n = 1
+    },
+    cwf = 1,
+    color = arithmetic_sequence {
+      first = 0,
+      step = 1
+    },
+    direction = cone_direction_sequence {
+      axis = vector(0, 0, 1),
+      half_angle = 10,
+      n = 8,
+      fill = false
+    },
+    position = vector(54, 15, 0)
+  }
+}

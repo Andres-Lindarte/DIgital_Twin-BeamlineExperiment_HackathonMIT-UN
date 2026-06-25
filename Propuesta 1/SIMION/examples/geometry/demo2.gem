@@ -1,0 +1,22 @@
+pa_define(101,101,101,p,n)	; define 3d array to contain geometry
+
+locate(50,50,50)			;center object in volume
+{
+
+locate(0,0,0,1,-90) 		; swing cylinder -90 degrees (cw) to center on x-axis
+	{
+	fill					; volume fill with current point and type
+		{
+		within				; include volume
+			{
+			circle(0,0,10)		; radius 10 tube with infinite z extent
+			locate(0,0,0,1,45)	; swing box volume ccw 45 degrees
+				{
+				box(-20,-100,20,100)  ; box of x width of 40 (infinite z extent)
+				}			; use large values of y so circle limits volume in y
+			}
+		notin{circle(0,0,8,4)}	; bores 8 rx by 4 ry elliptical hole in circular rod
+		}
+	}
+
+}

@@ -1,0 +1,170 @@
+<html>
+<head>
+<title>SIMION Child Particles Example</title>
+<style type="text/css">
+code { background-color: #f0f0f0; }
+</style>
+
+<style type="text/css">
+  body { font-family: verdana, arial, sans-serif; font-size: 90%; }
+  .copyright {font-size:80%; border-top:1px solid black}
+  .title1 {background-color:#80ff80}
+  .links1 {background-color:#c0ffc0}
+  .content {max-width:30em; margin-left:5px; margin-right:5px }
+  h1 {margin-top: 0; margin-bottom: 0; background-color:#e0ffe0; font-size:130%}
+  h2 {font-size:120%}
+  h3 {font-size:110%}
+  h4, h5, h6 {font-size:100%}
+</style>
+</head>
+
+<body  marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+<div class="title1">
+<a href="../_redirect.html?id=index">SIMION&#153; 8.1</a>
+</div>
+<h1>SIMION Child Particles Example</h1>
+<div class="content">
+
+
+
+<h2>Purpose/Description</h2>
+
+<p>
+This example demonstrates how to apply a user program to
+simulate the effect of a parent particle being
+replaced by <b>multiple</b> child particles
+during the trajectory calculation.
+</p>
+
+<p>It is easy to transform one particle (the parent) into another
+particle (the child) just by modifying the ion_mass, ion_charge, and
+other reserved variables in an other_actions user program segment.
+Doing so can simulate the effect of ionization or secondary emission.
+However, if there are <b>multiple</b> child particles, then it
+is a little more complicated.  There are various ways to solve this.
+</p>
+
+<p>
+In SIMION 8.2 early access mode, a new particle API is provided
+to allow creating new particles during the Fly'm.
+This is illustrated in child.iob/child.lua.
+In SIMION 8.0/8.1, this API is not available, so some special tricks
+are required as shown in child80.iob/child80.lua.
+</p>
+
+<h2>SIMION 8.2/Early Access Method</h2>
+
+<p>
+The child.iob/child.lua example creates new particles by invoking the
+<a href="../_redirect.html?id=lua_simion.experimental">simion.experimental.add_particles</a>
+function at any point during the Fly'm.
+See the documentation on the <code>simion.experimental.add_particles</code> function in the link
+above for details.
+</p>
+
+<h2>Older SIMION 8.0/8.1 Method</h2>
+
+<p>
+The approach taken in SIMION 8.0/8.1 is fairly general but still relatively simple.
+After the parent particle finishes flying, we prevent its termination,
+transform it into its next child, and continue flying.  After that
+child finishes, we prevent its termination and transform it into the
+next child.  This repeats until all the children of the parent are
+flown, after which the particle is allowed to really terminate.  In
+this way, we use one particle in SIMION to trace the parent and all of
+its children.
+</p>
+
+<p>See the child.lua file for details.
+Note: This program ASSUMES particles are flown <b>individually</b>
+("Grouped" disabled).
+</p>
+
+<p>
+A few alternative approaches could be preferable for your situation,
+and so they are mentioned here.  One very simple method is to fly two
+identical ions and convert one to the first child and the other to the
+second child.  That involves no additional user programming.  In
+certain statistical studies, you might fly a random ion and then
+randomly make the decision of whether to convert it to the first or
+second child.  That would simplify the user program, though if you're
+counting child particles (e.g. for transmission), you will need to
+double your counts.
+</p>
+
+<h2>Files in this demo:</h2>
+
+<ul>
+<li>README.html - Description of example
+<li>child.iob - SIMION workbench (SIMION 8.2 early access)
+  <ul>
+  <li>child.fly2 - particle definitions.
+  <li>child.lua - user program implementing child particle creation.
+  <li>child.rec - data recording options
+  </ul>
+<li>child80.iob - SIMION workbench (older version compatible with SIMON 8.0/8.1)
+  <ul>
+  <li>child80.fly2 - particle definitions.
+  <li>child80.lua - user program implementing child particle creation.
+  </ul>
+<li>empty.pa - SIMION potential array (no fields) contained in child.iob and child80.iob.
+</ul>
+ 
+
+<h2>Usage: child.iob</h2>
+
+<ul>
+<li>1. <b>View child.iob.</b>
+       <i>(Click View on main screen and select the child.iob file.)</i>
+<li>2. <b>Fly ions.</b>
+       <i>(In Particles tab, click Fly'm.)</i>
+       Note: each parent particle is replaced by two child particles
+       that go in different directions.
+       Each child particle has
+       a different color.
+       Child particles then have further secondary emissions on hitting electrodes.
+       You may try this with Grouped flying enabled or disabled
+        (Grouped checkbox on Particles tab).
+</ul>
+
+<h2>Usage: child80.iob</h2>
+
+<p>
+This example is somewhat similar.
+You must ensure <b>Grouped is disabled</b> though.
+<i>(In Particles tab, ensure Grouped is unchecked.)</i>.
+</p>
+
+<p>
+You can modify the is_debug adjustable variable (in the
+Variables tab) to turn debug logging on and off in the Log window.  By
+default, debug logging and data recording are on, which you can
+use to confirm that the program is operating as expected.</p>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="../secondary/README.html">Example: Secondary Emission</a>
+- Child particles are created when parent particles hit a surface.
+<li><a href="../collision_hs1/README.html">Example: HS1 Hard-Sphere Collision Model</a> - ion-neutral collision model.  By default, the ions elastically
+bounds off the gas molecules.  However, you could apply some reaction
+instead.
+<li><a href="../_redirect.html?id=lua_simion.experimental">Doc(simion.experimental.add_particles)</a>
+  - particles API function (8.2/early access)
+<li><a href="../random_fly2/README.html">Example(random_fly2)</a> - also uses the SIMION 8.2 particle API
+</ul>
+
+<h2>Changes/History</h2>
+
+<ul>
+<li>2012-09-10: Update child.lua to use 8.2 features.  child.* renamed to child81.*.
+<li>2007-04, D.Manura
+</p>
+
+</div>
+    
+<div class="copyright">SIMION&#153; 8.1 (c) 2003-2012 Scientific
+Instrument Services, Inc. All Rights Reserved.
+</div>
+    </body>
+</html>

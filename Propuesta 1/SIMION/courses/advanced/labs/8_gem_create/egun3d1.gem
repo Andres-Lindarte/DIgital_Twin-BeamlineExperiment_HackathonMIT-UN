@@ -1,0 +1,63 @@
+;			  ****** egun3d1.gem *******
+
+
+;pa_define(140,50,1,c,y)		;2D array definition
+
+pa_define(140,50,50,p,yz)		;3D array definition
+
+locate(0,0,0,100)				;scale for 0.010"/grid and position
+								;assembly in array
+{
+  e(1)							; electron source filament
+	  {
+		locate(0,0,0,1,-90) 						  ;position source
+		  {
+		   fill{
+			  ; within{cylinder(0,0,0,.03,.03,.06)}   ;filament (2D)
+			  within{box3d( 0,0,0,0.06,0.13,-0.050)}  ;box to form filament (3D)
+			  notin{box3d(0,0,0,0.06,0.11,-0.03)}	  ;bore back of box out (3D)
+													  ;to form filament
+			   }
+		  }
+	  }
+
+  e(2)							; back plate and outer cylinder
+	{
+	  locate(0,0,0,1,-90)								;position assembly
+		  {
+		   fill{within{cylinder(0,0,0,.42,.42,1.05)}	;form outer cylinder
+				notin{cylinder(0,0,-.07,.40,.40,1.05)}	;outer cylinder inner bore
+			   ; notin{cylinder(0,0,0,.06,.06,.07)} 	;bore hole for filament (2D)
+				notin{box3d(0,0,0,0.08,0.15,-.08)}		;bore box for filament	(3D)
+
+			   }
+		  }
+	}
+
+  e(3)							;exit plate and aperture
+	{
+	  locate(.80,0,0,1,-90) 							;locate in array
+		{
+		 fill{within{cylinder(0,0,0,.25,.25,.29)}		;front half
+			  notin{cylinder(0,0,0,.20,.20,.23)}		;with bore hole
+			  notin{cylinder(0,0,-.24,.02,.02,.05)} 	;bore aperture hole
+
+			 }
+		}
+	  locate(1.07,0,0,1,-90)							;locate in array
+		{
+		 fill{within{cylinder(0,0,0,.42,.42,.26)}		;back section
+			  notin{cylinder(0,0,-.02,.20,.20,.24)} 	;major bore hole
+			  notin{cylinder(0,0,0,.02,.02,.24)}		;aperture bore hole
+			 }
+		}
+	}
+}
+
+
+
+
+
+
+
+

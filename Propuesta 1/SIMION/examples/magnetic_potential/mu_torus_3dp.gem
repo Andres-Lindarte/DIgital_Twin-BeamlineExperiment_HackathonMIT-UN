@@ -1,0 +1,11 @@
+; Stores magnetic scalar potential.
+
+pa_define(101,101,51, planar, xyz,magnetic_,, 1,1,1)  ; mm/gu
+
+e(100) {
+  fill { within { box2d(0,0, 0,100) } }
+}
+
+e(0) {
+  fill { within { box2d(100,0, 100,100) } }
+}

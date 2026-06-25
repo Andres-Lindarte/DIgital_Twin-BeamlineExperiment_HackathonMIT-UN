@@ -1,0 +1,23 @@
+;holds key diffusion and mobility parameters keyed to mass
+;mass (amu), diameter (nm), Ko reduced mobility (10-4 m2 V-1 s-1)
+;Note:	1. THERE MUST ALWAYS BE THREE NUMBERS ON EACH LINE (M,D,Ko in that order)
+;	   190,0.69,1.36	; legal
+;	2. First line with mass = 0 ends list reading (e.g. 0,0.69,1.36)
+;	   0,0,0			; legal list termination
+;	3. Two lines with same Mass will cause a fatal error
+;	   190,0.69,1.36	; legal
+;	   190,0.85,1.75	; masses match -- fatal error
+;	4. If both d and Ko are 0 --- fatal error
+;	   190,0,0		; d = 0 Ko = 0 --- fatal error
+;	5. d or Ko can be zero, but not both (be sure to use zeros -- don't skip entry)
+;	   190,0.69,0		; d = 0.69 Ko = 0 --- OK
+;	   190,0,1.36		; d = 0 Ko = 1.36 --- OK
+;	6. Note: If you do not provide a mass def for an ion the user program will
+;	   will estimate one for you.
+
+;	7. Blank lines are allowed
+;	8. ; character starts comment: either line or inline
+
+	   ; File has two sample mass definitions below
+190,0.69,1.36			; avg positive ion in atmosphere
+130,0.61,1.56			; avg negative ion in atmosphere

@@ -1,0 +1,4 @@
+pa_define(100,40,1, cylindrical,, electrostatic)
+electrode(1) { fill { within { box2d(0,0, 4,39) } } }
+electrode(2) { fill { within { box2d(40,21, 56,39) } } }
+electrode(3) { fill { within { box2d(96,0, 99,39) } } }

@@ -1,0 +1,15 @@
+; geometry file for magnetic pa demo
+; refine and save as magnet.pa
+ 
+pa_define(51,100,1,c,y,m,20)    ;76x, 51y, 1z 2D cylindrical array
+                                ;y mirrored magnetic array ng = 20
+                             
+p(1000)                         ;left pole of 1,000 Mags
+    {
+    fill{within{box(0,0,15,50)}}
+    }
+                             
+p(0)                            ;right pole of 0 Mags
+    {
+    fill{within{box(35,0,50,50)}}
+    }

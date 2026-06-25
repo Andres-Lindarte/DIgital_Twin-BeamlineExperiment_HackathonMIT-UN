@@ -1,0 +1,48 @@
+particles {
+  coordinates = 0,
+  standard_beam {
+    tob = 0,
+    mass = 10,
+    charge = -1,
+    ke = 30,
+    cwf = 1,
+    color = 1,
+    direction = cone_direction_sequence {
+      axis = vector(0, 1, 0),
+      half_angle = 5,
+      n = 6,
+      fill = false
+    },
+    position = vector(50, -25, 25)
+  },
+  standard_beam {
+    tob = 0,
+    mass = 12,
+    charge = -1,
+    ke = 30,
+    cwf = 1,
+    color = 2,
+    direction = cone_direction_sequence {
+      axis = vector(0, 1, 0),
+      half_angle = 5,
+      n = 6,
+      fill = false
+    },
+    position = vector(50, -25, 25)
+  },
+  standard_beam {
+    tob = 0,
+    mass = 14,
+    charge = -1,
+    ke = 30,
+    cwf = 1,
+    color = 3,
+    direction = cone_direction_sequence {
+      axis = vector(0, 1, 0),
+      half_angle = 5,
+      n = 6,
+      fill = false
+    },
+    position = vector(50, -25, 25)
+  }
+}

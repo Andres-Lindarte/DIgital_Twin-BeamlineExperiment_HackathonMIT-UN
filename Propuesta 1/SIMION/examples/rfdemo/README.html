@@ -1,0 +1,164 @@
+<html>
+<head>
+<title>SIMION RF Examples</title>
+
+<style type="text/css">
+  body { font-family: verdana, arial, sans-serif; font-size: 90%; }
+  .copyright {font-size:80%; border-top:1px solid black}
+  .title1 {background-color:#80ff80}
+  .links1 {background-color:#c0ffc0}
+  .content {max-width:30em; margin-left:5px; margin-right:5px }
+  h1 {margin-top: 0; margin-bottom: 0; background-color:#e0ffe0; font-size:130%}
+  h2 {font-size:120%}
+  h3 {font-size:110%}
+  h4, h5, h6 {font-size:100%}
+</style>
+</head>
+
+<body  marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+<div class="title1">
+<a href="../_redirect.html?id=index">SIMION&#153; 8.1</a>
+</div>
+<h1>SIMION RF Examples</h1>
+<div class="content">
+
+
+
+<h2>Purpose</h2>
+
+<p>
+These examples demonstrate multiple approches in generating a simple
+RF field between parallel plates via user programming.
+</p>
+
+<h2>Description</h2>
+
+<p>There are three examples.  All are functionally identical but have
+different implementations:</p>
+
+<ul>
+<li>elect.iob - This contains a fast adjust potential array.  The user
+program contains a fast_adjust segment that defines the time-dependent
+potentials on the two electrodes in the fast adjust potential array.
+This is the most typical method of generating RF potentials.
+<li>factor.iob - This contains a basic potential array defining a
+static field between parallel plates.  The user program contains an
+efield_adjust segment that multiplies the field and potentials in that
+PA by a time-dependent factor sin(ion_time_of_flight * omega).
+<li>area.iob - This contains a basic potential array.  The user
+program contains an efield_adjust segment that defines the field and
+potentials inside a PA according to an analytical equation.  The
+potential array itself could even be empty since the field is defined
+entirely from an analytical equation.
+</ul>
+
+<p>
+These should serve as simple examples of how things work and provide some
+options.
+</p>
+
+<h2>Files in this demo:</h2>
+
+<ul>
+<li>README.html - Description of example
+<li>elect.iob, factor.iob, and area.iob - SIMION workbenches for the
+      three examples.
+<li>elect.fly, factor.fly, and area.fly - SIMION particle definitions for
+  the three IOB files respectively.
+<li>elect2.fly - SIMION particle definitions - alternate with varying masses.
+<li>elect.pa*, factor.pa*, and area.pa* - SIMION potential array for each of the
+  three examples respectively.
+<li>elect.lua, factor.lua, and area.lua - SIMION user programs for each of the
+  three examples respectively.
+</ul>
+
+<h2>Usage</h2>
+
+<p>How to run demos:</p>
+ 
+<ul>
+<li>1.  <b>View desired IOB.</b>
+        <i>(Click View on main screen and select the desired IOB file.)</i>
+<li>2.  If this is your first time using the example,
+        you will be <b>asked to refine</b> <i>(confirm that
+        and press Refine)</i>.
+<li>3.  <b>Set trajectory quality to zero.</b>
+        <i>(In Particles tab, set TQual to 0.)</i>
+<li>4.  <b>Fly ions.</b> <i>(Click Fly'm button.)</i>
+<li>5.  <b>Cut off top electrode in view (with 3D zoom) to see
+        isometric views.</b>
+        <I>(See details on 2D/3D zooming/cutting options in
+        printed SIMION manual. Press 3D Iso button.)</i>
+</ul>
+
+<p>More:</p>
+
+<ul>
+<li>1.  <b>Fly ions Grouped in Rerun mode.</b>
+        <i>(In Particles tab, enable Grouped and Rerun. Click Fly'm button.)</i>
+<li>2.  <b>Change adjustable variables as ions fly.</b>
+        <i>(In Variables tab, edit variable and press Enter.)</i>
+</ul>
+
+<p>More on ELECT.IOB's special features:</p>
+
+<ul>
+<li>1.  <b>View ions flying as dots on PE surface view</b> with elect.iob. 
+        The user programs undulate the PE surface so you can
+        see why the ions move as they do - powerful.
+<li>2.  <b>Vary PE surface update time step to see its effect</b>
+        (from Variables tab, change pe_update_each_usec variable as ions fly).
+<li>3.  <b>Adjust dots flying speed</b> <i>(with slider under Dots in
+        Particles tab)</i>.  You can adjust
+        flying speed and surface update time step for smoothest view.
+<li>4.  Note:  <b>Increasing GStep</b> from 2 to 8 speeds up surface redrawing.
+        <i>(PE Contours tab, GStep)</i>
+<li>5.  <b>Fly elect2.fly</b> to see effects of varying mass.
+        <i>(In Particles tab, click Define..., click Load,
+        select elect2.fly file, and press OK.)</i>
+</ul>
+
+<h2>Historical Note</h2>
+
+<ul>
+<li>factor.iob simulates a SIMION 4.0 .FAC program with an efield_adjust seg
+<li>area.iob   simulates a SIMION 4.0 .AR? program with an efield_adjust seg
+<li>elect.iob  simulates a SIMION 4.0 .ELE program with an fast_adjust seg
+</ul>
+
+<p>2006-08 - Voltage calculation in SIMION 7.0 area.prg appeared wrong.
+This was corrected in area.lua.  This does not affect the ion
+trajectories though.
+</p>
+
+<h2>See Also</h2>
+
+<ul>
+  <li>
+  <a href="../quad/README.html">Example: Quadrupole</a>
+  -- RF quadrupole mass filter example.
+  <li>
+  <a href="../trap/README.html">Example: Ion Trap</a>
+  -- RF quadrupole ion trap example.
+  <li>
+  <a href="../ionfunnel/README.html">Example: RF Ion Funnel</a>
+  -- demonstrates using two fast scalable electrodes to
+    control many RF voltages.  Also applies collision model.
+  <a href="../icrcell/README.html">Example: ICR Cell</a>
+  -- RF voltage (with superimposed magnetic field)
+</ul>
+
+<h2>Source</h2>
+
+<p>
+Author: David Dahl. Updated to SIMION8/Lua-D.Manura-2006-08.
+</p>
+
+</div>
+    
+<div class="copyright">SIMION&#153; 8.1 (c) 2003-2012 Scientific
+Instrument Services, Inc. All Rights Reserved.
+</div>
+    </body>
+</html>
+

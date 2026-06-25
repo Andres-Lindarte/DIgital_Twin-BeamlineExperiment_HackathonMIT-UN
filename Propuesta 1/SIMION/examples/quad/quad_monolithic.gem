@@ -1,0 +1,8 @@
+; quad_monolithic.gem: generates quad_monolithic.pa#
+; Single potential array of entire system.
+
+# local mmgu = 0.2  -- PA cell size (mm/gu)
+
+pa_define($(7.6/mmgu+1), $(7.6/mmgu+1), $(95.2/mmgu+1), planar,xy, electric,, $(mmgu), surface=fractional)
+
+include(quad_include.gem)

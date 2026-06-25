@@ -1,0 +1,13 @@
+
+  pa_define(977,186,186,p,yz)
+;  scaling is 0.010"/grid unit  or 0.254 mm/grid unit
+;  locate(0,0,0,100,0,0,0)	; beam hole aligned
+;  locate(0,0,0,100,0,0,22.5)  ; filament end aligned
+   locate(0,0,0,100,0,0,-45) ; mounting hole aligned
+
+{
+e(0)
+	{
+	include(z_include_gnd_shield.gem)
+	}
+}

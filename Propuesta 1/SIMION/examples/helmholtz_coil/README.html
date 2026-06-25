@@ -1,0 +1,153 @@
+<html>
+<head>
+<title>SIMION Helmholtz Coil Magnetic Field Example</title>
+<style type="text/css">
+.code {background-color:#f0f0f0}
+</style>
+
+<style type="text/css">
+  body { font-family: verdana, arial, sans-serif; font-size: 90%; }
+  .copyright {font-size:80%; border-top:1px solid black}
+  .title1 {background-color:#80ff80}
+  .links1 {background-color:#c0ffc0}
+  .content {max-width:30em; margin-left:5px; margin-right:5px }
+  h1 {margin-top: 0; margin-bottom: 0; background-color:#e0ffe0; font-size:130%}
+  h2 {font-size:120%}
+  h3 {font-size:110%}
+  h4, h5, h6 {font-size:100%}
+</style>
+</head>
+
+<body  marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+<div class="title1">
+<a href="../_redirect.html?id=index">SIMION&#153; 8.1</a>
+</div>
+<h1>SIMION Helmholtz Coil Magnetic Field Example</h1>
+<div class="content">
+
+
+
+<h2>Purpose</h2>
+
+<p>This is an example of inserting a Helmholtz coil magnetic field
+into a workbench.  The magnetic field is calculated via Biot-Savart as
+two wire hoops.  The field is loaded into the workbench via a
+small user program.</p>
+
+<h2>Background</h2>
+
+<p>
+A Helmholtz coil consists of an identical pair of circular wire
+coils that face each other and have a current applied to generate a
+magnetic field.  A Helmholtz coil can generate a fairly uniform
+magnetic field between the coils provided the distance between coils
+equals the radius of the coils.  For further background see
+<a href="../_redirect.html?id=helmholtz_coil">Helmholtz coil</a>.
+</p>
+
+<h2>Files in this demo:</h2>
+
+<ul>
+<li>README.html - Description of example
+<li>helmholtz.iob - SIMION workbench
+<li>helmholtz.lua - SIMION workbench user program used to apply
+      helmholtz magnetic field into helmholtz.iob workbench.
+<li>helmholtz.fly2 - SIMION particle definitions to fly through coil
+<li>helmholtz_many.fly2 - Like helmholtz.fly2 but does many more particles
+<li>mag.pa - Blank magnetic PA.  Used to contain magnetic field.
+       Used in helmholtz.iob.
+<li>saddle_coil/ - SIMION saddle coil example [8.2 EA]
+</ul>
+
+<h2>Usage</h2>
+
+<p>How to run the example:</p>
+
+<ul>
+<li>1.  <b>View helmholtz.iob.</b>
+        <i>(Click View on main screen and select the helmholtz.iob file.)</i>
+<li>2.  In the Log window, notice the comparison between the SIMION measured field at
+        the origin (B_actual) and the theoretical field (B_theo).  These are nearly identical as expected.
+<li>3.  <b>Fly ions.</b>
+        <i>(Click Fly'm.)</i>
+        A series of particles are flown over the volume between the coils with initial velocity
+        parallel to the radii.
+        The radius of each particle trajectory corresponds with the
+        strength of the magnetic field perpendicular to the screen.  Notice that the magnetic
+        field strength is fairly uniform over the volume between the
+        circular coils.  Observe both the XY and 3D Iso views.
+        In SIMION versions &gt;= 8.1.0, the coil wires will be drawn at the start of the Fly'm.
+</ul>
+
+<p>See the helmholtz.lua source code for more details.  Additional
+details are in the related "solenoid" example (below), which this
+example is based on.</p>
+
+<h2>Three-Axis Helmholtz Coils</h2>
+
+<p>"three-axis helmholtz coils" (i.e. three pairs of coils on the X, Y, and Z axes, for a total
+of six coils), can also easily be defined by uncommenting the code for this in the Lua file.</p>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="../mfield_adjust/README.html">Example: mfield_adjust</a> - demonstrates basic usage of the mfield_adjust segment.
+<li><a href="../solenoid/README.html">Example: Solenoid</a> - Very similar example with air coil solenoid magnetic field.
+</ul>
+
+<h2>Anti-Helmholtz Configuration</h2>
+
+<img src="resources/anti_helmholtz.png">
+
+<p>Reversing the current on one coil (by editing helmholtz.lua)
+produces a spherical quadrupole field, as shown above.
+See also <a href="../_redirect.html?id=helmholtz_coil">Helmholtz coil</a>
+for background (e.g. usage in MOT's).
+</p>
+
+<h2>Saddle Coil</h2>
+
+<p>A saddle coil  example is added in SIMION 8.2 early access:</p>
+<img src="resources/saddle_coil.png">
+
+<h2>Time-Varying Magnetic FIeld</h2>
+
+A time-varying magnetic field can be done using something like this:
+
+<pre class="code">
+adjustable freq = 10  -- Hz
+function segment.mfield_adjust()
+  ion_bfieldx_gu, ion_bfieldy_gu, ion_bfieldz_gu =
+    field(ion_px_mm, ion_py_mm, ion_pz_mm)
+  local f = sin(ion_time_of_flight * 1E-6 * 2 * math.pi * freq)
+  ion_bfieldx_gu = f * ion_bfieldx_gu
+  ion_bfieldy_gu = f * ion_bfieldy_gu
+  ion_bfieldz_gu = f * ion_bfieldz_gu
+end
+-- note: ion_time_of_flight units are microseconds.
+</pre>
+
+(since the B-field is proportional to current).
+Note, however, that SIMION doesn't simulate the effect of a time varying magnetic field inducing an electric field.
+See <a href="../_redirect.html?id=time_dependent_field">Doc(time_dependent_field)</a>.
+
+<h2>Changes/History</h2>
+
+<ul>
+<li>2013-05-20 - Add "saddle_coil" example (8.2 early access)
+<li>2012-02-15 - add notes on anti-Helmholtz
+<li>2011-08-26 - added three-axis Helmholtz coil option; draw coil wires (SIMION 8.1);
+  use contourlib81.lua to draw magnetic field vectors (SIMION 8.1);
+  rename helmholtz.fly2 to helmholtz_many.fly2
+  and reduce number of particles in new helmholtz.fly2.
+<li>2010-04 - D.Manura, based on solenoid example.
+</ul>
+
+
+</div>
+    
+<div class="copyright">SIMION&#153; 8.1 (c) 2003-2012 Scientific
+Instrument Services, Inc. All Rights Reserved.
+</div>
+    </body></html>
+

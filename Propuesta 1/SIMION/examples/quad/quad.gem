@@ -1,0 +1,7 @@
+; quad.gem: generates quad.pa# - middle 2D planar region of rods
+
+pa_define(39,39,1, planar,xy, electrostatic,, 0.2, surface=fractional)  ; mm/gu
+
+locate(0,0,-30) {
+  include(quad_include.gem)
+}

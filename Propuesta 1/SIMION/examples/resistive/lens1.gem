@@ -1,0 +1,12 @@
+; lens1.gem
+; Generates lens1.pa (basic PA with resistive electrodes)
+
+pa_define(251,56,1, cylindrical,, electrostatic)
+
+# for x=50,100,1 do
+e($((x-50)/50*10)) { fill { within { box($(x),50,$(x),55) } } }
+# end
+
+# for x=150,200,1 do
+e($((x-150)/50*10)) { fill { within { box($(x),50,$(x),55) } } }
+# end

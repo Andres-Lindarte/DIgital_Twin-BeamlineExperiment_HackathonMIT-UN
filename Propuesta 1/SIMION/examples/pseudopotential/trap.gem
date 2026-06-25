@@ -1,0 +1,17 @@
+; Makes hyperbolic trap as fast adjust file.
+; Electrode number 1 is ring.
+; Electrode number two is left and right end caps.
+;
+; Array should be used with scale 0.1 mm / grid unit.
+
+pa_define(126,173,1,cylindrical,xy)
+
+e(1) {
+  fill{within{hyperbola(0,0,70.8,100)}}
+}
+
+e(2) {
+  fill { within {
+    locate(,,,,,90){ hyperbola(0,0,100,70.8) }
+  }}
+}

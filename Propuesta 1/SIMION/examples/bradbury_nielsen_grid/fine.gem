@@ -1,0 +1,35 @@
+pa_define(161,251,251,planar,yz)
+
+locate(80,0,0) {
+  ; fine representation of gate
+# for i=1,7 do
+#   local y = (i-1) * 40
+    electrode(1) {
+      fill { within { circle(-10,$(y), 5) }}
+    }
+    electrode(2) {
+      fill { within { circle(10,$(y+20), 5) }}
+    }
+# end
+
+  ; cut away ends of gate wires
+  non_electrode(0) {
+    rotate_fill() { notin { box(-1e6,0,1e6,250)  }}
+  }
+
+  ; system without gate
+  locate(0,0,0, 10) {
+  locate(-100,0,0) {
+    include(system_inc.gem)
+  }}
+
+  ; artificial boundaries
+  electrode(10) {
+    fill { within { box(-80,0,-80,500) }}
+  }
+  electrode(11) {
+    fill { within { box(80,0,80,500) }}
+  }
+
+}
+

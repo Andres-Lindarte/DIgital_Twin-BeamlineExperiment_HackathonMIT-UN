@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>SIMION Buncher Example</title>
+
+<style type="text/css">
+  body { font-family: verdana, arial, sans-serif; font-size: 90%; }
+  .copyright {font-size:80%; border-top:1px solid black}
+  .title1 {background-color:#80ff80}
+  .links1 {background-color:#c0ffc0}
+  .content {max-width:30em; margin-left:5px; margin-right:5px }
+  h1 {margin-top: 0; margin-bottom: 0; background-color:#e0ffe0; font-size:130%}
+  h2 {font-size:120%}
+  h3 {font-size:110%}
+  h4, h5, h6 {font-size:100%}
+</style>
+</head>
+
+<body  marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+<div class="title1">
+<a href="../_redirect.html?id=index">SIMION&#153; 8.1</a>
+</div>
+<h1>SIMION Buncher Example</h1>
+<div class="content">
+
+
+
+<h2>Purpose/Description</h2>
+
+<p>
+The files in this directory provide an example of having user programs
+model an ion buncher.  The problem is to slow a packet of ions so that
+they converge in time.  The trick is to have the ions decelerate in a
+linear field and then (when the ions are in the middle of it) chop the
+field to zero.  Thus the leading ions will be going slower than the
+trailing ions and they will bunch together at some point downstream.
+This should serve as a simple example of how buncher design
+problems might be approached.</p>
+
+<h2>Files in this demo:</h2>
+
+<ul>
+<li>README.html - Description of example
+<li>buncher.iob - SIMION workbench
+<li>buncher.fly - SIMION particle definitions associated with buncher.iob
+<li>buncher.pa* - SIMION potential array of simple three-element buncher
+<li>target.pa   - SIMION potential array of hit target
+<li>buncher.lua - SIMION user program implementing voltage control
+                  of buncher. Associated with buncher.iob.
+</ul>
+ 
+
+<h2>Usage</h2>
+
+<p>How to run demo:</p>
+
+<ul>
+<li>1. <b>View buncher.iob.</b>
+       <i>(Click View on main screen and select the buncher.iob file.)</i>
+<li>2. If this is your first time using the example,
+       you will be <b>asked to refine</b> <i>(confirm that
+       and press Refine)</i>.
+<li>3. <b>Set trajectory quality to 3</b> for good splat numbers.
+       <i>(In Particles tab, TQual should be 3. This is the default.)</i>
+<li>4. <b>Fly ions Grouped and as Dots.</b>
+       <i>(In Particles tab, enable Grouped and Dot. Click Fly'm.)</i>
+       Note: Ions are marked when field is chopped.
+       Also ion color is changed from red to blue at transition.
+       You may switch off Dots to view trajectories as lines.
+<li>5. <b>Use PE view</b> to get a better understanding of how bunching
+       works. <i>(Press down XY button and then PE button.)</i>
+       Note: In PE view, the potential energy surface changes dynamically
+       under program control, showing how the buncher works.
+</ul>
+
+<h2>Source</h2>
+
+<p>
+Author: David Dahl.  D.Manura-2006-Updated to SIMION 8/Lua.
+</p>
+
+</div>
+    
+<div class="copyright">SIMION&#153; 8.1 (c) 2003-2012 Scientific
+Instrument Services, Inc. All Rights Reserved.
+</div>
+    </body>
+</html>

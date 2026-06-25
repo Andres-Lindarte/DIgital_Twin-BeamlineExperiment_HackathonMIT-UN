@@ -1,0 +1,27 @@
+
+; filament standoffs
+
+ pa_define(55,181,181,p,yz)
+
+; scaling is 0.010"/grid unit  or 0.254 mm/grid unit
+
+ locate(0,0,0,100,0,0,-45)
+
+{
+
+locate(0,0,0,1,-90)   ; sample mating collar
+	{
+	e(0)
+		{
+		locate(0,0,0,1,90)
+			{
+			rotate_fill(180){
+			   within{polyline( 0.000, 0.070,
+								0.000, 0.100,
+								0.540, 0.100,
+								0.540, 0.070)}
+				}
+			}
+		}
+	}
+}

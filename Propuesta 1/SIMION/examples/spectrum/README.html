@@ -1,0 +1,207 @@
+<html>
+<head>
+<title>SIMION Spectrum Acquisition Example</title>
+<style type="text/css">
+  code, .code { background-color:#f0f0f0 }
+  pre.code { margin-left:1em;}
+</style>
+
+<style type="text/css">
+  body { font-family: verdana, arial, sans-serif; font-size: 90%; }
+  .copyright {font-size:80%; border-top:1px solid black}
+  .title1 {background-color:#80ff80}
+  .links1 {background-color:#c0ffc0}
+  .content {max-width:30em; margin-left:5px; margin-right:5px }
+  h1 {margin-top: 0; margin-bottom: 0; background-color:#e0ffe0; font-size:130%}
+  h2 {font-size:120%}
+  h3 {font-size:110%}
+  h4, h5, h6 {font-size:100%}
+</style>
+</head>
+
+<body  marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+<div class="title1">
+<a href="../_redirect.html?id=index">SIMION&#153; 8.1</a>
+</div>
+<h1>SIMION Spectrum Acquisition Example</h1>
+<div class="content">
+
+
+
+<h2>Purpose</h2>
+
+<p>
+This example illustrates how to acquire a
+<a href="../_redirect.html?id=spectrum">spectrum</a>
+by performing multiple reruns, each at a different electrode voltage,
+and counting the number of particles that are accepted.
+Multiple scans can be done, and the cumulative spectrum can be displayed
+interactively in your graphical plotting program
+(e.g. Excel--see <a href="../plot/README.html">Example(plot)</a>).
+For background, see <a href="../_redirect.html?id=spectrum">Doc(spectrum)</a>.
+</p>
+
+<h2>Model Description - Parallel Plate Analyzer (PPA)</h2>
+
+<p>
+A simple ideal 2D parallel plane analyzer (PPA) is used for this example.
+The bottom plate is ground and the top plate voltage is scanned.
+Electrons enter though a slit in the bottom plate and some or
+all subsquently exit through another acceptance slit in the bottom plate.
+For a pass energy E for charge q0, the plate voltage difference must be V = k E, where k=2 (1/q0) d0/x0,
+and d0 and x0 are the distances between the plates and slits respectively.
+A plot of particle acceptance count v.s. pass energy is plotted.
+</p>
+
+<h2>Files in this Demo:</h2>
+
+<ul>
+<li>README.html - Description of example
+<li>spectrum.iob - SIMION workbench
+<li>spectrum.fly2 - SIMION particle definitions with randomized initial angle and position.
+<li>ppa2d_slits.pa0 - parallel plate analyzer array, refined from ppa2d_slits.pa#, in turn generated from ppa2d_slits.gem.
+<li>spectrum.lua - SIMION user program associated with spectrum.lua.
+   This performs the voltage scan, particle hit counting, and spectrum plotting.
+<li>blank.pa - Empty PA containing the entire workbench so that initialize/terminate segments in spectrum.lua are always
+  called.  See spectrum.lua comments for details.
+<li>This also uses plotlib.lua from
+  <a href="../plot/README.html">Example(plot)</a> and gemlib.lua from
+  <a href="../geometry_optimization/README.html">Example(geometry_optimize)</a>.
+</ul>
+
+<h2>Usage</h2>
+
+<p>How to run demo:</p>
+
+<ul>
+<li>1. <b>View spectrum.iob.</b>
+       <i>(Click View on main screen and select the spectrum.iob file.)</i>
+      If this is your first time using the example,
+       you will be <b>asked to build/refine</b> <i>(confirm that
+       and press Refine)</i>.
+<li>2. <b>Fly ions.</b>
+       <i>(Click Fly'm.)</i>
+<li>3. A cumulative scan will display in your graphical plotting program (e.g. Excel)
+  at the end of each step.
+  You may disable the graphical plotting by changing the "use_plot" adjustable variable
+  (on the Variables tab) from 1 to 0, and a histogram will still display in the Log window.
+  There are also other adjustable variables seen in spectrum.lua.
+  For example, setting plot_frequency=2
+  will update the graph only at the end of each scan, and plot_type=0 will generate a scatter plot.
+<li>4. You may quickly change the exit slit width to 10 mm by setting the <code>slit_width</code>
+  adjustable variable to 10 (on the Variables tab) and then clicking Fly'm.
+  Notice the effect of slit width on both peak width and intensity.
+</ul>
+
+<h2>Notes</h2>
+
+<p><b>Slit width adjusting:</b>
+You may quickly change the exit slit width by adjusting the <code>slit_width</code>
+adjustable variable (on the Variables tab) and then clicking Fly'm
+or entering <code>regenerate()</code> in the SIMION command bar.
+This will automatically rebuild the PA instance from the GEM file and refine it.
+The <code>regenerate</code> function is implemented by spectrum.lua.
+<code>regenerate(true)</code> will force a regeneration even if the dimensions have not changed.
+</p>
+
+<p><b>Slit effects and hit detection:</b>
+In this example, some particles pass through the exit slit but still miss the detector.
+You may try to improve this by changing the detector size, position, or voltage.
+Other particles may begin to pass through the exit slit but splat against the
+sides of the slit, thereby decreasing resolution.
+Ideally, you want the width of the plate near the slit to be designed as small
+as possible to avoid this, though not so small that electrons tunnel through
+the plate.  In SIMION, "solid" electrodes, which splat particles,
+are at a minimum one grid unit in width, while zero grid unit width electrode
+surfaces allow particles to pass through (unless you force a splat
+via an ion_splat=-1 in a user program other_actions segment).  Therefore,
+you may need to reduce the grid cell size, at least in the y direction (see
+<a href="../_redirect.html?id=anisotropically_scaled_pas">Anistropically
+scaled grid cells</a>), in order to represent your desired electrode plate
+thickness accurately.  A quick way to determine, or disregard, whether
+the slit depth is affecting results is to change the hit detection code in
+spectrum.lua to count hits against the slit sides as well.
+You could alternately change the exit slit to a solid electrode in the PA and
+change the detection code to count particles hitting certain areas of the
+bottom plate, as if the detector were part of the bottom plate and its shape
+determined entirely by the hit detection code.  This approach could even model
+a slit smaller than one grid unit and would neglect detector miss effects
+as well.  A test plane (e.g. testplanelib.lua in
+<a href="../test_plane/README.html">Example: Test Plane</a>)
+may also be useful at times for the detection code if the particles
+you want to count aren't actually hitting an electrode
+but rather passing through some region of space, like this:
+</p>
+
+<pre class="code">
+local TP = simion.import'testplanelib.lua'   -- load test plane library
+
+-- Define test plane by point vector and normal vector and use callback function
+local test1 = TP(100,0,0, 0,1,0, function()
+  if ion_px_mm &gt;= 99.5 and ion_px_mm &lt;= 100.5 then  -- accept subset of points in plane
+    count = count + 1  -- <b>HIT COUNTING</b>
+    mark()  -- just for visualization
+    print('counting', ion_number, ion_time_of_flight)
+  end
+end)
+
+-- Call test plane segments from your regular SIMION segments.
+function segment.tstep_adjust()
+  test1.tstep_adjust()
+end
+function segment.other_actions()
+  test1.other_actions()
+end
+</pre>
+
+<p><b>Scan speed:</b>
+The present model treats the electrode voltages as being constant during each
+step in the scan or, more specifically, during the time-of-flight of each particle
+traced.  Here, TOF is a fraction of a microsecond, though in IMS it could be
+milliseconds.  Whether this makes any difference depends on
+your scan speed relative to your TOF.
+If this is a concern, you could modify this example to continually increase the electrode
+voltage during each run (i.e. by incorporating ion_time_of_flight in the fast_adjust
+segment).  You could furthermore do one SIMION run per scan (rather than one
+run per step in the scan), give the particles a range of time-of-birth (TOB) values
+in the particle definitions, and measure hit counts over intervals of time
+to generate a histogram.  Such an approach may be more general and realistic.
+</p>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="../geometry/README.html">Example: Geometry</a> -- particularly,
+   parallel_plate_capacitor_2d.gem, which ppa2d_slits.gem is based on
+<li><a href="../tune/README.html">Example: Tune</a>  -- another application
+  of using reruns to scan voltages, though for voltage tuning.
+<li><a href="../plot/README.html">Example: Plot</a> - The graphical plotting
+  library used in this example
+<li><a href="../_redirect.html?id=spectrum">Doc(spectrum)</a> - general
+  notes on simulating spectra in SIMION.
+</ul>
+
+<h2>Source / History</h2>
+
+<ul>
+<li>2012-12-22 - Fix <code>plot_it</code> had extra/missing first and last steps in the scan.
+<li>2012-08-18  -
+  Tie slit widths to View screen adjustable variables.
+  Changing these automatically rebuilds PA from GEM files and refines.<br>
+  Enlarged detector to avoid loss.<br>
+  Alternate between forward/reverse scans when doing multiple scans, for a bit more realism.<br>
+  (based on comments by Zouros).
+  Replace excellib/gnuplotlib with plotlib.
+<li>2011-11-29 - update to use new SIMION 8.1.0.40 flym segment.
+<li>2011-10 - spectrum.lua now uses SIMION 8.1.0.32 initialize_run/terminate_run segments.
+<li>D.Manura-2011-08.  Thanks to Theo Zouros for inspiration and comments.
+
+</p>
+
+</div>
+    
+<div class="copyright">SIMION&#153; 8.1 (c) 2003-2012 Scientific
+Instrument Services, Inc. All Rights Reserved.
+</div>
+    </body>
+</html>

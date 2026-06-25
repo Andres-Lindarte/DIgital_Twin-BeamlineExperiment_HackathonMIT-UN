@@ -1,0 +1,142 @@
+<html>
+<head>
+<style type="text/css">
+  body { font-family: verdana, arial, sans-serif; font-size: 90%; }
+  .copyright {font-size:80%; border-top:1px solid black}
+  .title1 {background-color:#80ff80}
+  .links1 {background-color:#c0ffc0}
+  .content {max-width:30em; margin-left:5px; margin-right:5px }
+  h1 {margin-top: 0; margin-bottom: 0; background-color:#e0ffe0; font-size:130%}
+  h2 {font-size:120%}
+  h3 {font-size:110%}
+  h4, h5, h6 {font-size:100%}
+</style>
+</head>
+<body  marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+<div class="title1">
+<a href="../../_redirect.html?id=index">SIMION&#153; 8.1</a>
+</div>
+<h1>SIMION Static Charge Poisson Field Solving Examples</h1>
+<div class="content">
+
+
+
+<h2>Purpose</h2>
+
+<p>
+This demonstrates using the Poisson solver to calculate fields
+given electrodes and known distributions of static charge.
+These examples do not involve particle tracing.
+</p>
+
+<h2>Files in this demo:</h2>
+
+<ul>
+<li>sphere_simple.lua - calculates electric field of uniform sphere of charge inside a larger conductive sphere.  batch mode program.
+   2D cylindrical (spherically symmetric).
+  <ul>
+  <li>sphere_simple.gem - electric field PA definition
+  <li>sphere_simple-charge.gem - space-charge PA definition
+  </ul>
+<li>sinusoidal_pla.lua - calculates electric field of sinusoidal charge density.  batch mode program.  2D and 3D planar.
+<li>sheets_2dcyl.lua - calculates electric field of 2D cylindrical sheets of charge.  batch mode program.  2D cylindrical.
+</ul>
+
+<h2>Theory of sphere_simple.lua</h2>
+
+<p>
+The "sphere_simple.lua" example simulates a sphere of radius R<sub>1</sub> (mm) of uniform charge density
+&rho; (C/mm<sup>3</sup>)
+inside a larger spherical conductor (radius R<sub>2</sub>) at ground potential.
+The field <b>E</b> in this example has a known theoretical solution, which due to the spherical symmetry, we
+can determine simply by <a href="../../_redirect.html?id=gauss_law">Gauss' law</a>:
+</p>
+
+<blockquote>
+<b>E</b> = (&rho;/(3 &epsilon;<sub>0</sub>)) <b>r</b>
+  &nbsp; (for |<b>r</b>| &lt;= R<sub>1</sub>)
+<br>
+<b>E</b> = (&rho;/(3 &epsilon;<sub>0</sub>)) R<sub>1</sub><sup>3</sup> / <b>r</b><sup>2</sup>
+  &nbsp; (for |<b>r</b>| &gt;= R<sub>1</sub>)
+</blockquote>
+
+<p>The corresponding potentials &phi; are therefore expected to be as follows, which SIMION confirms:</p>
+
+<blockquote>
+&phi; = (&rho;/(3 &epsilon;<sub>0</sub>)) [ -(1/2)r<sup>2</sup> + (3/2)R<sub>1</sub><sup>2</sup> - R<sub>1</sub><sup>3</sup>/R<sub>2</sub> ]
+  &nbsp; (for |<b>r</b>| &lt;= R<sub>1</sub>)
+<br>
+&phi; = (&rho;/(3 &epsilon;<sub>0</sub>)) [ R<sub>1</sub><sup>3</sup>/r - R<sub>1</sub><sup>3</sup>/R<sub>2</sub> ]
+  &nbsp; (for |<b>r</b>| &gt;= R<sub>1</sub>)
+</blockquote>
+
+<h2>Theory of  sinusoidal_pla.lua</h2>
+
+<p>The "sinusoidal_pla.lua" example solves a conductive box (in 2D planar or 3D planar symmetry) with space-charge densities of the form</p>
+
+<blockquote>
+  &rho;(x,y,z) = &rho;<sub>max</sub> * sin(i &pi; x/L) * sin(j &pi; y/M) * cos(k &pi; z/N)
+</blockquote>
+
+<p>This system has a theoretical solution.
+See the comments in sinusoidal_pla.lua for details.  This example is a bit more complicated but uses utility functions in "palib.lua"
+to help setup the system.</p>
+
+<h2>Theory of sheets_2dcyl.lua</h2>
+
+<p>The "sheets_2dcyl.lua" example solves the field from a system consisting of any number of concentric cylindrical sheets of charge of
+various charge densities.
+The space-charge density is therefore an arbitrary function of only the radial distance r
+(i.e. with no dependence in the axial direction). This system has a theoretical solution.
+See the comments in sheets_2dcyl.lua for details.</p>
+
+<h2>How to run this demo:</h2>
+
+<ul>
+<li>1. <B>Run the sphere_simple.lua in batch mode program</b>.
+       <i>(Click Run Lua Program on the main screen and select the Lua file.)</i>
+       The program will build the arrays, refine them, and display a comparison of actual
+       calculated potentials to theoretical ones.
+       You can examine the sphere_simple.pa in the View screen, such as to plot PE or contours.
+<li>2. <B>Run the sinusoidal_pla.lua or sheets_2dcyl.lua batch mode program</b>.
+       <i>(Click Run Lua Program on the main screen and select the Lua file.)</i>
+       The program will build the arrays, refine them, and report the relative error
+       of the SIMION computed potentials against theoretical expectations
+       (approximately 0.001).
+</ul>
+
+<p>
+Examining the source code is highly instructive and important to understanding
+these examples.
+</p>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="../README.html">Example: Poisson</a>
+<li><a href="../pipe_with_charge/README.html">Example: poisson\pipe_with_charge</a> example is related, involing a field
+  calculation of a static tube of charge in a conductive pipe
+<li><a href="../../dielectric/README.html">Example: Dielectric</a> examples include a few static field calculation examples
+  involving dielectrics and space-charge simultaneously (including a charged floating conductor).
+<li><a href="../../_redirect.html?id=poisson_solver">SIMION Poisson solver documentation</a>
+</ul>
+
+<h2>Changes</h2>
+
+<pre>
+2011-07-19
+  - field2dplanar.lua - Add 3D support.
+  - field2dplanar.lua and field2dcylindrical.lua - add anisotropic scaling support.
+2011-12-29 - Merged fieldutil.lua into palib.lua.
+2011-12-29 - Renamed field_2dpla.lua and field_2dcyl.lua
+    to sinusoidal_pla.lua and sheets_2dcyl.lua respectively.
+2011-12-29 - Added sphere_simple.lua (a simpler example).
+</pre>
+
+</div>
+    
+<div class="copyright">SIMION&#153; 8.1 (c) 2003-2012 Scientific
+Instrument Services, Inc. All Rights Reserved.
+</div>
+    </body>
+</html>

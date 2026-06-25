@@ -1,0 +1,67 @@
+; **********************************************************************
+; ****************	electron trapping tube electrode  ******************
+; **********************************************************************
+
+
+locate(0.480,0,0,1,-90) 	; swing back 90 deg cw in azimuth and
+	{						; shift lens right 0.48" to align with origin.
+	locate(0,0,0,1,90)			;swing 90 deg ccw in azimuth
+		{
+		rotate_fill(180){				  ;create 1/2 volume of revolution
+		   within{polyline( 0.000, 1.310, ;defines cross section of
+							0.000, 1.750, ;elect trapping electrode
+							0.200, 1.750,
+							0.200, 1.310,
+							0.370, 1.310,
+							0.370, 1.260,
+						   -0.480, 1.260,
+						   -0.480, 1.310)}
+			}
+		}
+	n(0)				;erase with zero volt non-electrode points
+		{
+		fill{			;community erasing fill
+
+			locate(0,0,0,1,0,-45)	;swing 45 deg cw in elevation
+			 {
+			 locate(0,1.65) 		;shift up in y to radius to use
+			  { 					;define set of mounting holes
+			  within_inside{cylinder(0,0,0.001,.100,,.051)} ;left insulator mount
+			  within_inside{cylinder(0,0,0.001,.065,,.202)} ;mounting hole
+			  within_inside{cylinder(0,0,-.150,.100,,.051)} ;right insulator mount
+			  }
+			 }
+
+			locate(0,0,0,1,0,-135)	;swing 135 deg cw in elevation
+			 {
+			 locate(0,1.65) 		;shift up in y to radius to use
+			  { 					;define set of mounting holes
+			  within_inside{cylinder(0,0,0.001,.100,,.051)} ;left insulator mount
+			  within_inside{cylinder(0,0,0.001,.065,,.202)} ;mounting hole
+			  within_inside{cylinder(0,0,-.150,.100,,.051)} ;right insulator mount
+			  }
+			 }
+
+			locate(0,0,-0.201,1,0,0)		;swing 0 deg cw in elevation
+			 {
+			 within_inside{box3d(-.4,1.5,0,.4,2,0.202)} ; front clearance area
+			 }
+			locate(0,0,-0.201,1,0,-22.5)	;swing 22.5 deg cw in elevation
+			 {
+			 within_inside{box3d(-.4,1.5,0,.4,2,0.202)} ; front clearance area
+			 }
+			locate(0,0,-0.201,1,0,-67.5)	;swing 67.5 deg cw in elevation
+			 {
+			 within_inside{box3d(-.4,1.5,0,.4,2,0.202)} ; front clearance area
+			 }
+			locate(0,0,-0.201,1,0,-90)		;swing 90 deg cw in elevation
+			 {
+			 within_inside{box3d(-.4,1.5,0,.4,2,0.202)} ; front clearance area
+			 }
+			locate(0,0,-0.201,1,0,-112.5)	;swing 112.5 deg cw in elevation
+			 {
+			 within_inside{box3d(-.4,1.5,0,.4,2,0.202)} ; front clearance area
+			 }
+			}
+		}
+	}

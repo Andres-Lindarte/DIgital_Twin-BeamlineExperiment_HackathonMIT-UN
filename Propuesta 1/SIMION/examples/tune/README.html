@@ -1,0 +1,258 @@
+<html>
+<head>
+<title>SIMION Voltage Optimization Examples</title>
+
+<style type="text/css">
+  body { font-family: verdana, arial, sans-serif; font-size: 90%; }
+  .copyright {font-size:80%; border-top:1px solid black}
+  .title1 {background-color:#80ff80}
+  .links1 {background-color:#c0ffc0}
+  .content {max-width:30em; margin-left:5px; margin-right:5px }
+  h1 {margin-top: 0; margin-bottom: 0; background-color:#e0ffe0; font-size:130%}
+  h2 {font-size:120%}
+  h3 {font-size:110%}
+  h4, h5, h6 {font-size:100%}
+</style>
+</head>
+<style type="text/css">
+.code, code {background-color: #f0f0f0; }
+.code { margin-left:1em; }
+</style>
+
+<body  marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+<div class="title1">
+<a href="../_redirect.html?id=index">SIMION&#153; 8.1</a>
+</div>
+<h1>SIMION Voltage Optimization Examples</h1>
+<div class="content">
+
+
+
+<h2>Purpose</h2>
+
+<p>
+These are simple examples of doing <b>electrode voltage optimization</b>.
+The simulation is automatically run many times using different
+values of voltages for each run.
+</p>
+
+<h2>Description</h2>
+
+<p>
+The files in this directory provide an example of having user programs
+tune a lens.  It serves as a moderately complex control problem and
+should be studied for tricks of the trade.  This should serve as a
+simple example of how tuning problems might be approached.
+</p>
+
+<p>
+A simple three element fast adjust lens is provided for tuning.
+The middle electrode is adjusted via a user program.
+</p>
+
+<h2>Files in this demo:</h2>
+
+<ul>
+<li>README.html - Description of example
+<li>tune.iob - SIMION workbench, traditional binary search voltage optimization
+  <ul>
+  <li>tune.fly - SIMION particle definitions associated with tune.iob
+  <li>tune.pa* - SIMION potential array of simple three-element lens
+  <li>tune.lua - SIMION user program associated with tune.iob.
+                 This performing the tuning.
+  </ul>
+<li>tune_binaryoptlib.iob - SIMION workbench, binary search voltage optimization
+      implemented as a separate library (easier to use)
+<li>tune_simplex.iob - SIMION workbench simplex optimizer.
+<li>tune_series.iob - SIMION workbench, iterating through a series of
+  voltages A and B
+<li>tune_random.iob - SIMION workbench, iterates through a random
+  sequences of voltages A and B.  Optionally writes to Excel.
+</ul>
+
+<h2>Usage</h2>
+
+<p>How to run demo (tune.iob):</p>
+
+<ul>
+<li>1.  <b>View tune.iob.</b>
+        <i>(Click View on main screen and select the tune.iob file.)</i>
+<li>2.  If this is your first time using the example,
+        you will be <b>asked to refine</b> <i>(confirm that
+        and press Refine)</i>.
+<li>3.  <b>Set trajectory quality to 2</b> (need good splat numbers).
+        <i>(In Particles tab, set TQual to 2.)</i>
+<li>4.  <b>Fly ions Grouped.</b>
+        <i>(In Particles tab, enable Grouped and click Fly'm.)</i>
+        Tune results can be seen in the <b>Log tab</b>.
+<li>5.  Note: You can use the <b>Variables tab</b> to change focus goal during
+        flights.
+</ul>
+     
+<p>More (tuning in PE view):</p>
+
+<ul>
+<li>
+   When you tune in PE view the user programs automatically update
+   the PE surface view to show surface currently being tested!
+</ul>
+
+<p>More (tuning with beam repulsion effects):</p>
+     
+<ul>
+<li>1.  <b>Set for Beam Repulsion at 1.0e-7 amps  and trajectory quality = 0.</b>
+        <i>(In Particles tab, set Repulsion to Beam and enter 1.0e-7 in the text
+         box below that.  Set TQual to 0.)</i>
+<li>2.  <b>Fly ions Grouped.</b>
+        <i>(In Particles tab, enable Grouped. Click Fly'm.)</i>
+</ul>
+
+<p>Other examples (.iob files) can be used in a similar manner.
+See their associated .lua files for details on implementation.</p>
+
+<h2>Additional Notes</h2>
+
+<h3>Implementation Comments</h3>
+
+<p>Voltages are changed between runs by <b>fast adjusting</b>, which is very
+rapid.  This is achieved via a fast_adjust or init_p_values user program
+segment.</p>
+
+<h3>Applications</h3>
+
+<p>
+These examples were primarily designed for the purposes of optimizing
+electrode voltages.  However, the basic concept may also be used for
+optimizing other conditions, such as starting particle conditions
+(e.g. position).  Optimizing geometries is also a common need but is a little
+more involved because the potential arrays need rebuilt and re-refined on
+each iteration (see link to geometry optimization examples at bottom).
+</p>
+
+<h3>The Basic Approach</h3>
+
+<p>
+The basic goal of optimization is to find an input value x that minimizes the
+value y = f(x), where f is some function that we can evaluate but might not
+otherwise know much about.  In the context of SIMION, we typically have that x
+is an electrode voltage (or a vector representing voltages of multiple
+electrodes), y is some property of the particle beam (e.g. beam radius or
+focal point), and f the simulation system.  f is evaluated by doing a SIMION
+run.  We can evaluate f many times, by inputting various values of x and
+measuring y each time.
+</p>
+
+<p>
+Now, we could exhaustively evaluate f at all points over the domain of x with
+some precision.  This could require a huge number of evaluations.  For
+example, to find a global minimum of f over the domain x=[0,1] with four
+decimal point precision, this will generally require evaluating f at points
+x=0, 0.0001, 0.0002, ... 1.0000 (i.e. 10000 points).  If, however, we know or
+suspect that f behaves in a certain way, we can do the search more
+intelligently.  For example, if we know or suspect that f has a local minimum
+in the domain x=[0,1] and that f always increases when moving to the right or
+left of the minimum, then we can do a directed search: if f was previously
+evaluated at x<sub>i</sub> and x<sub>i+1</sub>, then the next point
+x<sub>i+2</sub> is chosen toward the direction of x<sub>i</sub> if
+f(x<sub>i</sub>) &lt; f(x<sub>i+1</sub>), or toward the direction of
+f(x<sub>i+1</sub>) otherwise.  (This is similar to the children's
+"higher/lower" number guessing game.)
+</p>
+
+<h3>Automating reruns</h3>
+
+<p>
+This example performs a series of trajectory calculation runs from a "flym" segment, which is a new segment
+type in SIMION 8.1.0.40.  The flym segment will initiate a run each time it calls <code>run()</code>.
+This call is typically preceeded by code to initialize the parameters of the run and followed by code to
+store the results of that run.
+See "Workbench Program Extensions in SIMION 8.1"
+(<a href="../_redirect.html?id=workbench_program_extensions">workbench_program_extensions</a>)
+in the supplemental documentation (Help menu) for details.  The following example illustrates the basic concept
+of doing three runs at three different voltages (100 V, 200 V, and 300 V):
+</p>
+
+<pre class="code">
+function segment.workbench_program()
+
+local v0
+
+function segment.flym()
+  for i = 1, 3 do
+    v0 = 100 * i
+    run()
+  end
+end
+
+function segment.fast_adjust()
+  adj_elect01 = v0
+end
+</pre>
+
+<h3>Optimization Libraries</h3>
+
+<p>
+If you need to optimize a variable or two in your simulation, it's often
+simplest to use one of the existing optimization libraries rather than write
+your own code.  A few libraries are provided: the simplex optimizer
+(simionx.SimplexOptimizer) or the binary search optimizer (binaryoptlib.lua).
+These are each demonstrated in the tune_simplex.iob and tune_binaryoptlib.iob
+examples.  Either works well for optimizing a single variables.  The simplex
+optimizer is more general and is required for optimizing multiple variables at
+a time.
+</p>
+
+<p>
+The above optimizers only find <i>local minima</i>; they do not find <i>global
+minima</i>.  To find global maxima, use tune_series.iob or tune_random.iob.
+tune_series.iob iterates through all voltages in linear sequence.
+tune_random.iob runs through a random sequence of voltages.
+</p>
+
+<h2>Changes</h2>
+
+<ul>
+<li>2011-11-29 - tune.lua now uses new flym/initialize_run/terminate_run segments
+  in SIMION 8.1.0.40.
+<li>2011-11-29 - added more examples (tune_series.iob, tune_simplex.iob,
+tune_binaryoptlib.iob, tune_random.iob).
+<li>2007-04 - fix update_pe.
+<li>2006-08 - ported to Lua D.Manura.
+<li>2003-11 - ported to SL (D.Manura, Scientific Instrument Services, Inc.)
+           based on SIMION 7.0 TUNE.PRG by D.A.Dahl.
+</ul>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="../hda/README.html">Example: HDA</a>, which uses a
+simplex optimization routine to optimize multiple variables
+simultaneously.  Also plots minimization surface in Excel.
+<li><a href="../lens_properties/README.html">Example: Lens properties</a> -
+uses simplex optimizations for voltage tuning.
+<li><a href="../geometry_optimization/README.html">Example: Geometry optimization</a>
+  - optimizing geometries
+
+</ul>
+
+<h2>History/Changes</h2>
+
+<ul>
+<li>2012-08-15: tune_simplex.iob: Display tuning goal at end, like other examples.
+  binaryoptlib.lua: n wasn't incrementing in output.
+  Rename voltages A and B with electrode numbers.
+  tune_series.lua: Add V2_count/V3_count variables, and use excellib.
+<li>D.Manura-2006-08 updated to SIMION8/Lua.
+<li>D.Manura-Updated to SL version.
+<li>Author: David Dahl.
+</p>
+
+</div>
+    
+<div class="copyright">SIMION&#153; 8.1 (c) 2003-2012 Scientific
+Instrument Services, Inc. All Rights Reserved.
+</div>
+    </body>
+</html>
+
+     

@@ -1,0 +1,12 @@
+; GEM file for magnetic vector potential array.
+; Defines bottom and top Dirichlet conditions.
+
+pa_define(201,201,1, planar,none,magnetic,100, 0.5,0.5,0.5)  ; 0.5 mm/gu
+
+e(100) {
+  fill { within { box2d(0,0, 0,100) } }
+}
+
+e(0) {
+  fill { within { box2d(100,0, 100,100) } }
+}

@@ -1,0 +1,5 @@
+; magnetic sector, 2D planar (entrance and exit regions)
+pa_define(101,101,1, planar,none,magnetic,3, 0.1,1,1)
+
+e(0)    { fill { within { box2d(0,0,  3.5,50) } } }
+e(1000) { fill { within { box2d(6.5,0 10.0,50) } } }

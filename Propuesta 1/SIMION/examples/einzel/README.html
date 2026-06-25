@@ -1,0 +1,134 @@
+<html>
+<head>
+<title>SIMION Einzel Lens Example</title>
+
+<style type="text/css">
+  body { font-family: verdana, arial, sans-serif; font-size: 90%; }
+  .copyright {font-size:80%; border-top:1px solid black}
+  .title1 {background-color:#80ff80}
+  .links1 {background-color:#c0ffc0}
+  .content {max-width:30em; margin-left:5px; margin-right:5px }
+  h1 {margin-top: 0; margin-bottom: 0; background-color:#e0ffe0; font-size:130%}
+  h2 {font-size:120%}
+  h3 {font-size:110%}
+  h4, h5, h6 {font-size:100%}
+</style>
+</head>
+
+<body  marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+<div class="title1">
+<a href="../_redirect.html?id=index">SIMION&#153; 8.1</a>
+</div>
+<h1>SIMION Einzel Lens Example</h1>
+<div class="content">
+
+
+
+<h2>Purpose</h2>
+
+<p>The files in this directory provide an example of a simple
+einzel lens.<a href="http://en.wikipedia.org/wiki/Einzel_lens">[1]</a></p>
+
+<h2>Files in this demo:</h2>
+
+<ul>
+<li>README.html - Description of example
+<li>einzel.iob - SIMION workbench
+<li>einzel.fly - SIMION particle definitions associated with einzel.iob
+<li>einzel.pa* - SIMION potential array of simple three-element lens
+<li>einzel.gem - geometry file optionally used to create einzel.pa#.
+   Einzel.pa# can be easily created in Modify without GEM files though.
+   einzel_cylinder.gem and einzel_param.gem illustrate two alternate ways to
+   define the GEM file.
+</ul>
+ 
+<h2>Usage</h2>
+
+<p>How to run demo:</p>
+
+<ul>
+<li>1. <B>View einzel.iob.</b>
+       <i>(Click View on main screen and select the einzel.iob file.)</i>
+       You will not be asked to refine it since this
+       example comes pre-refined.
+<li>2. <b>Set trajectory quality to 0.</b>
+       <i>(Set TQual in Particles tab to 0.)</i>
+<li>3. <b>Fly ions Grouped in Rerun mode.</b>
+       <i>(Enable Grouped and Rerun options on Particles tab and then
+          click Fly'm.)</i>
+       Notice point of focus.  Ions will continually refly, so
+       continue to next step.
+<li>4. <b>Change electrode 2 to 150 volts</b>
+       and see the change in focus point.
+       <i>(In PAs tab, click Fast Adjust Voltages, change electrode 2
+       to 150 volts, and press Fast Adjust.)</i>       
+<li>5. <b>Switch to PE view and enable Dots.</b>
+       <i>(With XY button down, press down PE button.  In Particles tab,
+       enable Dots.)</i> 
+       Now you can see why the ions focus.
+<li>6. <b>Exit PE view and stop flying ions.</b>
+       <i>(Unpress PE button.  Unpress Fly'm button.)</i>
+<li>7. <b>Enable Beam Repulsion.</b>
+       <i>(In Particles tab, set Repulsion to Beam.)</i>
+<li>8. <b>Fly the ions, and increase the beam current to 1.0e-7 amps.</b>
+       <i>(Click Fly'm button. In Particles tab, under Beam, type
+       1.0e-7 and press Enter.)</i>
+       Notice the effect this has on ion trajectories.
+</ul>
+
+<p style="margin-left:3em">
+Note: This is a good demo to use to learn about 3D zooming and
+other basic SIMION features.  Read your manual, spend some time and
+enjoy!</p>
+
+<h2>Background</h2>
+
+<p>
+See Chapter 2 "SIMION Basics" of the printed SIMION manual
+for a description of how to create an example similar to this from
+scratch.
+The <a href="../_redirect.html?id=demotour">Tour of the SIMION Demo</a>
+also contains a good look at the Einzel example.
+</p>
+
+<h2>Geometry Definition</h2>
+
+<p>
+einzel.pa# is a simple 2D cylindrical geometry with three electrodes.
+It is easily drawn using SIMION Modify using methods similar to that
+described in Chapter 2 "SIMION Basics" of the printed SIMION manual.
+If you prefer, einzel.pa# may alternately be created from a GEM file.
+Three GEM files are provided in this directory illustrating different approaches
+you may take for defining the GEM file (einzel.gem is the simplest).
+There is also an STL file (two_cylinder.stl) in
+<a href="../geometry/README.html">Example(geometry)</a>
+that somewhat resembles this geometry.
+</p>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="../tune/README.html">Example: Tune</a>: simple optimization of lens voltages
+<li><a href="../lens_properties/README.html">Example: Lens Properties</a> provides more extensive examples of calculations and curve plotting for
+n-cylinder electrostatic lenses.
+<li><a href="../_redirect.html?id=lens">Doc(lens)<a>: documentation on simulating lenses in SIMION.
+<li><a href="../_redirect.html?id=demotour">Doc(Tour of the SIMION Demo)</a>:
+  contains a good look at the Einzel example.
+</ul>
+
+<h2>History/Changes</h2>
+
+<ul>
+<li>2012-08-28: Add einzel.gem, einzel_cylinder.gem, and einzel_param.gem.
+<li>2006: Update docs to SIMION 8 (D.Manura)
+<li>David Dahl (from SIMION &le; 7/6)
+</p>
+
+</div>
+    
+<div class="copyright">SIMION&#153; 8.1 (c) 2003-2012 Scientific
+Instrument Services, Inc. All Rights Reserved.
+</div>
+    </body>
+</html>       
+     

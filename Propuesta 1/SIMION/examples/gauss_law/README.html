@@ -1,0 +1,218 @@
+<html>
+<head>
+<title>SIMION Gauss's Law Charge/Capacitance and Field Energy Calculation Example</title>
+
+<style type="text/css">
+  body { font-family: verdana, arial, sans-serif; font-size: 90%; }
+  .copyright {font-size:80%; border-top:1px solid black}
+  .title1 {background-color:#80ff80}
+  .links1 {background-color:#c0ffc0}
+  .content {max-width:30em; margin-left:5px; margin-right:5px }
+  h1 {margin-top: 0; margin-bottom: 0; background-color:#e0ffe0; font-size:130%}
+  h2 {font-size:120%}
+  h3 {font-size:110%}
+  h4, h5, h6 {font-size:100%}
+</style>
+</head>
+
+<body  marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+<div class="title1">
+<a href="../_redirect.html?id=index">SIMION&#153; 8.1</a>
+</div>
+<h1>SIMION Gauss's Law Charge/Capacitance and Field Energy Calculation Example</h1>
+<div class="content">
+
+
+
+
+<h2>Purpose</h2>
+ 
+<p>This example demonstrates methods of calculating the total charge
+(or the capacitance) inside a given volume via Gauss's Law[1] or via
+the total field energy.  It does so by evaluating integrals over the
+SIMION calculated electric field via the <a
+href="../_redirect.html?id=perl_simion.pa">SL Libraries for Perl</a> or the
+Lua <a href="../_redirect.html?id=lua_simion.pas">simion.pas</a> and <a
+href="../_redirect.html?id=lua_simionx.FieldAnalysis">simionx.FieldAnalysis</a>
+libraries.</p>
+
+<p>NOTE: This example requires knowledge of Perl or Lua programming
+languages.</p>
+
+<h2>Description</h2>
+
+<p>
+The total charge inside a given volume &Omega; bounded by some surface S can
+be computed from Gauss's Law[1] if the electric field E over
+that surface is known (which you can calculate in SIMION):
+</p>
+
+<blockquote>charge = &epsilon;<sub>0</sub> * &int;&int;<sub>S</sub> E * dA</blockquote>
+
+<p>An alternate method, for a capacitor, is to first compute the energy W
+of the electric field E inside a volume containing both electrodes:</p>
+
+<blockquote>W = &int;&int;&int;<sub>&Omega;</sub> (0.5*&epsilon;<sub>0</sub>) E<sup>2</sup> d&tau;</blockquote>
+
+<p>The energy W can be related to the charge Q on the two electrodes
+via the voltage difference &Delta;V as W = Q&Delta;V/2.</p>
+
+<p>So, the steps required to compute total charge inside a volume are
+</p>
+
+<ul>
+<li>(1) Create and refine a SIMION potential array (solving the
+fields).
+<li>(2) Compute the appropriate integral over some region of the
+potential array to find total charge.  Optionally use that to
+compute a capacitance[2]: C = Q / |&Delta;V|.</p>
+
+</ul>
+
+<p>
+Computing the integral can be done in various ways. You might
+even utilize SIMION Data Recording. However, this task is best
+facilitated instead with a custom program contained here.  This
+program will examine a SIMION potential array (PA) file and calculate
+the total charge in the specified sphere or box surface
+containing an electrode.  The integration is done using a fairly
+simple but effective quasirandom Monte-Carlo method.
+</p>
+
+<p>
+As an example, we'll use here the simple spherical capacitor system
+consisting of two concentric spherical electrodes with radii R1=80 mm
+and R2=120 mm and voltages V1=500 V and V2=-1000/3 V.  According to
+theory, the charge on the inner sphere should have charge Q =
+(&Delta;V) * 4 &pi; &epsilon;<sub>0</sub> (R1<sup>-1</sup> -
+R2<sup>-1</sup>)<sup>-1</sup>, giving Q ~= 2.225301E-8 C, or the
+negative of that on the outer sphere.  The voltage along r (in m)
+should be V=200000*(1/r) - 2000, so the field should be E =
+200000r<sup>-2</sup>.  The energy stored in the capacitor is
+(1/2)CV<sup>2</sup> = (1/2)QV = 9.272084E-6 J.
+</p>
+
+<p>There are two versions of the program: Perl and Lua.  The Perl
+version uses the <a href="../_redirect.html?id=perl_simion.pa">SL Libraries
+for Perl</a>.  The Lua version uses the Lua <a
+href="../_redirect.html?id=lua_simion.pas">simion.pas</a> and <a
+href="../_redirect.html?id=lua_simionx.FieldAnalysis">simionx.FieldAnalysis</a>
+libraries in SIMION 8.1.  The Perl version was developed earlier and has fewer
+capabilities than the Lua version.</p>
+
+<h2>Files in this demo:</h2>
+
+<ul>
+<li>README.html - Description of example
+<li>Perl version:
+  <ul>
+  <li>run.pl - Perl batch mode program to do the calculation (requires a Perl interpreter be installed)
+  <li>FieldAnalysis.pm - Perl module containing the integration routines<li>
+  </ul>
+<li>Lua version:
+  <ul>
+  <li>run.lua - Lua batch mode program to do the calculation (requires SIMION 8.1)
+  </ul>
+<li>sc2d.gem, sc2d10.gem, and sc3d.gem - various GEM file models of spherical
+  capacitors, in 2D and 3D, including a 2D one at 10x resolution.
+<li>sc2d.pa, sc2d10.pa, and sc3d.pa - PA files you must generate from
+  the GEM files.
+</ul>
+
+<h2>Usage - Perl Example</h2>
+
+<p>How to run the demo:</p>
+
+<ul>
+<li>1. Ensure you have Perl installed (this was tested on Perl 5.8).
+<li>2. Convert one of the GEM files to a PA, refine in SIMION, and save.
+<li>3. In the run.pl program edit the $pa_name and $lambda
+       variables to match the PA file you created.
+<li>4. Run the run.pl Perl program.  That, is from the command-line in the
+       directory of this project run "perl run.pl".
+<li>5. The solution will converge and display on the screen.    
+</ul>
+
+<p>
+For this spherical capacitor system, the run.pl program is
+configured basically as follows:
+</p>
+
+<pre>
+ # $pa_name: location of the SIMION potential array (PA) file.
+ # $L: mm/gu scaling factor used in the PA.
+ my ($pa_name, $L) = ('sc3d.pa', 1);
+ 
+ # load potential array
+ my $pa = SIMION::PA->new(file => $pa_name);  
+ 
+ # load potential array
+ my $pa = SIMION::PA->new(file => $pa_name);
+
+ # calculate total charge using Gauss's Law.
+ print "EXPECTING: 2.225301E-8\n";
+ &FieldAnalysis::charge_from_gauss_law_display(
+   $pa,
+   &FieldAnalysis::sphere(0,0,0, 100),
+   $L,
+   0.1, 0.0001
+ );
+</pre>
+
+<p>
+SIMION results are 2.249E-8 C (3D), 2.242E-8 C (2D), 2.2269E-8 C (2D,
+lambda=10 gu/mm).</p>
+
+<h2>Usage - Lua Example</h2>
+
+<p>The Lua version has a number of advantages such as the ability to
+run it directly inside SIMION (the implementation is also newer and
+more complete).</p>
+
+<p style="background-color:#ffffc0">This example uses SIMION 8.1
+features.</p>
+
+<p>How to run the demo:</p>
+
+<ul>
+<li>1. Click "Run Lua Program" from the SIMION main screen and select the "run.lua"
+program.  Output is displayed on the log window.
+</ul>
+
+<p>Further details are available in the documentation on the Lua <a
+href="../_redirect.html?id=lua_simionx.FieldAnalysis">simionx.FieldAnalysis</a>
+library.</p>
+
+<h2>Changes</h2>
+
+<ul>
+<li>2009-12-30 - add cylinder shape to FieldArray.pm.
+</ul>
+
+<h2>See Also</h2>
+
+<ul>
+<li>[1] <a href="http://en.wikipedia.org/wiki/Gauss's_law">Gauss's Law</a> - definition
+<li>[2] <a href="http://en.wikipedia.org/wiki/Capacitance">Capacitance</a> - definition
+<li>[*] <a href="../_redirect.html?id=perl_simion.pa">SL Libraries for Perl</a> - used by the Perl version of this example to extract potentials/fields from SIMION arrays.
+<li>[*] Lua <a href="../_redirect.html?id=lua_simion.pas">simion.pas</a> library - used by this example to extract potentials/fields from SIMION arrays.
+<li>[*] Lua <a href="../_redirect.html?id=lua_simionx.FieldAnalysis">simionx.FieldAnalysis</a> library - used by this example to perform the Gauss's Law and field energy integrations
+<li>[*] <a href="../multipole_expansion/README.html">Example: multipole_expansion</a> is another SIMION example that analyzes fields.
+
+</ul>
+
+<h2>Source</h2>
+
+<p>
+D.Manura, 2006-2007.
+</p>
+
+</div>
+    
+<div class="copyright">SIMION&#153; 8.1 (c) 2003-2012 Scientific
+Instrument Services, Inc. All Rights Reserved.
+</div>
+    </body>
+</html>
+
+     

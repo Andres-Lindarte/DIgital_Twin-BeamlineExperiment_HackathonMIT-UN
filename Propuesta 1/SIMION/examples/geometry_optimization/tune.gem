@@ -1,0 +1,11 @@
+; SIMION GEM file with parameterization.
+
+# -- dx is the axial x-offset in grid units.
+# local dx = _G.dx or 0
+
+# local x1 = 40 + dx  -- x position of central electrode left edge
+
+pa_define(100,40,1, cylindrical, electrostatic)
+electrode(1) { fill { within { corner_box(0,0, 4,39) } } }
+electrode(2) { fill { within { corner_box($(x1),21, 16,39) } } }
+electrode(3) { fill { within { corner_box(96,0, 3,39) } } }

@@ -1,0 +1,13 @@
+Pa_define(101,101,101,p,n)	; 10 mill planar non-mirrored
+
+Locate(50,50,50,100)		; center object and scale to 100 gu per inch
+{
+E(0){fill{
+		within{sphere(0,0,0,.5)box3d(-1,-1,-1,1,0,1)}
+		notin_inside{sphere(0,0,0,.4,.4,.2)}
+		notin_inside{circle(0,0,.1)}
+		notin_inside{locate(0,0,0,1,90){circle(0,0,.1)}}
+	}}
+}
+
+

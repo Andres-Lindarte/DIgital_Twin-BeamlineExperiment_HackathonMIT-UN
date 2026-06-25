@@ -1,0 +1,886 @@
+<html>
+<head>
+<style type="text/css">
+.code, code {background-color: #f0f0f0;}
+</style>
+
+<style type="text/css">
+  body { font-family: verdana, arial, sans-serif; font-size: 90%; }
+  .copyright {font-size:80%; border-top:1px solid black}
+  .title1 {background-color:#80ff80}
+  .links1 {background-color:#c0ffc0}
+  .content {max-width:30em; margin-left:5px; margin-right:5px }
+  h1 {margin-top: 0; margin-bottom: 0; background-color:#e0ffe0; font-size:130%}
+  h2 {font-size:120%}
+  h3 {font-size:110%}
+  h4, h5, h6 {font-size:100%}
+</style>
+</head>
+
+<body  marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+<div class="title1">
+<a href="../_redirect.html?id=index">SIMION&#153; 8.1</a>
+</div>
+<h1>Magnetic Scalar/Vector Potential with Permeability and Current Density
+  and Poisson Solving Examples</h1>
+<div class="content">
+
+
+  
+<h2>Purpose</h2>
+
+<p>
+These examples demonstrate use of the
+<a href="../_redirect.html?id=poisson_solver">Poisson solver</a>
+to solve magnetic fields involving arbitrary distributions of current density
+(<b>j</b>) and magnetic permeability (&mu;) in space.
+Both magnetic scalar potential (&Omega;) and magnetic vector potential
+(<b>A</b>) approaches are tested, when applicable.
+For background on theory and applicability, see
+<a href="../_redirect.html?id=magnetic_potential">Magnetic Potential</a>.
+In the case magnetic scalar potentials &Omega;, the boundary conditions on
+&Omega; and the relative magnetic permeabilities &mu;<sub>r</sub> through
+space are fed
+into the
+<a href="../_redirect.html?id=poisson_solver">Poisson solver</a>
+to determine &Omega; throughout space.
+The magnetic H-field is then <b>H</b> = - grad &Omega;, and the B-field is
+<b>B</b> = (&mu;<sub>r</sub>&mu;<sub>0</sub>) <b>H</b>.
+In the case of magnetic vector potentials <b>A</b>, the boundary conditions
+on <b>A</b>, the relative magnetic permeabilities &mu;<sub>r</sub>
+through space, and the (free) current densities <b>j</b> are fed into the
+Poisson solver to determine <b>A</b> throughout space.
+The magnetic B-field is then <b>B</b> = curl <b>A</b>.
+</p>
+
+<p>
+These examples compare the calculated <b>B</b> to theory, both in tables and
+in plots.
+</p>
+
+<p>
+<B>Version Note:</b> these examples utilize upcomming SIMION 8.2 features
+for magnetic permeability and magnetic vector potential.
+You can beta test these features using
+<a href="../_redirect.html?id=early_access">early access mode</a>,
+which is enabled by the contained Lua programs.
+</p>
+
+<h2>Files in this demo:</h2>
+
+<ul>
+<li>README.html - about this example
+<li>uniform_2dp.iob - uniform magnetic field (2D planar)--simple
+      (no currents or permeable materials).
+<li>current_cylinder_2dp.iob - magnetic field due to infinite cylinder
+      of uniform current (2D planar).
+<li>current_cylinder_2dc.iob - magnetic field due to rotating sphere
+      of uniform charge (2D cylindrical).
+<li>current_sphere_3dp.iob - magnetic field due to rotating sphere
+      of uniform charge (3D).
+<li>mu_cylinder_2dp.iob - magentic field due to permeable cylinder
+      in transverse magnetic field (2D planar)
+<li>mu_sphere_2dc.iob - magentic field due to permeable sphere in
+      transverse magnetic field (2D cylindrical)
+<li>mu_sphere_3dp.iob - magentic field due to permeable sphere in
+      transverse magnetic field (3D planar)
+<li>mu_torus_3dp.iob - magentic field due to permeable torus in
+      transverse magnetic field (3D planar)
+<li>mucurrent_cylinder_2dp.iob - magnetic field due to permeable
+      cylinder with current in transverse magnetic field (2D planar).
+<li>c_magnet_2dp.iob - "C"-magnet in 2D planar symmetry.
+<li>spotential_from_bfield.iob - convert B-field vectors to
+      magnetic scalar potential PA.
+<li>mag_cylinder_2dc.iob - magnetic field due to uniformly magnetized cylinder
+      (2D cylindrical)
+<li>mag_2cylinder_2dc.iob - magnetic field due to two coaxial uniformly magnetized cylinders
+      (2D cylindrical)
+<li>mag_sphere_2dc.iob - magnetic field due to uniformly magnetized sphere
+      (2D cylindrical)
+<li>mag_halbach_cylinder_2dc.iob - magnetic field due to Halbach cylinder
+      (2D cylindrical)
+</ul>
+
+<h2>Theory - Uniform field (uniform_2dp.iob)</h2>
+
+<p>
+The "uniform_2dp.iob" example
+solves for an ideal uniform magnetic field (+x direction) in 2D planar symmetry.
+This is intended as a simple example
+to start with, and it involves no current density or permeable materials.</p>
+
+<p>The theoretical magetic field is</p>
+
+<p style="text-align:center"><img src="resources/1.png" alt="\[ \v{B} = B_0 \uv{x} \]" style="vertical-align:text-bottom" /></p>
+
+<p>The magnetic scalar potential is</p>
+
+<p style="text-align:center"><img src="resources/2.png" alt="\[ \Omega = - B_0 x \]" style="vertical-align:text-bottom" /></p>
+
+<p>The magnetic vector potential is</p>
+
+<p style="text-align:center"> <i>A</i><sub><i>z</i></sub> = <i>B</i><sub><i>0</i></sub> <i>y</i> </p>
+
+<p>This can be solved with magnetic scalar potential or magnetic vector
+potential.
+In the magnetic scalar potential case, left and right boundaries are
+Dirichlet boundaries (normal to flux) and bottom and top boundaries
+are Neumann boundaries (perpendicular to flux).
+In the magnetic vector potential cases, the reverse is true.
+The potential difference on the Dirichlet boundaries is set to 100,
+with ng set to the distance between them (100 mm),
+thereby giving a 100 Gauss field).
+</p>
+
+<div>
+<img src="resources/uniform.png"><br>
+<b>Figure:</b> SIMION-computed magnetic field vectors (black) on X-Y plane.
+</div>
+
+<h2>Theory - Cylinder of Current (current_cylinder_2dp.iob)</h2>
+
+<p>
+We seek to find the B-field of an infinitely long cylinder of current of
+radius R (doable in 2D planar symmetry).
+Current density is
+<img src="resources/3.png" alt="\(\vec{j} = \frac{I}{\pi R^2} \vec{\hat z} \textrm{ for } x^2+y^2 < R^2 \)" style="vertical-align:text-bottom" />.
+The theoretical field is
+</p>
+
+<p style="text-align:center"><img src="resources/4.png" alt="\[ \vec{B} = \frac{\mu_0 I}{2 \pi r } k \boldsymbol{\hat \phi},
+  \textrm{where } k =
+  \begin{cases}
+  1 & \text{outside cylinder} \\
+  (r/R)^2 & \text{inside cylinder}
+  \end{cases}
+\]" style="vertical-align:text-bottom" /></p>
+
+<p style="text-align:center"><img src="resources/5.png" alt="\[
+ \vec{A}_z \frac{2 \pi}{\mu_0 I} =
+ \begin{cases}
+ - \ln r & \text{ outside cylinder } \\
+ -\frac{1}{2}(r/R)^2 + (\frac{1}{2} - \ln R) & \text{ inside cylinder}
+ \end{cases}
+\]" style="vertical-align:text-bottom" /></p>
+
+<div>
+<img src="resources/cylinder2d.png"><br>
+<b>Figure:</b> Current density vectors (pink) and SIMION-computed magnetic
+field vectors (black) on two planes.
+</div>
+
+<h2>Theory - Sphere of of Rotating Charge (current_sphere_2dc.iob and current_sphere_3dp.iob)</h2>
+
+<p>
+We seek to find the magnetic field from a uniformly charged sphere of total
+charge Q and radius R, rotating at constant angular velocity &omega;.
+This system is taken from Griffiths Problems 5.29/5.58 [1].
+</p>
+
+<p>The potential and field outside the sphere is</p>
+
+<p style="text-align:center"><img src="resources/6.png" alt="\[ \vec{A} = C \sin(\theta) r^{-2} \, \boldsymbol{\hat\phi}
+    \textrm{ where } C =\frac{\mu_0}{20 \pi} Q \omega R^2 \]" style="vertical-align:text-bottom" /></p>
+
+<p style="text-align:center"><img src="resources/7.png" alt="\[ \vec{B} = \frac{C}{r^3} \left[ 2 \cos(\theta) \vec{\hat r} + \sin (\theta) \, \boldsymbol{\hat\theta} \right] \]" style="vertical-align:text-bottom" /></p>
+  
+<p>The potential and field inside the sphere is</p>
+
+<p style="text-align:center"><img src="resources/8.png" alt="\[ \vec{A} =  \frac{5}{2} C R^{-3} r \sin(\theta) \left(1 - \frac{3}{5}(r/R)^2 \right) \, \boldsymbol{\hat\phi} \]" style="vertical-align:text-bottom" /></p>
+
+<p style="text-align:center"><img src="resources/9.png" alt="\[ \vec{B} = \frac{5 C}{R^3}
+        \left[ \left(1 - \frac{3}{5} (r/R)^2 \right) cos(\theta) \, \vec{\hat r} -
+                \left(1 - \frac{6}{5} (r/R)^2 \right) \sin(\theta) \, \boldsymbol{\hat\theta} \right] \]" style="vertical-align:text-bottom" /></p>
+
+<p>
+This problem is most efficiently solved in 2D cylindrical symmetry
+(current_sphere_2dc.iob) but can also be solved in 3D (current_sphere_3dp.iob).
+</p>
+
+<div>
+<img src="resources/sphere3d.png"><br>
+<b>Figure:</b> Current density vectors (pink) in Z=0 plane and SIMION-computed magnetic
+field vectors (black) in X=0 plane.
+</div>
+
+<h2>Theory - Permeable Sphere in Uniform Field (current_sphere_2dc.iob)</h2>
+
+<p>
+A sphere of permeability &mu;<sub>1</sub> is immersed in a material
+&mu;<sub>2</sub> in an otherwise uniform magnetic field <img src="resources/10.png" alt="\(B_0 = \mu_2 H_0\)" style="vertical-align:text-bottom" />
+in the +x direction.
+This is based on Griffiths Problem 6.18.
+In cylindrical coordinates (x, &rho;, &theta;), the magnetic field inside
+the sphere is a uniform
+
+<p style="text-align:center"><img src="resources/11.png" alt="\[\vec{B} = \frac{3 B_0}{1 + 2 (\mu_2/\mu_1)} \boldsymbol{\hat x} \]" style="vertical-align:text-bottom" /></p>
+
+Given <img src="resources/12.png" alt="\( m = \frac{1 - (\mu_2/\mu_1)}{1 + 2(\mu_2/\mu_1)} \)" style="vertical-align:text-bottom" />,
+the magnetic field outside the sphere is
+
+<p style="text-align:center"><img src="resources/13.png" alt="\[
+\left( \begin{array}{c}
+B_x \\
+B_\rho
+\end{array} \right) = B_0
+\left( \begin{array}{r}
+  1 + m (2x^2 - \rho^2) R^3 (x^2+\rho^2)^{-5/2} \\
+  3 m x \rho R^3 (x^2+\rho^2)^{-5/2}
+\end{array} \right)
+\]" style="vertical-align:text-bottom" /></p>
+
+The magnetic scalar potential [2] is
+
+<p style="text-align:center"><img src="resources/14.png" alt="\[ \Omega = H_0 x \left[ -1 + m \min(R/r, 1)^3 \right] \]" style="vertical-align:text-bottom" /></p>
+
+The magnetic vector potential is
+
+<p style="text-align:center"><img src="resources/15.png" alt="\[ A_\theta = B_0 \rho \left[ \frac{1}{2} + m \min(R^3 (x^2 + \rho^2)^{-3/2}, 1) \right] \]" style="vertical-align:text-bottom" /></p>
+
+<p>Note: in the limit <img src="resources/16.png" alt="\(\mu_1 \to \infty\)" style="vertical-align:text-bottom" />, <b>B</b> inside approaches 3 B<sub>0</sub>.</p>
+
+<h2>Theory - Permeable Cylinder in Uniform Field (mu_cylinder_2dp.iob)</h2>
+
+<p>
+An infinitely long cylinder of permeability &mu;<sub>1</sub> is immersed
+in a medium &mu;<sub>2</sub> containing an otherwise uniform magnetic field
+<img src="resources/17.png" alt="\(B_0 = \mu_2 H_0\)" style="vertical-align:text-bottom" /> transverse (+x) to the cylinder axis (z).
+
+<p>The magnetic field inside the cylinder is uniform, as follows:</p>
+
+<p style="text-align:center"><img src="resources/18.png" alt="\[ \vec{B} = \frac{2 B_0}{1 + (\mu_2 / \mu_1)} \boldsymbol{\hat x} \]" style="vertical-align:text-bottom" /></p>
+
+<p>The magnetic field outside the cylinder is</p>
+
+<p style="text-align:center"><img src="resources/19.png" alt="\[
+\left( \begin{array}{c}
+B_x \\ B_y
+\end{array} \right) = B_o
+\left( \begin{array}{r}
+1 + m (x^2 - y^2)r^{-4} R^2 \\
+2 m (xy) r^{-4} R^2
+\end{array} \right)
+\textrm{ where } m = \frac{1 - (\mu_2/\mu_1)}{1 + (\mu_2/\mu_1)}
+\]" style="vertical-align:text-bottom" /></p>
+
+<p>The magnetic scalar potential [2] is</p>
+
+<p style="text-align:center"><img src="resources/20.png" alt="\[\Omega = H_0 x \left[ -1 + m \min(R/r, 1)^2 \right] \]" style="vertical-align:text-bottom" /></p>
+
+<p>The magnetic vector potential is</p>
+
+<p style="text-align:center"><img src="resources/21.png" alt="\[ A_z = B_0 y \left[ 1 + m \min(R/r, 1)^2 \right] \]" style="vertical-align:text-bottom" /></p>
+
+<p>Note: in the limit <img src="resources/22.png" alt="\(\mu_1 \to \infty\)" style="vertical-align:text-bottom" />, <b>B</b> inside approaches 2 B<sub>0</sub> inside the sphere.</p>
+
+<h2>Theory - Permeable Torus in Uniform Field (mu_torus_3dp.iob)</h2>
+
+<p>
+This example calculates the B-field due to a permeable torus inside
+an otherwise uniform magnetic field.
+</p>
+
+<div>
+<img src="resources/mu_torus_3dp.png"><br>
+<b>Figure:</b> Permeable torus in otherwise uniform magnetic field.
+Shown are B-field vectors in a z=0 cross-section (+Z3D).
+Magnetic scalar potential contour lines are also shown.
+</div>
+
+<p>
+As seen, the B-field is stronger inside the permeable material, and the
+B-field bends through the torus.
+This example is not validated quantitatively.
+</p>
+
+<h2>Theory - Permeable Cylinder with Current in Uniform Field (mucurrent_cylinder_2dp.iob</h2>
+
+<p>The magnetic vector potential is</p>
+
+<p style="text-align:center"><img src="resources/23.png" alt="\[A_z =
+\begin{cases}
+C (r/R)^2 + (1 + E) B_0 y & \textrm{ inside cylinder} \\
+C + \left(1 + E (R/r)^2 \right) B_0 y + F \ln(R/r) & \textrm{ outside cylinder}
+\end{cases}
+\]" style="vertical-align:text-bottom" /></p>
+
+<p style="text-align:center"><img src="resources/24.png" alt="\begin{align*}
+C = -(\mu_1/\mu_2) \mu_0 I \frac{1}{4 \pi} \\
+E = \frac{(\mu_1/\mu_2)-1}{(\mu_1/\mu_2)+1} \\
+F = \mu_0 I \frac{1}{2 \pi} \\
+\end{align*}" style="vertical-align:text-bottom" /></p>
+
+<p>The magnetic field is
+
+<p style="text-align:center"><img src="resources/25.png" alt="\[
+(B_x, B_y) =
+\begin{cases}
+(
+ 2 C y R^{-2} + (1 + E)B_0),
+-2 C x R^{-2}
+)
+  & \textrm{ inside cylinder} \\
+(
+-2 E y^2  R^2 r^{-4} B_0 + (1 + E R^2 r^{-2})B_0 - F r^{-2} y,
+ 2 E (xy) R^2 r^{-4} B_0 + F x r^{-2}
+)
+  & \textrm{ outside cylinder}
+\end{cases}
+\]" style="vertical-align:text-bottom" /></p>
+
+<h2>Theory - C magnet (c_magnet_2dp.iob)</h2>
+
+<p>
+This system consists of a "core" of permeable material in the shape of a "C"
+(see figure below).
+One or more coils of current are wrapped around the neck of the C, thereby
+generating a magnetic field along the C shaped curve, and this
+field continues through the air gap between the two end tips of the C.
+In this simulation, assuming the magnet is long in the direction
+perpendicular to the C surface, we approximate using 2D planar symmetry.
+y mirroring is also used.
+Since most flux goes through the core or around the air gap, negligible flux
+will pass through the top boundary, which we therefore assign a
+<a href="../_redirect.html?id=dirichlet_boundary_conditions">Dirichlet boundary condition</a>
+(A<sub>z</sub>=0), defined here by electrode (Dirichlet) points of 0
+value in the A<sub>z</sub> boundary definition (c_magnet_2dp-Az.gem).
+Due to symmetry and non-zero flux on the y=0 mirror plane, this should be
+treated as a Neumann boundary.
+<a href="../_redirect.html?id=neumann_boundary_conditions">Neumann boundaries</a>
+are assumed by SIMION when the edge of the array uses non-electrode points
+(as also done in c_magnet_2dp-Az.gem).
+The current density (z component only) and material permeability
+are defined in c_magnet_2dp-jz.gem and c_magnet_2dp-mu.gem respectively
+and are rescaled in c_magnet_2dp.lua.
+</p>
+
+<p>
+A quick approximation of the expected field can be obtained by Ampere's law,
+<img src="resources/26.png" alt="\( \oint_C H \cdot dl = I_{f,enc} \)" style="vertical-align:text-bottom" /> given the free current I<sub>f,enc</sub>
+enclosed in the curve.
+Integrating over a box shaped curve with corners at the purple points in
+the below figure (just inside the magnet), we find
+<img src="resources/27.png" alt="\( (B_0 \nu_c) L_c + (B_0 \nu_a) L_a = 2 I \)" style="vertical-align:text-bottom" />, where L<sub>c</sub> is the
+length of the part of the curve through the magnetic core ("c") material
+and L<sub>a</sub> is the length of the part of the curve through the air ("a")
+gap region, and we approximate the magnetic field as a constant B<sub>0</sub>
+parallel to the curve.
+There are two (2) coils due to y mirroring, causing the 2 coefficient on the
+I, where I is the current in each coil times the number of turns in the coil.
+This implies <img src="resources/28.png" alt="\( B_0 = 2 I/(\nu_c L_c + \nu_a L_a) \)" style="vertical-align:text-bottom" /> approximately.
+The SIMION calculation provides more realistic value for B accounding for
+fringe field effects in the air gap and which is not constant.
+</p>
+
+<p>
+This example assumes the core material is soft (B and H having a direct
+relationship, independent of history), linear (i.e. &mu; = B/H is a
+constant, independent of B) and isotropic (&mu; independent of direction) with
+&mu;<sub>r</sub> = &mu;/&mu;<sub>0</sub> = 1000.
+Non-linear core material would require iterations, analogous to treatment
+of non-linear dielectrics (in <a href="../dielectric/README.html">Dielectric</a>
+examples).
+</p>
+
+<p>See also <a href="http://en.wikipedia.org/wiki/Magnetic_core">Wikipedia:Magnetic_core</a>.</p>
+
+<div>
+<img src="resources/cmagnet.png"><br>
+<b>Figure:</b> XY planar cross section of C magnet.
+Field lines (along constant A<sub>z</sub>) are in red,
+and also show field vectors.
+</div>
+
+<h2>Theory - Converting B-field Vectors to Magnetic Scalar Potential PA
+(spotential_from_bfield.iob)</h2>
+
+<p>
+This takes a B-field (here defined analytically but could be defined in arrays)
+and converts it to magnetic scalar potential (&Omega;) for storage in a magnetic PA.
+It uses the "simion.experimental.spotential_from_vfield" function described
+later below.
+Mathematically, these are related by
+<b>B</b> = &mu; <B>H</b> and <b>H</b> = - grad &Omega; as described in
+<a href="../_redirect.html?id=magnetic_potential">Doc(magnetic_potential)</a>.
+</p>
+
+<h2>Theory - Uniformly Magnetized Cylinder (mag_cylinder_2dc.iob)</h2>
+
+<p>
+In this example, we find the B-field of a cylinder of permanent magnet material with
+uniform magnetization <b>M</b><sub>0</sub> inside (with <b>M</b><sub>0</sub>
+parallel to the cylinder axis).
+It is modeled in 2D cylindrical symmetry.
+Note that
+div <b>B</b> = 0,
+<b>B</b> = &mu;<sub>0</sub>(<b>H</b> + <B>M</b>), and
+- grad &Omega;<sub>H</sub> = <b>H</b> imply
+div grad &Omega;<sub>H</sub> = (div <b>M</b>).
+The latter is a <a href="../_redirect.html?id=poisson_equation">Poisson equation</a>,
+which can be solved with Refine if div <b>M</b>
+and boundary conditions for &Omega;<sub>H</sub> are known.
+For a uniformly magnetized cylinder,
+div <b>M</b> is zero everywhere except the cylinder bases, where it would be
+d M<sub>x</sub> / dx, but this is undefined since <b>M</b><sub>x</sub> changes abruptly
+between M<sub>0,x</sub> and 0 at the bases.
+To avoid an undefined div <b>M</b>,
+we instead treat <b>M</b> as gradually changing over 2 grid units: one grid unit on each
+side of the base.
+In that case, div <b>M</b> = d M<sub>x</sub> / dx = &plusmn; M<sub>0</sub> / (2 gu)
+within the 2 gu region around each base.
+As boundary conditions, we set &Omega;<sub>H</sub> = 0 (i.e. no flux through boundary surface)
+at a sufficient distance away from the magnetized cylinder.
+Once &Omega;<sub>H</sub> is solved (Refined), we can find <b>H</b> via
+- grad &Omega;<sub>H</sub> = <b>H</b>.
+We can then utilize the relation <b>B</b> = &mu;<sub>0</sub>(<b>H</b> + <B>M</b>)
+to find <b>B</b> since <b>M</b> is known.
+The adjustable variable <code>update_m</code> controls whether this M is
+incoporated as a vector (<code>update_m = 0</code>) or (earlier) as a scalar potential
+(<code>update_m = 1</code>).
+<code>update_m = 0</code> is safer since M cannot be expressed uniquely as a scalar
+potential throughout the entire volume.
+Below shows a plot of B-field vectors calculated upon clicking Fly'm in the
+mag_cylinder_2dc.iob example:
+</p>
+
+<div>
+<img src="resources/mag_cylinder_2dc.png"><br>
+<b>Figure:</b> Magnetic field vectors in uniformly magnetized
+cylinder (axial cross-section).
+Two green discs represent the surfaces of the cylinder
+in which div M is non-zero.
+The region between the two discs have constant M = 1 A/mm, and
+for everywhere else M = 0.
+Contours of the H-field magnetic scalar potential &Omega;<sub>H</sub>
+(i.e. - grad &Omega;<sub>H</sub> = <b>H</b>) are shown in red.
+Particles flown (black) are also shown.
+</div>
+
+<p>
+The uniformly magnetized cylinder has the same B-field as an
+air core solenoid with infinitely thin wires.
+This is because inside the cylinder, the current loops from <b>M</b> cancel,
+leaving only a residual current around the lateral side surfaces of the cylinder, which is the
+same as the current from a solenoid.
+Therefore, this example also uses the
+<a href="../_redirect.html?id=biot_savart_law">Biot-Savart</a> solver
+to compute the B-field of an analogous solenoid
+(like in <a href="../solenoid/README.html">Example: solenoid</a>),
+and plots both B-fields overlapped as a check of accuracy.
+The largest loss in accuracy is on the bases of the cylinders due to the
+special treatment of <b>M</b> there.
+</p>
+
+<p>
+Particles are also flown through the cylinder in this example (as seen in the figure above),
+just like the analogous Example: solenoid,
+though this is artificial since particles cannot actually fly unhindered
+through a magnetic material.
+But if they could, they would behave like in the air-core solenoid, which has the same B-field.
+</p>
+
+<h2>Theory - Two Coaxial Uniformly Magnetized Cylinders (mag_2cylinder_2dc.iob)</h2>
+
+<p>
+This example is like the previous one but uses two uniformly magnetized cylinders
+coaxial and oriented in the same direction.
+This is a simple type of permanent magnet with two pole pieces.
+</p>
+
+<div>
+<img src="resources/mag_2cylinder_2dc.png"><br>
+<b>Figure:</b> Axial cross section (XY view).
+B-fields are shown as blue arrows.
+Equipotential lines for magnetic scalar potential are shown in green.
+Note the B-field direction reversal at the top center (location marked with orange arrow).
+</div>
+
+<p>
+Note in the above figure that the magnetic scalar potential lines (green),
+although roughly parallel to the cylinder faces, become increasingly not parallel
+on the corners and are nearly perpendicular on the lateral sides.
+Therefore, except to a very rough approximation,
+it is not the case that this magnet has constant magnetic scalar potential
+over the entire surface, as might be assumed by modeling this
+in the way shown in <a href="../magnet/README.html">Example: magnet</a> (mag90.iob).
+Also note the (small) B-field direction reversal (location marked with orange arrow),
+which does not exist in mag90.iob; this effect increases as the gap between the
+two pole pieces decreases, and in the limiting case the two pole pieces touch and become
+one (like in mag_cylinder_2dc.iob).
+</p>
+
+<p>
+This system should have exactly the same B-field as an analogous
+system with two coaxial air-core solenoids.
+This is confirmed with the <a href="../_redirect.html?id=biot_savart_law">Biot-Savart</a> solver,
+and B-fields are shown overlapped.
+</p>
+
+</p>
+
+<h2>Theory - Uniformly magnitized sphere (mag_sphere_2dc.iob)</h2>
+
+<p>
+In this example, we find the B-field of a sphere of permanent magnet material with
+uniform magnetization <b>M</b><sub>0</sub>.
+It is modeled in 2D cylindrical symmetry, with <b>M</b><sub>0</sub> parallel to the cylindrical axis
+and sphere radius R.
+This problem is solved in Griffiths Example 6.1.
+The field inside the sphere should be <b>B</b> = (2/3)&mu;<sub>0</sub> <b>M</b>.
+The field outside the sphere should be that of a magnetic dipole,
+<b>m</b> = (4/3)&pi;R<sup>3</sup><b>M</b><sub>0</sub>,
+which is
+<img src="resources/29.png" alt="\( \v{B} = \frac{\mu_0}{4\pi} r^{-3} \left( 3 (\v{m} \cdot \uv{r}) \uv{r} - \v{m} \right)  \)" style="vertical-align:text-bottom" />.
+</p>
+
+<div>
+<img src="resources/mag_sphere_2dc.png"><br>
+<b>Figure:</b> Magnetic field vectors in uniformly magnetized sphere (black circle).
+H-field contour lines are also shown (green).
+Red patches are non-zero div <b>M</b> on the sphere surface.
+</div>
+
+<h2>Theory - Halbach Cylinder (mag_halbach_cylinder_2dp.iob)</h2>
+
+<p>
+This example calculates the magnetic field in a <b>Halbach array</b>,
+particularly in a cylinder arrangement called a <b>Halbach cylinder</b>
+(see <a href="http://en.wikipedia.org/wiki/Halbach_array">Wikipedia:Halbach_array</a>).
+A Halbach array positions a series of permanent magnets in various rotations
+such that magnetic field on one side of the series is minimized.
+In ideal form, a Halbach cylinder has magnetization <b>M</b> distributed
+according to
+<img src="resources/30.png" alt="\( \v{M} = M_r \left[ \sin (k \phi) \uv{x} - \cos (k \phi) \uv{y} \right] \)" style="vertical-align:text-bottom" />
+for angle &phi; around the cylinder.
+In practice, the cylinder is formed by a finite number of permanent magnets with
+uniform magnetization.
+</p>
+
+<div>
+<img src="resources/mag_halbach_cylinder_2dp.png"><br>
+<b>Figure:</b> Halbach cylinder.  B-field vectors are shown in red and are fairly uniform in the inner empty region and nearly
+zero in the outer empty region (and non-uniform in the magnetic region).
+H-field contour lines are also shown (green).
+M-field vectors are shown in blue.
+</div>
+
+<p>
+In ideal form with k=2, the H-field inside the magnet should be
+<img src="resources/31.png" alt="\( \v{H} = M_r \ln (R_o/R_i) \uv{y}  \)" style="vertical-align:text-bottom" /> given outer and inner radii R<sub>o</sub> and R<sub>i</sub>.
+Here, with M<sub>r</sub> = 1 A/mm, that would predict |<b>B</b>| = 5.095 gauss (approx) at the center.
+The actual calculated value is about 4.75 gauss, but note that this is not an ideal system.
+If an idealized <b>M</b> is enabled (see .lua file), the calculated value is 4.99 gauss.
+</p>
+
+<h2>PA and GEM File Definition</h2>
+
+<p>
+Most of the PA's in these examples should not be refined in the usual way
+with the Laplace solver.
+Rather, the PA's representing magnetic potential need to be refined with the
+<a href="../_redirect.html?id=poisson_solver">Poisson solver</a>, and the
+Poisson solver needs to be provided any associated PA's representing
+magnetic permeability and/or current density.
+Typical usage is seen in mucurrent_cylinder_2dp.lua:
+</p>
+
+<pre class="code">
+local muinst = simion.wb.instances[1]  -- relative permeability
+local jzinst = simion.wb.instances[2]  -- current density z component (j_z)
+local Azinst = simion.wb.instances[3]  -- vector potential z component (A_z)
+local Azpa   = Azinst.pa
+local jzpa   = jzinst.pa
+local mupa   = muinst.pa
+function segment.initialize_run()
+  Azpa:refine{potential_type='magnetic[A]', charge=jzpa, permeability=mupa,
+              convergence=1E-5}
+end
+</pre>
+
+<p>
+The above assumes that there are three PA instances attached to the workbench
+("PA Instances" list on the PAs tab on the View screen):
+</p>
+
+<ul>
+<li>PA instance #1 represents the relative magnetic permeability.
+<li>PA instance #2 represents the z component of current density.
+<li>PA instance #3 represents the z component of magnetic vector potential.
+</ul>
+
+<p>
+Note: the L-/L+ buttons on the PAs tab can be used to reorder the PA instance numbers.
+In the above example there are no x or y components of current density or magnetic
+potential, but if there were you would need additional arrays as seen in the
+3D examples (current_sphere_3dp.lua and mu_sphere_3dp.lua).
+It's not actually necessary necessary to attach the PA objects to the workbench
+in order to refine them, but it's convenient to do so because SIMION will load
+them automatically (creating them from GEM files if necessary) when the IOB
+is loaded, you can position them on the workbench via the Positioning panel
+on the PAs tab, and you can use the standard functions for plotting them.
+The PA instances can be accessed via the <code>simion.wb.instances</code> array, and the
+corresponding PA objects can obtained from the <code>pa</code> field in the PA instances.
+(Note: a PA instance is a projection of a PA object onto the workbench volume,
+and multiple PA instances may be associated with the same PA objecta PA object.)
+</p>
+
+<p>
+You can invoke the Poisson solver by calling the "refine" method on the
+PA object representing magnetic potential, optionally passing it PA's for
+current density (<code>charge</code> parameter) and/or relative permeability
+(<code>permeability</code> parameter).
+Note that normally the Poisson solver assumes you are refining scalar potential
+(either electric or magnetic depending on the PA type), but if you need to
+refine magnetic vector potential, you must specify an appropriate value in
+the <code>potential_type</code> parameter.
+See
+<a href="../_redirect.html?id=lua_simion.pas#simion.pas pa..refine">Doc(simion.pas pa:refine)</a>
+for details on parameters for the <code>pa:refine</code> method as well as
+<a href="../_redirect.html?id=magnetic_potential">Doc(magnetic_potential)</a> for general
+notes on magnetic potential.
+Treatment of magnetic potential depends on the PA symmetry (2D planar, 2D cylindrical, or
+3D).
+The "refine" call would normally be placed in an initialize_run, flym, or load segment
+(see
+<a href="../_redirect.html?id=workbench_program_extensions">Doc(Workbench Program Extensions)</a>
+for descriptions of these new segment types).
+</p>
+
+<p>
+Most of the GEM files have an underscore in the PA type field in the <code>pa_define</code>
+(e.g. <code>magnetic_</code>).
+This causes the PA to be marked as not refinable in the usual way:
+It prevents SIMION from prompting you to refine the PA with the Laplace solver
+when you load the IOB, which otherwise could cause confusion.
+This option is described in
+<a href="../_redirect.html?id=gem_geometry_file">Doc(gem_geometry_file)</a>.
+</p>
+
+<p>
+Observe how GEM files like magnetic permeability and current density
+are defined:</p>
+
+<pre class="code">
+; mu_sphere_2dc-mu.gem
+; Creates relative permeability PA.
+
+pa_define(200,200,1, cylindrical, xy,magnetic_,, 0.5,0.5,0.5)  ; 0.5 mm/gu
+
+; First fill all space by default with relative permeability 1.
+n(1) {
+  fill { within { box3d(-1E+6,-1E+6,-1E+6, 1E+6,1E+6,1E+6) } }
+}
+
+; Fill a sphere with > 1 constant.
+locate(-0.25,-0.25,-0.25) { ; shift down by 1/2 grid unit
+  n(0.2) { fill { within_inside { sphere(0,0,0, 10) } } }
+}
+</pre>
+
+<p>
+Here, the PA point (x,y,z) stores the relative magnetic permeability
+for the material in the cell bounded by (x,y,z) to (x+1,y+1,z+1) gu,
+i.e. centered at (x+0.5,y+0.5,z+0.5) gu. 
+Therefore, the number of points in each dimension is one
+less than in the magnetic scalar potential PA (in each dimension with more
+than one grid point).
+Moreover, for highest accuracy, we should shift
+the coordinate system down by 1/2 a grid unit so that measurements
+are take in the centers of the cells.  Also, for highest accuracy,
+we use a "within_inside" (rather than "within") since "within" applies
+a 1/2 grid unit surface expansion that we don't want here.
+</p>
+
+
+<h2>Using this demo</h2>
+
+<ul>
+
+<li>
+Load current_cylinder_2dp.iob.
+No refine is necessary on loading since refining will be done later during the Fly'm.
+Click Fly'm.
+Fly'm builds the current density array, refines the magnetic vector potential
+array and does various plotting.
+Current density vectors are plotted in the center of the screen
+(these are more easily seen in views other than XY).
+Both calculated and theoretical B-field vectors around the current
+are drawn on the screen for comparison
+(you may need to zoom in on a vector to see the small difference).
+Calculated and theoretic field magnitudes along a radial line are also displayed in
+the Log window.
+Potential contours of the magnetic vector potential (z component) are plotted, and
+these follow the field vectors.
+Click User Program on the Particles tab to view the user program.
+
+<li>
+The current_sphere_2dc.iob and current_sphere_3dp.iob examples can be run similarly.
+To assist in viewing, you may want to disable the "Draw" checkbox for the PA
+instances on the PAs tab in the View screen (so as not to view Dirichlet boundaries).
+current_sphere_3dp.iob is best viewed in the ZY plane after doing a 3D zoom (+Z3D)
+in on the X=0 cross section in the XY view.
+Examine the source code of the Lua files in a text editor for details.
+
+<li>
+The mu_cylinder_2dp.iob, mu_sphere_2dc.iob, mu_sphere_3dp.iob, and
+mucurrent_cylinder_2dp.iob examples can also be run similarly.
+The coils are outlined in blue and the permeable material in orange.
+Note the fringe fields near the gap.
+Note how the Log window compares the calculated field in the gap
+with a rough estimate of that field based on an Ampere's law approximation,
+which match pretty closely.
+
+<li>
+The c_magnet_2dp.iob can also be run similarly.
+You may change the adjustable variables (e.g. "gap") and click Fly'm to
+rerun the simulation under those changes.
+
+<li>
+The spotential_from_bfield.iob can be run similarly.
+Upon clicking Fly'm, an analytically defined B-field is converted
+to a magnetic scalar potential and stored in a PA (spotential_from_bfield.pa),
+which can then be expressed back as a B-field and compared against the original
+B-field by plotting both vector fields, which nearly overlap.
+Increased fidelity can be obtained by increasing the "N" value
+in the user program and/or the PA grid density.
+Click User Program on the Particles tab to view the user program.
+</ul>
+
+<h2>Preliminary Field Array API</h2>
+
+<p>Utility functions for combining the x, y, and z component PA's for a field,
+refining them, and extracting fields or curl's from them are currently provided
+inside the simion.experimental table.
+These functions are described below.
+These functions are subject to change.
+</p>
+
+<pre>
+
+fa = simion.experimental.field_array{xpa, ypa, zpa, antimirror=antimirror}
+
+  Returns an object representing a vector field consisting of the three
+  provided potential arrays for the x, y, and z components of a vector field.
+  `antimirror` is a string indicating any antimirror planes and may consist
+  of any combination of the letters 'x', 'y', and 'z'.  The default ''
+  indicates no anti-mirror planes.
+  Antimirroring means that the direction of the vector is reversed after
+  mirroring across the given plane.
+  
+  Examples:
+  
+    local Axpa = simion.pas:open 'Ax.pa'
+    local Aypa = simion.pas:open 'Ay.pa'
+    local Azpa = simion.pas:open 'Az.pa'
+    local fa = simion.experimental.field_array {Axpa, Aypa, Azpa}
+
+    local fa = simion.experimental.field_array {Axpa, Aypa, Azpa, antimirror='x'}
+	  -- alternative
+
+f = fa:to_field( [painst] )
+  where vx,vy,vz = f(x,y,z)
+  
+  Returns a function `f` that can be used to obtain the field vector at
+  any real valued point (x,y,z) `f` returns (0,0,0) outside of the PA volume.
+  
+  If `painst` is not passed to `to_field`, then `f` is expected to be passed
+  PA volume coordinates (in gu).  If a PA instance `painst` is passed, then
+  `f` is expected to be passed workbench coordinates (in mm), and `painst`
+  will be used to convert between workbench coordinates (in mm) and PA volume
+  coordinates (in gu).
+  
+  One convenient use of `f` is to plot fields with the contourlib81 library,
+  in which case `painst` should be specified.
+  See magnetic_vector_potential Lua examples for details.
+  
+f = fa:curl_field( [painst] )
+  where vx,vy,vz = f(x,y,z)
+  
+  This is similar to fa:to_field() but returns a vector that is the curl
+  of the represented field.
+  
+  One common application of this function is if `fa` represents a vector
+  magnetic potential, then `f` will represent the magnetic field since
+  B = curl A.
+
+fa:refine { . . . }
+
+  Refines all three potential arrays in the vector field.
+  This supports the same parameters as the `simion.pas pa:refine`
+  function for regular potential arrays.  One difference, however, is that
+  the `charge` field, if provided, must be another vector field object
+  returned by simion.experimental.field_array.
+  
+  A typical example is this:
+  
+    local Afa = simion.experimental.field_array{Axpa, Aypa, Azpa}
+      -- magnetic vector potential field
+    local jfa = simion.experimental.field_array{jxpa, jypa, jzpa}
+      -- current density vector field
+    Afa:refine { current=jfa, convergence=1e-5 }
+      -- Poisson solve both together.
+
+fa:save( [filename] )
+
+  Saves all three potentials arrays in the vector field.
+  This is similar to the `simion.pas pa:save` function for regular
+  potential arrays.  It will append 'x', 'y', or 'z' to the base of the
+  specified `filename`.  For example, fa:save('A.pa') will actually
+  create the files 'Ax.pa', 'Ay.pa', and 'Az.pa'.
+
+simion.experimental.spotential_from_vfield(painst, vfield [, N])
+
+  Fills PA instance `painst` with scalar potentials
+  based on vector field given in `vfield`.
+  We assume the vector field is the negative gradient of the scalar potential.
+  If `painst` is electric, representing electric potential (V),
+  then `vfield` represents the E-field.
+  If `painst` is magnetic, representing magnetic scalar potential (&Omega;),
+  then `vfield` represents the H-field.
+  `vfield` is a function of the form
+    vx,vy,vz = vfield(x,y,z)
+  where (x,y,z) is a point in workbench coordinates (mm).
+  If `painst` is electric, then `vfield` should be in units of V/mm.
+  If `painst` is magnetic, then `vfield` should actually be mu_0*H,
+  which, like B, has units of gauss, and it equals B in the case
+  mu_r = 1.
+  
+  Point (0,0,0) is arbitrarily assigned potential 0.
+  
+  The given vector field must actually be representable in terms
+  of scalar magnetic potential; otherwise, results will be
+  nonsensical.  In particular, if the PA instance is magnetic,
+  the volume of the PA should not contain currents, or at
+  least currents significant enough to generate magnetic fields.
+  If you have currents, you may break up your PA into smaller
+  PAs that are current free.
+  
+  This function is similar to the `pa field` field setting
+  function in the older <a href="../_redirect.html?id=sl_libraries">SL Libraries</a>
+  and the "Text to PA" function in <a href="../_redirect.html?id=sl_tools">sl_tools</a>.
+  This is a rudimentary line integration based on the trapezoidal rule,
+  though it averages over multiple paths (x, y, and z directions) to
+  improve accuracy.
+  
+  N is the number of steps per grid point in the integration.
+  The default (if omitted) is 1.  Higher values increase accuracy.
+
+</pre>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="../poisson/README.html">Example: Poisson</a>
+<li>[1] D. Griffiths.  Introduction to Electrodynamics, 3rd Edition.  Addison Wesley, 1999.
+<li>[2] J. Cochran and B. Heinrich.  Applications of Maxwell’s Equations.
+    Simon Fraser University.  2004.  Chap. 5.
+    <a href="http://www.sfu.ca/physics/associate/emeriti/cochran/MAXoutline.html">[link]</a>
+</ul>
+
+  </div>
+    
+<div class="copyright">SIMION&#153; 8.1 (c) 2003-2012 Scientific
+Instrument Services, Inc. All Rights Reserved.
+</div>
+    </body>
+  </html>

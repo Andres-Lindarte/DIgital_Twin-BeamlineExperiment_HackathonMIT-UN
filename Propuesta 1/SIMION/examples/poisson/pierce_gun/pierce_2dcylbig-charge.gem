@@ -1,0 +1,4 @@
+pa_define(2200, 1200, 1, cylindrical, y,,, 0.005)
+
+; This does nothing except avoids the "no fill definitions" warning
+n(0) { fill { within {box2d(0,0,0,0)} } }

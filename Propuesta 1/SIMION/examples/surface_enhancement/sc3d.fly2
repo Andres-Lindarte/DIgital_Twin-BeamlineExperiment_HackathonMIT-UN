@@ -1,0 +1,95 @@
+particles {
+  coordinates = 0,
+  standard_beam {
+    n = 1,
+    tob = 0,
+    mass = 0.00054857990946,
+    charge = -1,
+    ke = 1219.512195122,
+    cwf = 1,
+    color = 1,
+    direction = vector(0, 1, 0),
+    position = vector(82, 0, 0)
+  },
+  standard_beam {
+    n = 1,
+    tob = 0,
+    mass = 0.00054857990946,
+    charge = -1,
+    ke = 1176.4705882353,
+    cwf = 1,
+    color = 1,
+    direction = vector(0, 1, 0),
+    position = vector(85, 0, 0)
+  },
+  standard_beam {
+    n = 1,
+    tob = 0,
+    mass = 0.00054857990946,
+    charge = -1,
+    ke = 1111.1111111111,
+    cwf = 1,
+    color = 1,
+    direction = vector(0, 1, 0),
+    position = vector(90, 0, 0)
+  },
+  standard_beam {
+    n = 1,
+    tob = 0,
+    mass = 0.00054857990946,
+    charge = -1,
+    ke = 1000,
+    cwf = 1,
+    color = 1,
+    direction = vector(0, 1, 0),
+    position = vector(100, 0, 0)
+  },
+  standard_beam {
+    n = 1,
+    tob = 0,
+    mass = 0.00054857990946,
+    charge = -1,
+    ke = 909.09090909091,
+    cwf = 1,
+    color = 1,
+    direction = vector(0, 1, 0),
+    position = vector(110, 0, 0)
+  },
+  standard_beam {
+    n = 1,
+    tob = 0,
+    mass = 0.00054857990946,
+    charge = -1,
+    ke = 869.5652173913,
+    cwf = 1,
+    color = 1,
+    direction = vector(0, 1, 0),
+    position = vector(115, 0, 0)
+  },
+  standard_beam {
+    n = 1,
+    tob = 0,
+    mass = 0.00054857990946,
+    charge = -1,
+    ke = 847.45762711864,
+    cwf = 1,
+    color = 1,
+    direction = vector(0, 1, 0),
+    position = vector(118, 0, 0)
+  },
+  standard_beam {
+    tob = 0,
+    mass = 0.00054857990946,
+    charge = -1,
+    ke = 1000,
+    az = 0,
+    el = arithmetic_sequence {
+      first = 85,
+      last = 95,
+      n = 2
+    },
+    cwf = 1,
+    color = 3,
+    position = vector(100, 0, 0)
+  }
+}

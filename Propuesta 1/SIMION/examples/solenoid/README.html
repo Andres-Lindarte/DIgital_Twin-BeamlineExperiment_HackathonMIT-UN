@@ -1,0 +1,152 @@
+<html>
+<head>
+<title>SIMION Solenoid Magnetic Field Example</title>
+
+<style type="text/css">
+  body { font-family: verdana, arial, sans-serif; font-size: 90%; }
+  .copyright {font-size:80%; border-top:1px solid black}
+  .title1 {background-color:#80ff80}
+  .links1 {background-color:#c0ffc0}
+  .content {max-width:30em; margin-left:5px; margin-right:5px }
+  h1 {margin-top: 0; margin-bottom: 0; background-color:#e0ffe0; font-size:130%}
+  h2 {font-size:120%}
+  h3 {font-size:110%}
+  h4, h5, h6 {font-size:100%}
+</style>
+</head>
+
+<body  marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+<div class="title1">
+<a href="../_redirect.html?id=index">SIMION&#153; 8.1</a>
+</div>
+<h1>SIMION Solenoid Magnetic Field Example</h1>
+<div class="content">
+
+
+
+<h2>Purpose</h2>
+
+<p>This is an example of inserting an air-core solenoid magnetic field
+into a workbench.  The magnetic field is calculated via Biot-Savart as
+a series of wire loops.  The field is loaded into the workbench via a
+small user program.</p>
+
+<h2>Files in this demo:</h2>
+
+<ul>
+<li>README.html - Description of example
+<li>solenoid.iob - SIMION workbench
+<li>solenoid.fly2 - SIMION particle definitions associated with solenoid.iob
+<li>mag.pa - Blank magnetic PA.  Used to contain solenoid magnetic field.
+       Used in solenoid.iob.
+<li>solenoid.lua - SIMION workbench user program used to apply solenoid
+      magnetic field into solenoid.iob workbench.
+<li>toroid.iob/lua - Additional toroidal solenoid example
+<li>solenoid_write.lua - batch mode program to write solenoid field to
+  CSV text file.
+</ul>
+
+<h2>Usage</h2>
+
+<p>How to run the solenoid example:</p>
+
+<ul>
+<li>1.  <b>View solenoid.iob.</b>
+        <i>(Click View on main screen and select the solenoid.iob file.)</i>
+<li>2.  If this is your first time using the example,
+        you will be <b>asked to refine</b> <i>(confirm that
+        and press Refine)</i>.
+<li>3.  <b>Fly ions.</b>
+        <i>(Click Fly'm.)</i>
+        Notice that the ions are focused through the cylindrical region
+        (which is inside the solenoid).
+        When the particle is in a region greater than 9 Gauss, the
+        trajectory is drawn green (for display purposes).
+</ul>
+
+<p>See the solenoid.lua source code for more details. Also, try the toroid.iob example.</p>
+
+<h2>Field Caching Option</h2>
+
+<p>There is an option to improve trajectory calculation performance
+by caching Biot-Savart magnetic field calculations.
+This is option is contained in the solenoid.lua code.</p>
+
+<p><b>A caution:</b>
+If you don't know what this section of code does, it's safer to just delete it.
+This code is intended to increase calculation speed at the
+expense of some in accuracy.
+In some cases it may even reduce speed too.  Therefore, it's safest not to use this option
+unless you really need, know it benefits v.s. costs are significant, and apply it properly.
+</p>
+
+<p><b>The problem:</b>
+Biot-Savart calculations are sometimes computationally intensive.  At every point
+in which the magnetic field needs to be determined, a big Biot-Savart integration
+is done.  This may be a lot of points: in this example, the Biot-Savart code is invoked from an mfield_adjust
+segment, which is called for every particle position at every time-step.
+Luckily, that integration is pretty optimized in SIMION, but tons of wire turns
+or time steps can still bog it down.
+
+<p>
+<b>The basic solution:</b>
+Speed may be improved, however, by not recalculating Biot-Savart on
+every point required but rather only calculating the magnetic field on the
+vertex points of a grid cell surrounding each local set of required points
+and using (fast) interpolation between those vertex points to determine
+the field of all required points inside that grid cell. Furthermore, you only
+need to do this for grid cells that particles actually pass through.
+</p>
+
+<p><b>The implementation:</b>
+The CachedField object handles all of this behind the scenes.  The CachedField
+object provides the same external interface as the Biot-Savart field object, but internally
+it works differently.  When you query the field at a point with the CachedField, it first tries to interpolate
+a value between the nearest grid points if that field has already been calculated (cached) at
+those grid points; otherwise, it invokes the provided function
+(here, the Biot-Savart field calculator) to determine the fields at those vertex points and
+caches those values for future use.
+In this code, the current field object is replaced with a cached field object
+that wraps the original field object.
+</p>
+
+<p><b>Implications:</b>
+This option is intended to reduce runtimes at some expense in accuracy.
+In some cases, particularly inside cells where fields are queried multiple times,
+the cached field will improve run-time; in other cases, it may actually increase
+run-times.  Larger grid cells (as well as 2D rather than 3D cells) improve caching
+but also introduce greater loss in accuracy from interpolation.
+</p>
+
+<h2>solenoid_write.lua</h2>
+
+<p>Click Run Lua Program on the SIMION main screen and select the solenoid_write.lua file.
+The solenoid field will be written to a text file (out.csv) containing solenoid field data.
+That file can be examined in Excel.
+</p>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="../mfield_adjust/README.html">Example: mfield_adjust</a> - demonstrates basic usage of the mfield_adjust segment.
+<li><a href="../helmholtz_coil/README.html">Example: Helmholz coil</a>
+<li><a href="../field_array/README.html">Example: Field Array</a> - loading and interpolating magnetic field from grid data in ASCII text file.
+<li><a href="../magnet/README.html">Example: Magnet</a>
+
+</ul>
+
+<h2>Source</h2>
+
+<ul>
+<li>2011-12-05: add toroid.iob example
+<li>2013-05-20: add solenoid_write.lua
+<li>2011-09-19: use field:draw() in solenoid.lua
+<li>2007-03, D.Manura
+</ul>
+
+</div>
+    
+<div class="copyright">SIMION&#153; 8.1 (c) 2003-2012 Scientific
+Instrument Services, Inc. All Rights Reserved.
+</div>
+    </body></html>

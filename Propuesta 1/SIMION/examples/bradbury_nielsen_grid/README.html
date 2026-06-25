@@ -1,0 +1,157 @@
+<html>
+<head>
+<title>SIMION Bradbury-Nielson Grid Example</title>
+<style type="text/css">
+.figure { margin: 0.5em }
+</style>
+
+<style type="text/css">
+  body { font-family: verdana, arial, sans-serif; font-size: 90%; }
+  .copyright {font-size:80%; border-top:1px solid black}
+  .title1 {background-color:#80ff80}
+  .links1 {background-color:#c0ffc0}
+  .content {max-width:30em; margin-left:5px; margin-right:5px }
+  h1 {margin-top: 0; margin-bottom: 0; background-color:#e0ffe0; font-size:130%}
+  h2 {font-size:120%}
+  h3 {font-size:110%}
+  h4, h5, h6 {font-size:100%}
+</style>
+</head>
+
+<body  marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+<div class="title1">
+<a href="../_redirect.html?id=index">SIMION&#153; 8.1</a>
+</div>
+<h1>SIMION Bradbury-Nielson Grid Example</h1>
+<div class="content">
+
+
+
+<h2>Purpose</h2>
+
+<p>The files in this directory provide an example of a
+Bradbury-Nielson Grid (BN, Gate/Shutter) [1].
+It also demonstrates a special technique in splitting the
+system containing such a grid into two potential array instrances--a fine (high
+resolution) array accurately representing the grid and coarse (low resolution)
+array containing the rest of the system--while making sure the fields
+match up on both sides of the boundary between the PA instances,
+even when RF voltages are applied in those PA instances.</p>
+
+<div class="figure">
+<img src="resources/bngrid_pe.png"
+  alt="PE surface showing fields match up between coarse and fine PA instances"><br>
+<b>Figure:</b> PE surface showing the transition between fine and coarse PA instances.
+Note that by properly defining the potentials on the edges between PA instances, we can ensure the
+gradient of the potential is the same on both sides of the boundary.
+</div>
+
+<h2>Version Notice</h2>
+
+The user programming in this
+example uses new SIMION 8.1 features.
+
+<h2>Files in this demo:</h2>
+
+<ul>
+<li>README.html - Description of example
+<li>bngrid.iob - SIMION workbench, along with particle definitions
+(.fly2), and workbench user program (.lua).  The user program has code
+to make the fields on the PA boundaries match up and also apply RF
+potentials on the gate wires.
+<li>coarse.gem - geometry file to generate coarse array (coarse.pa#)
+<li>fine.gem - geometry file to generate fine array (fine.pa#)
+<li>system_inc.gem - geometry file included in other geometry files
+</ul>
+ 
+<h2>Usage</h2>
+
+<p>How to run demo:</p>
+
+<ul>
+<li>1.
+  <B>View bngrid.iob.</b>
+  <i>(On main screen, click Remove all PAs from RAM, Click View,
+  and select the bngrid.iob file.)</i>
+  If this is your first time using the example,
+  you will be be asked to generate the coarse.pa# and fine.pa# array
+  from their GEM files and then refine them <i>(confirm that
+  and press Refine)</i>.
+<li>2.
+  <b>Define a PE View through the center cross section of the system.</b>
+  <i>(Click the ZY button.  Drag a rectangle selection from
+  roughly (z,y)=(2,50) to (z,y)=(-2,-50) mm.  Click +Z3D.  Click
+  the XY button. Click PE.  Do a 2D zoom on the center gate by
+  dragging a rectangle and
+  clicking Z2D.)</i>  A useful PE view displays.
+<li>3.
+    Before doing the Fly'm, we'll first explore how SIMION can
+    match the boundary fields under a simple static field condition.  <b>Fast
+    adjust electrodes 10 and 11 on coarse.pa0 to 0V and fast adjust
+    electrodes 10 and 11 on fine.pa0 to 10 V</b> (the actual potentials chosen
+    are arbitrary). <i>(For example, in the PAs tab,
+    select coarse.pa0, click Fast Adjust Voltages..., set electrodes
+    10 and 11 to 0 V, and click Fast Adjust.  Do the same for fine.pa0,
+    but set these to 10V.)</i> Notice that in the PE view the
+    fields no longer match up on the boundary (the potential jumps and
+    the field, i.e. the slope of the potential surface, changes abruptly
+    also).  We did this only to show in the next step how SIMION can
+    restore these potentials to their proper values.
+<li>4.
+  <b>Invoke the "reset()" function from the command bar.</b>
+       <i>(In the command bar at the bottom of the SIMION window, type
+       "reset()" (without quotes), and press the ENTER key.)</i>
+       Notice that the PE surface updates so that fields match up on
+       the boundaries.  again.  You may want to disable "Constrn"
+       (constrain) and rotate the view, 2D, zoom, and use other PE
+       View options to see this better.  The "reset()" function is
+       defined in the user program (bngrid.lua) and fast adjusts the
+       potentials on the boundaries between the two arrays to
+       identical in potential and have the component of the field
+       perpendicular to the boundary be identical also (i.e. the
+       Laplace equation is satisfied on the boundary).
+<li>5. <b>Set trajectory quality to 0.</b>
+       <i>(Set TQual in Particles tab to 0.)</i>
+       This speeds up flying under RF voltages.
+<li>6. <b>Enable Grouped and Dots flying.</b>
+       <i>(Enable Grouped and Dots on Particles tab.)</i>
+       These options will be used to demonstrate how the effect of the
+       gate on the particles depends on time-of-birth.
+<li>7. <b>Fly ions.</b>
+       <i>(Click Fly'm.)</i>
+       Notice that only ions at only a certain time-of-bith
+       pass through.  This is the purpose of the gate.
+       You may alternately wish to view the system in XY view (without PE).
+</ul>
+
+<p>See the bngrid.lua for details on the user programming.  The code
+uses some functionality provided by the <a
+href="../_redirect.html?id=lua_simion.wb">simion.wb</a> and <a
+href="../_redirect.html?id=lua_simion.pas">simion.pas</a> objects.</p>
+
+<h2>See Also</h2>
+
+<ul>
+<li>[1] <a href="http://en.wikipedia.org/wiki/Bradbury-Nielsen_shutter">Wikipedia:Bradbury-Nielsen shutter</a>
+<li><a href="../nonideal_grid/README.html">Example: nonideal_grid</a>:
+  has a similar non-ideal grid geometry but static (not RF) potentials are applied to the grid.
+</ul>
+
+<h2>Source/History</h2>
+
+<ul>
+<li>2012-06-27: Simplify code some and improve comments.
+   Fixed broken example:
+  ``reset()`` gave error "bngrid.lua:43: attempt to perform arithmetic on field 'mm_per_gu'(a nil value)"
+  since "mm_per_gu" was renamed "scale" in 8.1.0.14.
+<li>2008-05: D.Manura, initial.
+</ul>
+
+</div>
+    
+<div class="copyright">SIMION&#153; 8.1 (c) 2003-2012 Scientific
+Instrument Services, Inc. All Rights Reserved.
+</div>
+    </body>
+</html>       
+ 

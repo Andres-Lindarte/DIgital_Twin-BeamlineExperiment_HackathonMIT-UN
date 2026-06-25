@@ -1,0 +1,23 @@
+; relative permeability for C-magnet.
+; user program may rescale these.
+
+pa_define(250,200,1, planar,y,magnetic_,1, 1,1,1) ; mm/gu
+
+# local gap = _G.gap or 30
+
+locate(-0.5,-0.5,-0.5) { ; 0.5 gu shift (see README)
+
+; First fill all space by default with relative permeability 1.
+n(1) {
+  fill { within { box3d(-1E+6,-1E+6,-1E+6, 1E+6,1E+6,1E+6) } }
+}
+
+n(2) {
+  fill {
+    within_inside { box(50,$(50+gap), 200,$(100+gap)) }
+    within_inside { box(150,$(gap),   200,$(50+gap) ) }
+    within_inside { box(50,0,         100,$(50+gap) ) }
+  }
+}
+
+}

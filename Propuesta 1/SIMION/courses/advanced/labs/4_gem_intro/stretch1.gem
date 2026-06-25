@@ -1,0 +1,44 @@
+;makes hyperbolic stretched trap as fast adjust file
+; all electrode dimensions are defined in mm
+
+;electrode number 1 is ring
+;electrode number 2 is left end cap
+;electrode number 3 is right end cap
+
+						;array to use with trap.iob
+						;scale 0.1 mm / grid unit
+
+pa_define(401,284,1,cylindrical,y_mirror)
+						; 401x, 284y, 1z 2D cylindrical electrostatic array
+
+locate(200,0,0,10)			; shift working center to trap center
+							; convert mm to grid units
+	{
+	e(1)					;electrode 1 - trap ring electrode
+		{					;draw y hyperbola (ring electrode)
+		fill{within{hyperbola(0,0,7.07,10.0)}}
+		}
+
+
+	e(2)					;electrode 2 - left end cap
+		{					;draw left end cap x hyperbola
+		fill
+			{				; twist hyperbola 90 degrees
+							; shift 0.76 mm to left
+			within{locate(-0.76,,,,,90){hyperbola(0,0,10.0,7.07)}}
+							; exclude right half of hyperbola
+			notin{box(0,0,100.0,100.0)}
+
+			}
+		}
+	e(3)					;electrode 3 - right end cap
+		{					;draw right end cap x hyperbola
+		fill
+			{				; twist hyperbola 90 degrees
+							; shift 0.76 mm to right
+			within{locate(0.76,,,,,90){hyperbola(0,0,10.0,7.07)}}
+							; exclude left half of hyperbola
+			notin{box(-100.0,0,0,100.0)}
+			}
+		}
+	}

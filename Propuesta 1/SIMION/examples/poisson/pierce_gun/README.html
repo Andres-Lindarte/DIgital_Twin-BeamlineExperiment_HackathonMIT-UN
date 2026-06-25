@@ -1,0 +1,185 @@
+<html>
+<head>
+<style type="text/css">
+  body { font-family: verdana, arial, sans-serif; font-size: 90%; }
+  .copyright {font-size:80%; border-top:1px solid black}
+  .title1 {background-color:#80ff80}
+  .links1 {background-color:#c0ffc0}
+  .content {max-width:30em; margin-left:5px; margin-right:5px }
+  h1 {margin-top: 0; margin-bottom: 0; background-color:#e0ffe0; font-size:130%}
+  h2 {font-size:120%}
+  h3 {font-size:110%}
+  h4, h5, h6 {font-size:100%}
+</style>
+</head>
+<body  marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+<div class="title1">
+<a href="../../_redirect.html?id=index">SIMION&#153; 8.1</a>
+</div>
+<h1>SIMION Pierce Gun Poisson Solving Examples</h1>
+<div class="content">
+
+
+
+<h2>Purpose</h2>
+
+<p>
+This example simulates a Pierce gun, which involves space-charge from particle trajectories within an electrostatic lens system.
+Space-charge normally causes undesirable beam spreading (defocusing),
+but the Pierce gun bends the electrodes near the cathode
+to create a focusing effect that compensates for the defocusing of the space-charge.
+In space-charge simulations like this, the electric field
+and particle trajectories are mutually coupled: the space-charge from the
+beam has a significant charge density distribution that perturbs the
+electrode surfaces charges, thereby perturbing the electric field, which in turn
+perturbs the beam, ad infinitum.  The Poisson solver
+is used to solve this system in a self-consistent manner, and this is automatic by a particle-in-cell (PIC)
+library, "piclib.lua".
+</p>
+
+<p>
+See "Computing charge density from trajectories" in the
+<a href="../../_redirect.html?id=poisson_solver">SIMION Poisson solver documentation</a>
+for background on how the space-charge from the particle trajectories is incorporated
+back into the Poisson solver (Refine) and iterated.
+</p>
+
+<h2>Files in this demo:</h2>
+
+<ul>
+<li>pierce_2dpla.* - Pierce gun, 2D planar, "current" PIC method
+<li>pierce_2dcyl.* - Pierce gun, 2D cylindrical, "current" PIC method
+<li>pierce_3dpla.* - Pierce gun, 3D planar, "current" PIC method.
+      This is the same as pierce_2dpla.* but uses a 3D array
+      with Neumann boundary conditions in z_min and z_max planes.
+<li>pierce_pulse_2dpla.* - Pierce gun, pulsed beam, 2D planar, "charge" PIC method
+<li>pierce_pulse_2dcyl.* - Pierce gun, pulsed beam, 2D cylindrical, "charge" PIC method
+<li>pierce_pulse_3dpla.* - Pierce gun, pulsed beam, 3D planar, "charge" PIC method.
+<li>pierce_pulse_2dcyl3d.fly2 - Alternative particle definitions for pierce_pulse_2dcyl.iob.
+      Particles are flown in 3D even though field is 2D.  See comments in pierce_pulse_2dcyl.lua for details.
+<li>pierce_pulse_2dcylbig.* - Pierce gun, pulsed beam, 2D cylindrical, larger PA.
+      This is the same as pierce_pulse_2dcyl.* but 10x the array size.
+      with array 10x the size.
+<li>pierce_collisionpulse_2dcyl.* - Pierce gun, collisions and pulsed beam, 2D cylindrical,
+      "charge" PIC method.
+      This is the same as pierce_pulse_2dcyl.*
+      but also applies collisional (HS1 or SDS) effects for positive ions.
+      A "current" PIC method version may also be done.
+<li>These files also utilize "piclib.lua" in the parent directory, which handles the
+    particle-in-cell (PIC) space-charge calculation.
+</ul>
+
+<h2>Usage - pierce_2dpla.iob and pierce_2dcyl.iob</h2>
+
+<p>How to run demo:</p>
+
+<ul>
+<li>1. <B>Load the pierce_2dpla.iob</b> (or pierce_2dcyl.iob which has 2D cylindrical symmetry).
+       <i>(Click View/Load Workbench and select the IOB file.)</i>
+       You may select "Yes" when prompted to "Refine it now?".
+<li>3. <b>Note that potential contours are defined</b>.
+       <i>(On the PE/Contours tab, note that Draw is checked and that
+       pierce_2dpla.con (or pierce_2dcyl.con) was loaded.)</i>
+<li>4. <b>Disable space-charge effects.</b>
+       <i>(In the Variables tab, set PIC_enable to 0.)</i>
+       We initially disable space-charge effects to see how the system
+       behaves before incorporating space-charge effects.
+<li>5. <b>Fly ions</b>.  <i>(Click the Fly'm button.)</i> The
+       particles will fly. 
+       Notice that the beam narrows as it travels from the cathode to anode.
+       This is understood from the curvature of the contour lines (or the PE view
+       when Negative particle mode is selected).
+<li>6. <b>Enable space-charge effects.</b>
+       <i>(In the Variables tab, set PIC_enable to 1.)</i>
+       We'll now observe how space-charge changes this system.
+<li>7. <b>Fly ions</b>.  <i>(Click the Fly'm button.)</i> The
+       particles will fly.  Notice that the potential contour
+       lines change.
+       They become flatter, and the particles follow roughly
+       a straight line.  This is the fundamental operation of this Pierce gun.
+       The repulsion effects of the beam exactly counteract the focusing
+       effect of the original beam, causing the particles to fly straight, even
+       when the beam has a high space-charge.  You might want to repeat the
+       fly'm to observe this again. Notice that a couple reruns are performed.
+       In each run, the particles are traced, the space-charge from the traced rays
+       are deposited into the charge array (pierce_2dpla-charge.pa), and the electric
+       field PA (pierce_2dpla.pa) is then re-refined as seen in the Log tab window.
+       After a few runs, the fields and particle trajectories converge to a self-consistent
+       solution.
+<li>8. See the comments in pierce_2dpla.lua file (by clicking User Program on the Particles tab),
+       as well as the piclib.lua (in the parent folder) used by this file
+       for further details on this example.
+       There are other variables you can experiment with.  For example,
+       setting PIC_display_scaled_charge_1 to 10 will display a real-time
+       charge density plot in the PE and contour views.
+       <b>Note: Examining the source code is highly instructive and
+       very important to understanding this example.  If you'd like
+       to set up your own simulation like this, it's recommended
+       you read through all of the code and comments to understand how
+       the simulation is setup.</b>
+<li>10. Related examples (.iob files) are also included, such as a 3D array,
+       time-dependent space-charge ("pulsed"), a
+        larger 2D array, and one incorporating ion-gas collision effects.
+		See "Files in this demo" above.
+</ul>
+
+<p>
+<b>Notes on the "pulsed" examples:</b> The following notes pertain to the examples with "pulsed" in the name.
+These operate piclib in "charge" mode, in which case particles traced
+represent Coulombs of charge (rather than Amps of current like in "current" mode").
+The charge mode can handle time-dependent
+space-charge.  Although the Pierce gun is not necessarily time-dependent and it is more efficiently simulated
+in a time-independent way via "current" mode (as done previously above),
+we nevertheless simulate it this way here for demonstration and comparison.  Moreover, you can think
+of the space-charge being time-dependent if the gun is somehow abruptly turned on and off (e.g.
+via a gate in front of the cathode).
+</p>
+
+<ul>
+<li>   Note that trajectory quality is set to 0 and Grouped flying is enabled (in the Particles tab).
+       In "charge" mode (unlike "current mode"),
+       it's critical that grouped flying is enabled so that the particles
+       fly all at once and space-charge is properly calculated.  As
+       when using SIMION's charge repulsion feature, a zero of
+       negative TQual value is also strongly recommended here to avoid
+       needlessly long run-times (e.g. one particle slowing down the rest).
+<li>   During the Fly'm, notice in the Log window that the field is being
+       re-Refined every time the ions advance approximately one grid unit.
+       Increasing PIC_refine_refine_period to 10 will greatly increase
+       performance by not refining as frequently.
+<li>   After the Fly'm is complete, temporarily check the Dots box in the Particles
+       tab.  Note how the particles fill the entire volume of a beam
+       pulse over at least two time-of-flight periods, thereby providing a good
+       representation of the space-charge during most of the simulation.
+       This is achieved by giving particles a range of time-of-births (TOB) in the
+       particle definitions (which was not necessary to do in "current" mode).
+       Notice that the PIC_smooth_radius variable is set to
+       approximately the spacing between particles to ensure a smooth representation
+       of space charge (as can be verified by setting PIC_display_scaled_charge_1 to 10
+       and examining the PE view).
+</ul>
+
+<h2>References</h2>
+
+<ul>
+<li><a href="../README.html">Example: Poisson</a>
+<li><a href="../../_redirect.html?id=poisson_solver">Doc: SIMION Poisson solver</a>
+<li>Martin Reiser, Theory and Design of  Charged Particle Beams, 2004.
+  <a href="http://onlinelibrary.wiley.com/doi/10.1002/9783527617623.app1/pdf">http://onlinelibrary.wiley.com/doi/10.1002/9783527617623.app1/pdf</a>
+<li>John R. Pierce.  My Work With Vacuum Tubes At Bell Laboratories.
+  "Vintage Electrics" Volume #3 issue #1 - 1991.
+  <a href="http://www.smecc.org/john_r__pierce____electron_tubes.htm">http://www.smecc.org/john_r__pierce____electron_tubes.htm</a>
+</ul>
+
+<h2>History/Changes</h2>
+
+<ul>
+<li>2012-09-04:  pierce_collisionpulse_2dcyl.lua: Fix SDS/HS1 library importation.
+</ul>
+
+</div>
+    
+<div class="copyright">SIMION&#153; 8.1 (c) 2003-2012 Scientific
+Instrument Services, Inc. All Rights Reserved.
+</div>
+    </body></html>

@@ -1,0 +1,23 @@
+;makes hyperbolic trap as fast adjust file
+;electrode number 1 is ring
+;electrode number two is left and right end cap
+
+						;array to use with quad
+						;scale 0.1 mm / grid unit
+pa_define(251,173,1,cylindrical,y_mirror)
+
+locate(125)
+	{
+	e(1)					;electrode of one volt
+		{					;draw y hyperbola
+		fill{within{hyperbola(0,0,70.8,100)}}
+		}
+
+	e(2)					;electrode of two volts
+		{					;draw left end cap x hyperbola
+		fill
+			{
+			within{locate(,,,,,90){hyperbola(0,0,100,70.8)}}
+			}
+		}
+	}

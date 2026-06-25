@@ -1,0 +1,5 @@
+; Creates charge density PA.
+; This file is currently unused (the user program creates the charge PA
+; instead) but is provided for illustration.
+
+pa_define(200,200,1, planar,none,electric_,, 0.5,0.5,0.5)  ; 0.5 mm/gu

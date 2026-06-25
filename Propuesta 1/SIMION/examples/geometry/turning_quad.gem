@@ -1,0 +1,78 @@
+; turning_quad.gem - GEM file geometry for DC turning quadrupole (bender).
+;
+; Note: Perpendicular to the quad axis, we may utilize a mirror plane (z)
+; to conserve memory or even approximate as 2D planar symmetry (nz=1).
+;
+; Note: some extra empty space allows for frindging fields.
+; These are only approximate depending on surroudings.
+; Add surrounding electrodes (e.g +z and -z plates) for greater accuracy
+; near openings.
+;
+; Compatibility: This GEM file requires SIMION 8.0.4 or above
+; (uses Lua macros -- http://www.simion.com/issue/296 ).
+;
+; D.Manura-2010-06-02.  (c) Scientific Instrument Services, Inc. (SIMION 8.0).
+
+# local r0 = 3    -- half min distance between opposite rods in mm
+# local rrod = r0*1.1468  -- rod radius in mm
+# -- note: rrod/r0=1.1468 for ground cylinder radius 3.54r0,
+# -- according to [Denison 1971] for optimal
+# -- quadrupole field given circular rods
+# local gu_mm = 20  -- grid units per mm (scaling factor)
+
+# local nx = math.floor((5 * r0) * gu_mm) + 1 -- num grid points in x
+# local nz = math.floor((2 * r0) * gu_mm) + 1 -- num grid points in z
+
+# local h = 5  -- half height rods in mm
+# local boxw = (r0+rrod)/math.sqrt(2)  -- half with of box cutting rods in mm
+# local oboxw = boxw + 0.5             -- half width of outer box inside in mm
+# local ooboxw = boxw + 0.6            -- half width of outer box outside in mm
+
+pa_define($(nx),$(nx),$(nz), planar, z)
+
+locate($((nx-1)/2),$((nx-1)/2),0, $(gu_mm)) {
+  ; two quarter quad rods (+)
+  e(1) {
+    fill { within {
+      locate(0,0,0, 1, 0, 45 ) { circle($(r0+rrod),0, $(rrod)) }
+      centered_box3d(0,0,0, $(boxw*2),$(boxw*2),$(2*h))
+    }}
+    fill { within {
+      locate(0,0,0, 1, 0, 225) { circle($(r0+rrod),0, $(rrod)) }
+      centered_box3d(0,0,0, $(boxw*2),$(boxw*2),$(2*h))
+    }}
+  }
+
+  ; two quarter quad rods (-)
+  e(2) {
+    fill { within {
+      locate(0,0,0, 1, 0, 135) { circle($(r0+rrod),0, $(rrod)) }
+      centered_box3d(0,0,0, $(boxw*2),$(boxw*2),$(2*h))
+    }}
+    fill { within {
+      locate(0,0,0, 1, 0, 315) { circle($(r0+rrod),0, $(rrod)) }
+      centered_box3d(0,0,0, $(boxw*2),$(boxw*2),$(2*h))
+    }}
+  }
+
+  ; outer plates preventing field leakage out.
+  e(3) {
+    fill {
+      within { box3d($( ooboxw),$( ooboxw),$(-h), $( boxw-rrod),$( oboxw),$(h)) }
+      within { box3d($( ooboxw),$( ooboxw),$(-h), $( oboxw),$( boxw-rrod),$(h)) }
+
+      within { box3d($(-ooboxw),$( ooboxw),$(-h), $(-boxw+rrod),$( oboxw),$(h)) }
+      within { box3d($(-ooboxw),$( ooboxw),$(-h), $(-oboxw),$( boxw-rrod),$(h)) }
+
+      within { box3d($( ooboxw),$(-ooboxw),$(-h), $( boxw-rrod),$(-oboxw),$(h)) }
+      within { box3d($( ooboxw),$(-ooboxw),$(-h), $( oboxw),$(-boxw+rrod),$(h)) }
+
+      within { box3d($(-ooboxw),$(-ooboxw),$(-h), $(-boxw+rrod),$(-oboxw),$(h)) }
+      within { box3d($(-ooboxw),$(-ooboxw),$(-h), $(-oboxw),$(-boxw+rrod),$(h)) }
+    }
+  }
+}
+
+; note: "fill { within { A B } }" fills within intersection of A and B, while
+;       "fill { within {A} within {B} }" fills within union of A or B.
+

@@ -1,0 +1,15 @@
+; main body ground electrode
+ pa_define(482,181,181,p,yz)
+
+; scaling is 0.010"/grid unit  or 0.254 mm/grid unit
+
+
+
+;locate(0,0,0,100,0,0,0) ; Beam hole view
+locate(0,0,0,100,0,0,-45) ; mounting hole view
+{
+e(0)
+	{
+	include(z_include_bodyground.gem)
+	}
+}

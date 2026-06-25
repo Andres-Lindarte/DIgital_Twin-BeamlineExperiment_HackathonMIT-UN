@@ -1,0 +1,13 @@
+; quad.gem
+; makes hyperbolic quad as fast adjust file
+; with surface enhancement
+
+pa_define(101,101,1,planar,xy_mirror, surface=fractional)
+
+e(1) {
+  fill{within{hyperbola(0,0,25,25)}}
+}
+
+e(2) {
+  fill{within{locate(,,,,,90){hyperbola(0,0,25,25)}}}
+}

@@ -1,0 +1,11 @@
+pa_define(103,103,1,p,xy)
+
+e(2)
+	{
+	fill{within{circle(0,0,102)}
+		 notin_inside{circle(0,0,100)}}
+	}
+e(1)
+	{
+	fill{within{circle(0,0,50)}}
+	}

@@ -1,0 +1,20 @@
+; **********************************************************************
+; *******************  outer ground shield	****************************
+; **********************************************************************
+
+locate(0,0,0,1,-90)   ; swing back 90 deg cw in azimuth and
+	{
+	fill{			  ;community fill
+		within{cylinder(0,0,0,1.85,,8.5)}  ; start with cylinder
+		notin_inside{circle(0,0,1.8)}	   ; bore out cylinder
+			  ;primary beam holes
+					;top beam hole swing up 35 deg ccw in rt
+		notin_inside{locate(0,0,-1.91,1,0,0,35){circle(0,0,.19)}}  ;top beam entry hole
+					;right beam hole swing right 35 deg cw in az
+		notin_inside{locate(0,0,-1.91,1,-35){circle(0,0,.19)}}	;right beam entry hole
+					;cutaways to show inside electrodes from 3d views
+					;should be commented out if flying ions
+;		notin_inside{locate(0,0,-1.,1,-45,0,45){circle(0,0,1.5)}}  ;cutaway
+;		notin_inside{locate(0,0,-6.,1,-45,0,45){circle(0,0,1.5)}}  ;cutaway
+		}
+	}

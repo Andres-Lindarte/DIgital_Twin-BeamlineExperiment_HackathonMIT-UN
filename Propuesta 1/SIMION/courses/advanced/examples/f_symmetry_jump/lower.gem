@@ -1,0 +1,67 @@
+pa_define(261,153,41,p,z)			;array to use z mirroring 1/2 volume
+									;scale instance to 0.254 mm/gu
+locate(130,76,0,100)				;center in array and scale to 0.010"/gu
+{									;defined dimensions are in inches
+e(0)
+	{
+	fill
+		{							;create hollow ground box
+		within{cent_box3d(0,0,0,1.5,1.5,0.75)}
+		notin{cent_box3d(0,0,0,1.4,1.4,.65)}
+		}
+	}
+									   ;extraction tube
+locate(0,-.70)						   ;shift down to focus on target
+	{
+	locate(0,0,0,1,0,45)			   ;rotate 45 deg in el
+		{
+		locate(0,.5)				   ;shift upward 0.5 inches
+			{
+			locate(0,0,0,1,0,0,90)	   ;rotate 90 deg in rt to vertical
+				{
+				e(1)
+					{
+					fill
+						{			   ;extraction tube
+						within{cylinder(0,0,0,.3,,1.0)}
+						}
+					}
+				n(0)
+					{
+					fill
+						{			   ;bore hole in it
+						within{cylinder(0,0,0,.2,,1.0)}
+						}
+					}
+				}
+			}
+		}
+	}
+									   ;primary beam tube
+locate(0,-.70)						   ;shift down to focus on target
+	{
+	locate(0,0,0,1,0,-45)			   ;rotate -45 deg in el
+		{
+		locate(0,.5)				   ;shift upward 0.5 inches
+			{
+			locate(0,0,0,1,0,0,90)	   ;rotate 90 deg in rt to vertical
+				{
+				e(2)
+					{
+					fill
+						{			   ;primary beam tube
+						within{cylinder(0,0,0,.3,,1.0)}
+						}
+					}
+				n(0)
+					{
+					fill
+						{			   ;bore hole in it
+						within{cylinder(0,0,0,.2,,1.0)}
+						}
+					}
+				}
+			}
+		}
+	}
+}

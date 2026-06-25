@@ -1,0 +1,21 @@
+particles {
+  coordinates = 0,
+  standard_beam {
+    tob = 0,
+    mass = 1003,
+    charge = arithmetic_sequence {
+      first = -1,
+      last = 1,
+      n = 2
+    },
+    ke = 1,
+    cwf = 1,
+    color = 0,
+    direction = vector(0, 1, 0),
+    position = line_sequence {
+      first = vector(0, -30, 0),
+      last = vector(0, 30, 0),
+      n = 21
+    }
+  }
+}

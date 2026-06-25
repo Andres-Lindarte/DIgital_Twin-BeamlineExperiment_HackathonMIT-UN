@@ -1,0 +1,37 @@
+-- First compute potentials in scalable sets in potential array.
+-- We define two sets representing the extreeme values.
+-- Values at any given time can be represented as linear combinations
+-- of these two sets of values.
+-- 
+local map1 = {}
+local map2 = {}
+
+-- WARNING: if you change any of the following voltage values
+-- and re-refine, you must change the corresponding values in
+-- the .lua file.  The .lua file fast adjustment assumes
+-- specifical values were used.
+local _RF_amplitude = 50
+local _DC_offset_1 = 100.0
+local _DC_offset_16 = 68.0
+local _DC_offset_17 = 60.0
+
+local dcgradient = (_DC_offset_1 - _DC_offset_16) / 15
+local dcvolts = _DC_offset_1
+local rf = _RF_amplitude
+for n=1,16 do
+  map1[n] = dcvolts + rf
+  map2[n] = dcvolts - rf
+  --print('DEBUG', map1[n], map2[n])
+  rf = -rf
+  dcvolts = dcvolts - dcgradient
+end
+map1[17] = _DC_offset_17
+map2[17] = _DC_offset_17
+
+-- Now create potential array info.
+potential_array {
+  scalable_electrodes = {
+    [1] = map1,
+    [2] = map2
+  }
+}

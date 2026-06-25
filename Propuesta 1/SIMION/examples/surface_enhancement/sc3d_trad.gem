@@ -1,0 +1,9 @@
+; sc3d.gem
+; 3D symmetry spherical capacitor,
+; WITHOUT surface enhancements.
+
+pa_define(130,130,130,planar,xyz)
+; outer electrode, R2
+e(-333.3333) { fill { notin_inside { sphere(0,0,0, 120) } } }
+; inner electrode, R1
+e( 500.0000) { fill { within { sphere(0,0,0, 80) } } }

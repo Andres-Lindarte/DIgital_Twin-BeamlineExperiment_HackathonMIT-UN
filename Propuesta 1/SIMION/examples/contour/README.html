@@ -1,0 +1,325 @@
+<html>
+<head>
+<title>SIMION Advanced Contour/Field Plotting Example</title>
+
+<style type="text/css">
+  body { font-family: verdana, arial, sans-serif; font-size: 90%; }
+  .copyright {font-size:80%; border-top:1px solid black}
+  .title1 {background-color:#80ff80}
+  .links1 {background-color:#c0ffc0}
+  .content {max-width:30em; margin-left:5px; margin-right:5px }
+  h1 {margin-top: 0; margin-bottom: 0; background-color:#e0ffe0; font-size:130%}
+  h2 {font-size:120%}
+  h3 {font-size:110%}
+  h4, h5, h6 {font-size:100%}
+</style>
+</head>
+
+<body  marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+<div class="title1">
+<a href="../_redirect.html?id=index">SIMION&#153; 8.1</a>
+</div>
+<h1>SIMION Advanced Contour/Field Plotting Example</h1>
+<div class="content">
+
+
+
+<h2>Purpose</h2>
+
+<p>SIMION's PE/Contours tab provides a number of built-in functions
+for visualizing fields and contour lines.  However, there may be
+special cases where you want more flexibility for field plotting
+capabilities beyond these.  User programming tricks can offer a
+solution.  The examples here demonstrate the following:
+
+<ul>
+<li><b>Plotting field lines or field vectors.</b> These are curves or
+line vectors parallel to the field.  <i>(Note: The usual "Potentials" and
+"Gradients" options under Contours in the PE tab do exactly not do
+this.  "Potentials" plots equipotential lines, which are perpendicular
+to field lines.  Equipotential lines and field lines (as well as PE
+surfaces) do convey much of the same information, but you may prefer
+the field lines/vectors display.  "Gradients" is a plot of the
+magnitude (a scalar value) of the field, discarding directional
+information and so does not provide this either.)</i>
+
+<li><b>Exporting paths of contour and field lines and data along those
+lines.</b> The contour and field lines in these examples are obtained
+by forcing particles of your choosing to follow equipotential lines or
+field lines, and the trace of these particles form the lines in the
+display.  A convenient side-effect of this is that you can now use
+SIMION's regular Data Recording options (or user programming
+other_actions segments for even greater flexibility) to record data
+about your field at each position a particle traverses (i.e. on every
+time-step).
+
+<li><b>Plotting field lines for fields defined in a user program
+(efield_adjust or mfield_adjust segments).</b> The PE/Contours
+features only plot fields defined in potential array files, not fields
+defined programmatically such as from user programs (including
+magnetic fields computed by wire/solenoid currents using the
+simionx.MField library as demonstrated in <a
+href="../solenoid/README.html">Example: solenoid</a>).  The approach
+taken here does in fact identically handle both fields defined in
+potential arrays and fields defined programmatically, so it is
+particularly useful for the latter.
+
+<li><b>Plotting other field types</b>, like pressure, temperature, velocity
+and density arrays as used in gas flow definitions (like in the SDS and SDS-FAIMS
+models).</li>
+
+</ul>
+
+<h2>Files in this demo:</h2>
+
+<ul>
+<li>README.html - Description of example
+<li>Common files:
+  <ul>
+    <li>contourlib81.lua - Library for drawing scalar and vector fields on the screen.
+    <li>contourlib.lua - reusable routines for plotting contour/field lines
+        by (unlike contourlib81.lua) using particle tracing.  This is an older SIMION 8.0 version.
+        Typically contourlib81.lua is preferred instead.
+  </ul>
+<li>contourlib81.lua example
+  <ul>
+  <li>solenoid81.iob - SIMION workbench
+  <li>solenoid81.lua - defines solenoid field and calls contourlib81.lua to plot magnetic field vectors
+  </ul>
+<li>contourlib.lua electrostatic example (adapted from the drag example)
+  <ul>
+  <li>drag.iob - SIMION workbench
+  <li>drag.pa* - SIMION potential array used by drag.iob.
+  <li>drag.lua - SIMION workbench user program that
+        plots contour/field lines (via the contourlib.lua library)
+  <li>drag.con - potential contour line definitions.  This applies
+       SIMION's normal contour plotting and is only provided for comparison.
+  <li>drag.fly2 - particle definitions used in defining starting points
+               of fields lines when plotting field lines.
+  <li>drag-vector.fly2 - particle definitions used in defining starting
+               points of vectors when plotting field vectors.
+  <li>drag-equipotential.fly2 - particle definitions used in defining starting
+               points of equipotential contour lines when plotting
+               equipotential lines.
+  </ul>
+<li>contourlib.lua magnetic example (adapted from the solenoid example)
+  <ul>
+  <li>solenoid.iob - SIMION workbench
+  <li>solenoid.lua - SIMION workbench user program that
+        both defines the solenoid magnetic field programmatically
+        (via the simionx.MField library) and plots field lines
+        (via the contourlib.lua library).
+  <li>mag.pa - empty magnetic PA field that solenoid.lua uses to
+        apply its own magnetic field inside.
+  <li>solenoid.fly2 - particle definitions used to define initial
+         positions of field lines.
+  </ul>
+</ul>
+
+<h2>About the Models - contourlib81.lua (SIMION 8.1)</h2>
+
+<p>
+The included library <b>contourlib81.lua</b> library will plot field vectors
+on the SIMION 8.1 View screen for any arbitrary given function.
+As a simple example, load the mag.pa PA file, enter the View screen,
+and then type this into the SIMION command bar:
+</p>
+
+<pre>dofile'contourlib81.lua'.plot(function(x,y,z) return x,y^2,0 end)</pre>
+
+<p>The given vector function will be plotted over the entire workbench.
+See the comments in the contourlib81.lua source code for details on various
+options that may be passed to the plot function.</p>
+
+<p>To clear the lines, use the Particles tab &gt; Trajectory Display &gt; Del button.
+
+<h2>Usage - SIMION 8.1 examples</h2>
+
+<p>How to run the example:</p>
+
+<ul>
+<li>Load the solenoid81.iob and click Fly'm.  The magnetic field vector for the
+solenoid will be plotted.  You may zoom in (+Z2D) to see lines things better.
+See the solenoid81.lua file for details.
+</ul>
+
+<h2>About the Models - contourlib.lua (SIMION 8.0)</h2>
+
+<p>
+SIMION 8.0, unlike SIMION 8.1, doesn't have a function to directly plot
+lines on the View screen.  However, one trick that has been used it force
+particles to follow the paths of the lines you want to draw.  This approach is
+described below an is implemented in contourlib.lua.
+</p>
+
+<p>
+The examples below perform contouring by using a separate Lua library
+file (<b>contourlib.lua</b>) that implements all the contouring logic.
+Normally, you can simply use contourlib.lua without understanding or
+modifying its contents.  Simply attach a Lua workbench user program to
+your workbench, and from that workbench program import the
+contourlib.lua file as done in the below examples.  Alternately, you
+may even use contourlib.lua directly as your workbench user program
+(by renaming it so that the base of the filename matches your
+workbench IOB file).</p>
+
+<p>Once the contouring library is attached, the only thing else you
+need to do is define particles that the contouring library will use
+to trace the potential or field lines.  If you define a particle with
+mass 1000, 1001, 1002, or 1003 u, the contouring library will take
+over that particle and use it to plot a potential or field line.  The
+type of line drawn depends on the chosen mass as given below:
+</p>
+
+<ul>
+<li> 1000 u    - electrostatic equipotential contour
+<li> 1001 u    - electrostatic field line
+<li> 1002 u    - magnetic equipotential contour
+<li> 1003 u    - magnetic field line
+<li> (other)   - particle not used for contouring
+</ul>
+
+<p>
+Furthermore, a line can be traced in two directions (forward or back).
+Which one is traced is controlled by whether the particle charge is
+specified as positive or negative.  You may want to start two
+particles (positive and negative) from the same point to obtain a
+full field line extending in both directions.
+</p>
+
+<h2>Usage - SIMION 8.0 examples</h2>
+
+<p>How to run the example:</p>
+
+<ul>
+<li> 
+<li>1. <u>Plotting field lines....</u> <B>View drag.iob and fly ions.</b>
+       <i>(Click View on main screen and select the drag.iob file.
+       If this is the first time running this example you may
+       be asked to refine the array; if so, refine it as instructed.
+       Click the Fly'm button.)</i>
+       The particles (blue) follow the field lines.  Note that the
+       field lines are, as expected, perpendicular to the contour
+       lines (red) plotted using the normal options in the
+       PE/Contours tab.
+<li>2. <b>Load drag-vector.fly2 and Fly ions.</b>
+       <i>(In the Particles tab, click Define..., then click Load...
+       and select the drag-vector.fly2 file.)</i> Note that the
+       particles are now defined as starting along the X and Y
+       directions in arithmetic sequences.  The particles will start
+       at all points on a 2D grid covering the entire volume.
+       <i>(Click Fly'm.  Ignore warning about some particles
+       being created inside electrodes.)</i> Observe the particle
+       trajectories.  The field lines now cover the entire system.
+<li>3. <u>Plotting field vectors...</u>
+       It may help visualization now if we make the field lines
+       shorter and proportional to field intensity.
+       <b>Set the contour_min_gu and contour_max_gu adjustable
+       variables to 0.5 and 4 respectively.</b> <i>(Do this in the
+       Variables tab.)</i>
+       <b>Enable Grouped flying and Fly ions.</b>
+       <i>(In the Particles tab, ensure that Grouped is checked and
+       click Fly'm.)</i>
+       The Fly'm will fail with error if you do not have
+       Grouped checked since the code depends on this.
+       Note the field vectors display over the entire volume with
+       direction perpendicular to equipotential lines (as before)
+       and length proportional to field intensity (you may want to
+       switch to PE View to confirm this).   Note that a small
+       non-zero value of contour_min_gu was selected to prevent
+       field lines becoming nearly invisible in small field regions.
+<li>4. <u>Plotting equipotential lines and recording data along
+       those lines...</u>
+       For the sake of completion, let's now plot equipotential
+       contour lines using the programming approach, even
+       though we are already displaying equipotential lines
+       using the normal PE/Contour tab features.
+       <b>(Load drag-equipotential.fly2.)</b>
+       <i>(In the Particles tab, click Define..., click Load..., and
+       select drag-equipotential.fly2.)</i>  Observe how the particle
+       starting points are defined.  They are equidistant along the
+       x-axis.  Also, for each of those points, particles of
+       positive (+1) and (-1) charge are defined.  This causes
+       the contour plotting routine to plot the equipotential line
+       in both forward and reverse directions starting at the given point.
+       <b>(Set adjustable variables contour_max_gu to 0 and contour_field
+       to 0.)</b> <i>(Do this in the Variables tab.)</i>
+       contour_field = 0 results in a equipotential plot rather than
+       and a field lines/vector plot.
+       <b>Fly ions now.</b> <i>(Click Fly'm.)</i>
+       Notice how the equipotential lines generated by the programming
+       routine (blue) do indeed follow the equipotential routines
+       generated using SIMION's normal PE/Contours tab features (red).
+       Not all the lines overlap though since the starting potentials
+       chosen for the contour lines were different in this case (this
+       is ok).  If you like, you can enable Data Recording options
+       (Particles|Data Recording) to record certain parameters on
+       every time-step.  For example recording x, y, and z will output
+       the points on the contour lines, and you could, for example,
+       have this saved to a text file (delimited format) and loaded
+       into Excel.
+<li>5. <u>Plotting a field generated from a user program...</u>
+      Now let's explore plotting a magnetic field generated
+      from a user program, such as the magnetic field computed from an
+      air core solenoid coil of wire using the simionx.MField library.
+      <b>Load solenoid.iob.</b> <i>(From the Workbench tab click
+      Load... and select solenoid.iob, <u>or</u> go back to the main
+      screen, click Remove All PAs from RAM, click View/Load
+      Workebench and select this file.)</i>  <b>Fly the ions.</b>
+      <i>(Click Fly'm.)</i>  A number of field lines are plotted.
+      Note that the particle mass is set to 1003
+      (magnetic field lines).
+      Note also the particle definitions: particles are started
+      along the x-axis with both positive (+) and negative (-)
+      particles at each point to trace the field lines in both directions
+      starting at that point.
+<li>6. For further details, examine the code and comments in
+      the Lua files: drag.lua, solenoid.lua, and contourlib.lua.
+</ul>
+
+<h2>History/Changes</h2>
+
+<ul>
+<li>2013-05-20 - contourlib81.lua -
+  Fix "scalar and vectors not supported in same plot"
+  error can incorrectly occur when switching between vector and scalar plots.
+<li>2012-02-09 - contourlib81.lua - support multiple plots in the same call, while ensuring
+    they are drawn on the same scale.
+<li>2011-12-20 - contourlib81.lua - significant refactoring, and new vmin/max/v0/v1/vautoscale/vscale
+  fields.
+<li>2011-11-12 - contourlib81.lua - on vector plot, plot marker at end of vector (i.e. arrow head)
+  not start.  On scalar plot, center lines on dot.
+<li>2011-11-12 - contourlib81.lua - added `x,y,z` parameters to `plot` function for convenience
+  (e.g. just `x` can be specified instead of both `xl` and `xr`).
+<li>2011-08-26 - added contourlib81.lua (SIMION 8.1 version), which draws directly on the
+  screen without particle flying.  Also added corresponding solenoid81.iob example.
+<li>2009-08-27 - Fix mass (1003) in solenoid.fly2</li>
+<li>2008-03-26 - Initial version.
+<li>2008-07-22 - The type of contour a particle traces is now
+determined implicitly and individually by the particle's mass (1000 -
+1003) in the particle definitions, rather than adjustable variables,
+thereby allowing different particles to trace different types of
+contours in the same plot.  Also avoids division by zero in zero field
+regions.
+<li>2008-03/2008-07. D.Manura.  drag.pa# based on SIMION 7 array by D.Dahl.
+</ul>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="../solenoid/README.html">Example: Solenoid</a> - solenoid magnetic field
+example, which one of the examples above was based on.
+<li><a href="../helmholtz_coil/README.html">Helmholtz Coil</a> - helmholtz coil magnetic field
+example uses contourlib81.lua
+<li><a href="../faims/README.html">Example: FAIMS</a> uses contourlib81.lua
+to plot gas flow fields
+</ul>
+
+</div>
+    
+<div class="copyright">SIMION&#153; 8.1 (c) 2003-2012 Scientific
+Instrument Services, Inc. All Rights Reserved.
+</div>
+    </body>
+</html>       
+     

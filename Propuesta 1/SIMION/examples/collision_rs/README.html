@@ -1,0 +1,87 @@
+<html>
+<head>
+<style type="text/css">
+  body { font-family: verdana, arial, sans-serif; font-size: 90%; }
+  .copyright {font-size:80%; border-top:1px solid black}
+  .title1 {background-color:#80ff80}
+  .links1 {background-color:#c0ffc0}
+  .content {max-width:30em; margin-left:5px; margin-right:5px }
+  h1 {margin-top: 0; margin-bottom: 0; background-color:#e0ffe0; font-size:130%}
+  h2 {font-size:120%}
+  h3 {font-size:110%}
+  h4, h5, h6 {font-size:100%}
+</style>
+</head>
+<body  marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+<div class="title1">
+<a href="../_redirect.html?id=index">SIMION&#153; 8.1</a>
+</div>
+<h1>Chemical Reaction Simulation (RS) Example for SIMION</h1>
+<div class="content">
+
+
+
+<h2>Overview</h2>
+
+<p>
+This example, Reaction Simulation (RS),
+utilizes the Lua user programming interface of SIMION to simulate
+the chemical reaction dynamics of charged particles under atmospheric
+pressure (AP) conditions, which is a common problem in the design
+and investigation of modern ion analytical devices like ionization
+sources for mass spectrometry or ion mobility spectrometers.
+It optionally interfaces with the SIMION SDS collision model.
+</p>
+
+<p>
+Most details can be found in the included documentation
+(<a href="rs_simion_documentation.pdf">rs_simion_documentation.pdf</a>) and on
+<a href="http://rs.ipams.uni-wuppertal.de">http://rs.ipams.uni-wuppertal.de</a> .
+</p>
+
+<h2>Files in this Example</h2>
+
+<ul>
+<li>README.html - description of this example
+<li>simion_rs_documentation.pdf - more detailed documentation
+<li>RS.conf - reaction configuration file
+<li>RS*.lua - RS model implementation
+<li>test.iob - simple example workbench using RS model.  See test.lua for details.
+<li>COPYING - software license referenced from code files
+</ul>
+
+<p>This example also requires these files from the other examples:</p>
+
+<ul>
+<li>examples\collision_sds\collision_sds.lua
+  (including m_defs.dat, mbmr.dat, arraylib.lua, and textfilelib.lua)
+<li>examples\contour\contourlib81.lua (optionally for gas flow plotting)
+</ul>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="../collision_sds/README.html">Example: SDS</a>
+  -- collision model used by RS.
+<li><a href="../contour/README.html">Example: Contour</a>
+  -- library for plotting vector fields, optionally used by this example
+</ul>
+
+<h2>Changes/History</h2>
+
+<ul>
+<li>2011-2012 - Walter Wissdorf, University of Wuppertal, Germany (original author)
+</ul>
+
+<p>
+This example is reproduced in SIMION by permission of Walter Wissdorf.
+See comments in source files for licensing information.
+</p>
+
+</div>
+    
+<div class="copyright">SIMION&#153; 8.1 (c) 2003-2012 Scientific
+Instrument Services, Inc. All Rights Reserved.
+</div>
+    </body>
+</html>

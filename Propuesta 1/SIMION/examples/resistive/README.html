@@ -1,0 +1,129 @@
+<html>
+<head>
+<title>SIMION Resistive Electrode Example</title>
+
+<style type="text/css">
+  body { font-family: verdana, arial, sans-serif; font-size: 90%; }
+  .copyright {font-size:80%; border-top:1px solid black}
+  .title1 {background-color:#80ff80}
+  .links1 {background-color:#c0ffc0}
+  .content {max-width:30em; margin-left:5px; margin-right:5px }
+  h1 {margin-top: 0; margin-bottom: 0; background-color:#e0ffe0; font-size:130%}
+  h2 {font-size:120%}
+  h3 {font-size:110%}
+  h4, h5, h6 {font-size:100%}
+</style>
+</head>
+
+<body  marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+<div class="title1">
+<a href="../_redirect.html?id=index">SIMION&#153; 8.1</a>
+</div>
+<h1>SIMION Resistive Electrode Example</h1>
+<div class="content">
+
+
+
+<h2>Purpose</h2>
+
+<p>
+This example demonstrates how to create potential
+arrays with continuous voltage gradients on electrode surfaces
+(e.g. resistive electrodes).
+See <a href="../_redirect.html?id=resistive_electrodes">Doc(resistive_electrodes)</a>
+for background on various techniques for handling resistive electrodes.
+</p>
+
+<div>
+<img src="resources/resistive.png"><br>
+<b>Figure:</b> 3D and potential energy views of lens_pa_build.lua.
+Observe continous gradient along electrode voltages.
+</div>
+
+<h2>Files in this Demo</h2>
+
+<ul>
+<li>README.html - description of this example.
+<li>lens_pa_build.lua - Generates lens.pa (basic array) with resistive electrodes.
+<li>lens_pa0_build.lua - Generates lens.pa0 (fast adjustable array) with resistive electrodes.
+<li>lens1.gem - Generates lens1.pa.  This is the same as lens.pa but is entirely a GEM file,
+  which doesn't need a batch mode Lua code.
+</ul>
+
+<h2>Usage</h2>
+
+<ul>
+<li>Using lens_pa_build.lua:
+  This example builds a basic potential array with resistive electrodes.
+  Click Run Lua Program and select "lens_pa_build.lua".
+  The lens.pa file will be built and refined.
+  You can examine this file in Modify and View screens (particular PE view).
+<li>Using lens_pa0_build.lua:
+  This example is similar to the previous one but the array is fast adjustable, and
+  it is a little more complicated to build.
+  Click Run Lua Program and select "lens_pa0_build.lua".
+  The lens.pa0 file will be built and refined.
+  You can examine this file in Modify and View screens (particular PE view).
+  Unlike in the previous example, the two resistive electrodes are independently fast adjustable.
+  While in PE view, try different voltages via the Fast Adjust Voltages button on the PA's tab.
+<li>Using lens1.gem:
+  This example is similar to lens_pa_build.lua, but the voltage gradient is defined with some
+  special macros in the GEM file rather than resorting to a batch mode program.
+  This technique presently cannot be used for fast adjustable electrodes
+  (but may be used for fast scalable electrodes in a fast adjustable array).
+  Convert lens1.gem to lens1.pa and refine it.
+  <i>(Click Remove All PAs from RAM.
+  Click Modify.  Click Use Geometry File and select lens1.gem.
+  Click OK to return back to the main screen.
+  Click Refine and OK to refine it.)</i>
+</ul>
+
+<p>
+Examine the .lua and .gem files in a text editor for details on how these work.
+You may need to consult the
+<a href="../_redirect.html?id=lua_simion.pas">Doc(simion.pas)</a> (SIMION PA's API)
+and
+<a href="../_redirect.html?id=gem_geometry_file">Doc(GEM)</a> (notes on GEM macros)
+</p>
+
+<h2>Discussion</h2>
+
+<p>
+In these examples, a PA if first created with electrodes have constant voltages.
+The Lua program that rewrites those electrode voltages with a gradient
+(Note: GEM files don't yet easily support voltage gradients.)
+Then it is refined.
+Additional care is needed when using fast adjustable (.pa#/pa0) arrays rather than
+basic arrays (.pa) since the electrode solution arrays (.pa1, .pa2, etc.) need to be individually edited.
+See <a href="../_redirect.html?id=potential_array_types">Doc(potential_array_types)</a>
+for notes on what electrode solutions arrays are.
+</p>
+
+<h2>See Also</h2>
+
+<ul>
+<li><a href="../_redirect.html?id=resistive_electrodes">Doc(resistive_electrodes)</a> - notes on resistive electrode simulation in SIMION.
+<li><a href="../_redirect.html?id=lua_simion.pas">Doc(simion.pas)</a> - SIMION PA's API
+<li><a href="../_redirect.html?id=dielectric">Doc(dielectric)</a> - SIMION dielectric Refining capabilities
+<li><a href="../_redirect.html?id=current_density">Doc(current_density)</a> - SIMION current density solving capabilities
+<li><a href="../dielectric/README.html">Example(dielectric)</a> - resistive_2dp.iob (uses dielectric solver)
+<li><a href="../tof/README.html">Example(tof)</a> has a reflecton (mirror.pa) with a continuous voltage
+  gradient across it.
+  This mirror.pa was not created with Lua code but rather via some tricks with the Modify and Refine
+  screens, as described in 
+  <a href="../_redirect.html?id=resistive_electrodes">Doc(resistive_electrodes)</a>.
+</ul>
+
+<h2>History/Changes</h2>
+
+<ul>
+<li>2012-09 - D.Manura
+</ul>
+
+</div>
+    
+<div class="copyright">SIMION&#153; 8.1 (c) 2003-2012 Scientific
+Instrument Services, Inc. All Rights Reserved.
+</div>
+    </body>
+</html>

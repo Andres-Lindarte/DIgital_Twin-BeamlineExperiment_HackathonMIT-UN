@@ -1,0 +1,654 @@
+<html><head>
+<style type="text/css">
+  body { font-family: verdana, arial, sans-serif; font-size: 90%; }
+  .copyright {font-size:80%; border-top:1px solid black}
+  .title1 {background-color:#80ff80}
+  .links1 {background-color:#c0ffc0}
+  .content {max-width:30em; margin-left:5px; margin-right:5px }
+  h1 {margin-top: 0; margin-bottom: 0; background-color:#e0ffe0; font-size:130%}
+  h2 {font-size:120%}
+  h3 {font-size:110%}
+  h4, h5, h6 {font-size:100%}
+</style>
+</head>
+<body  marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+<div class="title1">
+<a href="../_redirect.html?id=index">SIMION&#153; 8.1</a>
+</div>
+
+<div class="content">
+
+<h1>SIMION Dielectric Examples</h2>
+
+<h2>Purpose</h2>
+
+<p>These examples demonstrate solving electric fields in the presence
+of
+<a href="../_redirect.html?id=dielectric">dielectrics</a>.
+Also demonstrated are solving electric fields given floating conductors and
+solving current densities in space given conductivity of materials in space
+since these are solved by similar methods.
+See <a href="../_redirect.html?id=dielectric">Dielectrics</a>
+for general background.</p>
+
+<p>These examples require SIMON 8.1.1.0 or above.</p>
+
+<h2>Theory - Parallel Plate example (plates_2dp.iob)</h2>
+
+<p>
+The plates_2dp.iob example calculates the electric field in a
+simple (idealized) infinite parallel plate capacitor with two dielectric materials
+in between.  The conductive plates at x=0 mm and x=100 mm are held at 10 V and 0 V
+respectively.  The region x &lt; 50 mm has relative dielectric constant
+<i>&epsilon;<sub>r,left</sub> = 1</i> (e.g. perfect vacuum),
+and the region x &gt; 50 mm is filled with some material with relative dielectric constant
+<i>&epsilon;<sub>r,right</sub></i> = 3.
+</p>
+
+<p>
+Due to symmetry, this problem can be solved as a 1-D problem, though in SIMION a
+2D planar array is used.
+The component of electrical displacement <b>D</b> perpendicular to
+the dielectric boundary is the same on both sides,
+<img src="resources/1.png" alt="\(\vec{D}^{\perp}_{left} = \vec{D}^{\perp}_{right} \)" style="vertical-align:text-bottom" />.
+Substituting <img src="resources/2.png" alt="\(\vec{D} = \epsilon_r \epsilon_0 \vec{E} \)" style="vertical-align:text-bottom" />,
+we determine that
+<img src="resources/3.png" alt="\( \vec{E}^{\perp}_{right} / \vec{E}^{\perp}_{left} = \frac{\epsilon_{r,left}}{\epsilon_{r,right}} \)" style="vertical-align:text-bottom" />.
+In this case, the field on the right is three times the field on the left.  The field within each dielectric
+region is uniform.
+</p>
+
+<div>
+<img src="resources/plates_2dp.png"><br>
+<b>Figure:</b> At bottom is a PE plot of the potentials with equipotential
+lines (red) from 0 to 10 V.
+At top is a plot of the dielectric constant over the same space (but with
+the plot shifted to the up so as not to overlap), where values are
+1 (left) and 3 (right).
+The potential gradient is smaller where the dielectric constant is higher.
+</div>
+
+<h2>Theory - Dielectric Cylinder (cylinder_2dp.iob)</h2>
+
+<p>
+The cylinder_2dp.iob example determines the electric field of an infinitely
+(or very) long cylinder of dielectric material (&epsilon;<sub>1</sub>)
+inside an otherwise uniform electric field (<b>E</b><sub>0</sub> in the +x
+direction) defined by two far away conductive plates and dielectric material
+(&epsilon;<sub>2</sub>) everywhere else between them.
+This example is based on Griffiths Problem 4.22.
+The field inside the cylinder should be a uniform
+E<sub>in</sub> = 2 E<sub>0</sub> / (&epsilon;<sub>1</sub>/&epsilon;<sub>2</sub> + 1).
+</p>
+
+<p>This system can be defined with a Y mirror plane.  There is also a Dirichlet
+condition on the X plane, although that presently is not utilized.</p>
+
+<div>
+<img src="resources/cylinder_2dp.png"><br>
+<b>Figure:</b> Potential contour lines as well as contours of dielectric constants
+in cylinder_2dp.png.
+Inside the electric field is uniform and lower then the field outside.
+</div>
+
+<h2>Theory - Dielectric Sphere (sphere_2dc.iob and sphere_3dp.iob)</h2>
+
+<p>
+These are like the previous example but the cylinder is replaced with a sphere.
+This example is taken from Griffiths Example 4.7.
+The field inside the
+sphere should be a uniform
+E<sub>in</sub> = 3 E<sub>0</sub> / (&epsilon;<sub>1</sub>/&epsilon;<sub>2</sub> + 2).
+</p>
+
+<p>
+This example uses 2D cylindrical symmetry (sphere_2dc.iob) or 3D planar
+symmetry with Y and Z mirroring (sphere_2dp.iob).
+There is also a Dirichlet condition on the X plane, although that presently
+is not utilized.
+For the 3D version, you will need to do a 3D zoom (e.g. on the x=0 plane)
+to properly see fields.
+</p>
+
+<div>
+<img src="resources/sphere_2dc.png"><br>
+<b>Figure:</b> Potential contour lines as well as contours of dielectric constants
+in sphere_2dc.iob.
+Inside the electric field is uniform and lower then the field outside.
+</div>
+
+
+<h2>Theory - Floating Conductors (float_cylinder_2dp.iob)</h2>
+
+<p>
+This example demonstrates electric field calculation given a
+<a href="../_redirect.html?id=floating_conductor">floating conductor</a>.
+Floating conductors are not connected to electrical ground or a power supply (supply of charge) but rather
+are held in place by some insulative material.  Therefore, the potential of the surface of the electrode surface,
+although unique, might not be initially known to you.
+As described in
+<a href="../_redirect.html?id=floating_conductor">Floating Conductors</a>,
+there are a couple ways to Refine with floating conductors.  One way is to define the floating conductor
+as a dielectric with a infinite (or nearly infinite) dielectric constant.  100 or 1000 may do.  The floating
+conductor will have zero total charge that way.  You may, however, embed a certain amount of
+space-charge inside the floating conductor (it doesn't matter how that space-charge is distributed inside
+the floating conductor).
+This example is based on cylinder_2dp.iob.
+</p>
+
+<div>
+<img src="resources/float_cylinder_2dp.png"><br>
+<b>Figure:</b> Equipotential lines for a floating conductor inside otherwise uniform electrode field
+generated by (non-floating) parallel plates (float_conductor_2dp.iob).
+A non-zero charge is also embedded on the floating conductor,
+which is why the field shown is not symmetric across X=0.
+</div>
+
+<h2>Theory - Non-linear Dielectric Cylinder (cylinder_nonlinear_2dp)</h2>
+
+<p>
+This example is similar to the Dielectric Cylinder example above except that
+the dielectric in the cylinder is non-linear.
+In a non-linear dielectric, the dielectric constant &epsilon; is a function
+of the local electric field <b>E</b>.
+<a href="../_redirect.html?id=dielectric">Dielectrics</a> further discusses
+non-linear dielectrics.
+Here, we'll assume that
+&epsilon;(E) = &epsilon;<sub>0</sub>&epsilon;<sub>r</sub>(1 - &lambda;E<sup>2</sup>)
+for some constant &lambda;.
+The magnitude of E is made very high in this example so that non-linear
+dielectric effects are apparent.
+For more comments, see also the Non-linear Dielectric Sphere below and [3].
+</p>
+
+<h2>Theory - Non-linear Dielectric Sphere
+    (sphere_nonlinear_2dc.iob and sphere_nonlinear_3dp.iob)</h2>
+
+<p>
+This is similar to the above example but the cylinder is replaced with a sphere.
+The electric potential is as follows [1][2]:
+</p>
+
+<p>
+V(r,&theta;) = -r cos(&theta;) E<sub>0</sub>
+  [ 3/(&epsilon;<sub>r</sub>+2) +
+    27 &epsilon;<sub>r</sub> &lambda; E<sub>0</sub><sup>2</sup>(&epsilon;<sub>r</sub>+2)<sup>-4</sup> ],
+where r cos(&theta;) = y
+</p>
+
+<p>
+The electric field, <b>E</b> = -grad V and corresponding
+&epsilon;(<b>E</b>) are easily derived from this.
+</p>
+
+<p>
+Note that for the case &theta;=0 and &lambda;=0, this simplifies to 
+V(r) = -3r/(&epsilon;<sub>r</sub>+2), and
+E(r) = -grad V(r) = 3/(&epsilon;<sub>r</sub>+2), as noted
+for the Dielectric Sphere above.
+</p>
+
+<p>
+In this example, the relative dielectric constant at zero fields is 6,
+and inside the entire sphere the field should therefore be uniformly
+40.7E+3 V/mm, in which case the effective relative dielectric constant at
+local fields should be 5.206.
+</p>
+
+<p>
+In simulating this, it can be important to have accurate field interpolations
+near dielectric boundaries.
+<a href="../_redirect.html?id=dielectric">Dielectrics</a> discusses the
+boundary field calculation accuracy issues some.
+Without this, field distortions near boundaries will cause dielectric
+constant distortions near boundaries, which in turn cause more field
+distortions, etc., and this error compounds if many iterations are run, as
+well as causes the solution to take hundreds of iterations to converge
+(thereby compounding the issue further).
+One solution for this, as done in sphere_nonlinear_2dc.lua
+(and sphere_nonlinear_3dp.lua), is to always sample fields at least
+one grid unit from the boundaries when updating dielectric constants from
+local fields.
+The effect of this change is shown in the figures below.
+</p>
+
+<div>
+<img src="resources/sphere_nonlinear_3dp.png"><br>
+<b>Figure:</b> Potential (red) and relative dielectric (blue) contours.
+The relative dielectric constant at the sphere center across final iterations
+is shown in the Log.
+On left, we show the solution without improvement to field calculations near
+dielectric surfaces, where the dielectric surface slowly receded and the
+solution converged only after hundreds of iterations
+(note: the surface distortion is small at earlier iterations).
+On right, we show the solution with an improvement to field calculations
+near dielectric surfaces, which does not show distortions, and it converges
+much faster (k(center)=5.12)--in only about 20 iterations
+convergence is clear.
+</div>
+
+<h2>Theory - Dielectrics with Charge (charged_dielectric_2dp.iob)</h2>
+
+<p>
+This example demonstrates a situation where both dielectric constants and
+space-charge are varied in space.
+</p>
+
+<p>
+The 1-D <a href="../_redirect.html?id=poisson_equation">Poisson equation</a>
+is <img src="resources/4.png" alt="\( \frac{d}{dx} \epsilon(x) \frac{d}{dx} \phi(x) = -\rho(x) \)" style="vertical-align:text-bottom" />.
+Let <img src="resources/5.png" alt="\( \epsilon(x) = \epsilon_0 A \exp(B x) \)" style="vertical-align:text-bottom" /> and <img src="resources/6.png" alt="\( \rho(x) = C \sin(D x) \)" style="vertical-align:text-bottom" />.
+This linear second-order nonhomogeneous differential equation can be solved
+by the variation-of-parameters method to get
+</p>
+
+<p style="text-align:center"><img src="resources/7.png" alt="\[ \phi(x) = \left[ E + G (D \sin (D x) - B \cos (D x)) \right] \exp(-B x) + F  \]" style="vertical-align:text-bottom" /></p>
+<p style="text-align:center"><img src="resources/8.png" alt="\[ \textrm{ where } G = \frac{C}{\epsilon_0 A D (B^2 + D^2) } \]" style="vertical-align:text-bottom" /></p>
+
+<p>Subject to boundary conditions, <img src="resources/9.png" alt="\( \phi(0) = 0, \phi(x_2) = V_2 \)" style="vertical-align:text-bottom" /> and
+letting <img src="resources/10.png" alt="\( D x_2 = \pi/2 \)" style="vertical-align:text-bottom" />, we obtain constants
+
+<p style="text-align:center"> <i>E</i> = <i>G</i> <i>B</i> - <i>F</i> </p>
+<p style="text-align:center"><img src="resources/11.png" alt="\[ F = \frac{ G (B + D) \exp (-B x_2) - V_2 }{ \exp(-B x_2) - 1 } \]" style="vertical-align:text-bottom" /></p>
+
+Also, in the limit <img src="resources/12.png" alt="\(B \to 0\)" style="vertical-align:text-bottom" /> (i.e. uniform dielectric constant),
+
+<p style="text-align:center"><img src="resources/13.png" alt="\[ \phi(x) = \frac{1}{\epsilon_0 A D^2}
+   \left[ -\frac{x}{x_2} (C - \epsilon_0 A D^2 V_2) + C \sin(D x) \right] \]" style="vertical-align:text-bottom" /></p>
+
+<div style="margin:0.5em">
+<img src="resources/charged_dielectric_2dp.png"><br>
+<b>Figure:</b> PE view.  Potential in center exceeds potentials on end
+electrodes due to space-charge.
+Potential gradient on right tapers off due to increasing dielectric constant.
+</div>
+
+<p>
+Another example utilizing both dielectrics and space-charge (merely for
+the purpose of simulating a charged floating conductor) is the
+float_cylinder_2dp.iob above.
+</p>
+
+<h2>Theory - Current Density from Conductivities (resistive_2dp.iob)</h2>
+
+<p>
+This example doesn't contain dielectrics but rather uses the same mathematics
+in order to solve the current density in space given an arbitrary
+distribution of conductivity (&sigma;(x,y,z)) through space and electric
+potential boundary conditions.
+Here, &sigma; rather than &epsilon; is provided to the Poisson solver.
+See <a href="../_redirect.html?id=current_density">Current Density</a>
+for general details on using the Poisson solver for current density problems.
+</p>
+
+<p>
+This example resembles two resistors connected in series.
+Conductivity outside the resistor is made nearly zero (but it cannot be zero).
+The resistive material is given a uniform conductivity, but the bottom
+resistor is defined with four times the cross-sectional area.
+Therefore, as confirmed in this simulation, the bottom resistor has
+approximately (ignoring fringe fields) 1/4 the current density as the top
+resistor (since current flux is conserved).
+Conductive electrodes are added to the top and bottom to generate the
+potential difference.
+</p>
+
+<div>
+<img src="resources/resistive_2dp.png"><br>
+<b>Figure:</b> Potential contour lines (red) and current density vectors
+(black lines with dots).
+The boundary between low (outside) and high (inside) conductivity
+regions is outlined in green (0.5 contour line).
+The magnitude of current density decreases as the conductor width widens
+at the bottom since current flux is conserved.
+</div>
+
+<h2>Files in this demo:</h2>
+
+<ul>
+<li>README.html - description of examples
+<li>plates_2dp.iob - electric field of dielectric material slab
+       between parallel electrode plates. (2D planar)
+  <ul>
+  <li>plates_2dp.gem - geometry definition of electric potential PA (two parallel plates)
+  <li>plates_2dp-dielectric.gem - definition of dielectric PA
+  <li>Optional:
+    <ul>
+    <li>plates_2dp_solve.lua - Alternative batch mode program to solve this system.
+    <li>plates_2dp_solve2.lua - Another alternative batch mode program,
+         building PA's with PA API rather than GEM files.
+    </ul>
+  </ul>
+<li>cylinder_2dp.iob - electric field of cylinder of dielectric material inside an
+       otherwise uniform field. (2D planar, Y)
+  <ul>
+  <li>cylinder_2dp.gem - geometry definition of electric potential PA (two parallel plates)
+  <li>cylinder_2dp-dielectric.gem - definition of dielectric PA
+  <li>Optional: cylinder_2dp_solve.lua - Alternative batch mode program to solve this system.
+  </ul>
+<li>sphere_2dc.iob - similar to cylinder_2dp.iob but with the cylinder
+      replaced with a sphere.  (2D cylindrical)
+<li>sphere_3dp.iob - similar to sphere_2dc.iob but modeled with a 3D array.
+      (3D planar, YZ)
+<li>float_cylinder_2dp.iob - electric field of floating conductive cylinder inside an
+       otherwise uniform field. (2D planar)
+  <ul>
+  <li>float_cylinder_2dp.gem - geometry definition of electric potential PA
+      (two parallel plates) (these are conductors with fixed potentials as usual)
+  <li>float_cylinder_2dp-dielectric.gem - definition of dielectric material PA
+      (uses high dielectric constant to model conductor with floating potential)
+  </ul>
+<li>cylinder_nonlinear_2dp.iob - electric field calculation of cylinder of <i>non-linear</i>
+       dielectric material.  This requires an iterative, self-consistent solution.  (2D planar)
+  <ul>
+  <li>cylinder_nonlinear_2dp.gem - geometry definition of electric potential PA (two parallel plates)
+  <li>cylinder_nonlinear_2dp-dielectric.gem - definition of dielectric PA at zero fields.
+  <li>cylinder_nonlinear_2dp-dielectric2.gem - generates dielectric PA, originally empty,
+      which the user program will fill with current values of dielectrics based on the previous PA
+      and locally calculated electric fields.  This PA (not the previous one) is fed to the Poisson solver.
+  <li>cylinder_nonlinear_2dp.lua - This performs a series of Refines in order to obtain a
+      self-consistent solution.  The electric field and dielectric constants, which depend on each
+     other, are calculated alternately for a number of iterations.
+  </ul>
+<li>sphere_nonlinear_2dc.iob - similar to cylinder_nonlinear_2dp.iob but using a sphere
+      rather than a cylinder.  Also improves field accuracy near the dielectric boundary.
+      (2D cylindrical)
+<li>sphere_nonlinear_3dp.iob - similar to sphere_nonlinear_2dc.iob but modeled with a 3D array
+      (3D planar, YZ)
+<li>charged_dielectric_2dp.iob - electric field calculation where both the
+    dielectric constant and space-charge vary in space. (2D planar)
+  <ul>
+  <li>charged_dielectric_2dp-dielectric.gem - GEM file to build PA for dielectric.
+      Initially empty (filled in later by user program).
+  <li>charged_dielectric_2dp-charge.gem - GEM file to build PA for space-charge.
+      Initially empty (filled in later by user program).
+  <li>charged_dielectric_2dp.lua - workbench user program to solve field (upon Fly'm)
+      and compare results to theory.  Dielectric and space-charge parameters can
+      be controlled by adjustable variables.
+  </ul>
+<li>resistive_2dp.iob - solves current density given conductivity and electric potential boundary conditions.
+      This doesn't use dielectrics but is solved in the same manner as a dielectric problem.
+  <ul>
+  <li>resistive_2dp.gem - generates electric potential PA.  Defines electric potential boundary conditions.
+  <li>resistive_2dp-conductivity.gem - defines PA representing material conductivity throughout space.
+  <li>resistive_2dp.lua - solves and plots field upon Fly'm.
+  </ul>
+</ul>
+
+<h2>PA and GEM File Definition</h2>
+
+<p>
+Most of the GEM files in these examples have an underscore in the PA type
+field in the <code>pa_define</code> (e.g. <code>electric_</code>).
+This marks the PA as not refinable in the usual way:
+It prevents SIMION from prompting you to automatically refine the PA with
+the Laplace solver when you load the IOB, which otherwise could clear or
+corrupt PAs used to store dielectric constants or potentials that
+depend on dielectric effects.
+This option is described in
+<a href="../_redirect.html?id=gem_geometry_file">Doc(gem_geometry_file)</a>.
+This option cannot be effectively used with fast adjustable arrays though
+(e.g. plates_2dp.gem, which generates plates_2dp.pa#, uses no such underscore).
+</p>
+
+<h2>Using this demo:</h2>
+
+<p>Using plates_2dp.iob:</b>
+
+<ul>
+<li>1. <b>Load plates_2dp.iob.</b>
+   (<i>Click View on the main screen and select this IOB file.</i>) .
+    <b>Say Yes to build/refine the electric PA (plates_2dp.pa0).</b>
+    Initially, this is will not take dielectric effects
+    into account.
+    The user program will properly refine with dielectric upon Flym.
+	The field will not be correct until you Fly'm.
+<li>2. <b>Click Fly'm.</b>  This will refine the plates_2dp.pa0 using the
+    dielectric constants stored in plates_2dp-dielectric.pa.
+    The potential array representing electric potentials (plates_2dp.pa0)
+    is shown on the left, and the array representing relative dielectric constants 
+    (plates_2dp-dielectric.pa) is shown on the right.	
+	Although we could make these arrays overlap in space, in this example
+    we shift the dielectric array to the right to allow easier viewing
+    of both arrays simultaneously, which is ok to do because the Refine function here ignores
+    the positioning of the dielectric PA in the workbench.  You can use the mouse and standard PE/contour
+    functions to view the dielectric constants in plates_2dp-dielectric.pa in the
+    same manner you view potentials in plates_2dp.pa0.  Here, the dielectric
+    array contains points with relative dielectric constants 1 and 3 in the left and right
+    regions respectively.
+    In the PE view, notice that slope of the potential is smaller in the right region where
+    dielectric constant is higher.  You can measure the exact gradients with you mouse cursor
+    in the XY View (we see 0.15 V/mm and 0.05 V/mm respectively), and as expected the
+    ratio of these potential gradients and the ratio of the dielectric constants are both the
+    same value (3).
+<li>3. Note that for a PA# file refined with dielectric effects, it is still valid to
+    fast adjust the electrode potentials after refining.  For example, from the
+    "Fast Adjust Voltages" button the PAs tab, you may adjust the potentials of
+    electrodes #1 and #2 in plates_2dp.pa0 to 0 and 5 respectively to reverse the direction of
+	the field and reduce it by half.  The dielectric effect will still be properly accounted for.
+    (Technical note: dielectric effects are incorporated into all electrode solution arrays.)
+    If, however, you want to change the dielectric constants, you will need to re-refine the
+    array (see the next cylinder_2dp.iob example for one way to do this).
+    There are a number of ways to edit the dielectric array, although it is not really
+    currently practical to fast adjust the dielectric array, for a number of reasons.
+    If using
+    .PA#/.PA0 files, changing the dielectric requires re-refining the .PA# file since refining just
+    the .PA0 file in memory is not sufficient.
+    There are some special footnotes in plates_2dp.lua describing how this is done.
+</ul>
+
+<p>Using cylinder_2dp.iob:</p>
+
+<ul>
+<li>1. <b>Load cylinder_2dp.iob.</b>
+   (<i>Click View on the main screen and select this IOB file.</i>)
+    Note: The PAs will not be refined and will not be correct until you Fly'm.
+<li>2. <b>Click Fly'm.</b>  This will refine the cylinder_2dp.pa using the
+    dielectric constants stored in cylinder_2dp-dielectric.pa.
+<li>3. To assist viewing, you may optionally <b>disable display of the dielectric PA</b>.
+    <i>(On the PA's tab, click each of the first to PA instances and uncheck the "Draw"
+    checkbox next to it.)</i>  Unlike the previous plates_2dpl.iob example, here the
+    electric potential and dielectric arrays overlap.  (Note: if we were flying particles,
+    it would be important that the electric potential PA have a higher priority number on
+    the PA Instances list on the PAs tab by using the L-/L+ buttons, as is the case here,
+    so that particles see the correct fields.)
+<li>4. The parameters of the dielectric can be controlled via the Variables tab.
+    kinside and koutside are respectively the relative dielectric constants
+    inside and outside the cylinder.
+    <b>Change koutside to 10 and kinside to 1</b>, which makes the volume outside the
+    cylinder have high permittivity and the volume inside a hollow vacuum cavity, and
+	<b>click Fly'm</b> to re-refine the PA.
+    Notice that the field inside the sphere is still uniform
+    but is now stronger than the field outside (smaller distance between potential
+    contour lines).
+    <b>Change kinside to 100 and koutside to 1</b> to make the
+    cylinder a very weak insulator and <b>click Fly'm</b>.
+    Notice that no potential contour lines pass through the cylinder (nearly zero
+    potential gradient).  Also, the field lines, which would be perpendicular to
+    the potential contour lines, would be perpendicular to the surface of a 
+    insulator like this (i.e. flux passes through).  The field would be nearly the
+    same if the cylinder were replaced with a conductive electrode at the same
+    potential, an effect we'll revisit in the float_cylinder_2dp.iob example.
+<li>5. <b>Change kinside to 1 and koutside to 100</b> and <b>click Fly'm</b>.  Here,
+    the cylinder is a strong insulator and the surrounding material is a very
+    weak insulator.  Since the bottom and top plates touching this weak insulator
+    are held at different potentials, some current density (<b>j</b>)
+    will flow through the weak insulator,
+    by an amount proportional to the local electric field vector,
+    <b>j</b> = &sigma; <b>E</b>, where &sigma; is the conductivity of the material.
+    However, current will pass around the strong insulator (as you see, almost no
+    electric field flux, which would be perpendicular to the potential contour lines,
+    enters the cylinder).
+    The "resistive_2dp.iob" example below explores calculation of
+    current densities in more depth.  The same mathematical technique to calculate
+    electric fields through dielectric materials (&epsilon;)
+    can also be applied to the calculation
+    of current density through a semiconductive medium (&sigma;).
+</ul>
+
+<p>Using sphere_2dc.iob:</p>
+
+<ul>
+<li>This is similar in usage to cylinder_2dp.iob.
+</ul>
+
+<p>Using sphere_3dp.iob:</p>
+
+<ul>
+<li>This is similar in usage to sphere_2dc.iob but it is a 3D example.  You should do
+    a 3D zoom into e.g. the x=0 plane to properly see potentials.  <i>(In XY view, mark
+    a tall box containing x=0, click +Z3D and switch to the ZY view.)</i>
+</ul>
+
+<p>Using float_cylinder_2dp.iob:</p>
+
+<ul>
+<li>1. <b>Load float_cylinder_2dp.iob</b> (<i>Click View on the main screen and select
+    this IOB file.</i>)
+	Note: The PAs will not be refined and will not be correct until you Fly'm.
+<li>2. <b>Click Fly'm.</b>  This will refine the float_cylinder_2dp.pa in the presence of the
+    dielectric (float_cylinder_2dp-dielectric.pa), which is actually a cylinder with very high dielectric
+    constant (100) to represent a floating conductor.  These arrays are seen
+    on the PAs tab.  (Note: making the dielectric constant too high will slow down the refine.)
+    The Refine also optionally incorporates a given space-charge inside the cylinder.  This is
+    controlled by the Q variable (in C) on the Variables tab.  Notice in the Log window that
+    the charge on the cylinder (5.0E-13 C/mm) is confirmed by a Gauss' law calculation
+    (similar to <a href="../gauss_law/README.html">Example: gauss_law</a>).
+<li>3. <b>Reduce the charge on the floating conductor to zero.</b>  (<i>On the Variables tab,
+    charge the C variable to 0 (Coulombs.)</i>)  <b>Click Fly'm</b> to re-refine.
+    (This may take some time, and you can examine its progress on the Log window tab.)  Notice that the
+    fields are now symmetric in the vertical direction.  The potential on the cylinder is 50 V, which is
+    half-way between the potentials of the top and bottom electrodes, as we would expect.  Some
+    unwanted variation in potential (a fraction of a Volt) is noticed inside the cylinder, which perhaps
+    can be reduced by increasing the dielectric constant and/or reducing the Refine convergence objective
+    used in the code.
+</ul>
+
+<p>Using charged_dielectric_2dp.iob:</p>
+
+<ul>
+<li>1. <b>Load charged_dielectric_2dp.iob</b> (<i>Click View on the main screen and select
+    this IOB file.</i>)
+	Note: The PAs will not be refined and will not be correct until you Fly'm.
+<li>2. <b>Click Fly'm.</b>  This will populate the relative dielectric constants and space-charge
+    densities in charged_dielectric_2dp-dielectric.pa and charged_dielectric_2dp-charge.pa
+    respectively and use these to refine charged_dielectric_2dp.pa.  These arrays are seen
+    on the PAs tab.  A comparison of actual v.s. theoretical potentials along the x axis is
+    outputted to the log window, showing good agreement.
+<li>3. To assist in proper viewing, <b>disable display of the dielectric and charge PA's</b>.
+    <i>(On the PA's tab, click each of the first to PA instances and uncheck the "Draw"
+    checkbox next to it.)</i>  <b>Enable the PE view.</b>
+    The potentials near the center slightly exceed the potentials on the end electrodes
+    (0 and 10 V) due to the space-charge, while the high value in dielectric constants on the
+    right side causes the reduction in fields (i.e. low potential gradient) on the right.
+<li>4. The parameters of the dielectric and space-charge distribution (A, B' and C described
+    in the Theory section above) can be controlled via the Variables tab.
+    <B>Change C to 0</b>, which disables all space-charge, and <b>click Fly'm</b>.
+    There is still a decrease in voltage gradient on the right side as dielectric constants
+    increase to the right.
+    However, the potentials nowhere exceed the end electrode potentials anymore.
+    Furthermore, <b>Change Bprime to 0</b>, which makes the dielectric constant uniform
+    over all space, and <b>click Fly'm</b>.  Notice that the potential now has a uniform
+    gradient, as we would expect with no-space charge and uniform dielectric constants.
+    Furthermore, <b>Increase A to 3</b>, which changes the dielectric constant on the
+    left to 3 (as well as everywhere else in space since Bprime is still 0), and <b>click
+    Fly'm</b>.  Notice that the potential has not changed.  You may experiment with other
+    values.  For example, <b>A=1, B=8, and C=-0.001</b> imposes a negative space-charge,
+    causing potential to drop below zero near the center-left,
+    and high dielectric constant on the right,
+    causing a low potential gradient near the 10 V electrode on the right.	
+</ul>
+
+<p>Using cylinder_nonlinear_2dp.iob:</p>
+ 
+<ul>
+<li>1. <b>Load cylinder_nonlinear_2dp.iob</b> (<i>Click View on the main screen and select
+    this IOB file.</i>)
+	Note: The PAs will not be refined and will not be correct until you Fly'm.
+<li>2. <b>Display the Log window tab</b> and <b>Click Fly'm.</b>
+    This will perform a series of refines in hopes to obtain a convergent, self-consistent solution,
+    as described in the Theory section above.
+	After each refine, the dielectric constants (cylinder_nonlinear_2dp-dielectric2.pa) are
+    updated from the previously calculated electric fields, the graphical plot is updated
+    (allowing you to see the potential contours change between iterations), and the
+    dielectric constant at the center of the cylinder is printed to the Log.
+    As seen, a stable convergence is reached.
+    If desired, there is a
+    "resume=1" adjustable variable allowing you to restart the iterations from the previous
+    Fly'm.  You may reduce the "convergence" adjustable variable
+    on later iterations, but it should be kept high at earlier iterations to allow nonlinear
+    dielectric effects to quickly take effect, thereby avoiding needless computation.
+</ul>
+
+<p>Using sphere_nonlinear_2dc.iob</b>
+
+<ul>
+<li>Usage of this is similar to cylinder_nonlinear_2dp.iob.
+    As discussed in the Theory section, sphere_nonlinear_2dc.lua
+    avoids sampling fields within one grid unit from the dielectric boundary to avoid
+    field distortions causing distortions in dielectric constants near boundaries
+    and poor convergence.  With this correction, 20 iterations provides good convergence.
+    Compare the "k(center)" value (effective relative dielectric constant
+    at the sphere center based on local fields) to the Theory section above.  Also note that
+	the field inside the sphere should be uniform.
+</ul>
+
+<p>Using sphere_nonlinear_3dp.iob:</b>
+
+<ul>
+<li>Usage of this is similar to sphere_nonlinear_2dc.iob.
+    The main difference is that this is 3D (like sphere_3dp.iob) and takes longer
+    to run and converge.
+</ul>
+
+<p>Using resistive_2dp.iob:</p>
+
+<ul>
+<li>1. <b>Load resistive_2dp.iob</b> (<i>Click View on the main screen and select
+    this IOB file.</i>)
+    Note: The PAs will not be refined and will not be correct until you Fly'm.
+<li>2. <b>Click Fly'm.</b>  This will use Refine to solve the electric field (resistive_2dp.pa)
+    given material conductivities throughout space (resistive_2dp-conductivity.pa).  It will
+    also calculate and plot the current density field, which is defined in the terms of the
+    calculated electric field and given conductivities: <b>j</b> = &sigma;.
+    See comments on the screenshot of this example above.  The current density vector field
+    plotting is done via the contourlib81 library from
+   <a href="../contour/README.html">Example: contour</a>.
+</ul>
+
+<p>
+For further details, examine the source code of the .lua files for each of
+these examples in a text editor.
+These typically invoke the
+<a href="../_redirect.html?id=poisson_solver">Poisson solver</a>
+(<code>pa:refine</code>) and sometimes do other things.
+</p>
+
+<h2>References</h2>
+
+<ul>
+<li>
+[1] W. Coffey, B. Scaife.
+"On the solution of some potential problems for a non-linear dielectric."
+Journal of Electrostatics, 1 (1975) 193-208.
+<li>
+[2] A. Lloris, A. Prieto.
+"Numerical calculation of some potential distributions in non-linear dielectrics."
+Journal of Electrostatics, 13 (1982) 139-150.
+[3] K. Yu, P. Hui.
+"Effective dielectric response of nonlinear composites."
+Physical Review B. vol 46, no 21. 1 June 1993. 150-156.
+</ul>
+
+<h2>Source/History</h2>
+
+<pre>
+2012-01-05 - initial version, D.Manura
+</pre>
+
+</div>
+    
+<div class="copyright">SIMION&#153; 8.1 (c) 2003-2012 Scientific
+Instrument Services, Inc. All Rights Reserved.
+</div>
+    </body></html>

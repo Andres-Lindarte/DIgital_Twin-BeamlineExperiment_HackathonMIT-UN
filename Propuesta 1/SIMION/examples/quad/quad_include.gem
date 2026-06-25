@@ -1,0 +1,46 @@
+; quad_include.gem - electrodes for quadrupole system.
+; This is designed to be included in the other GEM files.
+; D.Manura, 2012-08, based on SIMION 6.0 quad*.pa#.
+; (c) 2012 Scientific Instrument Services, Inc. (Licensed SIMION 8.1)
+
+# local r0 = 4          -- inter-rod radius, mm
+# local rrod = r0*1.148 -- circular rod radius, mm  (Dayton -- see README)
+
+
+; rods (four circular quad rods)
+locate(0,0,85.4) {
+  e(1) {
+    fill { within { cylinder($(r0+rrod),0,0, $(rrod),, 79.6) } }
+    fill { within { cylinder($(-r0-rrod),0,0, $(rrod),, 79.6) } }
+  }
+  e(2) {
+    fill { within { cylinder(0,$(r0+rrod),0, $(rrod),, 79.6) } }
+    fill { within { cylinder(0,$(-r0-rrod),0, $(rrod),, 79.6) } }
+  }
+}
+
+; entrace region
+locate(0,0,1) {
+  e(3) { ; plate with hole
+    fill {
+      within       { box3d(-1e6,-1e6,0, 1e6,1e6,0.8) }
+      notin_inside { circle(0,0, 1.2) }
+    }
+  }
+}
+
+; exit region
+locate(0,0,89.4) {
+  e(4) { ; exit enclosure
+    fill {
+      within       { box3d(7.6,7.6,0,   -7.6,-7.6,5.8) }
+      notin_inside { box3d(7.2,7.2,0.8, -7.2,-7.2,1E+6) }
+      notin_inside { circle(0,0, 3.6) }
+    }
+  }
+  e(5) { ; detector plate
+    fill {
+      within { cylinder(0,0,5.8, 3.6,, 0.4) }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+; source PA
+
+pa_define(30,30,50, planar,xy)
+
+e(2000) {
+  fill { within { box3d(-1E6,-1E6,0, 1E6,1E6,0) }}
+}
+e(1800) {
+  fill { within { box3d(-1E6,-1E6,25, 1E6,1E6,25) }}
+}
+e(0) {
+  fill { within { box3d(-1E6,-1E6,49, 1E6,1E6,49) }}
+}

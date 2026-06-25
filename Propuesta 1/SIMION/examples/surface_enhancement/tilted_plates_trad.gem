@@ -1,0 +1,10 @@
+; tilted_plates_trad.gem
+; two parallel plates tiled at small angle (2.86 degrees),
+; WITHOUT surface enhancement.
+
+pa_define(23,41,1,planar,non-mirrored)
+locate(11,20,0, 1, 0,2.86) {
+  e(1) { fill { within { box2d(-20, -1000, -10, 1000) }}}
+  e(2) { fill { within { box2d( 20, -1000,  10, 1000) }}}
+}
+

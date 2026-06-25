@@ -1,0 +1,10 @@
+# local r0 = 3
+# local rrod = r0*0.355
+# local gu_mm = 100
+# local nx = math.floor((r0 + 2.5 * rrod) * gu_mm) + 1
+# local cx = nx-1
+
+pa_define($(cx),$(cx),1, planar, xy,,, $(1/gu_mm))
+
+; This does nothing except avoids the "no fill definitions" warning
+n(0) { fill { within {box2d(0,0,0,0)} } }

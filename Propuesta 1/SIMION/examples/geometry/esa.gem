@@ -1,0 +1,54 @@
+;this is a spherical esa layed on its side with extra pa regions outside
+;entrance and exit slits to model field bleed through better
+
+pa_define(131,71,131,p,n)			; 131x,71y, 131z, planar, non_mirror
+
+project(100,0,30,1.0,0,90)			;then roll over to lay on side in pa
+  { 								;(shift 100 x, 30 z, and elevate 90 deg)
+
+  project(35,5,5)					;construct as if pa were 71x,101y,101z
+	 {								;adjust for center point of spheres
+	 e(2)							;start with electrode of two volts
+	   {							;fill entire esa region to make
+									;outer esa square on outside
+	   fill{within{box3d(-30,0,0,30,90,90)}}
+	   }
+	 n(0)							;non-electrode of two volts
+	   {
+	   rotate_fill(90.5)			;use 90 degree rotate fill
+		 {							;clear an excess of gap region
+		 within{circle(0,0,85) centered_box(0,0,60,200)}
+		 notin{circle(0,0,50) centered_box(0,0,60,200)}
+		 }
+	   }
+	 e(2)							;electrode of two volts
+	   {
+	   rotate_fill(90.5)			;use 90 degree rotate fill
+		 {							;definition for outer spherical electrode
+		 within{circle(0,0,90) centered_box(0,0,60,200)}
+		 notin{circle(0,0,85) centered_box(0,0,60,200)}
+		 }
+	   }
+	 e(1)							;electrode of one volt
+	   {
+	   rotate_fill(90.5)			;use 90 degree rotate fill
+		 {							;definition for inner spherical electrode
+		 within{circle(0,0,70) centered_box(0,0,60,200)}
+		 }
+	   }
+	 }
+  e(0)								;add outer ground can
+	 {
+	 fill							;use one fill for outer can
+		{
+		within{box3d(0,0,0,70,2,100)}		;bottom plate
+		within{box3d(0,98,0,70,100,100)}	;top plate
+		within{box3d(0,0,0,2,100,100)}		;left plate
+		within{box3d(68,0,0,70,100,100)}	;right plate
+		within{box3d(0,0,0,70,100,2)}		;back plate
+		within{box3d(0,0,98,70,100,100)}	;front plate
+		notin{box3d(25,80,0,45,86,2)}		;entry slot at back
+		notin{box3d(25,0,80,45,2,86)}		;exit slot at bottom
+		}
+	 }
+  }

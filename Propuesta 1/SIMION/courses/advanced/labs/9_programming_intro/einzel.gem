@@ -1,0 +1,17 @@
+pa_define(120,20)    ; simple einzel lens
+ 
+locate(20)
+    {
+    e(1)
+        {
+        fill{within{box(0,18,28,19)}}
+        }
+    e(2)
+        {
+        fill{within{box(30,18,56,19)}}
+        }
+    e(3)
+        {
+        fill{within{box(58,18,90,19)}}
+        }
+    }

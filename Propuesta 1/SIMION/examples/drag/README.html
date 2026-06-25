@@ -1,0 +1,224 @@
+<html>
+<head>
+<title>SIMION Stokes' Law Drag Example</title>
+
+<style type="text/css">
+  body { font-family: verdana, arial, sans-serif; font-size: 90%; }
+  .copyright {font-size:80%; border-top:1px solid black}
+  .title1 {background-color:#80ff80}
+  .links1 {background-color:#c0ffc0}
+  .content {max-width:30em; margin-left:5px; margin-right:5px }
+  h1 {margin-top: 0; margin-bottom: 0; background-color:#e0ffe0; font-size:130%}
+  h2 {font-size:120%}
+  h3 {font-size:110%}
+  h4, h5, h6 {font-size:100%}
+</style>
+</head>
+
+<body  marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+<div class="title1">
+<a href="../_redirect.html?id=index">SIMION&#153; 8.1</a>
+</div>
+<h1>SIMION Stokes' Law Drag Example</h1>
+<div class="content">
+
+
+
+<h2>Purpose</h2>
+
+<p>
+This example demonstrates the application of a Stokes' law
+<a href="http://en.wikipedia.org/wiki/Stokes'_law">[1]</a> drag
+to ion motion.  It uses an accel_adjust program segment.
+</p>
+
+<h2>Description</h2>
+
+<p>
+A simple three element fast adjust lens is provided for demonstration.
+This should serve as a simple example of how viscosity can impact ion
+motions.
+</p>
+
+<p>Refer to the comments in drag.lua for details.</p>
+
+<h2>Files in this Demo:</h2>
+
+<ul>
+<li>README.html - Description of example
+<li>drag.iob - SIMION workbench
+<li>drag.fly - SIMION particle definitions associated with emittance.iob
+<li>drag.pa* - SIMION potential array of simple three-element lens
+<li>drag.con - SIMION contour definitions
+<li>drag.lua - SIMION user program associated with emittance.iob.
+               This performing the tuning.
+<li>drag_mobility.iob/lua - Related example that calibrates the drag factor
+  to a mobility constant.
+</ul>
+
+<h2>Usage</h2>
+
+<p>How to run demo:</p>
+
+<ul>
+<li>1. <b>View drag.iob.</b>
+       <i>(Click View on main screen and select the drag.iob file.)</i>
+<li>2. If this is your first time using the example,
+       you will be <b>asked to refine</b> <i>(confirm that
+       and press Refine)</i>.
+<li>3. <b>Set trajectory quality to zero.</b>
+       <i>(Set TQual in Particles tab to 0.)</i>
+<li>4. <b>Fly ions Grouped and in Rerun mode</b>
+       <i>(Enable Grouped and Rerun options on Particles tab and then
+       click Fly'm.)</i>
+       By default, there is zero dampening.
+       Particles will refly continuously; so continue to next step.
+<li>5. <b>Increase the damping variable.</b>
+       <i>(In the Variables tab, set
+       linear_damping to, say, 3 and press Enter.)</i>
+       Note the effect of damping on ion trajectories.       
+<li>6. Now <b>set middle electrode to zero volts</b> to
+       observe the effects of viscosity on diverging acceleration.
+       <i>(In PAs tab, click Fast Adjust Voltages, change electrode
+       2 to 0 V, and press Fast Adjust.)</i>
+<li>7. Be sure to <b>check out PE views</b> too!
+       <i>(PE button with XY, ZY, or XZ buttons pressed down.)</i>
+</ul>
+
+<div style="margin-left:3em">
+<p>Note:</p>
+<ul>
+<li>How beam refraction with damping active impacts ion spread!!
+<li>How divergence paints the walls with ions!
+<li>How convergence is impacted by viscosity (no focus point)!
+<li>Ions moving in viscous conditions follow streamlines.
+      Use drag.con contour file to demonstrate.
+      Viscosity is a nifty way to get streamlines.
+</ul>
+</div>
+
+<p>More (beam repulsion effects):</p>
+     
+<ul>
+<li>1. <b>Set for Beam Repulsion at 1.0e-8 amps and trajectory quality = 0.</b>
+       <i>(In Particles tab, select Repulsion as Beam and enter 1.0e-8 below
+       it.  Set TQual to 0.)</i>
+<li>2. <b>Set left electrode at 1000V, middle = 1000V, right = 0V.</b>
+       <i>(In PAs tab, click Fast Adjust Voltages, change voltages on
+       three electrodes, and press Fast Adjust.)</i>
+<li>3. <b>Fly ions Grouped in Rerun mode and damping zeroed.</b>
+       <i>(In Particles tab, enable Grouped and Rerun options.
+       In Variables tab, set linear_damping variable to 0 and press enter.
+       Press down the Fly'm button.)</i>
+       Note ion trajectories.
+<li>4. <b>Try various damping factors.</b>
+       <i>(In the Variables tab, change damping to 1 then 2 and so on.)</i>
+</ul>
+
+<p style="margin-left:3em">
+Note how viscosity really can boost repulsion effects!</p>
+
+<h2>drag_mobility example</h2>
+
+<p>
+The original drag.lua example above has the disadvantage that the Stokes' law drag factor is
+an empirical constant that might not be known in advance.
+Fortunately, however, given the drag factor in Stokes' law, we can derive a corresponding
+mobility coefficient (K = v / E), which is the ratio of the ion's terminal velocity v to a
+uniform electric field E it is submersed in, for a certain background gas composition,
+temperature and pressure.
+Mobility constants may be known from literature or experiment.  We can furthermore
+reverse this process to estimate a drag factor from the mobility coefficient.
+The "drag_mobility.iob/lua" example does just that: it adapts the drag.lua example so that
+the drag coefficient is calibrated against a given mobility coefficient.
+For details on this calibration, see the section titled "Converting K mobility to damping constant" in the
+<a href="../collision_sds/collision_sds_documentation.pdf">SDS documentation (examples\collision_sds\collision_sds_documentation.pdf)</a>.
+In fact, the code in drag_mobility.lua is incorporated into
+<a href="../collision_sds/README.html">Example: SDS collision model</a> to implement the mobility component of the
+combined mobility + diffusion effects in SDS.
+However, unlike the SDS example, the drag_mobility example omits diffusion effects; this simplifies the implementation
+but may be less realistic than SDS.
+</p>
+
+<p>
+Stokes' law, which applies an additional transient force to ion motion,
+is not the only way to incorporate the mobility equation into the particle trajectory calculation.
+After all, the mobility equation, v = K*E, alone does not describe transient behavior
+like Stokes' law but is rather a steady state condition between an ion's time-averaged terminal
+velocity v and electric field E.  This is only a steady state condition because the
+ion velocity v does not instantaneously track changes to electric field E according to
+the proportionality constant K.  Not even in a perfect vacuum, where the Lorentz force
+law applies (F = m*dv<sup>2</sup>/dt<sup>2</sup> = q*E), is this the case.
+Rather, it takes some time, sometimes referred to as the <i>relaxation time</i>
+(as in <a href="../faims/README.html">Example: FAIMS</a> documentation).
+However, as the gas pressure is increased the terminal velocity v decreases
+and the time to reach terminal velocity decreases.  At sufficiently high pressure, this time may be negligible
+small such that v = K*E may be assumed to hold for all time t.  In that case, we can
+simply force the ion velocity vector according to the mobility equation at every time step.
+The `SDS_faims_mode = 1` in <a href="../faims/README.html">Example: FAIMS</a>
+takes that approach.  (FAIMS often operates at atmospheric pressure and the E field rapidly oscillates according to
+an RF waveform.)
+</p>
+
+<p>Here's a few very basic sanity tests for this example
+(apart from the testing already done in the collision_sds example):</p>
+
+<pre>
+    Check #1:
+      Set
+        Zero initial ion KE, ion mass = 100, ion charge = 1 u.
+        High background gas velocity (e.g. local_vx_mm_per_usec = 100)
+        Zero fields (adjust all potentials to zero)
+        STP conditions (local_pressure_torr=760, local_temperature_K=273.15)
+      Record TOF, X position, and Vx at each time step.
+      The particle should reach a terminal velocity equal to the background gas
+      velocity in a short time.  The time required is pressure dependent--e.g.
+      lowering pressure to 1 torr significantly increases this time.
+      Increasing the field can alter the terminal velocity too because the field
+      applies an additional force.
+
+    Check #2:
+      Set
+        Zero initial ion KE.
+        Zero background gas velocity (local_vx_mm_per_usec = 0). 
+        STP conditions (local_pressure_torr=760, local_temperature_K=273.15)
+        Default fields (fast adjust V1=1000, V2=1000, V3=0).
+      Record ion velocity on every time-step.
+      We observe the ion reach a terminal velocity of 4.8 mm/usec on the right side.
+      This is consistent with the predication from the mobility equation:
+      v = K*E = (2.0 * 10-4 m^2 V^-1 s^-1) * (~24 V/mm) = 4.8E-3 mm/usec.
+
+    Check #3:
+      The relaxation distance (see FAIMS documentation) is approximately
+      lambda = (m/q)*E*K^2 = (100 u / 1e)*(~24 V/mm)*(2.0 * 10-4 m^2 V^-1 s^-1)
+      = 1.0E-6 mm.  This is approximately the order of magnitude distance it takes
+      for a particle starting at X=80 mm (right field) and zero KE to reach terminal velocity.
+</pre>
+
+<h2>See also</h2>
+
+<ul>
+<li><a href="../collision_hs1/README.html">Example: HS1 Collision Model</a>
+  hard sphere collision model, which can be more realistic
+<li><a href="../collision_sds/README.html">Example: SDS Collision Model</a>
+  advanced model for atmospheric pressure
+  <li><a href="../faims/README.html">Example: SDS/FAIMS Collision Model</a>
+  advanced model for atmospheric pressure with RF
+</ul>
+
+<h2>Source / History</h2>
+
+<p>
+Original Author: David Dahl.
+D.Manura-2006-Updated to SIMION 8/Lua.
+2011-01 - Add drag_mobility.iob/lua example based on collision_sds example.
+</p>
+
+</div>
+    
+<div class="copyright">SIMION&#153; 8.1 (c) 2003-2012 Scientific
+Instrument Services, Inc. All Rights Reserved.
+</div>
+    </body>
+</html>
+

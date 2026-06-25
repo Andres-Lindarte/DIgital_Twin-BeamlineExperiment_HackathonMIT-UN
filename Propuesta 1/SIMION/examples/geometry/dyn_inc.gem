@@ -1,0 +1,9 @@
+	;dynode definition
+fill{
+					;bottom of dynode
+	within{box3d(0,0,-10,40,1,10)}
+					;back of dynode
+	within{box3d(0,0,-10,40,10,-9)}
+					;front of dynode
+	within{box3d(0,0,9,40,10,10)}
+	}

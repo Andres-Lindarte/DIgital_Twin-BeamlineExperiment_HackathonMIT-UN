@@ -1,0 +1,40 @@
+;*************************************************************************
+;**************** Filament Jig with Filaments ****************************
+;*************************************************************************
+
+ pa_define(201,361,361,p,n)   ;3d non mirroring
+
+; scaling is 0.010"/grid unit  or 0.254 mm/grid unit
+
+
+
+locate(140,180,180,100,0,0,0)	; center assembly in array
+{
+e(0)						;use electrode points to define jig
+	{
+	include(z_include_filament_jig.gem)
+
+	e(1)
+		{
+		locate(-0.41,0,0,1)
+			{
+			include(z_include_rht_fil_hold.gem)
+			}
+		locate(-0.41,0,0,1,0,0,180)
+			{
+			include(z_include_rht_fil_hold.gem)
+			}
+		}
+	e(2)
+		{
+		locate(-0.66,0,0,1)
+			{
+			include(z_include_filament.gem)
+			}
+		locate(-0.66,0,0,1,0,0,180)
+			{
+			include(z_include_filament.gem)
+			}
+		}
+	}
+}

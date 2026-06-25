@@ -1,0 +1,22 @@
+local t = {coordinates = 0}
+for n=1,1000 do
+  local angle = math.random() * math.pi * 2
+  local x = math.cos(angle)*0.0105
+  local y = math.sin(angle)*0.0105
+  local z = (math.random() * 2 - 1) * 0.02
+  local tob = math.random() * 0.005
+  local s = standard_beam {
+    tob = tob,
+    mass = 0.000548579903,
+    charge = -1,
+    ke = 0.1,
+    cwf = 1,
+    color = 0,
+    direction = vector(x,y,0),
+    x = x, y = y, z = z,
+    format = ""
+  }
+  t[#t+1] = s
+end
+particles(t)
+

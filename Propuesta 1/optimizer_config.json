@@ -1,0 +1,23 @@
+{
+  "electrodes": [
+    {"name": "V2", "initial": 5, "min": -2000, "max": 2000, "step": 500, "min_step": 6.25, "max_step": 1000},
+    {"name": "V3", "initial": 45, "min": -2000, "max": 2000, "step": 500, "min_step": 6.25, "max_step": 1000},
+    {"name": "V8", "initial": -1800, "min": -6000, "max": 6000, "step": 1500, "min_step": 25, "max_step": 2500},
+    {"name": "V14", "initial": 1500, "min": -6000, "max": 6000, "step": 1500, "min_step": 25, "max_step": 2500}
+  ],
+  "global_search": {
+    "batch_size": 16,
+    "repeats_per_candidate": 1,
+    "minimum_batches": 4,
+    "patience_batches": 4,
+    "minimum_improvement": 0.01,
+    "elite_count": 6,
+    "elite_total_repeats": 5,
+    "seed": 20260624
+  },
+  "repeats_per_candidate": 5,
+  "final_repeats": 10,
+  "minimum_improvement": 0.02,
+  "patience_rounds": 4,
+  "step_growth": 1.5
+}

@@ -1,0 +1,8 @@
+; Defines PA for scalar magnetic potential.
+
+pa_define(101, 101, 1, planar, xy, magnetic_)
+
+; Dirichlet boundary on y=0 and outer edges
+e(0) {
+  edge_fill { within { box(-100,0,100,100) } }
+}

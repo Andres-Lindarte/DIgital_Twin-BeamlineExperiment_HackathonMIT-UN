@@ -1,0 +1,22 @@
+; polygon_regular.gem
+; Generates regular polygon (e.g. hexagon) shape.
+; D.Manura, 2013-01.
+
+pa_define(101,101,1, planar, none)
+
+# -- builds regular polygon in XY plane
+# -- with center (x0,y0), radius r, and n sides.
+# function regular_polygon(x0,y0, r,n)
+  polyline(
+# for i=1,n do
+#   local theta = math.rad(i/n*360)
+    $(x0+r*math.cos(theta)), $(y0+r*math.sin(theta))
+# end
+  )
+# end
+
+
+e(1) { fill {
+  within { $(regular_polygon(50,50, 40,6)) }
+  notin  { $(regular_polygon(50,50, 20,6)) }
+} }

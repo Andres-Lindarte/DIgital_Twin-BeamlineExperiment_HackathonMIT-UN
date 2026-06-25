@@ -1,0 +1,19 @@
+; Defines conductivity array, i.e. electrical
+; conductivity as a function of position.
+
+pa_define(100,100,1, planar,none,electric_)
+
+locate(-0.5,-0.5,-0.5) { ; 1/2 gu adjustment for cell centers, just like for dielectrics
+
+  ; insulative material (nearly zero conductivity)
+  n(0.001) { fill { within { box3d(-1E+6,-1E+6,-1E+6, 1E+6,1E+6,1E+6) } } }
+
+  ; semiconductive material.
+  n(1) {
+    fill {
+      within_inside { box2d(10,0, 90,70) }
+      within_inside { box2d(40,70, 60,100) }
+    }
+  }
+
+}

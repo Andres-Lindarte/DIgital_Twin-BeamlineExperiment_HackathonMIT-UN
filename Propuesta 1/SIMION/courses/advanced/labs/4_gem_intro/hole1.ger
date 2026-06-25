@@ -1,0 +1,109 @@
+SIMION 7.0 Geometry File Compiler
+	Fri May 19 07:44:42 2000
+	Errors for: HOLE1.gem
+---------------------------------
+
+Fill Chain Empty
+
+Starting Conditions
+--------------------------
+        Project-it(0)****** (0x,0y,0z,1s,0az,0el,0rt)
+        Point-Type(0)****** Electrode/Pole: 0
+--------------------------
+
+
+    1:  ;makes hyperbolic trap with holes in endcaps as fast adjust file
+    2:  ; all electrode dimensions are defined in mm
+    3:  
+    4:  ;electrode number 1 is ring
+    5:  ;electrode number 2 is left end cap
+    6:  ;electrode number 3 is right end cap
+    7:  
+    8:                          ;array to use with trap.iob
+    9:                          ;scale 0.1 mm / grid unit
+   10:  
+   11:  pa_define(401,284,1,cylindrical,y_mirror)
+
+Define_PA(	401nx, 284ny, 1nz,
+			CYLINDRICAL,
+			Y_Mirroring,
+			ELECTROSTATIC PA,
+			100ng)
+
+   12:                          ; 401x, 284y, 1z 2D cylindrical electrostatic array
+   13:  
+   14:  locate(200,0,0,10)          ; shift working center to trap center
+           >>--Project-it(1)****** (200x,0y,0z,10s,0az,0el,0rt)
+   15:                              ; convert mm to grid units
+   16:      {
+   17:      e(1)                    ;electrode 1 - trap ring electrode
+           >>--Point-Type(1)****** Electrode/Pole: 1
+   18:          {                   ;draw y hyperbola (ring electrode)
+   19:          fill{within{hyperbola(0,0,7.07,10.0)}}
+        >>--Hyperbola(0xoff,0yoff,7.07vert,10foci)
+   20:          }
+        <<--Point-Type(0)****** Electrode/Pole: 0
+   21:  
+   22:  
+   23:      e(2)                    ;electrode 2 - left end cap
+           >>--Point-Type(1)****** Electrode/Pole: 2
+   24:          {                   ;draw left end cap x hyperbola
+   25:          fill
+   26:              {               ; twist hyperbola 90 degrees
+   27:              within{locate(,,,,,90){hyperbola(0,0,10.0,7.07)}}
+              >>--Project-it(2)****** (0x,0y,0z,1s,0az,90el,0rt)
+        >>--Hyperbola(0xoff,0yoff,10vert,7.07foci)
+           <<--Project-it(1)****** (200x,0y,0z,10s,0az,0el,0rt)
+   28:                              ; exclude right half of hyperbola
+   29:              notin{box(0,0,100.0,100.0)}
+        >>--Box2d(0xl,0yl,100xr,100yr)
+   30:                              ; drill 2mm hole through endcap
+   31:              notin_inside{cent_box(0,0,500,2)}
+        >>--Centered_Box2d(0xc,0yc,500dx,2dy)
+   32:  
+   33:              }
+   34:          }
+        <<--Point-Type(0)****** Electrode/Pole: 0
+   35:      e(3)                    ;electrode 3 - right end cap
+           >>--Point-Type(1)****** Electrode/Pole: 3
+   36:          {                   ;draw right end cap x hyperbola
+   37:          fill
+   38:              {               ; twist hyperbola 90 degrees
+   39:              within{locate(,,,,,90){hyperbola(0,0,10.0,7.07)}}
+              >>--Project-it(2)****** (0x,0y,0z,1s,0az,90el,0rt)
+        >>--Hyperbola(0xoff,0yoff,10vert,7.07foci)
+           <<--Project-it(1)****** (200x,0y,0z,10s,0az,0el,0rt)
+   40:                              ; exclude left half of hyperbola
+   41:              notin{box(-100.0,0,0,100.0)}
+        >>--Box2d(-100xl,0yl,0xr,100yr)
+   42:                              ; drill 1mm radius hole through endcap
+   43:              locate(0,0,0,1,90)
+              >>--Project-it(2)****** (0x,0y,0z,1s,90az,0el,0rt)
+   44:                  {
+   45:                  notin_inside{circle(0,0,1)}
+        >>--Circle(0xc,0yc,1rx,1ry)
+   46:                  }
+           <<--Project-it(1)****** (200x,0y,0z,10s,0az,0el,0rt)
+   47:              }
+   48:          }
+        <<--Point-Type(0)****** Electrode/Pole: 0
+   49:      }
+        <<--Project-it(0)****** (0x,0y,0z,1s,0az,0el,0rt)
+
+No Compiling Errors Encountered
+----------------------------
+Lines Processed
+		Main File:    49
+		 Included:     0
+		-----------------
+		 In Total:    49
+
+
+Number of Fills Intersecting PA's Volume: 3
+
+
+Volume of PA to Scan:
+		0 <= x <= 400
+		0 <= y <= 283
+		0 <= z <= 0
+

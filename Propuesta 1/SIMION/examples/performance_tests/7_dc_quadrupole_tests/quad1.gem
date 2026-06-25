@@ -1,0 +1,18 @@
+
+pa_define(1200,1200,1,p,xy)
+
+locate(0,0,0,4)
+{
+
+e(1)
+	{
+	fill{within{hyperbola(0,0,200,200)}}
+	}
+e(2)
+	{
+	locate(0,0,0,1,0,90)
+	{
+	fill{within{hyperbola(0,0,200,200)}}
+	}
+	}
+}

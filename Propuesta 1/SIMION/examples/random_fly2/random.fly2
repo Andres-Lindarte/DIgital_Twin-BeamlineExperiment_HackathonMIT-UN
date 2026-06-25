@@ -1,0 +1,35 @@
+-- Read in any variables.
+local var = _G.var or {}
+local percent_energy_variation = var.percent_energy_variation or 0
+local cone_half_angle = var.cone_half_angle or 0
+local radius = var.radius or 1
+print('Delta KE (%)=', percent_energy_variation)
+print('Delta Angle (deg)=', cone_half_angle)
+print('radius (mm)=', radius)
+
+particles {
+  coordinates = 0,
+  standard_beam {
+    n = 20,
+    tob = 0,
+    mass = 100,
+    charge = 1,
+    ke = uniform_distribution {
+      min = 0.1 * (1 + percent_energy_variation/100),
+      max = 0.1 * (1 - percent_energy_variation/100)
+    },
+    direction = cone_direction_distribution {
+      axis = vector(1, 0, 0),
+      half_angle = cone_half_angle,
+      fill = true
+    },
+    cwf = 1,
+    color = 1,
+    position = circle_distribution {
+      center = vector(2, 0, 0),
+      normal = vector(1, 0, 0),
+      radius = radius,
+      fill = false
+    }
+  }
+}

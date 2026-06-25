@@ -1,0 +1,17 @@
+; Creates sinusoidal shape.
+; Uses GEM macro feature ( http://simion.com/issue/296 ).
+;
+pa_define(101,101,1, planar, none, electrostatic)
+
+; sinusoidal
+e(2) {
+  fill {
+# local last=100
+# for i=0,last do
+  within { points( $(i), $(50 + 5 * sin(i*0.1)) ) }
+# end
+  }
+}
+
+; line
+e(1) { fill { within { box2d(0,0, 100,0) } } }

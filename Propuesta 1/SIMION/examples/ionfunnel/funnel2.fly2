@@ -1,0 +1,29 @@
+particles {
+  coordinates = 0,
+  standard_beam {
+    n = 10,
+    tob = uniform_distribution {
+      min = 0,
+      max = 0.9
+    },
+    mass = 556,
+    charge = 1,
+    ke = uniform_distribution {
+      min = 0.1,
+      max = 1.9
+    },
+    cwf = 1,
+    color = 0,
+    direction = cone_direction_distribution {
+      axis = vector(1, 0, 0),
+      half_angle = 5,
+      fill = true
+    },
+    position = circle_distribution {
+      center = vector(1, 0, 0),
+      normal = vector(1, 0, 0),
+      radius = 4,
+      fill = true
+    }
+  }
+}

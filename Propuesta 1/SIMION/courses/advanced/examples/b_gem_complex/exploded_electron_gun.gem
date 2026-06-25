@@ -1,0 +1,146 @@
+
+; 3d array definition
+  pa_define(801,186,186,p,yz)
+; scaling is 0.010"/grid unit  or 0.254 mm/grid unit
+  locate(0,0,0,100,0,0,0)  ; beam hole aligned
+;  locate(0,0,0,100,0,0,22.5)  ; filament end aligned
+;	locate(0,0,0,100,0,0,-45) ; mounting hole aligned
+
+
+;note:	above locates position origin on right edge of array
+;		lens elements are built from right to left with each
+;		successive element shifted more to the left than the
+;		preceeding
+
+{
+
+; **********************************************************************
+; ****************	left ground tube electrode	************************
+; **********************************************************************
+locate(0,0,0,1)
+	{
+	e(0)				  ; create with 0 volt electrode points
+		{
+		include(z_include_lft_gnd_tube.gem)
+		}
+	}
+
+
+
+
+
+; **********************************************************************
+; ****************** left draw out electrode ***************************
+; **********************************************************************
+locate(1.5,0,0,1)		; shift lens right 1.0" from origin.
+	{
+	e(4)				  ; create with 4 volt electrode points
+		{
+		include(z_include_lft_drawout.gem)
+		}
+	}
+
+
+
+
+; **********************************************************************
+; ******************  filament cover electrode	************************
+; **********************************************************************
+locate(2.75,0,0,1)
+	{					  ; shift lens right 2" from origin.
+	e(2)				  ; create with 2 volt electrode points
+		{
+		include(z_include_lft_fil_hold.gem)
+		}
+	}
+
+
+
+
+; **********************************************************************
+; ******************  Filament cover standoffs	**********************
+; **********************************************************************
+locate(3.75,0,0,1)
+	{					  ; shift lens right 2" from origin.
+	e(2)				  ; create with 2 volt electrode points
+		{
+		locate(0,0,0,1,0,0,45)
+			{
+			locate(0,1.65,0,1)
+				{
+				include(z_include_standoff.gem)
+				}
+			}
+		locate(0,0,0,1,0,0,135)
+			{
+			locate(0,1.65,0,1)
+				{
+				include(z_include_standoff.gem)
+				}
+			}
+		}
+	}
+
+
+
+
+; **********************************************************************
+; ****************** filament posts and filament ***********************
+; **********************************************************************
+locate(3.75,0,0,1)		 ; shift lens left -7.23 from origin.
+	{
+	e(1)				  ; create with 1 volt electrode points
+		{
+		include(z_include_filament.gem)
+		}
+	}
+
+
+
+
+
+
+; **********************************************************************
+; **************  filament post holder electrode  **********************
+; **********************************************************************
+locate(5.25,0,0,1)		 ; shift lens left 6.98" from origin.
+	{
+	e(2)				  ; create with 2 volt electrode points
+		{
+		include(z_include_rht_fil_hold.gem)
+		}
+	}
+
+
+
+
+
+; **********************************************************************
+; *************  right electron drawout electrode  *********************
+; **********************************************************************
+locate(6.25,0,0,1)		 ; shift lens left 6.94" from origin.
+	{
+	e(4)				  ; create with 4 volt electrode points
+		{
+		include(z_include_rht_drawout.gem)
+		}
+	}
+
+
+
+; **********************************************************************
+; ****************	right ground tube electrode  ***********************
+; **********************************************************************
+locate(7.25,0,0,1)		 ; shift lens left 6.74" from origin.
+	{
+	e(0)				  ; create with 0 volt electrode points
+		{
+		include(z_include_rht_gnd_tube.gem)
+		}
+	}
+
+
+
+
+}
+

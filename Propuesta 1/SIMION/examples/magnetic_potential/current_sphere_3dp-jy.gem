@@ -1,0 +1,3 @@
+; GEM file for y component of current density.
+
+pa_define(100,100,100, planar,xyz,magnetic_,, 1,1,1)  ; mm/gu

@@ -1,0 +1,20 @@
+particles {
+  coordinates = 0,
+  standard_beam {
+    tob = 0,
+    mass = 100,
+    charge = 1,
+    x = 5.01,
+    y = arithmetic_sequence {
+      first = -10,
+      step = 2,
+      last = 10
+    },
+    z = 0,
+    ke = 0.1,
+    az = 0,
+    el = 0,
+    cwf = 1,
+    color = 1
+  }
+}

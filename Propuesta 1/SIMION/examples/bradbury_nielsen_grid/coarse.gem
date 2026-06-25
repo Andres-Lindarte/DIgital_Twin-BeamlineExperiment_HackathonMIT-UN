@@ -1,0 +1,19 @@
+; D.Manura, 2008-05, Bradbury-Nielsen shutter
+; inside lens.
+
+pa_define(201,51,1,cylindrical)
+
+; system without gate
+include(system_inc.gem)
+
+; boundary where fine grid will go.
+; non_electrode(0) { ; clear
+e(3) { ; clear
+  fill { within { box(92,0,108,50)  }}
+}
+e(10) {
+  fill { within { box(92,0,92,50)  }}
+}
+e(11) {
+  fill { within { box(108,0,108,50)  }}
+}
