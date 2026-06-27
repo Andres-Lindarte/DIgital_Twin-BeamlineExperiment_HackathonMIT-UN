@@ -1,23 +1,26 @@
-### AL ###
-#Template for AL projects for Dynamics 365 Business Central
-#launch.json folder
-.vscode/
-#Cache folder
-.alcache/
-#Symbols folder
-.alpackages/
-#Snapshots folder
-.snapshots/
-#Testing Output folder
-.output/
-#Extension App-file
-*.app
-#Rapid Application Development File
-rad.json
-#Translation Base-file
-*.g.xlf
-#License-files
-*.bclicense
-*.flf
-#Test results file
-TestResults.xml
+# --- Archivos pesados y geométricos de SIMION ---
+*.PA
+*.pa#
+*.pa0
+*.stl
+
+# --- Archivos de configuración volátiles de SIMION ---
+ *.iob
+*.fly2
+
+# --- Archivos temporales de comunicación (Python-Lua) ---
+param_input.txt
+results.txt
+
+# --- Reportes y Gráficas de salida ---
+*.pdf
+*.png
+
+# --- LaTeX ---
+*.tex
+*.aux
+*.log
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
