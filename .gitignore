@@ -1,11 +1,11 @@
 # --- Archivos pesados y geométricos de SIMION ---
-*.PA
-*.pa#
-*.pa0
+electrode_.PA*
+*.PA#
+*.PA0
 *.stl
 
 # --- Archivos de configuración volátiles de SIMION ---
- *.iob
+*.iob
 *.fly2
 
 # --- Archivos temporales de comunicación (Python-Lua) ---
