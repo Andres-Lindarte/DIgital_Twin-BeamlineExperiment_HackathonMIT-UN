@@ -1,5 +1,0 @@
-; For two coaxial magnetized cylinders example.
-; GEM file creating PA in which to store -div M.
-; This is initially blank but filled in by the .lua program.
-
-pa_define(800,400,1, cylindrical,none,magnetic_,, 0.25,0.25,0.25)  ; mm/gu

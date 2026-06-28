@@ -1,7 +1,0 @@
-; This creates an empty PA on loading the IOB.
-; The PA is actually filled instead by the user program
-; (quad_logarithmic_build.lua).
-
-pa_define(351,151,1, cylindrical,xy,electric_,, 0.1)
-
-e(1) { fill { within { points(0,0) } } } ; avoid "PA Scaling Not Possible" warning

@@ -1,3 +1,0 @@
-; generates empty PA
-
-pa_define(50,50,100, planar,xyz)

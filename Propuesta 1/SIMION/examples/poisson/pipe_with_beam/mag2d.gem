@@ -1,3 +1,0 @@
-; empty magnetic PA to hold magnetic fields.
-pa_define(201,51,1,cylindrical,y,magnetic)
-n(0) { fill { within { points(0,0) } } }

@@ -1,9 +1,0 @@
-; simple ion funnel
-pa_define(139,53,1, cylindrical)
-# for i=1,17 do
-#   local x0 = (i-1)*8
-#   local y1 = 44 - (i-1)*2 - (i >= 17 and 12 or i >= 10 and 4 or i >= 4 and 2 or 0)
-    e($(i)) {
-      fill { within { box($(x0),52, $(x0+4),$(y1)) } }
-    }
-# end

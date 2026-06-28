@@ -1,4 +1,0 @@
-; Creates the "fine" PA to more accurately model the FE cathode tip region.
-; This PA is initialy unused, so it it left empty and moved out of the way.
-
-pa_define(11,11,1, cylindrical,,electric,, 0.0001) ; mm/gu

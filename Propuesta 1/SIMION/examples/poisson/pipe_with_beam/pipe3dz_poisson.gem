@@ -1,8 +1,0 @@
-pa_define(201,101,51,planar,z,,,1,1,1)
-electrode(0) {
-  locate(0,50,0, 1, 90) {
-    edge_fill {
-      within { circle(0,0, 50) }
-	}
-  }
-}

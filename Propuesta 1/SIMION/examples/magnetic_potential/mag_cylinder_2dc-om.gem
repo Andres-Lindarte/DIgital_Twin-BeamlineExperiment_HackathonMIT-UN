@@ -1,4 +1,0 @@
-; GEM file creating empty PA in which we optionally can
-; calculate Omega_M such that -grad Omega_M = M.
-
-pa_define(401,201,1, cylindrical, none,magnetic_,, 0.25,0.25,0.25)  ; mm/gu

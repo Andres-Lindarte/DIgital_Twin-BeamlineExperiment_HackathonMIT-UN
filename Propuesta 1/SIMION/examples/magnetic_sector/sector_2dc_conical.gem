@@ -1,5 +1,0 @@
-; magnetic sector, conical, n = 1/2, 2D cylindrical
-pa_define(101,51,1, cylindrical,none,magnetic,20, 1)
-
-e(0)    { fill { within { polyline(0,0, 45,0, 0,225) } } }
-e(1000) { fill { within { polyline(55,0, 100,0, 100,225) } } }

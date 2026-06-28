@@ -1,4 +1,0 @@
-pa_define(201,51,1,cylindrical,y,,,1,1,1)
-electrode(0) {
-  fill { within { box2d(0,50, 200,50) } }
-}

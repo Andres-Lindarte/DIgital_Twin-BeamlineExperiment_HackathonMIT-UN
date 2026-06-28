@@ -24,3 +24,6 @@ results.txt
 *.synctex.gz
 *.fls
 *.fdb_latexmk
+
+# --- VScode ---
+.vscode/

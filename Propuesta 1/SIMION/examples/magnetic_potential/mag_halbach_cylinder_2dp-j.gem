@@ -1,5 +1,0 @@
-; Defines PA for storing (div M).
-; initially this is blank but later filled in by the .lua program
-; using the M field.
-
-pa_define(100, 100, 1, planar, xy, magnetic_)

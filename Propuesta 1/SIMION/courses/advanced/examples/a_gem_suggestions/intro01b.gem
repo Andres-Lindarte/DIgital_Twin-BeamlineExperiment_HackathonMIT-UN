@@ -1,4 +1,0 @@
-; pa_define(100,100,1,c,xy) 	  ; 2D Array
- pa_define(100,100,100,p,xyz)	  ; 3D Array
-
-e(0){fill{within{sphere(0,0,0,50)}}}

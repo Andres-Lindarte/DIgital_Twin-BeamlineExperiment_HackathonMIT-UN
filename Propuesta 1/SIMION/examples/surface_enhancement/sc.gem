@@ -1,9 +1,0 @@
-; sc.gem
-; 2D cylindrical symmetry spherical capacitor,
-; WITH surface enhancements.
-
-pa_define(130,130,1,cylindrical,xy, surface=fractional)
-; outer electrode, R2
-e(-333.3333) { fill { notin  { circle(0,0,120) } } }
-; inner electrode, R1
-e( 500.0000) { fill { within { circle(0,0,80) } } }

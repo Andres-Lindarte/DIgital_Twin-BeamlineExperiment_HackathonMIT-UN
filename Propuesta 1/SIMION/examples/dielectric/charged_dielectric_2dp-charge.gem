@@ -1,4 +1,0 @@
-; GEM file for charge density PA.
-; This is initially blank because the user program will fill it in.
-
-pa_define(100,50,1, planar,none,electric_,, 0.1,0.2,0.1)  ; 1 mm/gu

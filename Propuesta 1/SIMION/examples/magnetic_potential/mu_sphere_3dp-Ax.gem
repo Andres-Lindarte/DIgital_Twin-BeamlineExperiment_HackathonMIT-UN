@@ -1,6 +1,0 @@
-; THIS FILE IS CURRENTLY UNUSED.
-
-; GEM file for electric field PA.
-; Defines bottom and top electrode plates.
-
-pa_define(101,101,101, planar,xyz,magnetic_,, 1,1,1)  ; mm/gu

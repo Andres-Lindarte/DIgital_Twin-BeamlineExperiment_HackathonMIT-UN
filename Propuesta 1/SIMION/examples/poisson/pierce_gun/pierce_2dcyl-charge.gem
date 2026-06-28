@@ -1,4 +1,0 @@
-pa_define(220, 120, 1, cylindrical, y,,, 0.05)
-
-; This does nothing except avoids the "no fill definitions" warning
-n(0) { fill { within {box2d(0,0,0,0)} } }

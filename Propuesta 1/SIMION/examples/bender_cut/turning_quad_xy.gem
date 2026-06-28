@@ -1,3 +1,0 @@
-pa_define(251,251,41,planar,z,electric)
-
-include(turning_quad_include.gem)
