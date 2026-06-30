@@ -87,14 +87,13 @@ OBJECTIVE = "hits"
 # The electrodes we are allowed to tune, and their (physical!) voltage ranges.
 #   electrode_number: (lowest_volts, highest_volts)
 OPTIMIZE = {
-    3:  (-1000.0, 1000.0),   # Einzel lens 1 (center)
-    6:  (-1000.0, 1000.0),   # Einzel lens 2 (center)
-    9:  (-1000.0, 1000.0),   # Quadrupole bender
-    10: (-1000.0, 1000.0),   # Quadrupole bender
-    11: (-1000.0, 1000.0),   # Quadrupole bender
-    12: (-1000.0, 1000.0),   # Quadrupole bender
-    15: (-1000.0, 1000.0),   # Voltage / deflection plate 1
-    18: (-1000.0, 1000.0),   # Voltage / deflection plate 2
+    6:  (-1000.0, 300.0),   # Einzel lens 2 (center)
+    9:  (600.0, 900.0),   # Quadrupole bender
+    10: (-200.0, 50.0),   # Quadrupole bender
+    11: (0.0, 300.0),   # Quadrupole bender
+    12: (-1000.0, -800.0),   # Quadrupole bender
+    15: (-250.0, 50.0),   # Voltage / deflection plate 1
+    18: (-1000.0, -800.0),   # Voltage / deflection plate 2
 }
 
 # The electrodes held at a fixed voltage (set on every run).
@@ -104,13 +103,22 @@ FIXED = {
     2:  0.0,       # pipe
     4:  0.0, 5: 0.0, 7: 0.0, 8: 0.0,    # Einzel outer rings (grounded)
     13: 0.0, 14: 0.0, 16: 0.0, 17: 0.0, # ground plates
+    3: 286.69 # Einzel lens 1 (center)
 }
 
 # Count an ion as a hit only if it lands inside this box (the Detector), in mm.
 DETECTOR_REGION = {"x": (70, 82), "y": (70, 83), "z": (403, 407)}
 
 # A known-good starting set of voltages, or None. Keys are "V<electrode>".
-STARTING_POINT = None
+STARTING_POINT = {
+            "V6": -203.95001444226114,
+            "V9": 745.0330213477341,
+            "V10": -100.91746815085449,
+            "V11": 147.3144999162171,
+            "V12": -960.2082755617133,
+            "V15": -124.21837199131207,
+            "V18": -900.0627979463936,
+}
 
 # When a trial is invalid we return a deliberately terrible score.
 BAD_SCORE = -1.0 if OBJECTIVE == "hits" else 1e9
@@ -155,9 +163,6 @@ DIRECTION = "maximize" if OBJECTIVE == "hits" else "minimize"
 # wrapped in double quotes, because this folder's path contains a space:
 #       f'... "{IOB_FILE}"'
 
-OUT_FILE = SIM_FOLDER / "out.txt"
-
-z_out = f"Z:{OUT_FILE}"
 z_iob = f"Z:{IOB_FILE}"
 
 #FLY_COMMAND = f'wine simion.exe --nogui fly --recording-output="{z_out}" --retain-trajectories=0 --restore-potential=0 "{z_iob}"'
@@ -296,7 +301,10 @@ def objective(trial: Trial) -> float:
     if positions.shape[0] == 0:
         return BAD_SCORE
 
-    return count_hits(positions) if OBJECTIVE == "hits" else beam_spread(positions)
+    W_HITS = 1
+    W_ADVANCE = 0.0 # Positive because we want to maximize the mean z position (advance toward +z)
+    
+    return W_HITS * count_hits(positions) + W_ADVANCE * np.mean(positions[:, 2])
 
     
     # raise NotImplementedError("Task 2a: implement the objective function")
@@ -329,6 +337,10 @@ def main() -> None:
         storage=f"sqlite:///{RESULTS_DB}",
         study_name=STUDY_NAME,
         load_if_exists=True,
+        sampler=optuna.samplers.CmaEsSampler( # Use CMA-ES sampler for continuous optimization
+            seed=42, n_startup_trials=10
+        )  
+
     )
 
     if STARTING_POINT:
@@ -358,3 +370,17 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+"""
+=== Best trial (Results 1) ===
+Trial number: 15
+Score:        30.0
+Voltages:
+   V6: -203.95001444226114
+   V9: 745.0330213477341
+   V10: -100.91746815085449
+   V11: 147.3144999162171
+   V12: -960.2082755617133
+   V15: -124.21837199131207
+   V18: -900.0627979463936
+"""
