@@ -1,0 +1,30 @@
+modelo 1: val=0.046968 {'detector_active_contact_fraction': 0.08008955419063568, 'detector_active_forward_fraction': 0.1763950139284134, 'detector_contact_angle_theta_mean_deg': 1.7247751951217651, 'detector_contact_angle_theta_sigma_deg': 1.042368769645691, 'derived_vz_sigma_residual': 0.267943412065506}
+modelo 2: val=0.034067 {'detector_active_contact_fraction': 0.06345577538013458, 'detector_active_forward_fraction': 0.19601137936115265, 'detector_contact_angle_theta_mean_deg': 1.6956188678741455, 'detector_contact_angle_theta_sigma_deg': 0.9861092567443848, 'derived_vz_sigma_residual': 0.21098577976226807}
+modelo 3: val=0.066676 {'detector_active_contact_fraction': 0.074494369328022, 'detector_active_forward_fraction': 0.177977055311203, 'detector_contact_angle_theta_mean_deg': 2.284231185913086, 'detector_contact_angle_theta_sigma_deg': 1.2841250896453857, 'derived_vz_sigma_residual': 0.2611727714538574}
+[
+  {
+    "bin": "0.00-0.01",
+    "count": 142
+  },
+  {
+    "bin": "0.01-0.10",
+    "count": 26
+  },
+  {
+    "bin": "0.10-0.40",
+    "count": 39
+  },
+  {
+    "bin": "0.40-0.80",
+    "count": 120
+  },
+  {
+    "bin": "0.80-0.98",
+    "count": 47
+  },
+  {
+    "bin": "0.98-1.00",
+    "count": 76
+  }
+]
+Resumen: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\inverse_active\budget_700_inverse_focused_v2\models\model_cycle_004\training_summary.json

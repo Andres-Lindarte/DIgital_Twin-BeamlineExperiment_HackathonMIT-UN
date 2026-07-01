@@ -1,0 +1,1282 @@
+
+================================================================================
+2026-06-28T15:04:40
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\train_dt.py --ensemble-size 5 --epochs 800
+modelo 1: val=0.036461 {'detector_contact_fraction': 0.04095664247870445, 'terminal_angle_theta_mean_deg': 7.086389064788818, 'terminal_angle_theta_p95_deg': 14.106232643127441, 'terminal_angle_theta_p99_deg': 17.38054656982422}
+modelo 2: val=0.036272 {'detector_contact_fraction': 0.0413987822830677, 'terminal_angle_theta_mean_deg': 8.600961685180664, 'terminal_angle_theta_p95_deg': 15.902257919311523, 'terminal_angle_theta_p99_deg': 19.761396408081055}
+modelo 3: val=0.035282 {'detector_contact_fraction': 0.03599884361028671, 'terminal_angle_theta_mean_deg': 6.90938138961792, 'terminal_angle_theta_p95_deg': 14.363232612609863, 'terminal_angle_theta_p99_deg': 17.054969787597656}
+modelo 4: val=0.035956 {'detector_contact_fraction': 0.032469067722558975, 'terminal_angle_theta_mean_deg': 7.225062370300293, 'terminal_angle_theta_p95_deg': 14.12625789642334, 'terminal_angle_theta_p99_deg': 17.370145797729492}
+modelo 5: val=0.035658 {'detector_contact_fraction': 0.0346616767346859, 'terminal_angle_theta_mean_deg': 8.164362907409668, 'terminal_angle_theta_p95_deg': 14.430181503295898, 'terminal_angle_theta_p99_deg': 17.834693908691406}
+[
+  {
+    "bin": "0.00-0.01",
+    "count": 859
+  },
+  {
+    "bin": "0.01-0.10",
+    "count": 158
+  },
+  {
+    "bin": "0.10-0.40",
+    "count": 344
+  },
+  {
+    "bin": "0.40-0.80",
+    "count": 725
+  },
+  {
+    "bin": "0.80-0.98",
+    "count": 254
+  },
+  {
+    "bin": "0.98-1.00",
+    "count": 1180
+  }
+]
+Resumen: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\models\baseline_mlp\training_summary.json
+
+================================================================================
+2026-06-28T15:14:27
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\active_select.py --pool 6000 --select 50 --out C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\active_candidates_cycle_01.csv --run-simion
+Seleccionados 50 de 6000 candidatos -> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\active_candidates_cycle_01.csv
+score=1.6556 contact=58.6% unc=0.123 th95=30.19 V3=-1000 V6=-983.343 V9=3.80181 V10=-123.511 V11=27.8514 V12=-1000 V15=-715.102 V18=384.684
+score=1.6166 contact=49.4% unc=0.110 th95=138.72 V3=357.668 V6=-1000 V9=746.479 V10=-17.5598 V11=114.739 V12=-785.024 V15=-196.78 V18=-986.321
+score=1.5509 contact=47.9% unc=0.085 th95=35.28 V3=-906.815 V6=-992.376 V9=281.26 V10=234.181 V11=96.1492 V12=-493.978 V15=418.894 V18=-363.16
+score=1.5336 contact=58.6% unc=0.055 th95=27.16 V3=-976.012 V6=-1000 V9=989.541 V10=113.001 V11=4.31023 V12=-692.992 V15=161.739 V18=-370.631
+score=1.5310 contact=52.4% unc=0.049 th95=31.01 V3=295.039 V6=-1000 V9=733.169 V10=-47.8212 V11=69.5373 V12=-1000 V15=22.2334 V18=-1000
+score=1.5245 contact=49.6% unc=0.057 th95=32.46 V3=-925.231 V6=-621.658 V9=488.34 V10=121.123 V11=8.1269 V12=-714.609 V15=-16.6291 V18=-199.452
+score=1.5179 contact=56.0% unc=0.039 th95=27.15 V3=-758.753 V6=-1000 V9=755.865 V10=146.25 V11=56.1582 V12=-618.931 V15=-377.137 V18=-85.1328
+score=1.5174 contact=47.0% unc=0.074 th95=23.56 V3=-1000 V6=-1000 V9=621.207 V10=109.205 V11=-67.1146 V12=-654.8 V15=371.471 V18=-848.508
+score=1.5170 contact=54.9% unc=0.038 th95=28.36 V3=-882.74 V6=-885.256 V9=604.152 V10=166.087 V11=48.6898 V12=-612.956 V15=-279.404 V18=-267
+score=1.5122 contact=44.9% unc=0.094 th95=157.26 V3=340.452 V6=-960.568 V9=672.138 V10=-107.317 V11=106.161 V12=-970.376 V15=-228.862 V18=-899.419
+0001/50 active contact=50.00% th95=12.443
+0002/50 active contact=30.60% th95=180.000
+0003/50 active contact=60.20% th95=40.713
+0004/50 active contact=57.00% th95=29.955
+0005/50 active contact=55.60% th95=31.265
+0006/50 active contact=50.20% th95=31.049
+0007/50 active contact=61.00% th95=29.363
+0008/50 active contact=53.20% th95=21.999
+0009/50 active contact=68.40% th95=32.386
+0010/50 active contact=48.00% th95=180.000
+0011/50 active contact=79.40% th95=28.634
+0012/50 active contact=58.20% th95=63.911
+0013/50 active contact=62.00% th95=29.099
+0014/50 active contact=60.20% th95=31.594
+0015/50 active contact=82.00% th95=27.734
+0016/50 active contact=67.60% th95=25.055
+0017/50 active contact=57.20% th95=72.357
+0018/50 active contact=76.40% th95=25.647
+0019/50 active contact=62.20% th95=31.017
+0020/50 active contact=60.80% th95=31.393
+0021/50 active contact=67.00% th95=69.903
+0022/50 active contact=54.40% th95=29.440
+0023/50 active contact=50.40% th95=64.752
+0024/50 active contact=65.00% th95=28.138
+0025/50 active contact=56.40% th95=25.161
+0026/50 active contact=55.20% th95=41.356
+0027/50 active contact=52.20% th95=65.005
+0028/50 active contact=67.60% th95=27.811
+0029/50 active contact=54.80% th95=28.826
+0030/50 active contact=51.00% th95=30.993
+0031/50 active contact=54.40% th95=33.589
+0032/50 active contact=52.40% th95=33.658
+0033/50 active contact=62.00% th95=180.000
+0034/50 active contact=50.00% th95=19.544
+0035/50 active contact=61.40% th95=24.718
+0036/50 active contact=55.20% th95=180.000
+0037/50 active contact=65.80% th95=28.979
+0038/50 active contact=49.60% th95=20.415
+0039/50 active contact=48.00% th95=75.532
+0040/50 active contact=71.40% th95=25.934
+0041/50 active contact=56.20% th95=73.565
+0042/50 active contact=48.00% th95=180.000
+0043/50 active contact=48.40% th95=29.494
+0044/50 active contact=56.00% th95=31.894
+0045/50 active contact=45.40% th95=30.936
+0046/50 active contact=78.80% th95=23.397
+0047/50 active contact=56.40% th95=35.284
+0048/50 active contact=74.00% th95=27.443
+0049/50 active contact=64.00% th95=12.282
+0050/50 active contact=66.60% th95=70.477
+
+================================================================================
+2026-06-28T15:21:56
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\train_dt.py --ensemble-size 5 --epochs 800
+modelo 1: val=0.038794 {'detector_contact_fraction': 0.036713000386953354, 'terminal_angle_theta_mean_deg': 7.629878520965576, 'terminal_angle_theta_p95_deg': 15.579854011535645, 'terminal_angle_theta_p99_deg': 19.448646545410156}
+modelo 2: val=0.041628 {'detector_contact_fraction': 0.03734838590025902, 'terminal_angle_theta_mean_deg': 9.473773956298828, 'terminal_angle_theta_p95_deg': 18.08669662475586, 'terminal_angle_theta_p99_deg': 21.505813598632812}
+modelo 3: val=0.035519 {'detector_contact_fraction': 0.03395528346300125, 'terminal_angle_theta_mean_deg': 7.6339240074157715, 'terminal_angle_theta_p95_deg': 13.778465270996094, 'terminal_angle_theta_p99_deg': 16.018234252929688}
+modelo 4: val=0.038178 {'detector_contact_fraction': 0.03734298422932625, 'terminal_angle_theta_mean_deg': 8.353582382202148, 'terminal_angle_theta_p95_deg': 15.685934066772461, 'terminal_angle_theta_p99_deg': 19.52813148498535}
+modelo 5: val=0.039252 {'detector_contact_fraction': 0.04068932309746742, 'terminal_angle_theta_mean_deg': 7.433872222900391, 'terminal_angle_theta_p95_deg': 13.870620727539062, 'terminal_angle_theta_p99_deg': 16.955211639404297}
+[
+  {
+    "bin": "0.00-0.01",
+    "count": 859
+  },
+  {
+    "bin": "0.01-0.10",
+    "count": 158
+  },
+  {
+    "bin": "0.10-0.40",
+    "count": 345
+  },
+  {
+    "bin": "0.40-0.80",
+    "count": 773
+  },
+  {
+    "bin": "0.80-0.98",
+    "count": 255
+  },
+  {
+    "bin": "0.98-1.00",
+    "count": 1180
+  }
+]
+Resumen: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\models\baseline_mlp\training_summary.json
+
+================================================================================
+2026-06-28T15:29:48
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\active_select.py --pool 6000 --select 50 --out C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\active_candidates_cycle_02.csv --run-simion
+Seleccionados 50 de 6000 candidatos -> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\active_candidates_cycle_02.csv
+score=1.6565 contact=48.7% unc=0.138 th95=27.49 V3=-1000 V6=-642.326 V9=1000 V10=-201.378 V11=-42.3974 V12=-934.398 V15=-111.393 V18=553.003
+score=1.5872 contact=41.8% unc=0.179 th95=18.90 V3=-1000 V6=-522.69 V9=1000 V10=84.2479 V11=-17.0145 V12=-485.444 V15=-653.617 V18=-89.8339
+score=1.4835 contact=53.4% unc=0.020 th95=59.91 V3=265.814 V6=-1000 V9=745.765 V10=-97.1876 V11=146.622 V12=-939.791 V15=-91.9983 V18=-994.604
+score=1.4614 contact=44.2% unc=0.075 th95=26.85 V3=-1000 V6=-931.783 V9=646.963 V10=-34.0339 V11=196.802 V12=-642.381 V15=204.365 V18=-373.142
+score=1.4437 contact=48.7% unc=0.019 th95=61.41 V3=266.032 V6=-1000 V9=747.409 V10=-88.778 V11=153.678 V12=-953.189 V15=-95.1549 V18=-1000
+score=1.4385 contact=47.8% unc=0.023 th95=64.29 V3=259.691 V6=-974.205 V9=761.753 V10=-94.8752 V11=149.352 V12=-956.678 V15=-78.5493 V18=-1000
+score=1.4328 contact=48.6% unc=0.017 th95=57.86 V3=267.357 V6=-1000 V9=750.27 V10=-83.7231 V11=157.842 V12=-952.906 V15=-105.798 V18=-1000
+score=1.4293 contact=45.6% unc=0.040 th95=55.65 V3=-599.219 V6=-862.175 V9=540.536 V10=141.631 V11=50.6362 V12=-689.366 V15=-290.414 V18=-403.232
+score=1.4280 contact=49.3% unc=0.016 th95=57.26 V3=268.726 V6=-1000 V9=761.535 V10=-91.2827 V11=155.539 V12=-955.014 V15=-78.6088 V18=-1000
+score=1.4260 contact=62.3% unc=0.016 th95=38.87 V3=277.271 V6=-981.319 V9=710.89 V10=-105.881 V11=155.211 V12=-949.92 V15=-107.5 V18=-975.878
+0001/50 active contact=1.00% th95=76.151
+0002/50 active contact=19.00% th95=9.662
+0003/50 active contact=51.40% th95=69.165
+0004/50 active contact=53.20% th95=24.739
+0005/50 active contact=50.80% th95=67.419
+0006/50 active contact=43.60% th95=89.169
+0007/50 active contact=53.40% th95=51.512
+0008/50 active contact=50.60% th95=71.281
+0009/50 active contact=54.20% th95=32.031
+0010/50 active contact=66.60% th95=30.608
+0011/50 active contact=46.20% th95=89.264
+0012/50 active contact=30.00% th95=180.000
+0013/50 active contact=88.80% th95=29.875
+0014/50 active contact=48.40% th95=27.535
+0015/50 active contact=58.80% th95=19.113
+0016/50 active contact=93.60% th95=6.268
+0017/50 active contact=48.00% th95=89.390
+0018/50 active contact=65.60% th95=28.373
+0019/50 active contact=44.80% th95=89.561
+0020/50 active contact=52.60% th95=88.185
+0021/50 active contact=48.60% th95=63.947
+0022/50 active contact=67.00% th95=28.419
+0023/50 active contact=46.80% th95=88.864
+0024/50 active contact=70.80% th95=19.498
+0025/50 active contact=47.60% th95=76.628
+0026/50 active contact=49.40% th95=73.286
+0027/50 active contact=43.40% th95=88.234
+0028/50 active contact=73.00% th95=24.864
+0029/50 active contact=44.80% th95=89.582
+0030/50 active contact=57.80% th95=26.391
+0031/50 active contact=53.60% th95=24.996
+0032/50 active contact=43.80% th95=89.785
+0033/50 active contact=52.40% th95=59.493
+0034/50 active contact=75.40% th95=65.833
+0035/50 active contact=45.40% th95=180.000
+Traceback (most recent call last):
+  File "C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\active_select.py", line 175, in <module>
+    main()
+  File "C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\active_select.py", line 159, in main
+    metrics, metadata = run_hackathon_fastadj(simion_cfg, full_voltage_vector(dt_cfg, free))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\optimize.py", line 741, in run_hackathon_fastadj
+    fastadj = subprocess.run(
+              ^^^^^^^^^^^^^^^
+  File "C:\Users\usuario\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\usuario\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 1228, in communicate
+    sts = self.wait(timeout=self._remaining_time(endtime))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\usuario\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 1264, in wait
+    return self._wait(timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\usuario\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 1593, in _wait
+    raise TimeoutExpired(self.args, timeout)
+subprocess.TimeoutExpired: Command '['C:\\Users\\usuario\\Documents\\workshop\\simplificado (modulo 3)\\SIMION\\simion.exe', '--nogui', 'fastadj', 'C:\\Users\\usuario\\Documents\\workshop\\simplificado (modulo 3)\\Hackathon_student\\Hackathon_student\\electrode_.PA0', '1=500,2=0,3=-490.59453777034935,4=0,5=0,6=-923.67648492329317,7=0,8=0,9=1000,10=-154.9031827286228,11=-181.83245325754703,12=-913.70958842936966,13=0,14=0,15=171.11289245695744,16=0,17=0,18=-163.53302419058662,19=-2000']' timed out after -467.25 seconds
+
+================================================================================
+2026-06-28T15:55:16
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\train_dt.py --ensemble-size 5 --epochs 800
+modelo 1: val=0.042648 {'detector_contact_fraction': 0.04400414228439331, 'terminal_angle_theta_mean_deg': 7.741863250732422, 'terminal_angle_theta_p95_deg': 15.340121269226074, 'terminal_angle_theta_p99_deg': 18.532922744750977}
+modelo 2: val=0.034565 {'detector_contact_fraction': 0.033471740782260895, 'terminal_angle_theta_mean_deg': 8.311503410339355, 'terminal_angle_theta_p95_deg': 14.75777816772461, 'terminal_angle_theta_p99_deg': 17.70868682861328}
+modelo 3: val=0.037321 {'detector_contact_fraction': 0.036447327584028244, 'terminal_angle_theta_mean_deg': 7.219056129455566, 'terminal_angle_theta_p95_deg': 14.218393325805664, 'terminal_angle_theta_p99_deg': 16.85560417175293}
+modelo 4: val=0.041623 {'detector_contact_fraction': 0.039082951843738556, 'terminal_angle_theta_mean_deg': 8.011456489562988, 'terminal_angle_theta_p95_deg': 14.67648696899414, 'terminal_angle_theta_p99_deg': 17.07599449157715}
+modelo 5: val=0.036315 {'detector_contact_fraction': 0.035332608968019485, 'terminal_angle_theta_mean_deg': 8.48829174041748, 'terminal_angle_theta_p95_deg': 15.272551536560059, 'terminal_angle_theta_p99_deg': 18.353404998779297}
+[
+  {
+    "bin": "0.00-0.01",
+    "count": 859
+  },
+  {
+    "bin": "0.01-0.10",
+    "count": 159
+  },
+  {
+    "bin": "0.10-0.40",
+    "count": 347
+  },
+  {
+    "bin": "0.40-0.80",
+    "count": 803
+  },
+  {
+    "bin": "0.80-0.98",
+    "count": 257
+  },
+  {
+    "bin": "0.98-1.00",
+    "count": 1180
+  }
+]
+Resumen: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\models\baseline_mlp\training_summary.json
+
+================================================================================
+2026-06-28T16:03:26
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\active_select.py --pool 6000 --select 50 --out C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\active_candidates_cycle_01.csv --max-failures 10 --timeout-seconds 180 --run-simion
+Seleccionados 50 de 6000 candidatos -> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\active_candidates_cycle_01.csv
+score=1.5520 contact=64.3% unc=0.102 th95=76.48 V3=-659.067 V6=-1000 V9=799.044 V10=-113.642 V11=-194.188 V12=-987.786 V15=111.456 V18=-551.195
+score=1.5017 contact=52.3% unc=0.033 th95=36.29 V3=-678.736 V6=-833.88 V9=747.977 V10=26.9681 V11=-128.733 V12=-905.886 V15=-169.877 V18=-179.953
+score=1.4750 contact=45.0% unc=0.072 th95=30.68 V3=-774.26 V6=-897.328 V9=478.217 V10=-55.2795 V11=64.7138 V12=-619.496 V15=-81.7204 V18=-253.947
+score=1.4584 contact=63.2% unc=0.041 th95=29.61 V3=306.722 V6=-984.995 V9=738.114 V10=-61.975 V11=138.667 V12=-947.471 V15=-44.0498 V18=-986.299
+score=1.4419 contact=43.1% unc=0.079 th95=30.59 V3=-727.323 V6=-1000 V9=807.992 V10=-86.164 V11=53.5323 V12=-628.321 V15=-209.69 V18=-341.452
+score=1.4072 contact=71.7% unc=0.090 th95=13.48 V3=-1000 V6=-802.538 V9=437.655 V10=-65.403 V11=93.2262 V12=-1000 V15=-296.038 V18=-414.064
+score=1.3802 contact=44.1% unc=0.031 th95=32.86 V3=-825.084 V6=-719.67 V9=1000 V10=79.0468 V11=-54.316 V12=-798.428 V15=-173.452 V18=-44.3668
+score=1.3769 contact=45.6% unc=0.011 th95=45.40 V3=271.377 V6=-992.84 V9=773.781 V10=-74.3229 V11=143.391 V12=-1000 V15=-93.6737 V18=-1000
+score=1.3722 contact=51.8% unc=0.009 th95=61.27 V3=266.887 V6=-1000 V9=759.37 V10=-113.867 V11=148.345 V12=-947.537 V15=-92.6416 V18=-1000
+score=1.3564 contact=44.6% unc=0.012 th95=45.99 V3=268.702 V6=-1000 V9=780.144 V10=-71.7308 V11=176.03 V12=-957.196 V15=-57.6413 V18=-978.36
+0001/50 active contact=65.80% th95=21.023
+0002/50 active contact=53.40% th95=28.350
+0003/50 active contact=45.80% th95=25.925
+0004/50 active contact=86.60% th95=27.634
+0005/50 active contact=31.80% th95=26.846
+0006/50 active contact=94.20% th95=7.181
+0007/50 active contact=44.00% th95=30.501
+0008/50 active contact=52.00% th95=29.667
+0009/50 active contact=51.40% th95=62.719
+0010/50 active contact=46.40% th95=31.961
+0011/50 active contact=66.60% th95=29.255
+0012/50 active contact=46.20% th95=89.377
+0013/50 active contact=45.20% th95=89.344
+0014/50 active contact=40.00% th95=89.633
+0015/50 active contact=46.20% th95=88.318
+0016/50 active contact=92.00% th95=22.396
+0017/50 active contact=68.00% th95=180.000
+0018/50 active contact=49.60% th95=31.969
+0019/50 active contact=43.40% th95=15.281
+0020/50 active contact=44.80% th95=89.331
+0021/50 active contact=51.60% th95=30.295
+0022/50 active contact=30.00% th95=180.000
+0023/50 active contact=30.80% th95=180.000
+0024/50 active contact=59.80% th95=18.981
+0025/50 active contact=42.80% th95=89.560
+0026/50 active contact=81.00% th95=69.360
+0027/50 active contact=25.80% th95=180.000
+0028/50 active contact=42.80% th95=89.152
+0029/50 active contact=36.40% th95=180.000
+0030/50 active contact=65.40% th95=180.000
+0031/50 active contact=83.20% th95=68.572
+0032/50 active contact=66.80% th95=22.595
+0033/50 active contact=51.80% th95=32.152
+0034/50 active contact=48.00% th95=30.707
+0035/50 active contact=39.80% th95=89.616
+0036/50 active contact=45.00% th95=85.541
+0037/50 active contact=42.80% th95=89.257
+0038/50 active contact=37.40% th95=88.843
+0039/50 active contact=42.80% th95=88.318
+0040/50 active contact=75.60% th95=85.164
+0041/50 active contact=69.00% th95=180.000
+0042/50 active contact=52.20% th95=73.939
+0043/50 active contact=42.20% th95=88.505
+0044/50 active contact=38.00% th95=180.000
+0045/50 active contact=70.80% th95=19.981
+0046/50 active contact=45.60% th95=89.952
+0047/50 active contact=47.20% th95=74.571
+0048/50 active contact=42.00% th95=180.000
+0049/50 active contact=55.40% th95=30.082
+0050/50 active contact=31.20% th95=180.000
+
+================================================================================
+2026-06-28T16:11:01
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\train_dt.py --ensemble-size 5 --epochs 800
+modelo 1: val=0.047434 {'detector_contact_fraction': 0.03909827396273613, 'terminal_angle_theta_mean_deg': 8.567748069763184, 'terminal_angle_theta_p95_deg': 16.76435089111328, 'terminal_angle_theta_p99_deg': 19.695405960083008}
+modelo 2: val=0.040999 {'detector_contact_fraction': 0.04010755568742752, 'terminal_angle_theta_mean_deg': 8.400043487548828, 'terminal_angle_theta_p95_deg': 15.000246047973633, 'terminal_angle_theta_p99_deg': 17.779138565063477}
+modelo 3: val=0.037951 {'detector_contact_fraction': 0.03553292527794838, 'terminal_angle_theta_mean_deg': 8.51081657409668, 'terminal_angle_theta_p95_deg': 15.835451126098633, 'terminal_angle_theta_p99_deg': 19.55111312866211}
+modelo 4: val=0.036423 {'detector_contact_fraction': 0.038387998938560486, 'terminal_angle_theta_mean_deg': 7.051647663116455, 'terminal_angle_theta_p95_deg': 13.506568908691406, 'terminal_angle_theta_p99_deg': 16.68458366394043}
+modelo 5: val=0.042206 {'detector_contact_fraction': 0.03965334594249725, 'terminal_angle_theta_mean_deg': 7.401224136352539, 'terminal_angle_theta_p95_deg': 15.219576835632324, 'terminal_angle_theta_p99_deg': 18.503665924072266}
+[
+  {
+    "bin": "0.00-0.01",
+    "count": 859
+  },
+  {
+    "bin": "0.01-0.10",
+    "count": 159
+  },
+  {
+    "bin": "0.10-0.40",
+    "count": 356
+  },
+  {
+    "bin": "0.40-0.80",
+    "count": 839
+  },
+  {
+    "bin": "0.80-0.98",
+    "count": 262
+  },
+  {
+    "bin": "0.98-1.00",
+    "count": 1180
+  }
+]
+Resumen: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\models\baseline_mlp\training_summary.json
+
+================================================================================
+2026-06-28T16:21:03
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\active_select.py --pool 6000 --select 50 --out C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\active_candidates_cycle_02.csv --max-failures 10 --timeout-seconds 180 --run-simion
+Seleccionados 50 de 6000 candidatos -> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\active_candidates_cycle_02.csv
+score=1.5133 contact=45.5% unc=0.088 th95=34.61 V3=-757.686 V6=-816.891 V9=1000 V10=-143.444 V11=-272.96 V12=-987.688 V15=-250.881 V18=122.292
+score=1.4437 contact=47.2% unc=0.032 th95=52.90 V3=273.287 V6=-980.37 V9=789.35 V10=-112.97 V11=176.168 V12=-936.247 V15=-88.0478 V18=-1000
+score=1.4430 contact=40.9% unc=0.113 th95=37.71 V3=331.373 V6=-1000 V9=743.364 V10=-139.604 V11=67.0152 V12=-848.982 V15=-301.447 V18=-1000
+score=1.4430 contact=42.2% unc=0.093 th95=118.36 V3=-486.06 V6=-924.662 V9=484.405 V10=-112.686 V11=55.6779 V12=-1000 V15=-156.126 V18=-370.279
+score=1.4361 contact=57.9% unc=0.030 th95=38.07 V3=-985.742 V6=-1000 V9=899.907 V10=-21.8975 V11=-112.315 V12=-725.073 V15=-21.328 V18=-235.175
+score=1.4283 contact=63.9% unc=0.030 th95=40.19 V3=275.309 V6=-1000 V9=773.266 V10=-71.7238 V11=142.752 V12=-888.199 V15=-66.6914 V18=-956.708
+score=1.4281 contact=44.4% unc=0.054 th95=19.06 V3=-927.65 V6=-1000 V9=903.708 V10=70.8867 V11=-141.835 V12=-757.757 V15=102.346 V18=-383.644
+score=1.4208 contact=44.2% unc=0.053 th95=44.77 V3=279.71 V6=-1000 V9=718.919 V10=-98.0858 V11=191.6 V12=-985 V15=-118.985 V18=-1000
+score=1.4182 contact=66.8% unc=0.049 th95=27.36 V3=304.519 V6=-1000 V9=763.275 V10=-104.345 V11=138.842 V12=-1000 V15=-74.621 V18=-996.84
+score=1.4169 contact=46.3% unc=0.026 th95=174.22 V3=-450.87 V6=-988.925 V9=870.873 V10=-35.5868 V11=19.4616 V12=-827.531 V15=-160.909 V18=-519.251
+0001/50 active contact=54.60% th95=27.305
+0002/50 active contact=51.20% th95=39.942
+0003/50 active contact=22.80% th95=85.663
+0004/50 active contact=28.00% th95=180.000
+0005/50 active contact=62.20% th95=66.499
+0006/50 active contact=61.60% th95=28.463
+0007/50 active contact=48.60% th95=21.966
+0008/50 active contact=45.20% th95=32.618
+0009/50 active contact=93.80% th95=25.761
+0010/50 active contact=43.60% th95=180.000
+0011/50 active contact=45.80% th95=180.000
+0012/50 active contact=38.00% th95=28.164
+0013/50 active contact=62.80% th95=13.559
+0014/50 active contact=49.40% th95=55.840
+0015/50 active contact=79.80% th95=22.555
+0016/50 active contact=51.60% th95=32.372
+0017/50 active contact=60.20% th95=20.374
+0018/50 active contact=47.00% th95=74.990
+0019/50 active contact=58.80% th95=16.593
+0020/50 active contact=57.60% th95=30.311
+0021/50 active contact=55.60% th95=16.369
+0022/50 active contact=62.60% th95=26.166
+0023/50 active contact=45.00% th95=24.505
+0024/50 active contact=28.40% th95=76.410
+0025/50 active contact=93.20% th95=25.312
+0026/50 active contact=43.40% th95=72.975
+0027/50 active contact=40.60% th95=180.000
+0028/50 active contact=17.00% th95=180.000
+0029/50 active contact=72.40% th95=22.524
+0030/50 active contact=54.80% th95=58.003
+0031/50 active contact=51.00% th95=180.000
+0032/50 active contact=43.60% th95=180.000
+0033/50 active contact=42.60% th95=88.241
+0034/50 active contact=42.80% th95=26.500
+0035/50 active contact=46.40% th95=68.072
+0036/50 active contact=40.60% th95=41.328
+0037/50 active contact=45.20% th95=21.520
+0038/50 active contact=59.80% th95=19.893
+0039/50 active contact=47.00% th95=88.725
+0040/50 active contact=3.40% th95=32.252
+0041/50 active contact=40.40% th95=88.429
+0042/50 active contact=60.20% th95=26.467
+0043/50 active contact=51.20% th95=180.000
+0044/50 active contact=34.00% th95=17.808
+0045/50 active contact=36.40% th95=26.238
+0046/50 active contact=54.40% th95=17.072
+0047/50 active contact=51.60% th95=51.718
+0048/50 active contact=80.20% th95=25.472
+0049/50 active contact=47.00% th95=88.554
+0050/50 active contact=38.60% th95=41.561
+
+================================================================================
+2026-06-28T16:28:39
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\train_dt.py --ensemble-size 5 --epochs 800
+modelo 1: val=0.043784 {'detector_contact_fraction': 0.04414312168955803, 'terminal_angle_theta_mean_deg': 6.881322383880615, 'terminal_angle_theta_p95_deg': 14.291808128356934, 'terminal_angle_theta_p99_deg': 17.826099395751953}
+modelo 2: val=0.037792 {'detector_contact_fraction': 0.03835996985435486, 'terminal_angle_theta_mean_deg': 8.288052558898926, 'terminal_angle_theta_p95_deg': 15.371048927307129, 'terminal_angle_theta_p99_deg': 19.220989227294922}
+modelo 3: val=0.035076 {'detector_contact_fraction': 0.03697703033685684, 'terminal_angle_theta_mean_deg': 7.547630310058594, 'terminal_angle_theta_p95_deg': 14.77580451965332, 'terminal_angle_theta_p99_deg': 17.865692138671875}
+modelo 4: val=0.040313 {'detector_contact_fraction': 0.03832881525158882, 'terminal_angle_theta_mean_deg': 7.221167087554932, 'terminal_angle_theta_p95_deg': 13.374134063720703, 'terminal_angle_theta_p99_deg': 17.79366111755371}
+modelo 5: val=0.037875 {'detector_contact_fraction': 0.038158878684043884, 'terminal_angle_theta_mean_deg': 6.837449073791504, 'terminal_angle_theta_p95_deg': 14.4116849899292, 'terminal_angle_theta_p99_deg': 17.692821502685547}
+[
+  {
+    "bin": "0.00-0.01",
+    "count": 859
+  },
+  {
+    "bin": "0.01-0.10",
+    "count": 160
+  },
+  {
+    "bin": "0.10-0.40",
+    "count": 364
+  },
+  {
+    "bin": "0.40-0.80",
+    "count": 877
+  },
+  {
+    "bin": "0.80-0.98",
+    "count": 265
+  },
+  {
+    "bin": "0.98-1.00",
+    "count": 1180
+  }
+]
+Resumen: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\models\baseline_mlp\training_summary.json
+
+================================================================================
+2026-06-28T20:36:39
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\train_dt.py --ensemble-size 5 --epochs 800
+modelo 1: val=0.020079 {'detector_active_contact_fraction': 0.04985411465167999, 'detector_active_forward_fraction': 0.10432389378547668, 'detector_contact_angle_theta_mean_deg': 1.3190308809280396, 'detector_contact_angle_theta_sigma_deg': 0.7786880135536194}
+modelo 2: val=0.014416 {'detector_active_contact_fraction': 0.04587201401591301, 'detector_active_forward_fraction': 0.08322781324386597, 'detector_contact_angle_theta_mean_deg': 1.0619434118270874, 'detector_contact_angle_theta_sigma_deg': 0.6816479563713074}
+modelo 3: val=0.018935 {'detector_active_contact_fraction': 0.05271046608686447, 'detector_active_forward_fraction': 0.0678856298327446, 'detector_contact_angle_theta_mean_deg': 0.9994721412658691, 'detector_contact_angle_theta_sigma_deg': 0.6549368500709534}
+modelo 4: val=0.017066 {'detector_active_contact_fraction': 0.06038900092244148, 'detector_active_forward_fraction': 0.10298808664083481, 'detector_contact_angle_theta_mean_deg': 1.2498817443847656, 'detector_contact_angle_theta_sigma_deg': 0.719452977180481}
+modelo 5: val=0.012821 {'detector_active_contact_fraction': 0.044291555881500244, 'detector_active_forward_fraction': 0.09503446519374847, 'detector_contact_angle_theta_mean_deg': 1.05055832862854, 'detector_contact_angle_theta_sigma_deg': 0.5972211956977844}
+[
+  {
+    "bin": "0.00-0.01",
+    "count": 235
+  },
+  {
+    "bin": "0.01-0.10",
+    "count": 43
+  },
+  {
+    "bin": "0.10-0.40",
+    "count": 91
+  },
+  {
+    "bin": "0.40-0.80",
+    "count": 99
+  },
+  {
+    "bin": "0.80-0.98",
+    "count": 59
+  },
+  {
+    "bin": "0.98-1.00",
+    "count": 346
+  }
+]
+Resumen: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\models\baseline_mlp\training_summary.json
+
+================================================================================
+2026-06-28T20:39:07
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\active_select.py --pool 6000 --select 50 --out C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\active_candidates_cycle_01.csv --max-failures 10 --timeout-seconds 180 --run-simion
+Seleccionados 50 de 6000 candidatos -> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\active_candidates_cycle_01.csv
+score=1.3762 contact=50.1% unc=0.255 angle=1.66 V3=-1000 V6=-976.308 V9=387.842 V10=25.7609 V11=-64.3569 V12=-565.526 V15=175.725 V18=205.685
+score=1.3372 contact=44.2% unc=0.255 angle=4.54 V3=232.616 V6=-1000 V9=816.312 V10=61.1376 V11=-39.1113 V12=-576.052 V15=82.4515 V18=-1000
+score=1.3342 contact=55.9% unc=0.250 angle=4.25 V3=354.361 V6=-966.307 V9=765.058 V10=-17.6 V11=44.1877 V12=-701.471 V15=36.2832 V18=-1000
+score=1.3009 contact=54.9% unc=0.228 angle=4.18 V3=324.377 V6=-1000 V9=904.889 V10=-45.9816 V11=67.9645 V12=-642.604 V15=-46.2749 V18=-1000
+score=1.2846 contact=48.4% unc=0.203 angle=4.78 V3=243.19 V6=-1000 V9=681.946 V10=34.5438 V11=14.8377 V12=-692.566 V15=73.543 V18=-1000
+score=1.2106 contact=49.7% unc=0.156 angle=3.99 V3=390.483 V6=-1000 V9=688.497 V10=-79.4069 V11=40.5858 V12=-817.961 V15=-121.714 V18=-1000
+score=1.1906 contact=44.8% unc=0.174 angle=2.92 V3=-811.205 V6=-1000 V9=861.823 V10=-4.45285 V11=228.992 V12=-713.357 V15=-292.356 V18=485.478
+score=1.1904 contact=47.4% unc=0.154 angle=4.21 V3=-1000 V6=-1000 V9=197.809 V10=-169.049 V11=-117.334 V12=-1000 V15=-567.375 V18=-781.775
+score=1.1703 contact=56.5% unc=0.161 angle=3.76 V3=368.877 V6=-995.547 V9=756.045 V10=4.1599 V11=103.493 V12=-844.23 V15=-135.43 V18=-1000
+score=1.1554 contact=41.2% unc=0.176 angle=2.32 V3=-1000 V6=-1000 V9=505.517 V10=-118.632 V11=171.259 V12=-1000 V15=550.672 V18=38.4441
+0001/50 active contact=0.00% th95=24.058
+0002/50 active contact=35.00% th95=180.000
+0003/50 active contact=34.80% th95=180.000
+0004/50 active contact=56.20% th95=83.892
+0005/50 active contact=61.40% th95=180.000
+0006/50 active contact=10.00% th95=180.000
+0007/50 active contact=0.00% th95=180.000
+0008/50 active contact=58.00% th95=29.912
+0009/50 active contact=13.20% th95=180.000
+0010/50 active contact=29.80% th95=20.088
+0011/50 active contact=59.80% th95=27.051
+0012/50 active contact=35.20% th95=180.000
+0013/50 active contact=7.20% th95=41.871
+0014/50 active contact=38.20% th95=76.213
+0015/50 active contact=57.40% th95=40.925
+0016/50 active contact=38.40% th95=180.000
+0017/50 active contact=100.00% th95=7.175
+0018/50 active contact=0.80% th95=41.562
+0019/50 active contact=8.20% th95=15.703
+0020/50 active contact=49.60% th95=17.150
+0021/50 active contact=60.20% th95=28.186
+0022/50 active contact=57.80% th95=73.082
+0023/50 active contact=41.80% th95=22.060
+0024/50 active contact=80.80% th95=28.204
+0025/50 active contact=0.40% th95=45.057
+0026/50 active contact=28.40% th95=180.000
+0027/50 active contact=57.20% th95=18.627
+0028/50 active contact=47.20% th95=180.000
+0029/50 active contact=36.20% th95=180.000
+0030/50 active contact=54.00% th95=32.705
+0031/50 active contact=58.80% th95=21.600
+0032/50 active contact=49.80% th95=63.901
+0033/50 active contact=16.00% th95=180.000
+0034/50 active contact=75.20% th95=25.072
+0035/50 active contact=64.20% th95=72.189
+0036/50 active contact=64.40% th95=19.995
+0037/50 active contact=58.60% th95=32.077
+0038/50 active contact=3.20% th95=180.000
+0039/50 active contact=46.20% th95=15.143
+0040/50 active contact=37.60% th95=88.708
+0041/50 active contact=29.80% th95=180.000
+0042/50 active contact=26.20% th95=180.000
+0043/50 active contact=17.00% th95=41.431
+0044/50 active contact=60.20% th95=25.956
+0045/50 active contact=50.40% th95=19.727
+0046/50 active contact=59.80% th95=36.297
+0047/50 active contact=55.40% th95=29.139
+0048/50 active contact=55.20% th95=30.654
+0049/50 active contact=43.40% th95=18.443
+0050/50 active contact=4.00% th95=17.028
+
+================================================================================
+2026-06-28T20:46:01
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\train_dt.py --ensemble-size 5 --epochs 800
+modelo 1: val=0.021571 {'detector_active_contact_fraction': 0.06938209384679794, 'detector_active_forward_fraction': 0.11273419857025146, 'detector_contact_angle_theta_mean_deg': 1.3579638004302979, 'detector_contact_angle_theta_sigma_deg': 0.8911343812942505}
+modelo 2: val=0.021172 {'detector_active_contact_fraction': 0.05565342307090759, 'detector_active_forward_fraction': 0.10037644952535629, 'detector_contact_angle_theta_mean_deg': 1.348002552986145, 'detector_contact_angle_theta_sigma_deg': 0.7888201475143433}
+modelo 3: val=0.017760 {'detector_active_contact_fraction': 0.0541892908513546, 'detector_active_forward_fraction': 0.08818304538726807, 'detector_contact_angle_theta_mean_deg': 1.073118805885315, 'detector_contact_angle_theta_sigma_deg': 0.6468081474304199}
+modelo 4: val=0.020048 {'detector_active_contact_fraction': 0.05602722242474556, 'detector_active_forward_fraction': 0.0763528123497963, 'detector_contact_angle_theta_mean_deg': 1.2674199342727661, 'detector_contact_angle_theta_sigma_deg': 0.6429962515830994}
+modelo 5: val=0.015676 {'detector_active_contact_fraction': 0.04674062132835388, 'detector_active_forward_fraction': 0.09716079384088516, 'detector_contact_angle_theta_mean_deg': 1.110680103302002, 'detector_contact_angle_theta_sigma_deg': 0.7597092986106873}
+[
+  {
+    "bin": "0.00-0.01",
+    "count": 239
+  },
+  {
+    "bin": "0.01-0.10",
+    "count": 48
+  },
+  {
+    "bin": "0.10-0.40",
+    "count": 105
+  },
+  {
+    "bin": "0.40-0.80",
+    "count": 125
+  },
+  {
+    "bin": "0.80-0.98",
+    "count": 59
+  },
+  {
+    "bin": "0.98-1.00",
+    "count": 347
+  }
+]
+Resumen: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\models\baseline_mlp\training_summary.json
+
+================================================================================
+2026-06-28T20:48:45
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\active_select.py --pool 6000 --select 50 --out C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\active_candidates_cycle_02.csv --max-failures 10 --timeout-seconds 180 --run-simion
+Seleccionados 50 de 6000 candidatos -> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\active_candidates_cycle_02.csv
+score=1.2584 contact=55.2% unc=0.210 angle=3.70 V3=-1000 V6=-1000 V9=457.664 V10=-125.289 V11=152.931 V12=-1000 V15=-473.011 V18=181.671
+score=1.1344 contact=41.7% unc=0.159 angle=5.17 V3=-332.413 V6=-1000 V9=193.099 V10=30.8744 V11=-65.8324 V12=-809.387 V15=-55.7749 V18=-1000
+score=1.1293 contact=55.8% unc=0.122 angle=3.05 V3=-706.656 V6=-1000 V9=720.779 V10=8.65068 V11=-197.372 V12=-940.665 V15=-13.752 V18=-876.007
+score=1.1040 contact=49.6% unc=0.079 angle=6.24 V3=-860.481 V6=-287.036 V9=935.296 V10=-96.892 V11=-146.537 V12=-914.085 V15=-212.817 V18=-67.9668
+score=1.0959 contact=53.0% unc=0.089 angle=2.00 V3=-1000 V6=-1000 V9=621.207 V10=109.205 V11=-67.1146 V12=-654.8 V15=371.471 V18=-848.508
+score=1.0936 contact=55.3% unc=0.110 angle=3.79 V3=-849.215 V6=-712.852 V9=971.383 V10=-203.393 V11=-183.937 V12=-1000 V15=-524.234 V18=-232.115
+score=1.0847 contact=50.1% unc=0.076 angle=7.32 V3=-444.211 V6=-796.987 V9=522.022 V10=-13.0802 V11=-26.2414 V12=-826.232 V15=132.138 V18=-554.714
+score=1.0793 contact=51.7% unc=0.090 angle=6.16 V3=203.136 V6=-971.574 V9=671.117 V10=-68.4347 V11=117.165 V12=-978.674 V15=-11.9929 V18=-909.103
+score=1.0687 contact=48.1% unc=0.085 angle=5.47 V3=224.304 V6=-1000 V9=718.276 V10=-72.3731 V11=143.484 V12=-1000 V15=-165.727 V18=-884.721
+score=1.0674 contact=48.6% unc=0.085 angle=3.12 V3=-839.311 V6=-1000 V9=807.286 V10=28.5218 V11=95.8475 V12=-894.539 V15=-96.034 V18=-127.324
+0001/50 active contact=31.00% th95=22.031
+0002/50 active contact=21.20% th95=180.000
+0003/50 active contact=65.00% th95=28.280
+0004/50 active contact=78.00% th95=76.594
+0005/50 active contact=55.60% th95=14.911
+0006/50 active contact=65.00% th95=15.613
+0007/50 active contact=46.20% th95=180.000
+0008/50 active contact=16.20% th95=180.000
+0009/50 active contact=18.60% th95=180.000
+0010/50 active contact=40.60% th95=28.807
+0011/50 active contact=47.60% th95=29.126
+0012/50 active contact=83.60% th95=41.006
+0013/50 active contact=69.60% th95=27.846
+0014/50 active contact=50.80% th95=14.293
+0015/50 active contact=48.00% th95=75.892
+0016/50 active contact=65.20% th95=28.139
+0017/50 active contact=46.80% th95=88.500
+0018/50 active contact=27.00% th95=180.000
+0019/50 active contact=57.20% th95=10.500
+0020/50 active contact=43.40% th95=88.425
+0021/50 active contact=46.00% th95=180.000
+0022/50 active contact=30.00% th95=180.000
+0023/50 active contact=46.80% th95=29.694
+0024/50 active contact=67.20% th95=89.227
+0025/50 active contact=29.60% th95=180.000
+0026/50 active contact=56.40% th95=15.493
+0027/50 active contact=66.20% th95=27.964
+0028/50 active contact=60.00% th95=180.000
+0029/50 active contact=51.60% th95=77.734
+0030/50 active contact=45.80% th95=28.953
+0031/50 active contact=48.40% th95=17.596
+0032/50 active contact=50.40% th95=73.434
+0033/50 active contact=57.20% th95=28.956
+0034/50 active contact=56.20% th95=58.449
+0035/50 active contact=43.40% th95=13.849
+0036/50 active contact=44.80% th95=16.656
+0037/50 active contact=54.00% th95=65.639
+0038/50 active contact=42.60% th95=19.172
+0039/50 active contact=92.00% th95=23.992
+0040/50 active contact=36.00% th95=34.684
+0041/50 active contact=50.40% th95=180.000
+0042/50 active contact=47.60% th95=89.676
+0043/50 active contact=43.60% th95=15.173
+0044/50 active contact=53.80% th95=12.688
+0045/50 active contact=27.80% th95=35.976
+0046/50 active contact=74.80% th95=16.091
+0047/50 active contact=43.00% th95=14.473
+0048/50 active contact=32.40% th95=180.000
+0049/50 active contact=65.40% th95=28.769
+0050/50 active contact=23.40% th95=180.000
+
+================================================================================
+2026-06-28T20:55:34
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\train_dt.py --ensemble-size 5 --epochs 800
+modelo 1: val=0.020064 {'detector_active_contact_fraction': 0.06083953008055687, 'detector_active_forward_fraction': 0.08599904179573059, 'detector_contact_angle_theta_mean_deg': 1.223389983177185, 'detector_contact_angle_theta_sigma_deg': 0.7369659543037415}
+modelo 2: val=0.014579 {'detector_active_contact_fraction': 0.05046297237277031, 'detector_active_forward_fraction': 0.10224820673465729, 'detector_contact_angle_theta_mean_deg': 1.1085587739944458, 'detector_contact_angle_theta_sigma_deg': 0.6666393280029297}
+modelo 3: val=0.020040 {'detector_active_contact_fraction': 0.06545361131429672, 'detector_active_forward_fraction': 0.06842820346355438, 'detector_contact_angle_theta_mean_deg': 0.9946458339691162, 'detector_contact_angle_theta_sigma_deg': 0.6667229533195496}
+modelo 4: val=0.025087 {'detector_active_contact_fraction': 0.07838756591081619, 'detector_active_forward_fraction': 0.09154569357633591, 'detector_contact_angle_theta_mean_deg': 1.2821714878082275, 'detector_contact_angle_theta_sigma_deg': 0.7766076326370239}
+modelo 5: val=0.018194 {'detector_active_contact_fraction': 0.054596804082393646, 'detector_active_forward_fraction': 0.10493285208940506, 'detector_contact_angle_theta_mean_deg': 1.4151595830917358, 'detector_contact_angle_theta_sigma_deg': 0.7690056562423706}
+[
+  {
+    "bin": "0.00-0.01",
+    "count": 239
+  },
+  {
+    "bin": "0.01-0.10",
+    "count": 48
+  },
+  {
+    "bin": "0.10-0.40",
+    "count": 119
+  },
+  {
+    "bin": "0.40-0.80",
+    "count": 159
+  },
+  {
+    "bin": "0.80-0.98",
+    "count": 61
+  },
+  {
+    "bin": "0.98-1.00",
+    "count": 347
+  }
+]
+Resumen: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\models\baseline_mlp\training_summary.json
+
+================================================================================
+2026-06-29T20:52:56
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\train_dt.py --ensemble-size 5 --epochs 800
+modelo 1: val=0.016161 {'detector_active_contact_fraction': 0.05062410607933998, 'detector_active_forward_fraction': 0.05854370445013046, 'detector_contact_angle_theta_mean_deg': 1.097056269645691, 'detector_contact_angle_theta_sigma_deg': 0.6461657285690308}
+modelo 2: val=0.011772 {'detector_active_contact_fraction': 0.04023803398013115, 'detector_active_forward_fraction': 0.07143393903970718, 'detector_contact_angle_theta_mean_deg': 0.9665680527687073, 'detector_contact_angle_theta_sigma_deg': 0.5503504276275635}
+modelo 3: val=0.018226 {'detector_active_contact_fraction': 0.04629075527191162, 'detector_active_forward_fraction': 0.06571481376886368, 'detector_contact_angle_theta_mean_deg': 1.0630567073822021, 'detector_contact_angle_theta_sigma_deg': 0.6185945868492126}
+modelo 4: val=0.012668 {'detector_active_contact_fraction': 0.04462714493274689, 'detector_active_forward_fraction': 0.07487033307552338, 'detector_contact_angle_theta_mean_deg': 1.0749292373657227, 'detector_contact_angle_theta_sigma_deg': 0.5773555040359497}
+modelo 5: val=0.012514 {'detector_active_contact_fraction': 0.04417705163359642, 'detector_active_forward_fraction': 0.08765219897031784, 'detector_contact_angle_theta_mean_deg': 1.282099962234497, 'detector_contact_angle_theta_sigma_deg': 0.6584586501121521}
+[
+  {
+    "bin": "0.00-0.01",
+    "count": 243
+  },
+  {
+    "bin": "0.01-0.10",
+    "count": 50
+  },
+  {
+    "bin": "0.10-0.40",
+    "count": 145
+  },
+  {
+    "bin": "0.40-0.80",
+    "count": 426
+  },
+  {
+    "bin": "0.80-0.98",
+    "count": 107
+  },
+  {
+    "bin": "0.98-1.00",
+    "count": 524
+  }
+]
+Resumen: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\models\baseline_mlp\training_summary.json
+
+================================================================================
+2026-06-29T20:59:44
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\train_viability.py --threshold 0.05 --ensemble-size 5 --epochs 500
+clasificador 1: val=0.024674 acc=0.967 fp=1 fn=9
+clasificador 2: val=0.063758 acc=0.936 fp=5 fn=14
+clasificador 3: val=0.063854 acc=0.953 fp=6 fn=8
+clasificador 4: val=0.017804 acc=0.977 fp=0 fn=7
+clasificador 5: val=0.012730 acc=0.987 fp=0 fn=4
+Resumen: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\models\viability_mlp\viability_summary.json
+
+================================================================================
+2026-06-29T21:01:10
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\active_select.py --pool 5000 --select 50 --out C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\active_candidates_cycle_01.csv --viability-model-dir C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\models\viability_mlp --max-failures 10 --timeout-seconds 180 --run-simion
+Seleccionados 50 de 5000 candidatos -> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\active_candidates_cycle_01.csv
+score=1.8051 contact=49.1% unc=0.143 viab=0.470 angle=3.97 V3=331.373 V6=-1000 V9=743.364 V10=-139.604 V11=67.0152 V12=-848.982 V15=-301.447 V18=-1000
+score=1.7542 contact=30.5% unc=0.117 viab=0.577 angle=9.05 V3=-695.406 V6=-234.783 V9=873.951 V10=-22.5531 V11=-122.736 V12=-1000 V15=127.264 V18=-258.12
+score=1.7351 contact=38.4% unc=0.112 viab=0.528 angle=7.38 V3=-558.155 V6=-639.413 V9=549.417 V10=-55.928 V11=120.456 V12=-1000 V15=121.043 V18=-1000
+score=1.7200 contact=30.5% unc=0.122 viab=0.606 angle=7.00 V3=260.206 V6=-1000 V9=748.198 V10=-88.3776 V11=152.559 V12=-952.224 V15=-694.48 V18=-1000
+score=1.7008 contact=30.7% unc=0.094 viab=0.448 angle=1.91 V3=-900.822 V6=-1000 V9=692.654 V10=3.65004 V11=86.0799 V12=-614.725 V15=306.646 V18=730.574
+score=1.6953 contact=23.2% unc=0.069 viab=0.517 angle=2.95 V3=-1000 V6=-1000 V9=700.484 V10=186.892 V11=452.872 V12=-138.291 V15=-31.038 V18=-247.013
+score=1.6834 contact=42.1% unc=0.046 viab=0.521 angle=4.32 V3=385.04 V6=-1000 V9=727.357 V10=-87.4292 V11=185.876 V12=-956.472 V15=-81.298 V18=-1000
+score=1.6789 contact=55.1% unc=0.080 viab=0.529 angle=4.98 V3=319.084 V6=-1000 V9=713.934 V10=-136.887 V11=132.561 V12=-1000 V15=-276.846 V18=-1000
+score=1.6732 contact=28.0% unc=0.094 viab=0.615 angle=3.72 V3=-1000 V6=-1000 V9=1000 V10=11.2499 V11=210.618 V12=-436.41 V15=-361.845 V18=-358.892
+score=1.6674 contact=42.2% unc=0.085 viab=0.594 angle=2.00 V3=-864.636 V6=-875.597 V9=551.619 V10=77.5474 V11=-93.3258 V12=-671.277 V15=-64.9288 V18=-508.98
+0001/50 active contact=21.20% theta_sig=4.871
+0002/50 active contact=26.60% theta_sig=5.801
+0003/50 active contact=25.60% theta_sig=6.014
+0004/50 active contact=45.40% theta_sig=6.591
+0005/50 active contact=42.00% theta_sig=4.009
+0006/50 active contact=0.00% theta_sig=0.000
+0007/50 active contact=5.20% theta_sig=8.604
+0008/50 active contact=68.80% theta_sig=6.133
+0009/50 active contact=45.40% theta_sig=4.307
+0010/50 active contact=49.60% theta_sig=2.408
+0011/50 active contact=66.80% theta_sig=4.637
+0012/50 active contact=46.80% theta_sig=5.231
+0013/50 active contact=56.60% theta_sig=5.983
+0014/50 active contact=4.80% theta_sig=7.573
+0015/50 active contact=0.00% theta_sig=0.000
+0016/50 active contact=45.60% theta_sig=2.950
+0017/50 active contact=3.00% theta_sig=7.542
+0018/50 active contact=16.00% theta_sig=4.320
+0019/50 active contact=32.40% theta_sig=5.069
+0020/50 active contact=0.00% theta_sig=0.000
+0021/50 active contact=5.60% theta_sig=1.707
+0022/50 active contact=0.00% theta_sig=0.000
+0023/50 active contact=5.20% theta_sig=8.596
+0024/50 active contact=0.00% theta_sig=0.000
+0025/50 active contact=46.40% theta_sig=5.459
+0026/50 active contact=15.20% theta_sig=8.796
+0027/50 active contact=2.80% theta_sig=5.859
+0028/50 active contact=2.20% theta_sig=9.156
+0029/50 active contact=68.60% theta_sig=3.078
+0030/50 active contact=9.20% theta_sig=8.760
+0031/50 active contact=13.80% theta_sig=0.835
+0032/50 active contact=0.80% theta_sig=6.580
+0033/50 active contact=64.60% theta_sig=4.205
+0034/50 active contact=39.60% theta_sig=3.566
+0035/50 active contact=26.60% theta_sig=5.231
+0036/50 active contact=37.60% theta_sig=3.535
+0037/50 active contact=38.00% theta_sig=4.643
+0038/50 active contact=68.20% theta_sig=3.202
+0039/50 active contact=58.80% theta_sig=4.866
+0040/50 active contact=41.40% theta_sig=5.872
+0041/50 active contact=72.00% theta_sig=3.513
+0042/50 active contact=46.20% theta_sig=6.782
+0043/50 active contact=12.20% theta_sig=7.420
+0044/50 active contact=4.80% theta_sig=9.854
+0045/50 active contact=40.00% theta_sig=4.311
+0046/50 active contact=57.80% theta_sig=3.913
+0047/50 active contact=34.80% theta_sig=4.176
+0048/50 active contact=0.00% theta_sig=0.000
+0049/50 active contact=10.20% theta_sig=8.615
+0050/50 active contact=64.00% theta_sig=3.198
+
+================================================================================
+2026-06-29T21:09:34
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\train_dt.py --ensemble-size 5 --epochs 800
+modelo 1: val=0.015271 {'detector_active_contact_fraction': 0.05478718876838684, 'detector_active_forward_fraction': 0.06250381469726562, 'detector_contact_angle_theta_mean_deg': 1.0742173194885254, 'detector_contact_angle_theta_sigma_deg': 0.6468234062194824}
+modelo 2: val=0.013041 {'detector_active_contact_fraction': 0.04493305832147598, 'detector_active_forward_fraction': 0.09647463262081146, 'detector_contact_angle_theta_mean_deg': 1.0803018808364868, 'detector_contact_angle_theta_sigma_deg': 0.5955381393432617}
+modelo 3: val=0.015704 {'detector_active_contact_fraction': 0.05121372267603874, 'detector_active_forward_fraction': 0.05622120574116707, 'detector_contact_angle_theta_mean_deg': 0.8682507872581482, 'detector_contact_angle_theta_sigma_deg': 0.5849179625511169}
+modelo 4: val=0.014961 {'detector_active_contact_fraction': 0.046037036925554276, 'detector_active_forward_fraction': 0.0694502517580986, 'detector_contact_angle_theta_mean_deg': 1.254645824432373, 'detector_contact_angle_theta_sigma_deg': 0.7223471403121948}
+modelo 5: val=0.014669 {'detector_active_contact_fraction': 0.0437375009059906, 'detector_active_forward_fraction': 0.07304992526769638, 'detector_contact_angle_theta_mean_deg': 1.1271748542785645, 'detector_contact_angle_theta_sigma_deg': 0.6829860806465149}
+[
+  {
+    "bin": "0.00-0.01",
+    "count": 250
+  },
+  {
+    "bin": "0.01-0.10",
+    "count": 59
+  },
+  {
+    "bin": "0.10-0.40",
+    "count": 159
+  },
+  {
+    "bin": "0.40-0.80",
+    "count": 446
+  },
+  {
+    "bin": "0.80-0.98",
+    "count": 107
+  },
+  {
+    "bin": "0.98-1.00",
+    "count": 524
+  }
+]
+Resumen: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\models\baseline_mlp\training_summary.json
+
+================================================================================
+2026-06-29T21:17:02
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\train_viability.py --threshold 0.05 --ensemble-size 5 --epochs 500
+clasificador 1: val=0.026333 acc=0.977 fp=2 fn=5
+clasificador 2: val=0.035440 acc=0.958 fp=2 fn=11
+clasificador 3: val=0.081178 acc=0.942 fp=6 fn=12
+clasificador 4: val=0.038508 acc=0.958 fp=3 fn=10
+clasificador 5: val=0.037028 acc=0.958 fp=3 fn=10
+Resumen: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\models\viability_mlp\viability_summary.json
+
+================================================================================
+2026-06-30T02:25:55
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\active_select.py --pool 6000 --select 50 --out C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\active_candidates_cycle_01.csv --viability-model-dir C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\models\viability_mlp --max-failures 10 --timeout-seconds 180 --run-simion
+Seleccionados 50 de 6000 candidatos -> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\active_candidates_cycle_01.csv
+score=1.7736 contact=18.8% unc=0.140 viab=0.554 angle=5.63 V3=-29.9776 V6=-1000 V9=752.967 V10=322.183 V11=291.07 V12=-241.902 V15=-143.824 V18=-1000
+score=1.7578 contact=26.8% unc=0.131 viab=0.509 angle=3.83 V3=-1000 V6=-333.601 V9=808.362 V10=-49.1306 V11=-456.468 V12=-1000 V15=-579.944 V18=-991.142
+score=1.7288 contact=17.7% unc=0.112 viab=0.554 angle=4.96 V3=-1000 V6=-983.343 V9=3.80181 V10=-123.511 V11=27.8514 V12=-1000 V15=-715.102 V18=384.684
+score=1.7267 contact=39.2% unc=0.141 viab=0.635 angle=2.18 V3=-1000 V6=-572.13 V9=686.084 V10=50.9791 V11=-145.206 V12=-728.09 V15=106.439 V18=32.3876
+score=1.6890 contact=26.8% unc=0.128 viab=0.547 angle=3.93 V3=-826.169 V6=-649.204 V9=793.303 V10=15.3764 V11=-256.067 V12=-856.383 V15=105.087 V18=-1000
+score=1.6862 contact=6.1% unc=0.105 viab=0.577 angle=5.62 V3=-261.893 V6=-1000 V9=427.703 V10=212.83 V11=322.579 V12=-343.077 V15=448.726 V18=-183.969
+score=1.6827 contact=34.1% unc=0.095 viab=0.623 angle=1.77 V3=-1000 V6=-1000 V9=1000 V10=8.6733 V11=21.4962 V12=-965.269 V15=-299.186 V18=-53.0074
+score=1.6731 contact=33.5% unc=0.063 viab=0.528 angle=2.22 V3=-842.031 V6=-1000 V9=383.018 V10=9.92814 V11=76.0126 V12=-504.111 V15=174.915 V18=-331.359
+score=1.6685 contact=41.2% unc=0.064 viab=0.603 angle=2.50 V3=-916.089 V6=-900.172 V9=885.124 V10=-36.9516 V11=161.589 V12=-902.285 V15=82.4424 V18=-112.405
+score=1.6591 contact=24.2% unc=0.068 viab=0.580 angle=4.36 V3=-391.381 V6=-1000 V9=563.326 V10=41.8743 V11=116.607 V12=-459.372 V15=484.266 V18=-1000
+0001/50 active contact=3.20% theta_sig=1.867
+0002/50 active contact=7.00% theta_sig=6.247
+0003/50 active contact=55.60% theta_sig=2.254
+0004/50 active contact=6.60% theta_sig=2.159
+0005/50 active contact=28.80% theta_sig=2.704
+0006/50 active contact=0.40% theta_sig=4.773
+0007/50 active contact=8.60% theta_sig=1.640
+0008/50 active contact=25.20% theta_sig=1.379
+0009/50 active contact=16.60% theta_sig=2.606
+0010/50 active contact=6.60% theta_sig=7.984
+0011/50 active contact=18.20% theta_sig=2.347
+0012/50 active contact=25.00% theta_sig=3.007
+0013/50 active contact=41.00% theta_sig=2.959
+0014/50 active contact=27.20% theta_sig=3.877
+0015/50 active contact=21.60% theta_sig=2.397
+0016/50 active contact=35.80% theta_sig=2.182
+0017/50 active contact=29.20% theta_sig=6.359
+0018/50 active contact=43.20% theta_sig=3.802
+0019/50 active contact=1.40% theta_sig=5.971
+0020/50 active contact=23.80% theta_sig=5.225
+0021/50 active contact=3.20% theta_sig=5.523
+0022/50 active contact=0.20% theta_sig=0.000
+0023/50 active contact=14.40% theta_sig=1.310
+0024/50 active contact=2.40% theta_sig=0.139
+0025/50 active contact=0.20% theta_sig=0.000
+0026/50 active contact=1.20% theta_sig=3.025
+0027/50 active contact=0.00% theta_sig=0.000
+0028/50 active contact=0.20% theta_sig=0.000
+0029/50 active contact=33.20% theta_sig=3.359
+0030/50 active contact=1.80% theta_sig=0.818
+0031/50 active contact=15.40% theta_sig=6.017
+0032/50 active contact=36.80% theta_sig=2.667
+0033/50 active contact=37.60% theta_sig=1.976
+0034/50 active contact=12.20% theta_sig=2.574
+0035/50 active contact=38.00% theta_sig=6.635
+0036/50 active contact=0.00% theta_sig=0.000
+0037/50 active contact=15.80% theta_sig=7.299
+0038/50 active contact=6.60% theta_sig=6.765
+0039/50 active contact=0.00% theta_sig=0.000
+0040/50 active contact=0.00% theta_sig=0.000
+0041/50 active contact=2.60% theta_sig=1.517
+0042/50 active contact=0.00% theta_sig=0.000
+0043/50 active contact=5.60% theta_sig=7.648
+0044/50 active contact=15.00% theta_sig=8.237
+0045/50 active contact=24.40% theta_sig=4.705
+0046/50 active contact=0.00% theta_sig=0.000
+0047/50 active contact=21.60% theta_sig=2.989
+0048/50 active contact=1.20% theta_sig=7.729
+0049/50 active contact=45.40% theta_sig=7.586
+0050/50 active contact=21.40% theta_sig=3.669
+
+================================================================================
+2026-06-30T02:36:10
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\train_dt.py --ensemble-size 5 --epochs 800
+modelo 1: val=0.018521 {'detector_active_contact_fraction': 0.04780745878815651, 'detector_active_forward_fraction': 0.07903262227773666, 'detector_contact_angle_theta_mean_deg': 1.1982455253601074, 'detector_contact_angle_theta_sigma_deg': 0.644085168838501, 'derived_vz_sigma_residual': 0.3707699477672577}
+modelo 2: val=0.017398 {'detector_active_contact_fraction': 0.05382619425654411, 'detector_active_forward_fraction': 0.08253782242536545, 'detector_contact_angle_theta_mean_deg': 1.156522512435913, 'detector_contact_angle_theta_sigma_deg': 0.6460338234901428, 'derived_vz_sigma_residual': 0.5420129895210266}
+modelo 3: val=0.017754 {'detector_active_contact_fraction': 0.04851731285452843, 'detector_active_forward_fraction': 0.0794946476817131, 'detector_contact_angle_theta_mean_deg': 1.1796494722366333, 'detector_contact_angle_theta_sigma_deg': 0.7503358125686646, 'derived_vz_sigma_residual': 0.3958897888660431}
+modelo 4: val=0.015602 {'detector_active_contact_fraction': 0.04298315942287445, 'detector_active_forward_fraction': 0.06729377061128616, 'detector_contact_angle_theta_mean_deg': 1.0772206783294678, 'detector_contact_angle_theta_sigma_deg': 0.6155362725257874, 'derived_vz_sigma_residual': 0.31928861141204834}
+modelo 5: val=0.018574 {'detector_active_contact_fraction': 0.05227844417095184, 'detector_active_forward_fraction': 0.09861825406551361, 'detector_contact_angle_theta_mean_deg': 1.4292000532150269, 'detector_contact_angle_theta_sigma_deg': 0.7651980519294739, 'derived_vz_sigma_residual': 0.3647677004337311}
+[
+  {
+    "bin": "0.00-0.01",
+    "count": 260
+  },
+  {
+    "bin": "0.01-0.10",
+    "count": 73
+  },
+  {
+    "bin": "0.10-0.40",
+    "count": 189
+  },
+  {
+    "bin": "0.40-0.80",
+    "count": 474
+  },
+  {
+    "bin": "0.80-0.98",
+    "count": 111
+  },
+  {
+    "bin": "0.98-1.00",
+    "count": 529
+  }
+]
+Resumen: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\models\baseline_mlp\training_summary.json
+
+================================================================================
+2026-06-30T02:47:37
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\train_viability.py --threshold 0.05 --ensemble-size 5 --epochs 500
+clasificador 1: val=0.025379 acc=0.979 fp=2 fn=5
+clasificador 2: val=0.060182 acc=0.939 fp=8 fn=12
+clasificador 3: val=0.035210 acc=0.939 fp=2 fn=18
+clasificador 4: val=0.053611 acc=0.945 fp=5 fn=13
+clasificador 5: val=0.069687 acc=0.948 fp=5 fn=12
+Resumen: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\models\viability_mlp\viability_summary.json
+
+================================================================================
+2026-06-30T02:50:17
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\train_dt.py --ensemble-size 5 --epochs 800
+modelo 1: val=0.018521 {'detector_active_contact_fraction': 0.04780745878815651, 'detector_active_forward_fraction': 0.07903262227773666, 'detector_contact_angle_theta_mean_deg': 1.1982455253601074, 'detector_contact_angle_theta_sigma_deg': 0.644085168838501, 'derived_vz_sigma_residual': 0.3707699477672577}
+modelo 2: val=0.017398 {'detector_active_contact_fraction': 0.05382619425654411, 'detector_active_forward_fraction': 0.08253782242536545, 'detector_contact_angle_theta_mean_deg': 1.156522512435913, 'detector_contact_angle_theta_sigma_deg': 0.6460338234901428, 'derived_vz_sigma_residual': 0.5420129895210266}
+modelo 3: val=0.017754 {'detector_active_contact_fraction': 0.04851731285452843, 'detector_active_forward_fraction': 0.0794946476817131, 'detector_contact_angle_theta_mean_deg': 1.1796494722366333, 'detector_contact_angle_theta_sigma_deg': 0.7503358125686646, 'derived_vz_sigma_residual': 0.3958897888660431}
+modelo 4: val=0.015602 {'detector_active_contact_fraction': 0.04298315942287445, 'detector_active_forward_fraction': 0.06729377061128616, 'detector_contact_angle_theta_mean_deg': 1.0772206783294678, 'detector_contact_angle_theta_sigma_deg': 0.6155362725257874, 'derived_vz_sigma_residual': 0.31928861141204834}
+modelo 5: val=0.018574 {'detector_active_contact_fraction': 0.05227844417095184, 'detector_active_forward_fraction': 0.09861825406551361, 'detector_contact_angle_theta_mean_deg': 1.4292000532150269, 'detector_contact_angle_theta_sigma_deg': 0.7651980519294739, 'derived_vz_sigma_residual': 0.3647677004337311}
+[
+  {
+    "bin": "0.00-0.01",
+    "count": 260
+  },
+  {
+    "bin": "0.01-0.10",
+    "count": 73
+  },
+  {
+    "bin": "0.10-0.40",
+    "count": 189
+  },
+  {
+    "bin": "0.40-0.80",
+    "count": 474
+  },
+  {
+    "bin": "0.80-0.98",
+    "count": 111
+  },
+  {
+    "bin": "0.98-1.00",
+    "count": 529
+  }
+]
+Resumen: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\models\baseline_mlp\training_summary.json
+
+================================================================================
+2026-06-30T03:02:38
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\active_select.py --pool 8000 --select 50 --out C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\active_candidates_cycle_01.csv --viability-model-dir C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\models\viability_mlp --max-failures 10 --timeout-seconds 180 --run-simion
+Seleccionados 50 de 8000 candidatos -> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\active_candidates_cycle_01.csv
+score=1.8541 contact=36.2% unc=0.170 viab=0.605 angle=4.44 V3=-805.628 V6=-133.622 V9=1000 V10=-224.086 V11=-108.053 V12=-1000 V15=-280.477 V18=202.23
+score=1.7240 contact=46.4% unc=0.043 viab=0.497 angle=3.07 V3=-1000 V6=-1000 V9=1000 V10=148.881 V11=-27.5466 V12=-601.856 V15=-11.735 V18=-329.58
+score=1.6847 contact=28.9% unc=0.072 viab=0.504 angle=2.61 V3=-1000 V6=-811.008 V9=814.466 V10=197.719 V11=109.3 V12=-586.977 V15=-539.603 V18=-552.379
+score=1.6710 contact=18.8% unc=0.059 viab=0.523 angle=2.82 V3=-1000 V6=-258.414 V9=1000 V10=-131.797 V11=-393.493 V12=-914.881 V15=-185.32 V18=-246.903
+score=1.6634 contact=44.0% unc=0.054 viab=0.572 angle=5.07 V3=-1000 V6=-975.792 V9=978.29 V10=7.1571 V11=-144.951 V12=-745.131 V15=-143.326 V18=-283.838
+score=1.6464 contact=42.1% unc=0.032 viab=0.596 angle=3.10 V3=-1000 V6=-969.106 V9=1000 V10=87.9384 V11=-122.553 V12=-755.747 V15=-252.165 V18=-244.694
+score=1.6392 contact=40.6% unc=0.072 viab=0.638 angle=3.18 V3=-820.843 V6=-1000 V9=626.358 V10=-205.43 V11=-200.644 V12=-1000 V15=252.614 V18=-49.4405
+score=1.6315 contact=7.1% unc=0.094 viab=0.550 angle=4.34 V3=50.3642 V6=-1000 V9=430.576 V10=226.078 V11=44.0467 V12=-665.341 V15=-883.261 V18=-891.541
+score=1.6284 contact=44.2% unc=0.077 viab=0.552 angle=4.05 V3=-827.159 V6=-855.045 V9=509.865 V10=46.7262 V11=-322.247 V12=-1000 V15=26.7213 V18=193.54
+score=1.6277 contact=7.0% unc=0.037 viab=0.534 angle=2.10 V3=-926.749 V6=-472.974 V9=965.66 V10=-175.667 V11=-348.622 V12=-1000 V15=236.392 V18=-299.677
+0001/50 active contact=4.40% theta_sig=8.095
+0002/50 active contact=56.60% theta_sig=3.903
+0003/50 active contact=0.00% theta_sig=0.000
+0004/50 active contact=0.00% theta_sig=0.000
+0005/50 active contact=33.60% theta_sig=4.667
+0006/50 active contact=46.20% theta_sig=2.962
+0007/50 active contact=47.00% theta_sig=1.741
+0008/50 active contact=4.60% theta_sig=2.966
+0009/50 active contact=10.60% theta_sig=4.031
+0010/50 active contact=0.00% theta_sig=0.000
+0011/50 active contact=0.00% theta_sig=0.000
+0012/50 active contact=0.40% theta_sig=2.085
+0013/50 active contact=3.40% theta_sig=8.829
+0014/50 active contact=22.80% theta_sig=4.721
+0015/50 active contact=8.00% theta_sig=2.463
+0016/50 active contact=49.60% theta_sig=4.798
+0017/50 active contact=55.40% theta_sig=5.124
+0018/50 active contact=26.00% theta_sig=1.025
+0019/50 active contact=41.80% theta_sig=4.321
+0020/50 active contact=43.20% theta_sig=3.487
+0021/50 active contact=46.20% theta_sig=5.066
+0022/50 active contact=7.60% theta_sig=6.493
+0023/50 active contact=49.40% theta_sig=6.413
+0024/50 active contact=47.00% theta_sig=5.294
+0025/50 active contact=0.00% theta_sig=0.000
+0026/50 active contact=34.00% theta_sig=4.958
+0027/50 active contact=47.80% theta_sig=7.525
+0028/50 active contact=2.00% theta_sig=0.985
+0029/50 active contact=32.00% theta_sig=7.223
+0030/50 active contact=51.40% theta_sig=4.184
+0031/50 active contact=0.00% theta_sig=0.000
+0032/50 active contact=4.60% theta_sig=3.705
+0033/50 active contact=2.40% theta_sig=7.319
+0034/50 active contact=0.80% theta_sig=7.464
+0035/50 active contact=27.00% theta_sig=9.337
+0036/50 active contact=0.00% theta_sig=0.000
+0037/50 active contact=10.20% theta_sig=8.544
+0038/50 active contact=31.00% theta_sig=4.464
+0039/50 active contact=0.80% theta_sig=0.541
+0040/50 active contact=3.60% theta_sig=7.301
+0041/50 active contact=20.40% theta_sig=7.152
+0042/50 active contact=58.60% theta_sig=5.218
+0043/50 active contact=45.40% theta_sig=4.580
+0044/50 active contact=6.60% theta_sig=7.126
+0045/50 active contact=58.40% theta_sig=1.754
+0046/50 active contact=48.80% theta_sig=6.546
+0047/50 active contact=18.20% theta_sig=3.502
+0048/50 active contact=6.80% theta_sig=8.017
+0049/50 active contact=24.40% theta_sig=5.042
+0050/50 active contact=0.00% theta_sig=0.000
+
+================================================================================
+2026-06-30T03:12:47
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\train_dt.py --ensemble-size 5 --epochs 800
+modelo 1: val=0.014730 {'detector_active_contact_fraction': 0.04719339683651924, 'detector_active_forward_fraction': 0.09396509826183319, 'detector_contact_angle_theta_mean_deg': 1.228037714958191, 'detector_contact_angle_theta_sigma_deg': 0.6744664311408997, 'derived_vz_sigma_residual': 0.38609954714775085}
+modelo 2: val=0.014307 {'detector_active_contact_fraction': 0.04461577162146568, 'detector_active_forward_fraction': 0.06773418188095093, 'detector_contact_angle_theta_mean_deg': 1.0850225687026978, 'detector_contact_angle_theta_sigma_deg': 0.5859840512275696, 'derived_vz_sigma_residual': 0.331954687833786}
+modelo 3: val=0.016309 {'detector_active_contact_fraction': 0.04796525463461876, 'detector_active_forward_fraction': 0.09285436570644379, 'detector_contact_angle_theta_mean_deg': 1.0781869888305664, 'detector_contact_angle_theta_sigma_deg': 0.7737094163894653, 'derived_vz_sigma_residual': 0.4196186363697052}
+modelo 4: val=0.015891 {'detector_active_contact_fraction': 0.04714537411928177, 'detector_active_forward_fraction': 0.0833176001906395, 'detector_contact_angle_theta_mean_deg': 1.1874301433563232, 'detector_contact_angle_theta_sigma_deg': 0.7203279733657837, 'derived_vz_sigma_residual': 0.33073848485946655}
+modelo 5: val=0.018681 {'detector_active_contact_fraction': 0.052703484892845154, 'detector_active_forward_fraction': 0.1014828085899353, 'detector_contact_angle_theta_mean_deg': 1.356337547302246, 'detector_contact_angle_theta_sigma_deg': 0.7096257209777832, 'derived_vz_sigma_residual': 0.4012804627418518}
+[
+  {
+    "bin": "0.00-0.01",
+    "count": 271
+  },
+  {
+    "bin": "0.01-0.10",
+    "count": 84
+  },
+  {
+    "bin": "0.10-0.40",
+    "count": 201
+  },
+  {
+    "bin": "0.40-0.80",
+    "count": 490
+  },
+  {
+    "bin": "0.80-0.98",
+    "count": 111
+  },
+  {
+    "bin": "0.98-1.00",
+    "count": 529
+  }
+]
+Resumen: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\models\baseline_mlp\training_summary.json
+
+================================================================================
+2026-06-30T03:21:30
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\train_viability.py --threshold 0.05 --ensemble-size 5 --epochs 500
+clasificador 1: val=0.064077 acc=0.929 fp=6 fn=18
+clasificador 2: val=0.063034 acc=0.914 fp=6 fn=23
+clasificador 3: val=0.034138 acc=0.953 fp=2 fn=14
+clasificador 4: val=0.049957 acc=0.958 fp=4 fn=10
+clasificador 5: val=0.059424 acc=0.950 fp=4 fn=13
+Resumen: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\models\viability_mlp\viability_summary.json
+
+================================================================================
+2026-06-30T03:23:48
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\train_dt.py --ensemble-size 5 --epochs 800
+modelo 1: val=0.014730 {'detector_active_contact_fraction': 0.04719339683651924, 'detector_active_forward_fraction': 0.09396509826183319, 'detector_contact_angle_theta_mean_deg': 1.228037714958191, 'detector_contact_angle_theta_sigma_deg': 0.6744664311408997, 'derived_vz_sigma_residual': 0.38609954714775085}
+modelo 2: val=0.014307 {'detector_active_contact_fraction': 0.04461577162146568, 'detector_active_forward_fraction': 0.06773418188095093, 'detector_contact_angle_theta_mean_deg': 1.0850225687026978, 'detector_contact_angle_theta_sigma_deg': 0.5859840512275696, 'derived_vz_sigma_residual': 0.331954687833786}
+modelo 3: val=0.016309 {'detector_active_contact_fraction': 0.04796525463461876, 'detector_active_forward_fraction': 0.09285436570644379, 'detector_contact_angle_theta_mean_deg': 1.0781869888305664, 'detector_contact_angle_theta_sigma_deg': 0.7737094163894653, 'derived_vz_sigma_residual': 0.4196186363697052}
+modelo 4: val=0.015891 {'detector_active_contact_fraction': 0.04714537411928177, 'detector_active_forward_fraction': 0.0833176001906395, 'detector_contact_angle_theta_mean_deg': 1.1874301433563232, 'detector_contact_angle_theta_sigma_deg': 0.7203279733657837, 'derived_vz_sigma_residual': 0.33073848485946655}
+modelo 5: val=0.018681 {'detector_active_contact_fraction': 0.052703484892845154, 'detector_active_forward_fraction': 0.1014828085899353, 'detector_contact_angle_theta_mean_deg': 1.356337547302246, 'detector_contact_angle_theta_sigma_deg': 0.7096257209777832, 'derived_vz_sigma_residual': 0.4012804627418518}
+[
+  {
+    "bin": "0.00-0.01",
+    "count": 271
+  },
+  {
+    "bin": "0.01-0.10",
+    "count": 84
+  },
+  {
+    "bin": "0.10-0.40",
+    "count": 201
+  },
+  {
+    "bin": "0.40-0.80",
+    "count": 490
+  },
+  {
+    "bin": "0.80-0.98",
+    "count": 111
+  },
+  {
+    "bin": "0.98-1.00",
+    "count": 529
+  }
+]
+Resumen: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\models\baseline_mlp\training_summary.json
+
+================================================================================
+2026-06-30T03:39:20
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\active_select.py --pool 8000 --select 50 --out C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\active_candidates_cycle_01.csv --viability-model-dir C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\models\viability_mlp --max-failures 10 --timeout-seconds 180 --run-simion
+Seleccionados 50 de 8000 candidatos -> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\active_candidates_cycle_01.csv
+score=1.8313 contact=35.6% unc=0.119 viab=0.532 angle=3.04 V3=-1000 V6=-574.122 V9=534.379 V10=211.209 V11=299.085 V12=-448.259 V15=-230.802 V18=153.019
+score=1.7165 contact=44.1% unc=0.139 viab=0.693 angle=2.50 V3=-979.344 V6=-675.664 V9=1000 V10=-190.269 V11=-51.2188 V12=-933.931 V15=766.892 V18=-551.774
+score=1.7014 contact=20.8% unc=0.062 viab=0.566 angle=3.59 V3=-1000 V6=-642.326 V9=1000 V10=-201.378 V11=-42.3974 V12=-934.398 V15=-111.393 V18=553.003
+score=1.6987 contact=51.6% unc=0.198 viab=0.431 angle=2.72 V3=-960.451 V6=-1000 V9=424.913 V10=-26.318 V11=-470.168 V12=-1000 V15=234.542 V18=-573.505
+score=1.6447 contact=43.5% unc=0.017 viab=0.459 angle=3.00 V3=-1000 V6=-736.576 V9=481.6 V10=208.725 V11=212.715 V12=-469.628 V15=-232.524 V18=-741.973
+score=1.6320 contact=13.4% unc=0.060 viab=0.566 angle=2.00 V3=-917.097 V6=-1000 V9=1000 V10=-176.599 V11=56.7578 V12=-688.8 V15=623.711 V18=-186.316
+score=1.6297 contact=27.4% unc=0.044 viab=0.545 angle=2.15 V3=-1000 V6=-807.888 V9=-54.5155 V10=54.9134 V11=146.805 V12=-1000 V15=-120.657 V18=-436.85
+score=1.5973 contact=47.2% unc=0.060 viab=0.703 angle=2.59 V3=-1000 V6=-919.324 V9=847.491 V10=157.749 V11=243.407 V12=-473.819 V15=196.648 V18=-554.184
+score=1.5868 contact=35.9% unc=0.080 viab=0.671 angle=3.27 V3=-953.75 V6=-1000 V9=1000 V10=-116.384 V11=178.134 V12=-757.397 V15=-330.148 V18=-81.3782
+score=1.5836 contact=21.8% unc=0.065 viab=0.483 angle=6.17 V3=-119.168 V6=-724.171 V9=384.467 V10=-110.919 V11=-208.518 V12=-914.443 V15=656.619 V18=-672.773
+0001/50 active contact=3.60% theta_sig=1.255
+0002/50 active contact=65.60% theta_sig=3.030
+0003/50 active contact=0.20% theta_sig=0.000
+0004/50 active contact=0.00% theta_sig=0.000
+0005/50 active contact=8.60% theta_sig=4.887
+0006/50 active contact=38.60% theta_sig=2.408
+0007/50 active contact=2.00% theta_sig=2.053
+0008/50 active contact=62.60% theta_sig=4.217
+0009/50 active contact=31.00% theta_sig=1.946
+0010/50 active contact=1.60% theta_sig=10.724
+0011/50 active contact=25.00% theta_sig=4.055
+0012/50 active contact=40.40% theta_sig=3.995
+0013/50 active contact=11.40% theta_sig=3.335
+0014/50 active contact=34.00% theta_sig=4.792
+0015/50 active contact=56.60% theta_sig=3.324
+0016/50 active contact=57.80% theta_sig=5.882
+0017/50 active contact=16.80% theta_sig=2.674
+0018/50 active contact=17.60% theta_sig=2.047
+0019/50 active contact=3.80% theta_sig=7.181
+0020/50 active contact=3.20% theta_sig=0.144
+0021/50 active contact=68.40% theta_sig=3.280
+0022/50 active contact=11.40% theta_sig=9.284
+0023/50 active contact=38.40% theta_sig=7.492
+0024/50 active contact=40.00% theta_sig=6.373
+0025/50 active contact=10.80% theta_sig=5.180
+0026/50 active contact=10.40% theta_sig=1.538
+0027/50 active contact=4.20% theta_sig=6.442
+0028/50 active contact=38.20% theta_sig=8.188
+0029/50 active contact=36.40% theta_sig=4.678
+0030/50 active contact=0.00% theta_sig=0.000
+0031/50 active contact=25.60% theta_sig=3.841
+0032/50 active contact=32.40% theta_sig=5.313
+0033/50 active contact=29.20% theta_sig=1.201
+0034/50 active contact=39.20% theta_sig=6.889
+0035/50 active contact=14.20% theta_sig=2.334
+0036/50 active contact=11.00% theta_sig=3.329
+0037/50 active contact=62.80% theta_sig=3.412
+0038/50 active contact=70.60% theta_sig=3.631
+0039/50 active contact=27.20% theta_sig=8.737
+0040/50 active contact=47.20% theta_sig=4.369
+0041/50 active contact=31.20% theta_sig=1.355
+0042/50 active contact=36.80% theta_sig=5.221
+0043/50 active contact=7.40% theta_sig=7.812
+0044/50 active contact=26.00% theta_sig=8.121
+0045/50 active contact=2.40% theta_sig=8.438
+0046/50 active contact=1.00% theta_sig=2.179
+0047/50 active contact=17.80% theta_sig=7.097
+0048/50 active contact=14.20% theta_sig=9.325
+0049/50 active contact=20.20% theta_sig=1.025
+0050/50 active contact=3.60% theta_sig=8.006
+
+================================================================================
+2026-06-30T03:47:55
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\train_dt.py --ensemble-size 5 --epochs 800
+modelo 1: val=0.022460 {'detector_active_contact_fraction': 0.062098532915115356, 'detector_active_forward_fraction': 0.07982815057039261, 'detector_contact_angle_theta_mean_deg': 1.1891608238220215, 'detector_contact_angle_theta_sigma_deg': 0.7020303010940552, 'derived_vz_sigma_residual': 0.28170308470726013}
+modelo 2: val=0.014460 {'detector_active_contact_fraction': 0.049248699098825455, 'detector_active_forward_fraction': 0.09784039855003357, 'detector_contact_angle_theta_mean_deg': 1.26521635055542, 'detector_contact_angle_theta_sigma_deg': 0.6575617790222168, 'derived_vz_sigma_residual': 0.5047200322151184}
+modelo 3: val=0.020653 {'detector_active_contact_fraction': 0.05540168285369873, 'detector_active_forward_fraction': 0.09012315422296524, 'detector_contact_angle_theta_mean_deg': 1.2514594793319702, 'detector_contact_angle_theta_sigma_deg': 0.7623561024665833, 'derived_vz_sigma_residual': 0.37387165427207947}
+modelo 4: val=0.020405 {'detector_active_contact_fraction': 0.054959844797849655, 'detector_active_forward_fraction': 0.09777062386274338, 'detector_contact_angle_theta_mean_deg': 1.3781139850616455, 'detector_contact_angle_theta_sigma_deg': 0.791734516620636, 'derived_vz_sigma_residual': 0.4154926836490631}
+modelo 5: val=0.018912 {'detector_active_contact_fraction': 0.05255977809429169, 'detector_active_forward_fraction': 0.07403676211833954, 'detector_contact_angle_theta_mean_deg': 1.3256103992462158, 'detector_contact_angle_theta_sigma_deg': 0.7020556330680847, 'derived_vz_sigma_residual': 0.5093863606452942}
+[
+  {
+    "bin": "0.00-0.01",
+    "count": 274
+  },
+  {
+    "bin": "0.01-0.10",
+    "count": 95
+  },
+  {
+    "bin": "0.10-0.40",
+    "count": 227
+  },
+  {
+    "bin": "0.40-0.80",
+    "count": 500
+  },
+  {
+    "bin": "0.80-0.98",
+    "count": 111
+  },
+  {
+    "bin": "0.98-1.00",
+    "count": 529
+  }
+]
+Resumen: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\models\baseline_mlp\training_summary.json
+
+================================================================================
+2026-06-30T03:53:50
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\train_viability.py --threshold 0.05 --ensemble-size 5 --epochs 500
+clasificador 1: val=0.050261 acc=0.939 fp=4 fn=17
+clasificador 2: val=0.054131 acc=0.951 fp=2 fn=15
+clasificador 3: val=0.046488 acc=0.963 fp=4 fn=9
+clasificador 4: val=0.046314 acc=0.948 fp=4 fn=14
+clasificador 5: val=0.039933 acc=0.957 fp=3 fn=12
+Resumen: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\models\viability_mlp\viability_summary.json
+
+================================================================================
+2026-06-30T03:55:51
+> C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\.venv\Scripts\python.exe C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\train_dt.py --ensemble-size 5 --epochs 800
+modelo 1: val=0.022460 {'detector_active_contact_fraction': 0.062098532915115356, 'detector_active_forward_fraction': 0.07982815057039261, 'detector_contact_angle_theta_mean_deg': 1.1891608238220215, 'detector_contact_angle_theta_sigma_deg': 0.7020303010940552, 'derived_vz_sigma_residual': 0.28170308470726013}
+modelo 2: val=0.014460 {'detector_active_contact_fraction': 0.049248699098825455, 'detector_active_forward_fraction': 0.09784039855003357, 'detector_contact_angle_theta_mean_deg': 1.26521635055542, 'detector_contact_angle_theta_sigma_deg': 0.6575617790222168, 'derived_vz_sigma_residual': 0.5047200322151184}
+modelo 3: val=0.020653 {'detector_active_contact_fraction': 0.05540168285369873, 'detector_active_forward_fraction': 0.09012315422296524, 'detector_contact_angle_theta_mean_deg': 1.2514594793319702, 'detector_contact_angle_theta_sigma_deg': 0.7623561024665833, 'derived_vz_sigma_residual': 0.37387165427207947}
+modelo 4: val=0.020405 {'detector_active_contact_fraction': 0.054959844797849655, 'detector_active_forward_fraction': 0.09777062386274338, 'detector_contact_angle_theta_mean_deg': 1.3781139850616455, 'detector_contact_angle_theta_sigma_deg': 0.791734516620636, 'derived_vz_sigma_residual': 0.4154926836490631}
+modelo 5: val=0.018912 {'detector_active_contact_fraction': 0.05255977809429169, 'detector_active_forward_fraction': 0.07403676211833954, 'detector_contact_angle_theta_mean_deg': 1.3256103992462158, 'detector_contact_angle_theta_sigma_deg': 0.7020556330680847, 'derived_vz_sigma_residual': 0.5093863606452942}
+[
+  {
+    "bin": "0.00-0.01",
+    "count": 274
+  },
+  {
+    "bin": "0.01-0.10",
+    "count": 95
+  },
+  {
+    "bin": "0.10-0.40",
+    "count": 227
+  },
+  {
+    "bin": "0.40-0.80",
+    "count": 500
+  },
+  {
+    "bin": "0.80-0.98",
+    "count": 111
+  },
+  {
+    "bin": "0.98-1.00",
+    "count": 529
+  }
+]
+Resumen: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\models\baseline_mlp\training_summary.json

@@ -1,0 +1,11 @@
+step 1/450 batch_loss=9.137764 best=3.000362
+step 90/450 batch_loss=3.199768 best=0.044258
+step 180/450 batch_loss=2.235530 best=0.039872
+step 270/450 batch_loss=2.013976 best=0.036992
+step 360/450 batch_loss=1.929870 best=0.035345
+step 450/450 batch_loss=1.835324 best=0.034947
+Candidatos: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\inverse_active\budget_700_inverse_focused_v2\candidates\cycle001_target11.csv
+loss=0.03492 active=50.26% fwd=94.65% theta_mu=3.238 theta_sig=1.599 | viab=0.652 | V3=-917.788 V6=-846.511 V9=573.822 V10=-20.4514 V11=-97.3577 V12=-706.706 V15=44.5813 V18=-358.291
+loss=0.03611 active=50.26% fwd=96.22% theta_mu=3.282 theta_sig=1.527 | viab=0.929 | V3=-783.985 V6=-978.252 V9=980.823 V10=8.62823 V11=-123.065 V12=-750.299 V15=41.6099 V18=-443.344
+loss=0.03628 active=50.26% fwd=96.06% theta_mu=3.278 theta_sig=1.533 | viab=0.926 | V3=-798.409 V6=-965.115 V9=965.305 V10=8.1532 V11=-117.831 V12=-745.686 V15=97.618 V18=-421.787
+loss=0.03629 active=50.25% fwd=96.08% theta_mu=3.277 theta_sig=1.533 | viab=0.926 | V3=-799.608 V6=-969.666 V9=976.146 V10=7.93085 V11=-118.102 V12=-748.816 V15=105.829 V18=-422.459

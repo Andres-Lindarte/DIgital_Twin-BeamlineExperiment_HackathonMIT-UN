@@ -1,0 +1,213 @@
+START budget=1000 batch=50 seed=20260704
+CYCLE 1 policy=initial_mixed selected=50 valid_before=0
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+START budget=1000 batch=50 seed=20260704
+CYCLE 1 policy=initial_mixed selected=50 valid_before=0
+TRAIN rows=50 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\model_after_0050
+TRAIN_VIABILITY rows=50 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\viability_after_0050
+CYCLE 2 policy=active:model_after_0050:viability_after_0050 selected=50 valid_before=50
+TRAIN rows=100 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\model_after_0100
+TRAIN_VIABILITY rows=100 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\viability_after_0100
+CYCLE 3 policy=active:model_after_0100:viability_after_0100 selected=50 valid_before=100
+TRAIN rows=150 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\model_after_0150
+TRAIN_VIABILITY rows=150 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\viability_after_0150
+CYCLE 4 policy=active:model_after_0150:viability_after_0150 selected=50 valid_before=150
+TRAIN rows=200 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\model_after_0200
+TRAIN_VIABILITY rows=200 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\viability_after_0200
+CYCLE 5 policy=active:model_after_0200:viability_after_0200 selected=50 valid_before=200
+TRAIN rows=250 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\model_after_0250
+TRAIN_VIABILITY rows=250 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\viability_after_0250
+CYCLE 6 policy=active:model_after_0250:viability_after_0250 selected=50 valid_before=250
+TRAIN rows=300 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\model_after_0300
+TRAIN_VIABILITY rows=300 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\viability_after_0300
+CYCLE 7 policy=active:model_after_0300:viability_after_0300 selected=50 valid_before=300
+TRAIN rows=350 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\model_after_0350
+TRAIN_VIABILITY rows=350 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\viability_after_0350
+CYCLE 8 policy=active:model_after_0350:viability_after_0350 selected=50 valid_before=350
+TRAIN rows=400 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\model_after_0400
+TRAIN_VIABILITY rows=400 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\viability_after_0400
+CYCLE 9 policy=active:model_after_0400:viability_after_0400 selected=50 valid_before=400
+TRAIN rows=450 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\model_after_0450
+TRAIN_VIABILITY rows=450 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\viability_after_0450
+CYCLE 10 policy=active:model_after_0450:viability_after_0450 selected=50 valid_before=450
+TRAIN rows=500 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\model_after_0500
+TRAIN_VIABILITY rows=500 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\viability_after_0500
+CYCLE 11 policy=active:model_after_0500:viability_after_0500 selected=50 valid_before=500
+TRAIN rows=550 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\model_after_0550
+TRAIN_VIABILITY rows=550 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\viability_after_0550
+CYCLE 12 policy=active:model_after_0550:viability_after_0550 selected=50 valid_before=550
+TRAIN rows=600 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\model_after_0600
+TRAIN_VIABILITY rows=600 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\viability_after_0600
+CYCLE 13 policy=active:model_after_0600:viability_after_0600 selected=50 valid_before=600
+TRAIN rows=650 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\model_after_0650
+TRAIN_VIABILITY rows=650 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\viability_after_0650
+CYCLE 14 policy=active:model_after_0650:viability_after_0650 selected=50 valid_before=650
+TRAIN rows=700 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\model_after_0700
+TRAIN_VIABILITY rows=700 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\viability_after_0700
+CYCLE 15 policy=active:model_after_0700:viability_after_0700 selected=50 valid_before=700
+TRAIN rows=750 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\model_after_0750
+TRAIN_VIABILITY rows=750 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\viability_after_0750
+CYCLE 16 policy=active:model_after_0750:viability_after_0750 selected=50 valid_before=750
+TRAIN rows=800 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\model_after_0800
+TRAIN_VIABILITY rows=800 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\viability_after_0800
+CYCLE 17 policy=active:model_after_0800:viability_after_0800 selected=50 valid_before=800
+TRAIN rows=850 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\model_after_0850
+TRAIN_VIABILITY rows=850 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\viability_after_0850
+CYCLE 18 policy=active:model_after_0850:viability_after_0850 selected=50 valid_before=850
+TRAIN rows=900 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\model_after_0900
+TRAIN_VIABILITY rows=900 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\viability_after_0900
+CYCLE 19 policy=active:model_after_0900:viability_after_0900 selected=50 valid_before=900
+TRAIN rows=950 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\model_after_0950
+TRAIN_VIABILITY rows=950 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\viability_after_0950
+CYCLE 20 policy=active:model_after_0950:viability_after_0950 selected=50 valid_before=950
+TRAIN rows=1000 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\model_after_1000
+TRAIN_VIABILITY rows=1000 model=C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\viability_after_1000

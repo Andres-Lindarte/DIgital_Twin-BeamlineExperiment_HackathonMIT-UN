@@ -1,0 +1,237 @@
+﻿{
+    "study_name":  "hackathon_transmission_real_bpm_tight_v10",
+    "storage":  "sqlite:///hackathon_optuna.db",
+    "sampler":  "botorch",
+    "seed":  20260627,
+    "simulation_mode":  "hackathon_fastadj",
+    "simion_exe":  "SIMION/simion.exe",
+    "iob_path":  "Hackathon_student/Hackathon_student/SimpleSetUp.iob",
+    "pa0_path":  "Hackathon_student/Hackathon_student/electrode_.PA0",
+    "particles_path":  "Hackathon_student/Hackathon_student/SimpleSetUp.fly2",
+    "stl_directory":  "Hackathon_student/Hackathon_student",
+    "enable_splat_map":  true,
+    "splat_match_margin_mm":  3.0,
+    "stl_offset_mm":  [
+                          322.55,
+                          165.45,
+                          189.15
+                      ],
+    "detector_center_mm":  [
+                               76.0,
+                               76.0,
+                               405.0
+                           ],
+    "detector_distance_scale_mm":  220.0,
+    "enable_real_bpm":  true,
+    "real_bpm":  {
+                     "z_mm":  402,
+                     "center_x_mm":  76,
+                     "center_y_mm":  76.5,
+                     "core_rx_mm":  5.5,
+                     "core_ry_mm":  6,
+                     "side_rx_mm":  7,
+                     "side_ry_mm":  7,
+                     "side_offset_mm":  6,
+                     "print_hits":  0
+                 },
+    "timeout_seconds":  600,
+    "ions_launched":  500,
+    "max_electrode":  19,
+    "detector_box":  {
+                         "x":  [
+                                   70,
+                                   82
+                               ],
+                         "y":  [
+                                   70,
+                                   83
+                               ],
+                         "z":  [
+                                   403,
+                                   407
+                               ]
+                     },
+    "startup_trials":  200,
+    "baseline_repeats":  1,
+    "sobol_trials":  199,
+    "stagnation_trials":  250,
+    "stagnation_start_after":  200,
+    "minimum_improvement":  0.0005,
+    "repeats_per_trial":  1,
+    "theta_max_deg":  1.5,
+    "detector_radius_mm":  1.0,
+    "objective_aux_weight":  0.02,
+    "botorch":  {
+                    "n_startup_trials":  200,
+                    "consider_running_trials":  false
+                },
+    "optimized_electrodes":  [
+                                 3,
+                                 6,
+                                 9,
+                                 10,
+                                 11,
+                                 12,
+                                 15,
+                                 18
+                             ],
+    "fixed_voltages":  {
+                           "V1":  500.0,
+                           "V2":  0.0,
+                           "V4":  0.0,
+                           "V5":  0.0,
+                           "V7":  0.0,
+                           "V8":  0.0,
+                           "V13":  0.0,
+                           "V14":  0.0,
+                           "V16":  0.0,
+                           "V17":  0.0,
+                           "V19":  -2000.0
+                       },
+    "voltage_bounds":  {
+                           "V3":  [
+                                      -1000.0,
+                                      1000.0
+                                  ],
+                           "V6":  [
+                                      -1000.0,
+                                      1000.0
+                                  ],
+                           "V9":  [
+                                      -1000.0,
+                                      1000.0
+                                  ],
+                           "V10":  [
+                                       -1000.0,
+                                       1000.0
+                                   ],
+                           "V11":  [
+                                       -1000.0,
+                                       1000.0
+                                   ],
+                           "V12":  [
+                                       -1000.0,
+                                       1000.0
+                                   ],
+                           "V15":  [
+                                       -1000.0,
+                                       1000.0
+                                   ],
+                           "V18":  [
+                                       -1000.0,
+                                       1000.0
+                                   ]
+                       },
+    "startup_candidates":  [
+                               {
+                                   "V3":  258.385,
+                                   "V6":  -998.655,
+                                   "V9":  744.437,
+                                   "V10":  -95.5956,
+                                   "V11":  150.655,
+                                   "V12":  -946.625,
+                                   "V15":  -110.927,
+                                   "V18":  -999.609
+                               },
+                               {
+                                   "V3":  260.206,
+                                   "V6":  -1000.0,
+                                   "V9":  748.198,
+                                   "V10":  -88.3776,
+                                   "V11":  152.559,
+                                   "V12":  -952.224,
+                                   "V15":  -94.4797,
+                                   "V18":  -1000.0
+                               },
+                               {
+                                   "V3":  348.186,
+                                   "V6":  -1000.0,
+                                   "V9":  -244.454,
+                                   "V10":  199.561,
+                                   "V11":  -152.143,
+                                   "V12":  -763.032,
+                                   "V15":  143.963,
+                                   "V18":  -967.93
+                               },
+                               {
+                                   "V3":  0.0,
+                                   "V6":  0.0,
+                                   "V9":  0.0,
+                                   "V10":  0.0,
+                                   "V11":  0.0,
+                                   "V12":  0.0,
+                                   "V15":  0.0,
+                                   "V18":  0.0
+                               },
+                               {
+                                   "V3":  500.0,
+                                   "V6":  -1000.0,
+                                   "V9":  750.0,
+                                   "V10":  -100.0,
+                                   "V11":  150.0,
+                                   "V12":  -950.0,
+                                   "V15":  -100.0,
+                                   "V18":  -1000.0
+                               },
+                               {
+                                   "V3":  -500.0,
+                                   "V6":  -1000.0,
+                                   "V9":  750.0,
+                                   "V10":  -100.0,
+                                   "V11":  150.0,
+                                   "V12":  -950.0,
+                                   "V15":  -100.0,
+                                   "V18":  -1000.0
+                               },
+                               {
+                                   "V3":  250.0,
+                                   "V6":  -500.0,
+                                   "V9":  750.0,
+                                   "V10":  -100.0,
+                                   "V11":  150.0,
+                                   "V12":  -950.0,
+                                   "V15":  -100.0,
+                                   "V18":  -1000.0
+                               },
+                               {
+                                   "V3":  250.0,
+                                   "V6":  -1000.0,
+                                   "V9":  750.0,
+                                   "V10":  -100.0,
+                                   "V11":  150.0,
+                                   "V12":  -500.0,
+                                   "V15":  -100.0,
+                                   "V18":  -1000.0
+                               },
+                               {
+                                   "V3":  250.0,
+                                   "V6":  -1000.0,
+                                   "V9":  -750.0,
+                                   "V10":  100.0,
+                                   "V11":  -150.0,
+                                   "V12":  950.0,
+                                   "V15":  100.0,
+                                   "V18":  1000.0
+                               },
+                               {
+                                   "V3":  500.0,
+                                   "V6":  500.0,
+                                   "V9":  500.0,
+                                   "V10":  -500.0,
+                                   "V11":  -500.0,
+                                   "V12":  500.0,
+                                   "V15":  250.0,
+                                   "V18":  -250.0
+                               },
+                               {
+                                   "V3":  -500.0,
+                                   "V6":  -500.0,
+                                   "V9":  -500.0,
+                                   "V10":  500.0,
+                                   "V11":  500.0,
+                                   "V12":  -500.0,
+                                   "V15":  -250.0,
+                                   "V18":  250.0
+                               }
+                           ]
+}

@@ -1,0 +1,287 @@
+[
+  {
+    "cycle": 1,
+    "timestamp_start": "2026-06-28T15:03:36",
+    "rows_before": 3517,
+    "metrics_before": {
+      "n_rows": 3301,
+      "high_contact_contact_mae": 0.02218499071896076,
+      "high_contact_theta_mean_mae": 0.40211247801780703,
+      "high_contact_theta95_mae": 1.766598105430603,
+      "high_contact_theta99_mae": 3.332196044921875,
+      "global_contact_mae": 0.035213972255587575,
+      "global_theta95_mae": 14.496665000915527
+    },
+    "rows_after_active": 3517,
+    "new_rows": 0,
+    "timestamp_end": "2026-06-28T15:03:36"
+  },
+  {
+    "cycle": 1,
+    "timestamp_start": "2026-06-28T15:14:27",
+    "rows_before": 3520,
+    "metrics_before": {
+      "n_rows": 3520,
+      "high_contact_contact_mae": 0.021440844982862473,
+      "high_contact_theta_mean_mae": 0.40869954228401184,
+      "high_contact_theta95_mae": 1.7509676694869996,
+      "high_contact_theta99_mae": 3.341050386428833,
+      "global_contact_mae": 0.03709700256586075,
+      "global_theta95_mae": 14.585632514953613
+    },
+    "rows_after_active": 3570,
+    "new_rows": 50,
+    "metrics_after_train": {
+      "n_rows": 3570,
+      "high_contact_contact_mae": 0.02070552259683609,
+      "high_contact_theta_mean_mae": 0.41943379640579226,
+      "high_contact_theta95_mae": 1.9366161584854127,
+      "high_contact_theta99_mae": 3.840886449813843,
+      "global_contact_mae": 0.03720979541540146,
+      "global_theta95_mae": 15.400314140319825
+    },
+    "timestamp_end": "2026-06-28T15:29:48"
+  },
+  {
+    "cycle": 1,
+    "timestamp_start": "2026-06-28T15:54:06",
+    "rows_before": 3605,
+    "metrics_before": {
+      "n_rows": 3570,
+      "high_contact_contact_mae": 0.02070552259683609,
+      "high_contact_theta_mean_mae": 0.41943379640579226,
+      "high_contact_theta95_mae": 1.9366161584854127,
+      "high_contact_theta99_mae": 3.840886449813843,
+      "global_contact_mae": 0.03720979541540146,
+      "global_theta95_mae": 15.400314140319825
+    },
+    "rows_after_active": 3605,
+    "new_rows": 0,
+    "timestamp_end": "2026-06-28T15:54:06"
+  },
+  {
+    "cycle": 1,
+    "timestamp_start": "2026-06-28T16:03:26",
+    "rows_before": 3605,
+    "metrics_before": {
+      "n_rows": 3605,
+      "high_contact_contact_mae": 0.024827076494693755,
+      "high_contact_theta_mean_mae": 0.5059584140777588,
+      "high_contact_theta95_mae": 1.9959318399429322,
+      "high_contact_theta99_mae": 3.692170000076294,
+      "global_contact_mae": 0.0376677542924881,
+      "global_theta95_mae": 14.85306625366211
+    },
+    "rows_after_active": 3655,
+    "new_rows": 50,
+    "metrics_after_train": {
+      "n_rows": 3655,
+      "high_contact_contact_mae": 0.023098283261060715,
+      "high_contact_theta_mean_mae": 0.519908607006073,
+      "high_contact_theta95_mae": 2.0217462301254274,
+      "high_contact_theta99_mae": 4.252170467376709,
+      "global_contact_mae": 0.03855601996183396,
+      "global_theta95_mae": 15.265238761901855
+    },
+    "timestamp_end": "2026-06-28T16:21:03"
+  },
+  {
+    "cycle": 2,
+    "timestamp_start": "2026-06-28T16:21:03",
+    "rows_before": 3655,
+    "metrics_before": {
+      "n_rows": 3655,
+      "high_contact_contact_mae": 0.023098283261060715,
+      "high_contact_theta_mean_mae": 0.519908607006073,
+      "high_contact_theta95_mae": 2.0217462301254274,
+      "high_contact_theta99_mae": 4.252170467376709,
+      "global_contact_mae": 0.03855601996183396,
+      "global_theta95_mae": 15.265238761901855
+    },
+    "rows_after_active": 3705,
+    "new_rows": 50,
+    "metrics_after_train": {
+      "n_rows": 3705,
+      "high_contact_contact_mae": 0.024282599240541457,
+      "high_contact_theta_mean_mae": 0.4785021603107452,
+      "high_contact_theta95_mae": 2.0821763038635255,
+      "high_contact_theta99_mae": 4.081664609909057,
+      "global_contact_mae": 0.03919356316328049,
+      "global_theta95_mae": 14.444896125793457
+    },
+    "timestamp_end": "2026-06-28T16:39:02"
+  },
+  {
+    "cycle": 3,
+    "timestamp_start": "2026-06-28T16:39:02",
+    "rows_before": 3705,
+    "metrics_before": {
+      "n_rows": 3705,
+      "high_contact_contact_mae": 0.024282599240541457,
+      "high_contact_theta_mean_mae": 0.4785021603107452,
+      "high_contact_theta95_mae": 2.0821763038635255,
+      "high_contact_theta99_mae": 4.081664609909057,
+      "global_contact_mae": 0.03919356316328049,
+      "global_theta95_mae": 14.444896125793457
+    },
+    "stopped": "sin mejora theta95 high-contact por 2 ciclos"
+  },
+  {
+    "cycle": 1,
+    "timestamp_start": "2026-06-28T20:39:07",
+    "rows_before": 873,
+    "metrics_before": {
+      "n_rows": 873,
+      "high_contact_contact_mae": 0.029536931216716765,
+      "high_contact_theta_mean_mae": 0.20984650552272796,
+      "high_contact_theta_spread_mae": 0.22878064811229706,
+      "global_contact_mae": 0.05062343031167984,
+      "global_theta_spread_mae": 0.6863893985748291
+    },
+    "rows_after_active": 923,
+    "new_rows": 50,
+    "metrics_after_train": {
+      "n_rows": 923,
+      "high_contact_contact_mae": 0.032176676020026204,
+      "high_contact_theta_mean_mae": 0.2488189309835434,
+      "high_contact_theta_spread_mae": 0.25471281111240385,
+      "global_contact_mae": 0.05639853030443191,
+      "global_theta_spread_mae": 0.7458936452865601
+    },
+    "timestamp_end": "2026-06-28T20:48:45"
+  },
+  {
+    "cycle": 2,
+    "timestamp_start": "2026-06-28T20:48:45",
+    "rows_before": 923,
+    "metrics_before": {
+      "n_rows": 923,
+      "high_contact_contact_mae": 0.032176676020026204,
+      "high_contact_theta_mean_mae": 0.2488189309835434,
+      "high_contact_theta_spread_mae": 0.25471281111240385,
+      "global_contact_mae": 0.05639853030443191,
+      "global_theta_spread_mae": 0.7458936452865601
+    },
+    "rows_after_active": 973,
+    "new_rows": 50,
+    "metrics_after_train": {
+      "n_rows": 973,
+      "high_contact_contact_mae": 0.03549566827714443,
+      "high_contact_theta_mean_mae": 0.24501380026340486,
+      "high_contact_theta_spread_mae": 0.2515623867511749,
+      "global_contact_mae": 0.06194809675216675,
+      "global_theta_spread_mae": 0.7231883049011231
+    },
+    "timestamp_end": "2026-06-28T20:58:43"
+  },
+  {
+    "cycle": 3,
+    "timestamp_start": "2026-06-28T20:58:43",
+    "rows_before": 973,
+    "metrics_before": {
+      "n_rows": 973,
+      "high_contact_contact_mae": 0.03549566827714443,
+      "high_contact_theta_mean_mae": 0.24501380026340486,
+      "high_contact_theta_spread_mae": 0.2515623867511749,
+      "global_contact_mae": 0.06194809675216675,
+      "global_theta_spread_mae": 0.7231883049011231
+    },
+    "stopped": "sin mejora angular high-contact por 2 ciclos"
+  },
+  {
+    "cycle": 1,
+    "timestamp_start": "2026-06-29T21:01:10",
+    "rows_before": 1495,
+    "metrics_before": {
+      "n_rows": 1495,
+      "high_contact_contact_mae": 0.016779501363635062,
+      "high_contact_theta_mean_mae": 0.16117355823516846,
+      "high_contact_theta_spread_mae": 0.15704182982444764,
+      "global_contact_mae": 0.04519141837954521,
+      "global_theta_spread_mae": 0.6101849794387817
+    },
+    "rows_after_active": 1545,
+    "new_rows": 50,
+    "metrics_after_train": {
+      "n_rows": 1545,
+      "high_contact_contact_mae": 0.019974830374121667,
+      "high_contact_theta_mean_mae": 0.16410179436206818,
+      "high_contact_theta_spread_mae": 0.15282275378704072,
+      "global_contact_mae": 0.04814170151948929,
+      "global_theta_spread_mae": 0.6465225458145142
+    },
+    "timestamp_end": "2026-06-29T21:18:43"
+  },
+  {
+    "cycle": 1,
+    "timestamp_start": "2026-06-30T02:25:55",
+    "rows_before": 1586,
+    "metrics_before": {
+      "n_rows": 1586,
+      "high_contact_contact_mae": 0.021053386852145195,
+      "high_contact_theta_mean_mae": 0.16308444142341613,
+      "high_contact_theta_spread_mae": 0.16575720012187958,
+      "global_contact_mae": 0.04776165783405304,
+      "global_theta_spread_mae": 0.6325590968132019
+    },
+    "rows_after_active": 1636,
+    "new_rows": 50,
+    "metrics_after_train": {
+      "n_rows": 1636,
+      "high_contact_contact_mae": 0.019536024332046507,
+      "high_contact_theta_mean_mae": 0.15105331540107728,
+      "high_contact_theta_spread_mae": 0.1636613890528679,
+      "global_contact_mae": 0.04908251389861107,
+      "global_theta_spread_mae": 0.684237825870514
+    },
+    "timestamp_end": "2026-06-30T02:50:17"
+  },
+  {
+    "cycle": 1,
+    "timestamp_start": "2026-06-30T03:02:38",
+    "rows_before": 1636,
+    "metrics_before": {
+      "n_rows": 1636,
+      "high_contact_contact_mae": 0.019536024332046507,
+      "high_contact_theta_mean_mae": 0.15105331540107728,
+      "high_contact_theta_spread_mae": 0.1636613890528679,
+      "global_contact_mae": 0.04908251389861107,
+      "global_theta_spread_mae": 0.684237825870514
+    },
+    "rows_after_active": 1686,
+    "new_rows": 50,
+    "metrics_after_train": {
+      "n_rows": 1686,
+      "high_contact_contact_mae": 0.019438428804278374,
+      "high_contact_theta_mean_mae": 0.1626576453447342,
+      "high_contact_theta_spread_mae": 0.162284454703331,
+      "global_contact_mae": 0.04792465642094612,
+      "global_theta_spread_mae": 0.6928227186203003
+    },
+    "timestamp_end": "2026-06-30T03:23:48"
+  },
+  {
+    "cycle": 1,
+    "timestamp_start": "2026-06-30T03:39:20",
+    "rows_before": 1686,
+    "metrics_before": {
+      "n_rows": 1686,
+      "high_contact_contact_mae": 0.019438428804278374,
+      "high_contact_theta_mean_mae": 0.1626576453447342,
+      "high_contact_theta_spread_mae": 0.162284454703331,
+      "global_contact_mae": 0.04792465642094612,
+      "global_theta_spread_mae": 0.6928227186203003
+    },
+    "rows_after_active": 1736,
+    "new_rows": 50,
+    "metrics_after_train": {
+      "n_rows": 1736,
+      "high_contact_contact_mae": 0.025278029218316077,
+      "high_contact_theta_mean_mae": 0.1743012100458145,
+      "high_contact_theta_spread_mae": 0.16632108092308046,
+      "global_contact_mae": 0.05485370755195618,
+      "global_theta_spread_mae": 0.7231476664543152
+    },
+    "timestamp_end": "2026-06-30T03:55:51"
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "created_at": "2026-07-01T00:00:21",
+  "seed_data": "dt\\data\\budget_simion\\budget_1500_seed_20260704\\dataset.csv",
+  "seed_rows": 300,
+  "cycles": 8,
+  "simions_per_cycle": 50,
+  "targets_per_cycle": 18,
+  "note": "Loop orientado a fallos de consigna inversa; dataset fusionable."
+}

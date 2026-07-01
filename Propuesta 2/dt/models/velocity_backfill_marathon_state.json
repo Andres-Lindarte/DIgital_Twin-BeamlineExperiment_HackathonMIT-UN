@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-06-30T07:59:11",
+  "requested_n": 1550,
+  "done": 1521,
+  "batches": 17,
+  "last_train_at": 1521,
+  "counts": {
+    "rows": 3272,
+    "residual_rows": 1702
+  },
+  "last_batch_requested": 29,
+  "last_batch_added_residual_rows": 0
+}

@@ -1,0 +1,63 @@
+\documentclass[11pt]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\geometry{margin=2.2cm}
+\title{Reporte del sistema actual de Gemelo Digital SIMION}
+\author{Versión interna para el grupo de trabajo}
+\date{2026-07-01}
+
+\begin{document}
+\maketitle
+
+\section{Resumen ejecutivo}
+Construimos un gemelo digital del beamline de SIMION: un emulador que recibe ocho voltajes libres
+$(V3,V6,V9,V10,V11,V12,V15,V18)$ y predice métricas del haz. El sistema actual usa un ensemble de
+redes neuronales MLP diferenciables. Además de predicción directa, permite diseño inverso por gradiente:
+dada una consigna de transmisión y ángulo, busca voltajes que deberían cumplirla y luego los valida en SIMION.
+
+\section{Entradas y salidas}
+Entradas: ocho voltajes libres del reto. Salidas principales: transmisión activa, fracción forward,
+ángulo medio de impacto, dispersión angular y residual de $v_z$ sigma sobre una base física.
+
+\section{Arquitectura}
+El modelo es un ensemble de MLPs multitarea con capas ocultas 128--128--64, activación GELU,
+dropout 0.03, AdamW y pérdida log-cosh ponderada. Las entradas y salidas se escalan antes del entrenamiento.
+
+\section{Datos y desempeño}
+Dataset base: 3272 filas. Filas con residual de velocidad observado: 1702.
+MAE global de transmisión: 3.02 puntos porcentuales. MAE high-contact:
+1.48 puntos porcentuales. MAE high-contact de theta mean:
+0.117 grados. MAE high-contact de theta sigma: 0.116 grados.
+
+\section{Control inverso}
+El diseño inverso congela la red y optimiza los voltajes de entrada por backpropagation. Los barridos
+validados muestran control de transmisión aproximadamente desde 20\% hasta 100\%, con degradación angular
+en baja transmisión.
+
+\section{Rúbrica del reto}
+\begin{itemize}
+\item C, dirección: soluciones de alta transmisión validadas.
+\item A, exactitud: error bajo en región informativa high-contact.
+\item I, consigna inversa: barridos inversos validados en SIMION.
+\item E, honestidad: incertidumbre por ensemble y distinción de regiones confiables/no confiables.
+\item D, diferenciabilidad: modelo PyTorch diferenciable.
+\item F, eficiencia: loops presupuestados para estimar número mínimo de evaluaciones.
+\item G, admisibilidad: salidas físicas recortadas y métricas calculadas sobre impactos válidos.
+\end{itemize}
+
+\section{Archivos clave}
+\begin{itemize}
+\item \texttt{dt/train\_dt.py}: entrenamiento.
+\item \texttt{dt/predict\_dt.py}: predicción directa.
+\item \texttt{dt/inverse\_design.py}: diseño inverso.
+\item \texttt{dt/budget\_simion\_loop.py}: entrenamiento autónomo con presupuesto.
+\item \texttt{dt/inverse\_active\_loop.py}: aprendizaje activo por fallos de consigna.
+\item \texttt{dt/EXPERIMENT\_LOG.md}: bitácora técnica.
+\end{itemize}
+
+\end{document}

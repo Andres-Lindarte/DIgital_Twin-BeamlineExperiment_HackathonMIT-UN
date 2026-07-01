@@ -1,0 +1,38 @@
+{
+  "data_path": "C:\\Users\\usuario\\Documents\\workshop\\simplificado (modulo 3)\\dt\\data\\inverse_active\\budget_700_inverse_focused_v2\\dataset.csv",
+  "n_rows": 650,
+  "positive_rate": 0.7723076939582825,
+  "threshold": 0.02,
+  "models": [
+    {
+      "seed": 2000,
+      "best_val_loss": 0.06796131283044815,
+      "accuracy": 0.9538461538461539,
+      "tp": 104,
+      "tn": 20,
+      "fp": 2,
+      "fn": 4,
+      "model_path": "C:\\Users\\usuario\\Documents\\workshop\\simplificado (modulo 3)\\dt\\data\\inverse_active\\budget_700_inverse_focused_v2\\models\\viability_cycle_008\\viability_seed_2000.pt"
+    },
+    {
+      "seed": 2001,
+      "best_val_loss": 0.07368922233581543,
+      "accuracy": 0.9538461538461539,
+      "tp": 104,
+      "tn": 20,
+      "fp": 3,
+      "fn": 3,
+      "model_path": "C:\\Users\\usuario\\Documents\\workshop\\simplificado (modulo 3)\\dt\\data\\inverse_active\\budget_700_inverse_focused_v2\\models\\viability_cycle_008\\viability_seed_2001.pt"
+    },
+    {
+      "seed": 2002,
+      "best_val_loss": 0.06250287592411041,
+      "accuracy": 0.9615384615384616,
+      "tp": 95,
+      "tn": 30,
+      "fp": 1,
+      "fn": 4,
+      "model_path": "C:\\Users\\usuario\\Documents\\workshop\\simplificado (modulo 3)\\dt\\data\\inverse_active\\budget_700_inverse_focused_v2\\models\\viability_cycle_008\\viability_seed_2002.pt"
+    }
+  ]
+}

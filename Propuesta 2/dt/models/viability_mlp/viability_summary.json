@@ -1,0 +1,58 @@
+{
+  "data_path": "C:\\Users\\usuario\\Documents\\workshop\\simplificado (modulo 3)\\dt\\data\\dt_detector_window_dataset.csv",
+  "n_rows": 3272,
+  "positive_rate": 0.8132640719413757,
+  "threshold": 0.05,
+  "models": [
+    {
+      "seed": 2000,
+      "best_val_loss": 0.034104544669389725,
+      "accuracy": 0.9724770642201835,
+      "tp": 534,
+      "tn": 102,
+      "fp": 4,
+      "fn": 14,
+      "model_path": "C:\\Users\\usuario\\Documents\\workshop\\simplificado (modulo 3)\\dt\\models\\viability_mlp\\viability_seed_2000.pt"
+    },
+    {
+      "seed": 2001,
+      "best_val_loss": 0.05086953192949295,
+      "accuracy": 0.9525993883792049,
+      "tp": 514,
+      "tn": 109,
+      "fp": 7,
+      "fn": 24,
+      "model_path": "C:\\Users\\usuario\\Documents\\workshop\\simplificado (modulo 3)\\dt\\models\\viability_mlp\\viability_seed_2001.pt"
+    },
+    {
+      "seed": 2002,
+      "best_val_loss": 0.03726808354258537,
+      "accuracy": 0.9617737003058104,
+      "tp": 500,
+      "tn": 129,
+      "fp": 8,
+      "fn": 17,
+      "model_path": "C:\\Users\\usuario\\Documents\\workshop\\simplificado (modulo 3)\\dt\\models\\viability_mlp\\viability_seed_2002.pt"
+    },
+    {
+      "seed": 2003,
+      "best_val_loss": 0.039102546870708466,
+      "accuracy": 0.9571865443425076,
+      "tp": 497,
+      "tn": 129,
+      "fp": 3,
+      "fn": 25,
+      "model_path": "C:\\Users\\usuario\\Documents\\workshop\\simplificado (modulo 3)\\dt\\models\\viability_mlp\\viability_seed_2003.pt"
+    },
+    {
+      "seed": 2004,
+      "best_val_loss": 0.046777643263339996,
+      "accuracy": 0.9587155963302753,
+      "tp": 496,
+      "tn": 131,
+      "fp": 4,
+      "fn": 23,
+      "model_path": "C:\\Users\\usuario\\Documents\\workshop\\simplificado (modulo 3)\\dt\\models\\viability_mlp\\viability_seed_2004.pt"
+    }
+  ]
+}

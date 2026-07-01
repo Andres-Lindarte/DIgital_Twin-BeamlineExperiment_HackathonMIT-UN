@@ -1,0 +1,2 @@
+CYCLE 1 {"rows": 325, "best_active": 1.0, "mean_active": 0.32045538461538464, "inverse_rows": 25, "mean_inverse_error": 1.5189017578599182, "median_inverse_error": 1.4999873266966581}
+CYCLE 2 {"rows": 350, "best_active": 1.0, "mean_active": 0.34395428571428577, "inverse_rows": 50, "mean_inverse_error": 1.2771948663191777, "median_inverse_error": 1.0928610735475432}

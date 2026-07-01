@@ -1,0 +1,4 @@
+clasificador 1: val=0.112765 acc=0.918 fp=3 fn=6
+clasificador 2: val=0.087643 acc=0.945 fp=2 fn=4
+clasificador 3: val=0.125342 acc=0.927 fp=3 fn=5
+Resumen: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\inverse_active\budget_700_inverse_focused_v2\models\viability_cycle_006\viability_summary.json

@@ -1,0 +1,159 @@
+{
+  "base_simion_config": "optuna_config_hackathon_angle_quality_v16.json",
+  "output_dataset": "dt/data/dt_detector_window_dataset.csv",
+  "voltage_names": ["V3", "V6", "V9", "V10", "V11", "V12", "V15", "V18"],
+  "full_bounds": {
+    "V3": [-1000.0, 1000.0],
+    "V6": [-1000.0, 1000.0],
+    "V9": [-1000.0, 1000.0],
+    "V10": [-1000.0, 1000.0],
+    "V11": [-1000.0, 1000.0],
+    "V12": [-1000.0, 1000.0],
+    "V15": [-1000.0, 1000.0],
+    "V18": [-1000.0, 1000.0]
+  },
+  "fixed_voltages": {
+    "V1": 500.0,
+    "V2": 0.0,
+    "V4": 0.0,
+    "V5": 0.0,
+    "V7": 0.0,
+    "V8": 0.0,
+    "V13": 0.0,
+    "V14": 0.0,
+    "V16": 0.0,
+    "V17": 0.0,
+    "V19": -2000.0
+  },
+  "elites": [
+    {
+      "name": "trial_402_angle_best_seen",
+      "voltages": {
+        "V3": -900.0,
+        "V6": -1000.0,
+        "V9": 945.045,
+        "V10": -9.45424,
+        "V11": -73.8701,
+        "V12": -760.0,
+        "V15": -165.252,
+        "V18": -206.276
+      }
+    },
+    {
+      "name": "trial_360_angle",
+      "voltages": {
+        "V3": -900.0,
+        "V6": -1000.0,
+        "V9": 905.39,
+        "V10": -8.63306,
+        "V11": -70.2648,
+        "V12": -760.0,
+        "V15": 40.0,
+        "V18": -282.109
+      }
+    },
+    {
+      "name": "trial_326_angle",
+      "voltages": {
+        "V3": -900.0,
+        "V6": -1000.0,
+        "V9": 895.294,
+        "V10": -8.72085,
+        "V11": -68.9944,
+        "V12": -760.0,
+        "V15": 1.79818,
+        "V18": -269.87
+      }
+    },
+    {
+      "name": "trial_285_angle",
+      "voltages": {
+        "V3": -900.0,
+        "V6": -1000.0,
+        "V9": 934.941,
+        "V10": -11.4792,
+        "V11": -88.6614,
+        "V12": -760.0,
+        "V15": 40.0,
+        "V18": -312.449
+      }
+    },
+    {
+      "name": "trial_117_angle",
+      "voltages": {
+        "V3": -860.481,
+        "V6": -887.036,
+        "V9": 935.296,
+        "V10": -96.892,
+        "V11": -146.537,
+        "V12": -914.085,
+        "V15": -212.817,
+        "V18": -67.9668
+      }
+    },
+    {
+      "name": "trial_82_contact_angle",
+      "voltages": {
+        "V3": -886.916,
+        "V6": -794.538,
+        "V9": 545.073,
+        "V10": 16.8787,
+        "V11": -48.016,
+        "V12": -760.983,
+        "V15": -50.8639,
+        "V18": -305.356
+      }
+    },
+    {
+      "name": "old_20pct_basin",
+      "voltages": {
+        "V3": 260.206,
+        "V6": -1000.0,
+        "V9": 748.198,
+        "V10": -88.3776,
+        "V11": 152.559,
+        "V12": -952.224,
+        "V15": -94.4797,
+        "V18": -1000.0
+      }
+    }
+  ],
+  "sampling": {
+    "weights": {
+      "elite_exact": 0.05,
+      "local_gaussian": 0.55,
+      "axis_scan": 0.20,
+      "between_elites": 0.15,
+      "global_lhs": 0.05
+    },
+    "local_sigmas_v": [10.0, 25.0, 60.0, 120.0, 250.0, 450.0],
+    "axis_steps_v": [-600.0, -350.0, -200.0, -120.0, -60.0, -25.0, 25.0, 60.0, 120.0, 200.0, 350.0, 600.0],
+    "dedupe_round_v": 0.1
+  },
+  "training": {
+    "targets": [
+      "detector_active_contact_fraction",
+      "detector_active_forward_fraction",
+      "detector_contact_angle_theta_mean_deg",
+      "detector_contact_angle_theta_sigma_deg",
+      "derived_vz_sigma_residual"
+    ],
+    "contact_target": "detector_active_contact_fraction",
+    "angle_targets": [
+      "detector_contact_angle_theta_mean_deg",
+      "detector_contact_angle_theta_sigma_deg"
+    ],
+    "ensemble_size": 5,
+    "hidden_layers": [128, 128, 64],
+    "dropout": 0.03,
+    "batch_size": 64,
+    "epochs": 800,
+    "patience": 80,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "angle_loss_contact_min": 0.85,
+    "angle_loss_floor": 0.005,
+    "validation_fraction": 0.2,
+    "model_dir": "dt/models/baseline_mlp"
+  }
+}

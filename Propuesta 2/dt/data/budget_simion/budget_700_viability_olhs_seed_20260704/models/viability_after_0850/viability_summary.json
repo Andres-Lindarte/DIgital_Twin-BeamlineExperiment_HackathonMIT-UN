@@ -1,0 +1,38 @@
+{
+  "data_path": "C:\\Users\\usuario\\Documents\\workshop\\simplificado (modulo 3)\\dt\\data\\budget_simion\\budget_700_viability_olhs_seed_20260704\\dataset.csv",
+  "n_rows": 850,
+  "positive_rate": 0.6858823299407959,
+  "threshold": 0.02,
+  "models": [
+    {
+      "seed": 2000,
+      "best_val_loss": 0.2177562415599823,
+      "accuracy": 0.8705882352941177,
+      "tp": 101,
+      "tn": 47,
+      "fp": 10,
+      "fn": 12,
+      "model_path": "C:\\Users\\usuario\\Documents\\workshop\\simplificado (modulo 3)\\dt\\data\\budget_simion\\budget_700_viability_olhs_seed_20260704\\models\\viability_after_0850\\viability_seed_2000.pt"
+    },
+    {
+      "seed": 2001,
+      "best_val_loss": 0.1873755007982254,
+      "accuracy": 0.8294117647058824,
+      "tp": 93,
+      "tn": 48,
+      "fp": 7,
+      "fn": 22,
+      "model_path": "C:\\Users\\usuario\\Documents\\workshop\\simplificado (modulo 3)\\dt\\data\\budget_simion\\budget_700_viability_olhs_seed_20260704\\models\\viability_after_0850\\viability_seed_2001.pt"
+    },
+    {
+      "seed": 2002,
+      "best_val_loss": 0.23681502044200897,
+      "accuracy": 0.8117647058823529,
+      "tp": 97,
+      "tn": 41,
+      "fp": 10,
+      "fn": 22,
+      "model_path": "C:\\Users\\usuario\\Documents\\workshop\\simplificado (modulo 3)\\dt\\data\\budget_simion\\budget_700_viability_olhs_seed_20260704\\models\\viability_after_0850\\viability_seed_2002.pt"
+    }
+  ]
+}

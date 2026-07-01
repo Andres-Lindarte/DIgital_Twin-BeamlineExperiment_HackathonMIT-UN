@@ -1,0 +1,2 @@
+START budget=12 batch=12 seed=444
+CYCLE 1 policy=initial_mixed selected=12 valid_before=0

@@ -1,0 +1,185 @@
+{
+  "data_path": "C:\\Users\\usuario\\Documents\\workshop\\simplificado (modulo 3)\\dt\\data\\budget_simion\\budget_1500_seed_20260704\\dataset.csv",
+  "n_rows": 600,
+  "input_names": [
+    "V3",
+    "V6",
+    "V9",
+    "V10",
+    "V11",
+    "V12",
+    "V15",
+    "V18"
+  ],
+  "target_names": [
+    "detector_active_contact_fraction",
+    "detector_active_forward_fraction",
+    "detector_contact_angle_theta_mean_deg",
+    "detector_contact_angle_theta_sigma_deg",
+    "derived_vz_sigma_residual"
+  ],
+  "target_observed_count": {
+    "detector_active_contact_fraction": 600,
+    "detector_active_forward_fraction": 600,
+    "detector_contact_angle_theta_mean_deg": 600,
+    "detector_contact_angle_theta_sigma_deg": 600,
+    "derived_vz_sigma_residual": 600
+  },
+  "bin_report": [
+    {
+      "bin": "0.00-0.01",
+      "count": 232
+    },
+    {
+      "bin": "0.01-0.10",
+      "count": 35
+    },
+    {
+      "bin": "0.10-0.40",
+      "count": 68
+    },
+    {
+      "bin": "0.40-0.80",
+      "count": 111
+    },
+    {
+      "bin": "0.80-0.98",
+      "count": 46
+    },
+    {
+      "bin": "0.98-1.00",
+      "count": 108
+    }
+  ],
+  "models": [
+    {
+      "seed": 1000,
+      "device": "cpu",
+      "epochs": 295,
+      "best_val_loss": 0.06041621416807175,
+      "model_path": "C:\\Users\\usuario\\Documents\\workshop\\simplificado (modulo 3)\\dt\\data\\budget_simion\\budget_1500_seed_20260704\\models\\model_after_0600\\model_seed_1000.pt",
+      "mae": {
+        "detector_active_contact_fraction": 0.09118904918432236,
+        "detector_active_forward_fraction": 0.18042707443237305,
+        "detector_contact_angle_theta_mean_deg": 2.4782297611236572,
+        "detector_contact_angle_theta_sigma_deg": 1.3068311214447021,
+        "derived_vz_sigma_residual": 0.2633029520511627
+      },
+      "rmse": {
+        "detector_active_contact_fraction": 0.1279129832983017,
+        "detector_active_forward_fraction": 0.32579395174980164,
+        "detector_contact_angle_theta_mean_deg": 3.7195096015930176,
+        "detector_contact_angle_theta_sigma_deg": 1.938942313194275,
+        "derived_vz_sigma_residual": 0.39246657490730286
+      },
+      "high_contact_count": 34,
+      "target_observed_count": {
+        "detector_active_contact_fraction": 600,
+        "detector_active_forward_fraction": 600,
+        "detector_contact_angle_theta_mean_deg": 600,
+        "detector_contact_angle_theta_sigma_deg": 600,
+        "derived_vz_sigma_residual": 600
+      },
+      "high_contact_mae": {
+        "detector_active_contact_fraction": 0.10762213170528412,
+        "detector_active_forward_fraction": 0.013929583132266998,
+        "detector_contact_angle_theta_mean_deg": 0.816586971282959,
+        "detector_contact_angle_theta_sigma_deg": 0.428053081035614,
+        "derived_vz_sigma_residual": 0.15330468118190765
+      },
+      "high_contact_rmse": {
+        "detector_active_contact_fraction": 0.15024776756763458,
+        "detector_active_forward_fraction": 0.019853895530104637,
+        "detector_contact_angle_theta_mean_deg": 1.1366392374038696,
+        "detector_contact_angle_theta_sigma_deg": 0.5681834816932678,
+        "derived_vz_sigma_residual": 0.2640915811061859
+      }
+    },
+    {
+      "seed": 1001,
+      "device": "cpu",
+      "epochs": 350,
+      "best_val_loss": 0.04148493707180023,
+      "model_path": "C:\\Users\\usuario\\Documents\\workshop\\simplificado (modulo 3)\\dt\\data\\budget_simion\\budget_1500_seed_20260704\\models\\model_after_0600\\model_seed_1001.pt",
+      "mae": {
+        "detector_active_contact_fraction": 0.07310916483402252,
+        "detector_active_forward_fraction": 0.1755649298429489,
+        "detector_contact_angle_theta_mean_deg": 2.1766655445098877,
+        "detector_contact_angle_theta_sigma_deg": 1.0299817323684692,
+        "derived_vz_sigma_residual": 0.23947317898273468
+      },
+      "rmse": {
+        "detector_active_contact_fraction": 0.10689859837293625,
+        "detector_active_forward_fraction": 0.31832361221313477,
+        "detector_contact_angle_theta_mean_deg": 3.244865655899048,
+        "detector_contact_angle_theta_sigma_deg": 1.5600529909133911,
+        "derived_vz_sigma_residual": 0.34119072556495667
+      },
+      "high_contact_count": 32,
+      "target_observed_count": {
+        "detector_active_contact_fraction": 600,
+        "detector_active_forward_fraction": 600,
+        "detector_contact_angle_theta_mean_deg": 600,
+        "detector_contact_angle_theta_sigma_deg": 600,
+        "derived_vz_sigma_residual": 600
+      },
+      "high_contact_mae": {
+        "detector_active_contact_fraction": 0.07040451467037201,
+        "detector_active_forward_fraction": 0.008924756199121475,
+        "detector_contact_angle_theta_mean_deg": 0.5697764158248901,
+        "detector_contact_angle_theta_sigma_deg": 0.4493309557437897,
+        "derived_vz_sigma_residual": 0.1524333357810974
+      },
+      "high_contact_rmse": {
+        "detector_active_contact_fraction": 0.0957576110959053,
+        "detector_active_forward_fraction": 0.011068496853113174,
+        "detector_contact_angle_theta_mean_deg": 0.7375015020370483,
+        "detector_contact_angle_theta_sigma_deg": 0.5650715827941895,
+        "derived_vz_sigma_residual": 0.236246719956398
+      }
+    },
+    {
+      "seed": 1002,
+      "device": "cpu",
+      "epochs": 350,
+      "best_val_loss": 0.05749563127756119,
+      "model_path": "C:\\Users\\usuario\\Documents\\workshop\\simplificado (modulo 3)\\dt\\data\\budget_simion\\budget_1500_seed_20260704\\models\\model_after_0600\\model_seed_1002.pt",
+      "mae": {
+        "detector_active_contact_fraction": 0.08384015411138535,
+        "detector_active_forward_fraction": 0.15689407289028168,
+        "detector_contact_angle_theta_mean_deg": 2.345128297805786,
+        "detector_contact_angle_theta_sigma_deg": 1.0689550638198853,
+        "derived_vz_sigma_residual": 0.2682320475578308
+      },
+      "rmse": {
+        "detector_active_contact_fraction": 0.1178838238120079,
+        "detector_active_forward_fraction": 0.2945954501628876,
+        "detector_contact_angle_theta_mean_deg": 4.2234320640563965,
+        "detector_contact_angle_theta_sigma_deg": 1.6099382638931274,
+        "derived_vz_sigma_residual": 0.4054754972457886
+      },
+      "high_contact_count": 24,
+      "target_observed_count": {
+        "detector_active_contact_fraction": 600,
+        "detector_active_forward_fraction": 600,
+        "detector_contact_angle_theta_mean_deg": 600,
+        "detector_contact_angle_theta_sigma_deg": 600,
+        "derived_vz_sigma_residual": 600
+      },
+      "high_contact_mae": {
+        "detector_active_contact_fraction": 0.05930547043681145,
+        "detector_active_forward_fraction": 0.009870052337646484,
+        "detector_contact_angle_theta_mean_deg": 0.7031381130218506,
+        "detector_contact_angle_theta_sigma_deg": 0.3270498812198639,
+        "derived_vz_sigma_residual": 0.09969650954008102
+      },
+      "high_contact_rmse": {
+        "detector_active_contact_fraction": 0.08371289074420929,
+        "detector_active_forward_fraction": 0.012927062809467316,
+        "detector_contact_angle_theta_mean_deg": 0.9962810277938843,
+        "detector_contact_angle_theta_sigma_deg": 0.4138610363006592,
+        "derived_vz_sigma_residual": 0.12077758461236954
+      }
+    }
+  ]
+}

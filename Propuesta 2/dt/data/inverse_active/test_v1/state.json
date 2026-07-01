@@ -1,0 +1,11 @@
+{
+  "cycle": 2,
+  "summary": {
+    "rows": 350,
+    "best_active": 1.0,
+    "mean_active": 0.34395428571428577,
+    "inverse_rows": 50,
+    "mean_inverse_error": 1.2771948663191777,
+    "median_inverse_error": 1.0928610735475432
+  }
+}

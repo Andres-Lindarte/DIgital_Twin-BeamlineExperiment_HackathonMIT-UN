@@ -1,0 +1,152 @@
+START budget=1000 batch=50 seed=20260704
+CYCLE 1 policy=initial_mixed selected=50 valid_before=0
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.
+ERROR index=1 RuntimeError: fastadj falló:
+status,Working:
+status,Loading potential array: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0
+status,File loading aborted
+error,FAIL: Failed loading potential array file (C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\Hackathon_student\Hackathon_student\electrode_.PA0).  Could not read from PA file.  File may be empty.

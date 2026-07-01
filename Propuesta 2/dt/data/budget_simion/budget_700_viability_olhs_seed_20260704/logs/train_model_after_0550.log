@@ -1,0 +1,30 @@
+modelo 1: val=0.088056 {'detector_active_contact_fraction': 0.13030530512332916, 'detector_active_forward_fraction': 0.24340052902698517, 'detector_contact_angle_theta_mean_deg': 2.842221260070801, 'detector_contact_angle_theta_sigma_deg': 1.6350756883621216, 'derived_vz_sigma_residual': 0.4169476330280304}
+modelo 2: val=0.063580 {'detector_active_contact_fraction': 0.08685945719480515, 'detector_active_forward_fraction': 0.22302794456481934, 'detector_contact_angle_theta_mean_deg': 2.819871425628662, 'detector_contact_angle_theta_sigma_deg': 1.6105908155441284, 'derived_vz_sigma_residual': 0.3471556305885315}
+modelo 3: val=0.062164 {'detector_active_contact_fraction': 0.0843953862786293, 'detector_active_forward_fraction': 0.2251114696264267, 'detector_contact_angle_theta_mean_deg': 2.506059408187866, 'detector_contact_angle_theta_sigma_deg': 1.5652871131896973, 'derived_vz_sigma_residual': 0.3488099277019501}
+[
+  {
+    "bin": "0.00-0.01",
+    "count": 198
+  },
+  {
+    "bin": "0.01-0.10",
+    "count": 52
+  },
+  {
+    "bin": "0.10-0.40",
+    "count": 71
+  },
+  {
+    "bin": "0.40-0.80",
+    "count": 97
+  },
+  {
+    "bin": "0.80-0.98",
+    "count": 35
+  },
+  {
+    "bin": "0.98-1.00",
+    "count": 97
+  }
+]
+Resumen: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\model_after_0550\training_summary.json

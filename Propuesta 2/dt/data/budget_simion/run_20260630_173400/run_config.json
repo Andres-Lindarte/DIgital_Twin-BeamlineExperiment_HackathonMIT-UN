@@ -1,0 +1,17 @@
+{
+  "created_or_resumed_at": "2026-06-30T17:34:00",
+  "config": "C:\\Users\\usuario\\Documents\\workshop\\simplificado (modulo 3)\\dt\\dt_config.json",
+  "budget": 12,
+  "batch_size": 12,
+  "pool_size": 100,
+  "seed": 444,
+  "ensemble_size": 3,
+  "epochs": 400,
+  "viability_epochs": 250,
+  "viability_threshold": 0.02,
+  "disable_viability": false,
+  "initial_olhs_fraction": 0.25,
+  "olhs_restarts": 8,
+  "dataset_path": "C:\\Users\\usuario\\Documents\\workshop\\simplificado (modulo 3)\\dt\\data\\budget_simion\\run_20260630_173400\\dataset.csv",
+  "note": "Dataset separado y fusionable; selección activa basada solo en datos de esta corrida."
+}

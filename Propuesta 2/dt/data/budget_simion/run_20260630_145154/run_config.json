@@ -1,0 +1,12 @@
+{
+  "created_or_resumed_at": "2026-06-30T14:51:54",
+  "config": "C:\\Users\\usuario\\Documents\\workshop\\simplificado (modulo 3)\\dt\\dt_config.json",
+  "budget": 5,
+  "batch_size": 5,
+  "pool_size": 100,
+  "seed": 123,
+  "ensemble_size": 3,
+  "epochs": 400,
+  "dataset_path": "C:\\Users\\usuario\\Documents\\workshop\\simplificado (modulo 3)\\dt\\data\\budget_simion\\run_20260630_145154\\dataset.csv",
+  "note": "Dataset separado y fusionable; selección activa basada solo en datos de esta corrida."
+}

@@ -1,0 +1,4 @@
+clasificador 1: val=0.293479 acc=0.807 fp=11 fn=18
+clasificador 2: val=0.179815 acc=0.907 fp=6 fn=8
+clasificador 3: val=0.221061 acc=0.853 fp=7 fn=15
+Resumen: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\budget_simion\budget_700_viability_olhs_seed_20260704\models\viability_after_0750\viability_summary.json

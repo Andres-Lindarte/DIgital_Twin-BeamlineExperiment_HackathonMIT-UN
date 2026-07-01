@@ -1,0 +1,10 @@
+step 1/250 batch_loss=14.797570 best=2.636150
+step 50/250 batch_loss=5.800631 best=0.130969
+step 100/250 batch_loss=2.413687 best=0.073137
+step 150/250 batch_loss=1.138188 best=0.054781
+step 200/250 batch_loss=0.909338 best=0.044091
+step 250/250 batch_loss=0.776634 best=0.039460
+Candidatos: C:\Users\usuario\Documents\workshop\simplificado (modulo 3)\dt\data\inverse_active\test_v1\candidates\cycle002_target01.csv
+loss=0.03940 active=40.08% fwd=96.48% theta_mu=6.490 theta_sig=3.205 | viab=0.576 | V3=-849.717 V6=-709.818 V9=514.095 V10=90.9469 V11=-50.384 V12=-721.28 V15=-472.3 V18=-293.775
+loss=0.05118 active=39.99% fwd=102.27% theta_mu=6.446 theta_sig=3.222 | viab=0.777 | V3=-501.028 V6=-881.25 V9=122.41 V10=17.1713 V11=-105.018 V12=-819.569 V15=-543.983 V18=-427.005
+loss=0.05863 active=39.91% fwd=94.57% theta_mu=6.407 theta_sig=3.263 | viab=0.830 | V3=-803.576 V6=-664.02 V9=448.265 V10=-72.8931 V11=6.32074 V12=-760.563 V15=-378.685 V18=-168.542
