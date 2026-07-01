@@ -89,13 +89,13 @@ OBJECTIVE = "hits"
 #   electrode_number: (lowest_volts, highest_volts)
 OPTIMIZE = {
     3:  (270.0, 290.0),     # Einzel lens 1 (center)
-    6:  (-410.0, -300.0),   # Einzel lens 2 (center)
+    6:  (-1000.0, -800.0),   # Einzel lens 2 (center)
     9:  (700.0, 950.0),   # Quadrupole bender
     10: (-150.0, 0.0),   # Quadrupole bender
-    11: (0.0, 150.0),   # Quadrupole bender
-    12: (-1000.0, -800.0),   # Quadrupole bender
-    15: (-150.0, 0.0),   # Voltage / deflection plate 1
-    18: (-1000.0, -800.0),   # Voltage / deflection plate 2
+    11: (-50.0, 50.0),   # Quadrupole bender
+    12: (-800.0, -700.0),   # Quadrupole bender
+    15: (-60.0, 60.0),   # Voltage / deflection plate 1
+    18: (-100.0, 100.0),   # Voltage / deflection plate 2
 }
 
 # The electrodes held at a fixed voltage (set on every run).
@@ -112,14 +112,14 @@ DETECTOR_REGION = {"x": (70, 82), "y": (70, 83), "z": (403, 407)}
 
 # A known-good starting set of voltages, or None. Keys are "V<electrode>".
 STARTING_POINT = {
-            "V3": 279.3830445316597,
-            "V6": -355.8444494312975,
-            "V9": 820.6691442231258,
-            "V10": -71.53180403086287,
-            "V11": 53.40745492959394,
-            "V12": -882.0267614810996,
-            "V15": -55.294003003531884,
-            "V18": -846.6261651198996,
+            "V3": 285.925917218063,
+            "V6": -941.622719002332,
+            "V9": 864.624863591473,
+            "V10": -77.024744959011,
+            "V11": -32.433564781409,
+            "V12": -786.965353250979,
+            "V15": 12.345358654392,
+            "V18": 45.822286875561,
 }
 
 # When a trial is invalid we return a deliberately terrible score.
@@ -407,7 +407,7 @@ Voltages:
 
 === Best trial (Results 3 - Hit)===
 Trial number: 43 (79 ions)
-Score:        112.57149999999979 (hits + advance + bullseye)
+Score:        112.57149999999979 (hits + bullseye)
 Voltages:
    V3: 285.92591721806303
    V6: -341.6227190023319
@@ -418,4 +418,17 @@ Voltages:
    V15: -52.345358654392115
    V18: -945.8222868755608
 
+=== Best trial (Results 4 - Hit)===
+Trial number: 48 (83 ions)
+Score:        100.95249999999983 (hits + bullseye)
+Voltages:
+   V3: 273.27080908826366
+   V6: -828.4104913931302
+   V9: 903.7629499753857
+   V10: -120.8837277215239
+   V11: 17.899315501859178
+   V12: -753.9672166555655
+   V15: 2.782110947981124
+   V18: 44.968890256714474
+   
 """
