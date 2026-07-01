@@ -47,6 +47,7 @@ What you need to run this
 Run it from a terminal with:   python optimizer.py
 """
 
+import re
 import os
 import pathlib
 import re
@@ -63,7 +64,7 @@ import optuna.samplers
 # =============================================================================
 
 # Phase of the excecution
-PHASE = 3 
+PHASE = 2
 
 # The folder this script is in, found automatically. Keep this script next to
 # SimpleSetUp.iob and the electrode_.PA* files and it works on any computer.
@@ -146,6 +147,40 @@ if PHASE == 1:
     # A known-good starting set of voltages, or None. Keys are "V<electrode>".
     STARTING_POINT = {
         "V3":  286.69,   # Einzel lens 1 (center)
+    }
+
+# ===== PHASE 2 =====
+    # For the second phase:
+OPTIMIZE_PHASE2  = {
+    9:  (500.0, 1000.0),   # Quadrupole bender
+    10: (-200.0, 0.0),   # Quadrupole bender
+    11: (0.0, 200.0),   # Quadrupole bender
+    12: (-1000.0, -500.0),   # Quadrupole bender
+}
+
+FIXED_PHASE2 = {
+    1:  500.0,     # HV source
+    19: -2000.0,   # Detector
+    2:  0.0,       # pipe
+    4:  0.0, 5: 0.0, 7: 0.0, 8: 0.0,    # Einzel outer rings (grounded)
+    13: 0.0, 14: 0.0, 16: 0.0, 17: 0.0, # ground plates
+    3:  286.69,   # Einzel lens 1 (center)
+    6:  -355.8444494312975,   # Einzel lens 2 (center)
+    15: -55.294003003531884,   # Voltage / deflection plate 1
+    18: -753.6959058060369,   # Voltage / deflection plate 2
+}
+
+# --- PHASE 2 CONFIG ---
+if PHASE == 2:
+    OPTIMIZE = OPTIMIZE_PHASE2
+    FIXED = FIXED_PHASE2
+
+    # A known-good starting set of voltages, or None. Keys are "V<electrode>".
+    STARTING_POINT = {
+        "V9":  820.6691442231258,   # Quadrupole bender
+        "V10": -71.53180403086287,   # Quadrupole bender
+        "V11": 53.40745492959394,   # Quadrupole bender
+        "V12": -882.0267614810996,   # Quadrupole bender
     }
 
 # ===== PHASE 3 =====
@@ -363,6 +398,14 @@ def objective(trial: Trial) -> float:
         W_ADVANCE = -0.1 # Negative because we want to minimize the mean x position (advance toward -x)
         return W_HITS * count_hits(positions) + W_ADVANCE * np.mean(positions[:, 0])
 
+    if OBJECTIVE == "hits" and PHASE == 2:
+        # Not only gives the number of hit, but also the mean distance of the hits (moving toward +z):
+        W_HITS = 0.9
+        W_ADVANCE = 0.0 # Positive because we want to maximize the mean z position (advance toward +z)
+        W_BULLSEYE = 0.1
+        points_focus = np.sum(np.linalg.norm(positions[:, :2] - np.array([[76, 76]]), axis=1) < 1.5)
+        return (W_HITS * count_hits(positions)) + (W_ADVANCE * np.mean(positions[:, 2])) + (W_BULLSEYE * points_focus)
+
     if OBJECTIVE == "hits" and PHASE == 3:
         # Not only gives the number of hit, but also the mean distance of the hits (moving toward +z):
         W_HITS = 0.9
@@ -405,9 +448,9 @@ def main() -> None:
         storage=f"sqlite:///{RESULTS_DB}",
         study_name=STUDY_NAME,
         load_if_exists=True,
-        #sampler=optuna.samplers.CmaEsSampler( # Use CMA-ES sampler for continuous optimization
-        #    seed=42, n_startup_trials=10
-        #)  
+        sampler=optuna.samplers.CmaEsSampler( # Use CMA-ES sampler for continuous optimization
+            seed=42, n_startup_trials=10
+        )  
     )
 
     if STARTING_POINT:
@@ -440,17 +483,26 @@ if __name__ == "__main__":
 
 
 """
-=== Best trial (Results 1)===
+=== Best trial (Results 1 - Phase 1)===
 Trial number: ??
 Score:        ??
 Voltages:
    V3: 286.69
 
-=== Best trial (Results 2)===
+=== Best trial (Results 2 - Phase 3)===
 Trial number: 44 (78 ions)
 Score:        72.4
 Voltages:
    V6: -355.8444494312975
    V18: -753.6959058060369
+
+=== Best trial (Results 3 - Phase 2)===
+Trial number: 0 (84 ions)
+Score:        77.80000000000001
+Voltages:
+   V9: 820.6691442231258
+   V10: -71.53180403086287
+   V11: 53.40745492959394
+   V12: -882.0267614810996
 
 """
