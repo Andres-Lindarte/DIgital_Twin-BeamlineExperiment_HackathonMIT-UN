@@ -3,14 +3,14 @@ simion.workbench_program()
 -- =========================================================================
 -- VIRTUAL DETECTORS
 -- =========================================================================
-local checkpoints_x = {126.0, 255.0} 
+--local checkpoints_x = {126.0, 255.0} 
 local checkpoints_z = {133.0, 225.0} 
 
 local z_center_x = 76.0
 local z_center_y = 76.0
 
-local x_center_y = 76.0
-local x_center_z = 76.0
+--local x_center_y = 76.0
+--local x_center_z = 76.0
 
 -- =========================================================================
 -- POINTS OVER THE CONCENTRIC CILINDERS (With the radious)
@@ -38,9 +38,9 @@ end
 
 function segment.initialize()
     ion_status[ion_number] = {
-        last_x = ion_px_mm,
+        --last_x = ion_px_mm,
         last_z = ion_pz_mm,
-        passed_x = {}, 
+        --passed_x = {}, 
         passed_z = {} 
     }
 end
@@ -50,7 +50,7 @@ function segment.other_actions()
     
     local current_x = ion_px_mm
     local current_z = ion_pz_mm
-    local last_x = ion_status[ion_number].last_x
+    --local last_x = ion_status[ion_number].last_x
     local last_z = ion_status[ion_number].last_z
     
     -- ---------------------------------------------------------------------
@@ -76,6 +76,7 @@ function segment.other_actions()
     -- ---------------------------------------------------------------------
     -- X-AXIS
     -- ---------------------------------------------------------------------
+    --[[
     for i, target_x in ipairs(checkpoints_x) do
         if not ion_status[ion_number].passed_x[i] then
             -- Because the beamline travels on -x
@@ -93,9 +94,10 @@ function segment.other_actions()
             end
         end
     end
-    
+    --]]
+
     -- Actualizate the positions
-    ion_status[ion_number].last_x = current_x
+    --ion_status[ion_number].last_x = current_x
     ion_status[ion_number].last_z = current_z
 end
 

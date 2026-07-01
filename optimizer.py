@@ -88,13 +88,13 @@ OBJECTIVE = "hits"
 # The electrodes we are allowed to tune, and their (physical!) voltage ranges.
 #   electrode_number: (lowest_volts, highest_volts)
 OPTIMIZE = {
-    3:  (190.0, 290.0),     # Einzel lens 1 (center)
-    6:  (-1000.0, 300.0),   # Einzel lens 2 (center)
-    9:  (600.0, 900.0),   # Quadrupole bender
-    10: (-200.0, 50.0),   # Quadrupole bender
-    11: (0.0, 300.0),   # Quadrupole bender
+    3:  (270.0, 290.0),     # Einzel lens 1 (center)
+    6:  (-410.0, -300.0),   # Einzel lens 2 (center)
+    9:  (700.0, 950.0),   # Quadrupole bender
+    10: (-150.0, 0.0),   # Quadrupole bender
+    11: (0.0, 150.0),   # Quadrupole bender
     12: (-1000.0, -800.0),   # Quadrupole bender
-    15: (-250.0, 50.0),   # Voltage / deflection plate 1
+    15: (-150.0, 0.0),   # Voltage / deflection plate 1
     18: (-1000.0, -800.0),   # Voltage / deflection plate 2
 }
 
@@ -112,14 +112,14 @@ DETECTOR_REGION = {"x": (70, 82), "y": (70, 83), "z": (403, 407)}
 
 # A known-good starting set of voltages, or None. Keys are "V<electrode>".
 STARTING_POINT = {
-            "V3": 286.69,
-            "V6": -203.95001444226114,
-            "V9": 745.0330213477341,
-            "V10": -100.91746815085449,
-            "V11": 147.3144999162171,
-            "V12": -960.2082755617133,
-            "V15": -124.21837199131207,
-            "V18": -900.0627979463936,
+            "V3": 279.3830445316597,
+            "V6": -355.8444494312975,
+            "V9": 820.6691442231258,
+            "V10": -71.53180403086287,
+            "V11": 53.40745492959394,
+            "V12": -882.0267614810996,
+            "V15": -55.294003003531884,
+            "V18": -846.6261651198996,
 }
 
 # When a trial is invalid we return a deliberately terrible score.
@@ -305,9 +305,9 @@ def objective(trial: Trial) -> float:
     if positions.shape[0] == 0:
         return BAD_SCORE
     
-    W_HITS = 0.8
+    W_HITS = 0.9
     W_ADVANCE = 0.0 # Positive because we want to maximize the mean z position (advance toward +z)
-    W_BULLSEYE = 0.2
+    W_BULLSEYE = 0.1
 
     # HITS + ADVANCE + PRECITION
     finale_metric = (W_HITS * count_hits(positions)) + (W_ADVANCE * np.mean(positions[:, 2])) + (W_BULLSEYE * points_focus)
@@ -404,5 +404,18 @@ Voltages:
    V12: -882.0267614810996
    V15: -55.294003003531884
    V18: -846.6261651198996
+
+=== Best trial (Results 3 - Hit)===
+Trial number: 43 (79 ions)
+Score:        112.57149999999979 (hits + advance + bullseye)
+Voltages:
+   V3: 285.92591721806303
+   V6: -341.6227190023319
+   V9: 864.6248635914728
+   V10: -77.02474495901139
+   V11: 42.433564781409
+   V12: -886.9653532509791
+   V15: -52.345358654392115
+   V18: -945.8222868755608
 
 """
