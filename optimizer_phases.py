@@ -63,7 +63,7 @@ import optuna.samplers
 # =============================================================================
 
 # Phase of the excecution
-PHASE = 1
+PHASE = 3 
 
 # The folder this script is in, found automatically. Keep this script next to
 # SimpleSetUp.iob and the electrode_.PA* files and it works on any computer.
@@ -113,7 +113,7 @@ FIXED = {
 # Count an ion as a hit only if it lands inside this box (the Detector), in mm.
 DETECTOR_REGION = {"x": (70, 82), "y": (70, 83), "z": (403, 407)}
 
-# PHASE 1
+# ===== PHASE 1 =====
     # For the first phase:
 FOCUS_REGION = {"x": (8.7, 15.0), "y": (70, 83), "z": (71.8180, 81.0)}
 
@@ -138,14 +138,47 @@ FIXED_PHASE1 = {
 }
 
 # --- PHASE 1 CONFIG ---
-DETECTOR_REGION = FOCUS_REGION
-OPTIMIZE = OPTIMIZE_PHASE1
-FIXED = FIXED_PHASE1
+if PHASE == 1:
+    DETECTOR_REGION = FOCUS_REGION
+    OPTIMIZE = OPTIMIZE_PHASE1
+    FIXED = FIXED_PHASE1
 
-# A known-good starting set of voltages, or None. Keys are "V<electrode>".
-STARTING_POINT = {
-    "V3":  286.69,   # Einzel lens 1 (center)
+    # A known-good starting set of voltages, or None. Keys are "V<electrode>".
+    STARTING_POINT = {
+        "V3":  286.69,   # Einzel lens 1 (center)
+    }
+
+# ===== PHASE 3 =====
+    # For the third phase:
+OPTIMIZE_PHASE3  = {
+    6:  (-500.0, 500.0),   # Einzel lens 2 (center)
+    18: (-1000.0, 1000.0),   # Voltage / deflection plate 2
 }
+
+FIXED_PHASE3 = {
+    1:  500.0,     # HV source
+    19: -2000.0,   # Detector
+    2:  0.0,       # pipe
+    4:  0.0, 5: 0.0, 7: 0.0, 8: 0.0,    # Einzel outer rings (grounded)
+    13: 0.0, 14: 0.0, 16: 0.0, 17: 0.0, # ground plates
+    3:  279.3830445316597,   # Einzel lens 1 (center)
+    9:  820.6691442231258,   # Quadrupole bender
+    10: -71.53180403086287,   # Quadrupole bender
+    11: 53.40745492959394,   # Quadrupole bender
+    12: -882.0267614810996,   # Quadrupole bender
+    15: -55.294003003531884,   # Voltage / deflection plate 1
+}
+
+# --- PHASE 3 CONFIG ---
+if PHASE == 3:
+    OPTIMIZE = OPTIMIZE_PHASE3
+    FIXED = FIXED_PHASE3
+
+    # A known-good starting set of voltages, or None. Keys are "V<electrode>".
+    STARTING_POINT = {
+        "V6":  -408.298331585215,   # Einzel lens 1 (center)
+        "V18": -846.6261651198996,   # Voltage / deflection plate 2
+    }
 
 # When a trial is invalid we return a deliberately terrible score.
 BAD_SCORE = -1.0 if OBJECTIVE == "hits" else 1e9
@@ -330,6 +363,14 @@ def objective(trial: Trial) -> float:
         W_ADVANCE = -0.1 # Negative because we want to minimize the mean x position (advance toward -x)
         return W_HITS * count_hits(positions) + W_ADVANCE * np.mean(positions[:, 0])
 
+    if OBJECTIVE == "hits" and PHASE == 3:
+        # Not only gives the number of hit, but also the mean distance of the hits (moving toward +z):
+        W_HITS = 0.9
+        W_ADVANCE = 0.0 # Positive because we want to maximize the mean z position (advance toward +z)
+        W_BULLSEYE = 0.1
+        points_focus = np.sum(np.linalg.norm(positions[:, :2] - np.array([[76, 76]]), axis=1) < 1.5)
+        return (W_HITS * count_hits(positions)) + (W_ADVANCE * np.mean(positions[:, 2])) + (W_BULLSEYE * points_focus)
+
     else:
         return count_hits(positions) if OBJECTIVE == "hits" else beam_spread(positions)
 
@@ -396,3 +437,20 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+
+"""
+=== Best trial (Results 1)===
+Trial number: ??
+Score:        ??
+Voltages:
+   V3: 286.69
+
+=== Best trial (Results 2)===
+Trial number: 44 (78 ions)
+Score:        72.4
+Voltages:
+   V6: -355.8444494312975
+   V18: -753.6959058060369
+
+"""
