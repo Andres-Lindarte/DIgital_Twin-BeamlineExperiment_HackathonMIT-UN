@@ -48,6 +48,7 @@ Run it from a terminal with:   python optimizer.py
 """
 
 import os
+import re
 import pathlib
 import re
 import subprocess
@@ -87,6 +88,7 @@ OBJECTIVE = "hits"
 # The electrodes we are allowed to tune, and their (physical!) voltage ranges.
 #   electrode_number: (lowest_volts, highest_volts)
 OPTIMIZE = {
+    3:  (190.0, 290.0),     # Einzel lens 1 (center)
     6:  (-1000.0, 300.0),   # Einzel lens 2 (center)
     9:  (600.0, 900.0),   # Quadrupole bender
     10: (-200.0, 50.0),   # Quadrupole bender
@@ -103,7 +105,6 @@ FIXED = {
     2:  0.0,       # pipe
     4:  0.0, 5: 0.0, 7: 0.0, 8: 0.0,    # Einzel outer rings (grounded)
     13: 0.0, 14: 0.0, 16: 0.0, 17: 0.0, # ground plates
-    3: 286.69 # Einzel lens 1 (center)
 }
 
 # Count an ion as a hit only if it lands inside this box (the Detector), in mm.
@@ -111,6 +112,7 @@ DETECTOR_REGION = {"x": (70, 82), "y": (70, 83), "z": (403, 407)}
 
 # A known-good starting set of voltages, or None. Keys are "V<electrode>".
 STARTING_POINT = {
+            "V3": 286.69,
             "V6": -203.95001444226114,
             "V9": 745.0330213477341,
             "V10": -100.91746815085449,
@@ -297,14 +299,20 @@ def objective(trial: Trial) -> float:
         print(f"  [DEBUG] excepción: {type(e).__name__}: {e}")
         return BAD_SCORE
 
+    points_focus = sum(float(p) for p in re.findall(r"points:([0-9.]+)", simion_output))
+
     positions = get_positions(simion_output)
     if positions.shape[0] == 0:
         return BAD_SCORE
-
-    W_HITS = 1
-    W_ADVANCE = 0.0 # Positive because we want to maximize the mean z position (advance toward +z)
     
-    return W_HITS * count_hits(positions) + W_ADVANCE * np.mean(positions[:, 2])
+    W_HITS = 0.8
+    W_ADVANCE = 0.0 # Positive because we want to maximize the mean z position (advance toward +z)
+    W_BULLSEYE = 0.2
+
+    # HITS + ADVANCE + PRECITION
+    finale_metric = (W_HITS * count_hits(positions)) + (W_ADVANCE * np.mean(positions[:, 2])) + (W_BULLSEYE * points_focus)
+    
+    return finale_metric
 
     
     # raise NotImplementedError("Task 2a: implement the objective function")
@@ -372,10 +380,10 @@ if __name__ == "__main__":
     main()
 
 """
-=== Best trial (Results 1) ===
+=== Best trial (Results 1 - Hit) ===
 Trial number: 15
-Score:        30.0
-Voltages:
+Score:        30.0 (hits + advance)
+Voltages: (V3 Fixed at 286.69)
    V6: -203.95001444226114
    V9: 745.0330213477341
    V10: -100.91746815085449
@@ -383,4 +391,18 @@ Voltages:
    V12: -960.2082755617133
    V15: -124.21837199131207
    V18: -900.0627979463936
+
+=== Best trial (Results 2 - Hit)===
+Trial number: 42 (50 ions)
+Score:        192.4628000000013 (hits + advance + bullseye)
+Voltages:
+   V3: 279.3830445316597
+   V6: -408.298331585215
+   V9: 820.6691442231258
+   V10: -71.53180403086287
+   V11: 53.40745492959394
+   V12: -882.0267614810996
+   V15: -55.294003003531884
+   V18: -846.6261651198996
+
 """
