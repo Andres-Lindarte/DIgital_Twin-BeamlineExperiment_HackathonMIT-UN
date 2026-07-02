@@ -64,7 +64,7 @@ import optuna.samplers
 # =============================================================================
 
 # Phase of the excecution
-PHASE = 2
+PHASE = 3
 
 # The folder this script is in, found automatically. Keep this script next to
 # SimpleSetUp.iob and the electrode_.PA* files and it works on any computer.
@@ -152,10 +152,10 @@ if PHASE == 1:
 # ===== PHASE 2 =====
     # For the second phase:
 OPTIMIZE_PHASE2  = {
-    9:  (500.0, 1000.0),   # Quadrupole bender
-    10: (-200.0, 0.0),   # Quadrupole bender
-    11: (0.0, 200.0),   # Quadrupole bender
-    12: (-1000.0, -500.0),   # Quadrupole bender
+    9:  (700.0, 950.0),   # Quadrupole bender
+    10: (-150.0, 0.0),   # Quadrupole bender
+    11: (-50.0, 50.0),   # Quadrupole bender
+    12: (-800.0, -700.0),   # Quadrupole bender
 }
 
 FIXED_PHASE2 = {
@@ -164,10 +164,10 @@ FIXED_PHASE2 = {
     2:  0.0,       # pipe
     4:  0.0, 5: 0.0, 7: 0.0, 8: 0.0,    # Einzel outer rings (grounded)
     13: 0.0, 14: 0.0, 16: 0.0, 17: 0.0, # ground plates
-    3:  286.69,   # Einzel lens 1 (center)
-    6:  -355.8444494312975,   # Einzel lens 2 (center)
-    15: -55.294003003531884,   # Voltage / deflection plate 1
-    18: -753.6959058060369,   # Voltage / deflection plate 2
+    3:  285.92591721806303,   # Einzel lens 1 (center)
+    6:  -828.4104913931302,   # Einzel lens 2 (center)
+    15: 2.782110947981124,   # Voltage / deflection plate 1
+    18: 44.968890256714474,   # Voltage / deflection plate 2
 }
 
 # --- PHASE 2 CONFIG ---
@@ -177,17 +177,17 @@ if PHASE == 2:
 
     # A known-good starting set of voltages, or None. Keys are "V<electrode>".
     STARTING_POINT = {
-        "V9":  820.6691442231258,   # Quadrupole bender
-        "V10": -71.53180403086287,   # Quadrupole bender
-        "V11": 53.40745492959394,   # Quadrupole bender
-        "V12": -882.0267614810996,   # Quadrupole bender
+        "V9":  903.7629499753857,   # Quadrupole bender
+        "V10": -120.8837277215239,   # Quadrupole bender
+        "V11": 17.899315501859178,   # Quadrupole bender
+        "V12": -753.9672166555655,   # Quadrupole bender
     }
 
 # ===== PHASE 3 =====
     # For the third phase:
 OPTIMIZE_PHASE3  = {
-    6:  (-500.0, 500.0),   # Einzel lens 2 (center)
-    18: (-1000.0, 1000.0),   # Voltage / deflection plate 2
+    6:  (-1000.0, -800.0),   # Einzel lens 2 (center)
+    18: (-100.0, 100.0),   # Voltage / deflection plate 2
 }
 
 FIXED_PHASE3 = {
@@ -196,12 +196,12 @@ FIXED_PHASE3 = {
     2:  0.0,       # pipe
     4:  0.0, 5: 0.0, 7: 0.0, 8: 0.0,    # Einzel outer rings (grounded)
     13: 0.0, 14: 0.0, 16: 0.0, 17: 0.0, # ground plates
-    3:  279.3830445316597,   # Einzel lens 1 (center)
-    9:  820.6691442231258,   # Quadrupole bender
-    10: -71.53180403086287,   # Quadrupole bender
-    11: 53.40745492959394,   # Quadrupole bender
-    12: -882.0267614810996,   # Quadrupole bender
-    15: -55.294003003531884,   # Voltage / deflection plate 1
+    3:  285.92591721806303,   # Einzel lens 1 (center)
+    9:  903.7629499753857,   # Quadrupole bender
+    10: -120.8837277215239,   # Quadrupole bender
+    11: 17.899315501859178,   # Quadrupole bender
+    12: -753.9672166555655,   # Quadrupole bender
+    15: 2.782110947981124,   # Voltage / deflection plate 1
 }
 
 # --- PHASE 3 CONFIG ---
@@ -211,8 +211,8 @@ if PHASE == 3:
 
     # A known-good starting set of voltages, or None. Keys are "V<electrode>".
     STARTING_POINT = {
-        "V6":  -408.298331585215,   # Einzel lens 1 (center)
-        "V18": -846.6261651198996,   # Voltage / deflection plate 2
+        "V6":  -828.4104913931302,   # Einzel lens 1 (center)
+        "V18": 44.968890256714474,   # Voltage / deflection plate 2
     }
 
 # When a trial is invalid we return a deliberately terrible score.
@@ -400,17 +400,17 @@ def objective(trial: Trial) -> float:
 
     if OBJECTIVE == "hits" and PHASE == 2:
         # Not only gives the number of hit, but also the mean distance of the hits (moving toward +z):
-        W_HITS = 0.9
+        W_HITS = 1.0
         W_ADVANCE = 0.0 # Positive because we want to maximize the mean z position (advance toward +z)
-        W_BULLSEYE = 0.1
+        W_BULLSEYE = 0.0
         points_focus = np.sum(np.linalg.norm(positions[:, :2] - np.array([[76, 76]]), axis=1) < 1.5)
         return (W_HITS * count_hits(positions)) + (W_ADVANCE * np.mean(positions[:, 2])) + (W_BULLSEYE * points_focus)
 
     if OBJECTIVE == "hits" and PHASE == 3:
         # Not only gives the number of hit, but also the mean distance of the hits (moving toward +z):
-        W_HITS = 0.9
+        W_HITS = 1.0
         W_ADVANCE = 0.0 # Positive because we want to maximize the mean z position (advance toward +z)
-        W_BULLSEYE = 0.1
+        W_BULLSEYE = 0.0
         points_focus = np.sum(np.linalg.norm(positions[:, :2] - np.array([[76, 76]]), axis=1) < 1.5)
         return (W_HITS * count_hits(positions)) + (W_ADVANCE * np.mean(positions[:, 2])) + (W_BULLSEYE * points_focus)
 
@@ -504,5 +504,21 @@ Voltages:
    V10: -71.53180403086287
    V11: 53.40745492959394
    V12: -882.0267614810996
+
+=== Best trial (Results 4 - Phase 2)===
+Trial number: 32 
+Score:        54.0
+Voltages:
+   V9: 767.1520929667804
+   V10: -120.69647841327262
+   V11: 15.562508451602426
+   V12: -752.9505086534076
+
+=== Best trial (Results 5 - Phase 3)===
+Trial number: 46
+Score:        72.0
+Voltages:
+   V6: -820.64959307727
+   V18: -27.21983638739232
 
 """
